@@ -6,7 +6,7 @@ class SFSObject:
     def __init__(self, raw):
         self.name = ''
         self.attr = dict()
-        
+
         raw = raw.splitlines()
         index = raw[0].find('(sfs_object)')
         if index != -1:
