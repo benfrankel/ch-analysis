@@ -1,0 +1,93 @@
+------------------------------------------------------------------- joinbattle flow
+
+    com.cardhunter.battle.Battle
+    com.cardhunter.battle.commands.PlayersPresentCommand
+    com.cardhunter.battle.commands.StartTurnCommand
+    com.cardhunter.battle.Board
+    com.cardhunter.battle.Square (Repeat xN)
+    com.cardhunter.battle.Doodad (Repeat xM)
+    {
+    com.cardhunter.battle.Player
+    {
+    com.cardhunter.battle.ActorGroup
+    com.cardhunter.battle.ActorInstance
+   #com.cardhunter.battle.Participant
+    com.cardhunter.battle.Hand
+    com.cardhunter.battle.DiscardPile
+    com.cardhunter.battle.DeckInstance
+    com.cardhunter.battle.CardInstance (Repeat x36)
+    } (Repeat x3)
+    } (Repeat x2)
+
+------------------------------------------------------------------- battle extension response types
+
+deckPeeks      #
+deckPeeksSent  # states that a deckPeeks has been sent
+handPeeks      #
+handPeeksSent  # states that a handPeeks has been sent
+hasTrait       # a player has a trait that must be played
+action         # a player has played a card
+done           #
+noMoreTraits   # a player is done playing traits
+selectSquare   # a player has selected a square (e.g. for movement)
+pass           # a player has passed
+mustDiscard    # a player must discard
+selectCard     # a player has selected a card to discard
+noMoreDiscards # a player has finished trimming characters' hands
+triggerSucceed #
+selectCards    #
+triggerFail    #
+genRand        #
+
+------------------------------------------------------------------- General
+
+IIU=true iff __[[REQUESTID]]__ shows up.
+type=deckPeek implies card owner is user.
+SENDID implies card owner is user.
+
+------------------------------------------------------------------- Card Parameters
+
+Parameters:
+    IUID: ?
+    TARG: target character indices
+    TARP: corresponding target player indices
+    TARA: ?
+    ACTC: 0, 1, ... is the card index in hand
+    ACTG: ? = group?
+    INST: ?
+    type: action=play, selectCard=select to discard, handPeeks=peek card from hand, deckPeeks=peek card in deck.
+    HP: Hand Peeks
+        peeks:
+            origin: ItemType
+            owner: 0 or 1 is the player index
+            cownerp: 0 or 1 is the original player index
+            type: CardType
+            cownerg: 0, 1, or 2 is the original character index
+            group: 0, 1, or 2 is the character index
+            card: 0, 1, ... is the card index in hand
+
+------------------------------------------------------------------- Trigger Parameters
+
+Parameters:
+   *type: triggerSucceed or triggerFail, whether the trigger happened
+    TBON: ? seems to always be 0 (guess: easy to block, such as reaching swing)
+    DBON: ? seems to always be 0 (guess: always equals TBON)
+    TTHRESH: "trigger threshhold", the minimum die roll to trigger
+   *DTHRESH: "discard threshhold", 0=keep, 8=discard (if in hand)
+    TPEN: ? 0, 1, 2, 3 is hard to block
+    DPEN: ? seems to always equal TPEN
+   *TCLOC: "trigger card location" (0=hand->peek, 1=attached, 2=terrain)
+    TROLL: "trigger roll", the die roll (1, ..., 6)
+   *ACTC: 0, 1, ... is the card index in hand (if in hand)
+    ACTG: ?
+    TARA: ?
+    TARP: ?
+    TARG: ?
+    TRGA: ? "triggering actor"
+    TRGP: ? seems to always be 0, 1, or -1
+    TRGG: ? seems to always be 0, 1, 2, or -1
+    TRID: ? seems to always be 0, 1, 2, or 3
+    ALTT: ? seems to always be false
+    PUI: ? seems to always be 0 or 1
+
+-------------------------------------------------------------------
