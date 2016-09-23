@@ -1,3 +1,5 @@
+# This file parses verbose battle logs.
+
 basic_tags = 'utf_string', 'bool', 'int', 'int_array'
 struct_tags = 'sfs_array', 'sfs_object'
 
@@ -6,6 +8,7 @@ class SFSBasicType:
     def __init__(self, tag, name, value):
         self.tag = tag
         self.name = name
+        self.value = None
         if self.tag == 'utf_string':
             self.value = value
         elif self.tag == 'bool':
@@ -19,8 +22,6 @@ class SFSBasicType:
                 values = value[1:-1].split(',')
                 if all(e.isdigit() for e in values):
                     self.value = [int(e) for e in values]
-        else:
-            self.value = None
 
     def __str__(self):
         return str(self.value)
@@ -64,7 +65,7 @@ class SFSArray:
 
 
 class SFSObject:
-    def __init__(self, name=''):
+    def __init__(self, name):
         self.tag = 'sfs_object'
         self.name = name
         self.attr = dict()
@@ -109,7 +110,6 @@ def parse_line(line):
         name, value = '', line
     else:
         name, value = line[:delim_index], line[delim_index+2:]
-
     if tag in basic_tags:
         result = SFSBasicType(tag, name, value)
     elif tag == 'sfs_array':
@@ -119,16 +119,19 @@ def parse_line(line):
     return indent, result
 
 
-def parse(raw):
-    params = SFSObject('Parameters')
-    layer_stack = [params]
+def parse_battle(raw):
+    extension_responses = []
+    layer_stack = []
     for line in raw.splitlines():
-        if not line or line.isspace():
+        if 'Received extension response:' in line:
+            extension_responses.append(SFSObject(line.split(': ')[1]))
+            layer_stack = [extension_responses[-1]]
+        if not line or line.isspace() or line[0] != '\t':
             continue
         indent, line_obj = parse_line(line)
         layer_stack = layer_stack[:indent]
         layer_stack[-1].add_item(line_obj)
         if line_obj.tag in struct_tags:
             layer_stack.append(line_obj)
-    return params
+    return extension_responses
 

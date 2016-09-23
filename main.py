@@ -2,7 +2,9 @@ import gamedata
 import log
 
 
-obj = log.SFSObject('\na\nOnce upon a time (sfs_object) DP:')
+log.set_user('Pyrious')
+log.load_log()
+log.update_battle()
 
 
 # r'C:\Users\Ben\AppData\Roaming\com.bluemanchu.CardHunter\Local Store\CardHunter.log'

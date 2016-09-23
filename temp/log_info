@@ -1,5 +1,7 @@
 ------------------------------------------------------------------- joinbattle flow
 
+- marks something that doesn't actually repeat
+
     com.cardhunter.battle.Battle
     com.cardhunter.battle.commands.PlayersPresentCommand
     com.cardhunter.battle.commands.StartTurnCommand
@@ -11,7 +13,7 @@
     {
     com.cardhunter.battle.ActorGroup
     com.cardhunter.battle.ActorInstance
-   #com.cardhunter.battle.Participant
+   -com.cardhunter.battle.Participant
     com.cardhunter.battle.Hand
     com.cardhunter.battle.DiscardPile
     com.cardhunter.battle.DeckInstance
@@ -21,23 +23,23 @@
 
 ------------------------------------------------------------------- battle extension response types
 
-deckPeeks      #
-deckPeeksSent  # states that a deckPeeks has been sent
-handPeeks      #
-handPeeksSent  # states that a handPeeks has been sent
-hasTrait       # a player has a trait that must be played
-action         # a player has played a card
-done           #
-noMoreTraits   # a player is done playing traits
-selectSquare   # a player has selected a square (e.g. for movement)
-pass           # a player has passed
-mustDiscard    # a player must discard
-selectCard     # a player has selected a card to discard
-noMoreDiscards # a player has finished trimming characters' hands
-triggerSucceed #
-selectCards    #
-triggerFail    #
-genRand        #
+deckPeeks      # A card is drawn.
+deckPeeksSent  # A deckPeeks has been sent.
+handPeeks      # An in-hand card is revealed to everyone.
+handPeeksSent  # A handPeeks has been sent.
+hasTrait       # A player has a trait that must be played
+action         # A character plays a card.
+done           # Doesn't seem to convey any information.
+noMoreTraits   # A player is done playing traits.
+selectSquare   # A player has selected a square (e.g. for movement).
+pass           # A player has passed.
+mustDiscard    # A player must discard.
+selectCard     # A player has selected a card to discard.
+noMoreDiscards # A player has finished discarding.
+triggerSucceed # A reaction successfully triggers.
+selectCards    # .
+triggerFail    # A reaction fails to trigger.
+genRand        # Doesn't seem to convey any information.
 
 ------------------------------------------------------------------- General
 
@@ -67,6 +69,8 @@ Parameters:
             card: 0, 1, ... is the card index in hand
 
 ------------------------------------------------------------------- Trigger Parameters
+
+* marks an important piece of info
 
 Parameters:
    *type: triggerSucceed or triggerFail, whether the trigger happened
