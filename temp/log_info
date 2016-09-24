@@ -24,10 +24,10 @@
 ------------------------------------------------------------------- battle extension response types
 
 deckPeeks      # A card is drawn.
-deckPeeksSent  # A deckPeeks has been sent.
+deckPeeksSent  # A deckPeeks was sent (doesn't matter to which player).
 handPeeks      # An in-hand card is revealed to everyone.
-handPeeksSent  # A handPeeks has been sent.
-hasTrait       # A player has a trait that must be played
+handPeeksSent  # A handPeeks was sent (doesn't matter to which player).
+hasTrait       # A player has a trait that must be played.
 action         # A character plays a card.
 done           # Doesn't seem to convey any information.
 noMoreTraits   # A player is done playing traits.
@@ -46,6 +46,7 @@ genRand        # Doesn't seem to convey any information.
 IIU=true iff __[[REQUESTID]]__ shows up.
 type=deckPeek implies card owner is user.
 SENDID implies card owner is user.
+Enemy racial movement isn't specifically mentioned when drawn except with a "handPeeksSent".
 
 ------------------------------------------------------------------- Card Parameters
 

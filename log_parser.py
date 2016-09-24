@@ -1,6 +1,6 @@
 # This file parses verbose battle logs.
 
-basic_tags = 'utf_string', 'bool', 'int', 'int_array'
+basic_tags = 'utf_string', 'utf_string_array', 'bool', 'int', 'int_array'
 struct_tags = 'sfs_array', 'sfs_object'
 
 
@@ -11,6 +11,9 @@ class SFSBasicType:
         self.value = None
         if self.tag == 'utf_string':
             self.value = value
+        elif self.tag == 'utf_string_array':
+            if value[0] == '[' and value[-1] == ']':
+                self.value = value[1:-1].split(',')
         elif self.tag == 'bool':
             if value in ('true', 'false'):
                 self.value = value == 'true'
@@ -22,6 +25,9 @@ class SFSBasicType:
                 values = value[1:-1].split(',')
                 if all(e.isdigit() for e in values):
                     self.value = [int(e) for e in values]
+
+    def __eq__(self, other):
+        return self.tag == other.tag and self.name == other.name and self.value == other.value
 
     def __str__(self):
         return str(self.value)
@@ -37,7 +43,13 @@ class SFSArray:
         self.array = list()
 
     def add_item(self, item):
-        self.array.append(item)
+        if item.tag in basic_tags:
+            self.array.append(item.value)
+        else:
+            self.array.append(item)
+
+    def __eq__(self, other):
+        return self.tag == other.tag and self.name == other.name and self.array == other.array
 
     def __contains__(self, *args, **kwargs):
         return self.array.__contains__(*args, **kwargs)
@@ -71,7 +83,13 @@ class SFSObject:
         self.attr = dict()
 
     def add_item(self, item):
-        self.attr[item.name] = item
+        if item.tag in basic_tags:
+            self.attr[item.name] = item.value
+        else:
+            self.attr[item.name] = item
+
+    def __eq__(self, other):
+        return self.tag == other.tag and self.name == other.name and self.attr == other.attr
 
     def __contains__(self, *args, **kwargs):
         return self.attr.__contains__(*args, **kwargs)
@@ -123,10 +141,14 @@ def parse_battle(raw):
     extension_responses = []
     layer_stack = []
     for line in raw.splitlines():
+        if not line or line.isspace():
+            continue
         if 'Received extension response:' in line:
             extension_responses.append(SFSObject(line.split(': ')[1]))
             layer_stack = [extension_responses[-1]]
-        if not line or line.isspace() or line[0] != '\t':
+        if line[0] != '\t':
+            if extension_responses and extension_responses[-1].name == 'battleResults':
+                break
             continue
         indent, line_obj = parse_line(line)
         layer_stack = layer_stack[:indent]

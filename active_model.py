@@ -1,37 +1,36 @@
-import model
 import gamedata
 
 
-class ActiveCard:
+class Card:  # TODO: Card should know if it's attached to a character or to a tile.
     def __init__(self):
         self.card_type = None
         self.name = ''
-        self.pile = 0  # 0 = Draw, 1 = Hand, 2 = Discard
+        self.location = 0  # 0 = Draw, 1 = Hand, 2 = Discard
 
     def set(self, card_type):
         self.card_type = card_type
         self.name = card_type.name
 
     def reveal(self):
-        self.pile = 1
+        self.location = 1
 
     def discard(self):
-        self.pile = 2
+        self.location = 2
 
     def reshuffle(self):
-        self.pile = 0
+        self.location = 0
 
     def is_known(self):
         return self.card_type is not None
 
     def in_draw(self):
-        return self.pile == 0
+        return self.location == 0
 
     def in_hand(self):
-        return self.pile == 1
+        return self.location == 1
 
     def in_discard(self):
-        return self.pile == 2
+        return self.location == 2
 
     def __eq__(self, other):
         return self.card_type == other.card_type
@@ -40,15 +39,15 @@ class ActiveCard:
         return self.name if self.name else '?'
 
 
-class ActiveItem:
+class Item:
     def __init__(self, slot_type):
         self.item_type = None
         self.name = ''
         self.slot_type = slot_type
         if slot_type in ('Weapon', 'Divine Weapon', 'Staff'):
-            self.cards = [ActiveCard() for _ in range(6)]
+            self.cards = [Card() for _ in range(6)]
         else:
-            self.cards = [ActiveCard() for _ in range(3)]
+            self.cards = [Card() for _ in range(3)]
 
     def set(self, item_type):
         self.item_type = item_type
@@ -77,10 +76,10 @@ class ActiveItem:
         return self.name if self.name else '?'
 
 
-class Slot:
+class ItemSlot:
     def __init__(self, name):
         self.name = name
-        self.item = ActiveItem(name)
+        self.item = Item(name)
 
     def set_item(self, item_type):
         if item_type.slot_type == self.name:
@@ -89,7 +88,7 @@ class Slot:
             raise ValueError("Cannot place " + item_type.name + " (" + item_type.slot_type + ") in " + self.name + " slot.")
 
     def remove_item(self):
-        self.item = ActiveItem(self.name)
+        self.item = Item(self.name)
 
     def is_empty(self):
         return not self.item.is_known()
@@ -101,11 +100,11 @@ class Slot:
         return str(self.item)
 
 
-class Frame:
+class ItemFrame:
     def __init__(self, archetype):
         self.name = archetype.name
         self.slot_types = archetype.slot_types
-        self.slots = [Slot(slot_type) for slot_type in archetype.slot_types]
+        self.slots = [ItemSlot(slot_type) for slot_type in archetype.slot_types]
 
     def add_item(self, item_type):
         for slot in self.slots:
@@ -124,24 +123,27 @@ class Frame:
         return ', '.join(str(slot) for slot in self.slots)
 
 
-# Simultaneous reveal and discard (like parry or cloth armor proc) = play, functionally.
-# What if a character plays an already revealed card (from hand)?
-# What if a character discards an already revealed card (from hand)?
-# If a character dies, log all the discards if you want info on the deck and then stop tracking.
+# Simultaneous reveal and discard (like parry or cloth armor proc) = play, functionally. (check log for triggerSucceed)
+# What if a character plays an already revealed card (from hand)? (log will determine this)
+# What if a character discards an already revealed card (from hand)? (log will determine this)
+# What if a character dies?
 
 
-class ActiveCharacter:  # TODO: Add Hand and proper functions to match log input.
+class Character:  # TODO: Add Hand and proper functions to match log input.
     def __init__(self):
         self.name = ''
         self.figure = ''
         self.alive = True
         self.archetype = None
-        self.frame = None
-        self.deck = [ActiveCard() for _ in range(36)]
+        self.item_frame = None
+        self.deck = [Card() for _ in range(36)]
+
+    def is_described(self):
+        return self.name and self.figure and self.archetype is not None and self.item_frame is not None
 
     def set_archetype(self, name):
         self.archetype = gamedata.get_archetype(name)
-        self.frame = Frame(self.archetype)
+        self.item_frame = ItemFrame(self.archetype)
 
     def get_hand(self):
         result = []
@@ -176,16 +178,16 @@ class ActiveCharacter:  # TODO: Add Hand and proper functions to match log input
                 break
 
     def reveal_card(self, card_type, item_type):
-        if item_type in self.frame:
-            for slot in self.frame.slots:
+        if item_type in self.item_frame:
+            for slot in self.item_frame.slots:
                 if item_type in slot:
                     for active_card in slot.item.cards:
                         if active_card.card_type == card_type and active_card.in_draw():
                             active_card.reveal()
                             return active_card
-        self.frame.add_item(item_type)
+        self.item_frame.add_item(item_type)
         self.update_deck_from_new_item(item_type, card_type)
-        for slot in self.frame.slots:
+        for slot in self.item_frame.slots:
             if item_type in slot:
                 for active_card in slot.item.cards:
                     if active_card.card_type == card_type and active_card.in_draw():
@@ -209,12 +211,12 @@ class ActiveCharacter:  # TODO: Add Hand and proper functions to match log input
                 return card
 
     def reshuffle(self):
-        for slot in self.frame.slots:
+        for slot in self.item_frame.slots:
             slot.item.reshuffle()
 
     def __str__(self):
         result = self.name + ' (' + self.archetype.race + ' ' + self.archetype.role + '):\n'
-        result += 'Equipment: ' + str(self.frame) + '\n'
+        result += 'Equipment: ' + str(self.item_frame) + '\n'
         result += 'Hand: ' + ', '.join(str(c) for c in self.get_hand()) + '\n'
         result += 'Draw Deck: ' + ', '.join(str(c) for c in self.get_draw_deck()) + '\n'
         result += 'Discard Deck: ' + ', '.join(str(c) for c in self.get_discard_deck())
@@ -224,18 +226,30 @@ class ActiveCharacter:  # TODO: Add Hand and proper functions to match log input
         return str(self)
 
 
-class ActiveBattle:
+class Player:
+    def __init__(self):
+        self.name = ''
+        self.index = -1
+        self.rating = -1
+        self.team = [Character() for _ in range(3)]
+
+    def is_described(self):
+        return self.name and self.index != -1 and self.rating != -1 and all([c.is_described() for c in self.team])
+
+
+class Battle:
     def __init__(self):
         self.room_name = ''
         self.scenario_name = ''
         self.scenario_display_name = ''
-        self.enemies = [ActiveCharacter() for _ in range(3)]
+        self.players = [Player() for _ in range(2)]
         self.enemy_index = -1
-        self.enemy_name = ''
+
+    def enemies(self):
+        return self.players[self.enemy_index].team
 
     def is_described(self):
-        result = bool(self.room_name and self.scenario_name and self.scenario_display_name and self.enemy_name)
-        result &= self.enemy_index != -1
-        return result
+        return self.room_name and self.scenario_name and self.scenario_display_name and \
+               all([p.is_described() for p in self.players]) and self.enemy_index != -1
 
 
