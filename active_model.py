@@ -129,9 +129,10 @@ class ItemFrame:
 # What if a character dies?
 
 
-class Character:  # TODO: Add Hand and proper functions to match log input.
-    def __init__(self):
+class Actor:  # TODO: Add Hand and proper functions to match log input.
+    def __init__(self, index=-1):
         self.name = ''
+        self.index = index
         self.figure = ''
         self.alive = True
         self.archetype = None
@@ -139,7 +140,8 @@ class Character:  # TODO: Add Hand and proper functions to match log input.
         self.deck = [Card() for _ in range(36)]
 
     def is_described(self):
-        return self.name and self.figure and self.archetype is not None and self.item_frame is not None
+        return self.name and self.index != -1 and self.figure and self.archetype is not None \
+               and self.item_frame is not None
 
     def set_archetype(self, name):
         self.archetype = gamedata.get_archetype(name)
@@ -227,29 +229,93 @@ class Character:  # TODO: Add Hand and proper functions to match log input.
 
 
 class Player:
-    def __init__(self):
+    def __init__(self, index=-1):
         self.name = ''
-        self.index = -1
         self.rating = -1
-        self.team = [Character() for _ in range(3)]
+        self.index = index
+        self.team = [Actor(i) for i in range(3)]
 
     def is_described(self):
         return self.name and self.index != -1 and self.rating != -1 and all([c.is_described() for c in self.team])
 
 
+class Square:
+    def __init__(self, x, y, flip_x, flip_y, image_name, terrain):
+        self.x = x
+        self.y = y
+        self.flip_x = flip_x
+        self.flip_y = flip_y
+        self.image_name = image_name
+        self.terrain = terrain
+
+
+class Doodad:
+    def __init__(self, x, y, flip_x, flip_y, image_name, marker):
+        self.x = x
+        self.y = y
+        self.flip_x = flip_x
+        self.flip_y = flip_y
+        self.image_name = image_name
+        self.marker = marker
+
+
+class Map:
+    def __init__(self):
+        self.squares = dict()
+        self.doodads = list()
+        self.max_x = 0
+        self.max_y = 0
+
+    def add_square(self, x, y, flip_x, flip_y, image_name, terrain):
+        if x > self.max_x:
+            self.max_x = x
+        if y > self.max_y:
+            self.max_y = y
+        self.squares[x, y] = Square(x, y, flip_x, flip_y, image_name, terrain)
+
+    def add_doodad(self, x, y, flip_x, flip_y, image_name, battle):
+        self.doodads.append(Doodad(x, y, flip_x, flip_y, image_name, battle))
+
+    def get_square(self, x, y):
+        return self.squares[x, y]
+
+    def __str__(self):
+        result = ''
+        for x in range(self.max_x+1):
+            for y in range(self.max_y+1):
+                if (x, y) in self.squares:
+                    square = self.squares[x, y]
+                    if square.terrain == 'Open':
+                        result += '.'
+                    elif square.terrain == 'Difficult':
+                        result += '-'
+                    elif square.terrain == 'Impassable':
+                        result += 'O'
+                    elif square.terrain == 'Blocked':
+                        result += '#'
+                    elif square.terrain == 'Victory':
+                        result += '@'
+                else:
+                    result += ' '
+            result += '\n'
+        return result
+
+
+
 class Battle:
     def __init__(self):
+        self.map = Map()
         self.room_name = ''
         self.scenario_name = ''
         self.scenario_display_name = ''
-        self.players = [Player() for _ in range(2)]
-        self.enemy_index = -1
+        self.players = [Player(i) for i in range(2)]
+        self.enemy = None
 
-    def enemies(self):
-        return self.players[self.enemy_index].team
+    def set_enemy(self, index):
+        self.enemy = self.players[index]
 
     def is_described(self):
         return self.room_name and self.scenario_name and self.scenario_display_name and \
-               all([p.is_described() for p in self.players]) and self.enemy_index != -1
+               all([p.is_described() for p in self.players]) and self.enemy is not None
 
 

@@ -1,4 +1,4 @@
-# This file will provide functions to interface with the CH Item / Card database.
+# This file interfaces with the CH databases.
 
 import urllib.request
 import csv

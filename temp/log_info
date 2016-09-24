@@ -43,9 +43,9 @@ genRand        # Doesn't seem to convey any information.
 
 ------------------------------------------------------------------- General
 
-IIU=true iff __[[REQUESTID]]__ shows up.
-type=deckPeek implies card owner is user.
-SENDID implies card owner is user.
+IIU=true iff __[[REQUESTID]]__ exists.
+type=deckPeeks implies card owner is user.
+SENDID exists iff type=deckPeeks. Value of SENDID is [i] where i is user index.
 Enemy racial movement isn't specifically mentioned when drawn except with a "handPeeksSent".
 
 ------------------------------------------------------------------- Card Parameters

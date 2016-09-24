@@ -1,25 +1,26 @@
 import gamedata
 import log
+import log_parser
 
 
-log.set_user('Pyrious')
-log.load_log()
-log.update_battle()
+log_filename = 'temp/example_logs/log2'
+gamedata.load()
 
 
-# r'C:\Users\Ben\AppData\Roaming\com.bluemanchu.CardHunter\Local Store\CardHunter.log'
-# gamedata.download()
-# gamedata.load()
-# log.set_user('Pyrious')
-#
-# while True:
-#     command = input().lower().replace(' ', '')
-#
-#     if command in ('u', 'r'):
-#         log.update_log()
-#         log.update_battle()
-#     if command in ('d', 'r'):
-#         for enemy in log.battle.enemies:
-#             print()
-#             print(enemy)
-#             print()
+while True:
+    command = input().lower().replace(' ', '')
+
+    if command in ('u', 'r'):
+        log.load_log(log_filename)
+        log.update_battle()
+    if command in ('d', 'r'):
+        for enemy in log.battle.enemy.team:
+            print()
+            print(enemy)
+            print()
+        print(log.battle.enemy.name)
+        print(log.battle.enemy.index)
+        print(log.battle.scenario_name)
+        print(log.battle.scenario_display_name)
+        print(log.battle.room_name)
+        print(log.battle.map)
