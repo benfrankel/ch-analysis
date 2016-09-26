@@ -6,12 +6,14 @@ import csv
 import model
 
 
+# URLs to access CH databases.
 ch_live = 'http://live.cardhunter.com/'
 cards_url = 'data/gameplay/Cards/Cards.csv'
 items_url = 'data/gameplay/Equipment/Equipment.csv'
 archetypes_url = 'data/gameplay/CharacterArchetypes/CharacterArchetypes.csv'
 
 
+# Dictionaries where the databases will be stored.
 card_dict = dict()
 short_card_dict = dict()
 item_dict = dict()
@@ -24,14 +26,17 @@ def download():
     """
     Download live data from CH and store it locally.
     """
+    # Request the .csv files from CH live.
     cards_req = urllib.request.urlopen(ch_live + cards_url)
     items_req = urllib.request.urlopen(ch_live + items_url)
     archetypes_req = urllib.request.urlopen(ch_live + archetypes_url)
 
+    # Convert the requests into text.
     cards_csv = cards_req.read().decode('utf-8', 'ignore')
     items_csv = items_req.read().decode('utf-8', 'ignore')
     archetypes_csv = archetypes_req.read().decode('utf-8', 'ignore')
 
+    # Write the text to local files.
     with open('cards.csv', 'w') as f:
         f.write(cards_csv)
 
@@ -44,16 +49,18 @@ def download():
 
 def load():
     """
-    Load local data into an accessible format.
+    Load local CH data into program memory.
     """
     all_cards_dict = dict()
 
+    # Convert to integer, None if this is impossible.
     def to_int(s):
         try:
             return int(s)
         except ValueError:
-            return -1
+            return None
 
+    # Extract the info from every line of cards.csv, store it in a CardType object, and add it to a temporary dictionary.
     with open('cards.csv', newline='') as f:
         cards = csv.reader(f, delimiter=',', quotechar='"')
         skip_line = 2
@@ -130,6 +137,8 @@ def load():
                                       status, audio_key, audio_key2, from_set, level, slot_types, art)
             all_cards_dict[new_card.name] = new_card
 
+    # Extract the info from every line of items.csv, store it in a ItemType object, and add it to the dictionary.
+    # Use the item list to narrow down the set of cards to non-monster cards.
     with open('items.csv', newline='') as f:
         items = csv.reader(f, delimiter=',', quotechar='"')
         skip_line = 2
@@ -173,6 +182,7 @@ def load():
             item_dict[new_item.name.lower()] = new_item
             short_item_dict[new_item.short_name.lower()] = new_item
 
+    # Extract the info from every line of archetypes.csv, store it in an Archetype object, and add it to the dictionary.
     with open('archetypes.csv', newline='') as f:
         archetypes = csv.reader(f, delimiter=',', quotechar='"')
         skip_line = 2

@@ -1,6 +1,7 @@
 import gamedata
 
 
+# An instance of a card during a battle. Card type may be hidden.
 class Card:  # TODO: Card should know if it's attached to a character or to a tile.
     def __init__(self):
         self.card_type = None
@@ -39,6 +40,7 @@ class Card:  # TODO: Card should know if it's attached to a character or to a ti
         return self.name if self.name else '?'
 
 
+# An instance of an item during a battle. Item type may be hidden.
 class Item:
     def __init__(self, slot_type):
         self.item_type = None
@@ -76,6 +78,7 @@ class Item:
         return self.name if self.name else '?'
 
 
+# An instance of a slot type (e.g. Weapon, Staff, Divine Skill) that can contain an Item during a battle.
 class ItemSlot:
     def __init__(self, name):
         self.name = name
@@ -100,6 +103,7 @@ class ItemSlot:
         return str(self.item)
 
 
+# Models an instance of a character archetype's list of item slots during a battle.
 class ItemFrame:
     def __init__(self, archetype):
         self.name = archetype.name
@@ -123,13 +127,8 @@ class ItemFrame:
         return ', '.join(str(slot) for slot in self.slots)
 
 
-# Simultaneous reveal and discard (like parry or cloth armor proc) = play, functionally. (check log for triggerSucceed)
-# What if a character plays an already revealed card (from hand)? (log will determine this)
-# What if a character discards an already revealed card (from hand)? (log will determine this)
-# What if a character dies?
-
-
-class Actor:  # TODO: Add Hand and proper functions to match log input.
+# An instance of a character during a battle (name, figure, archetype, item frame, and draw/hand/discard deck).
+class Actor:
     def __init__(self, index=-1):
         self.name = ''
         self.index = index
@@ -228,6 +227,7 @@ class Actor:  # TODO: Add Hand and proper functions to match log input.
         return str(self)
 
 
+# An instance of a player during a battle.
 class Player:
     def __init__(self, index=-1):
         self.name = ''
@@ -239,6 +239,7 @@ class Player:
         return self.name and self.index != -1 and self.rating != -1 and all([c.is_described() for c in self.team])
 
 
+# An instance of a map tile during a battle.
 class Square:
     def __init__(self, x, y, flip_x, flip_y, image_name, terrain):
         self.x = x
@@ -249,6 +250,7 @@ class Square:
         self.terrain = terrain
 
 
+# An instance of a map doodad during a battle (not dynamic; doodads stay the same throughout the battle).
 class Doodad:
     def __init__(self, x, y, flip_x, flip_y, image_name, marker):
         self.x = x
@@ -259,6 +261,7 @@ class Doodad:
         self.marker = marker
 
 
+# An instance of a map during a battle (bunch of tiles and doodads).
 class Map:
     def __init__(self):
         self.squares = dict()
@@ -290,7 +293,7 @@ class Map:
                     elif square.terrain == 'Difficult':
                         result += '-'
                     elif square.terrain == 'Impassable':
-                        result += 'O'
+                        result += 'o'
                     elif square.terrain == 'Blocked':
                         result += '#'
                     elif square.terrain == 'Victory':
@@ -301,7 +304,7 @@ class Map:
         return result
 
 
-
+# A battle (map, players, characters, cards, items, etc.)
 class Battle:
     def __init__(self):
         self.map = Map()
