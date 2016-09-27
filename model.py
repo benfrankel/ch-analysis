@@ -3,15 +3,13 @@
 
 # A card type (e.g. "Ouch!", "Sprint, Team!", "Amorphous Body").
 class CardType:
-    def __init__(self, ID, name, short_name, types, attack_type, damage_type, damage, min_range,
-                 max_range, move_points, duration, trigger, keep, trigger_effect, trigger_effect2,
-                 text, flavor_text, play_text, trigger_text, trigger_attempt_text,
-                 trigger_succeed_text, trigger_fail_text, trigger_text2, trigger_attempt_text2,
-                 trigger_succeed_text2, trigger_fail_text2, component1, params1, component2,
-                 params2, component3, params3, component4, params4, component5, params5, params,
-                 plus_minus, quality, quality_warrior, quality_priest, quality_wizard,
-                 quality_dwarf, quality_elf, quality_human, rarity, function_tags, attach_image,
-                 status, audio_key, audio_key2, from_set, level, slot_types, art):
+    def __init__(self, ID, name, short_name, types, attack_type, damage_type, damage, min_range, max_range, move_points,
+                 duration, trigger, keep, trigger_effect, trigger2, keep2, trigger_effect2, text, flavor_text,
+                 play_text, trigger_text, trigger_attempt_text, trigger_succeed_text, trigger_fail_text, trigger_text2,
+                 trigger_attempt_text2, trigger_succeed_text2, trigger_fail_text2, component1, params1, component2,
+                 params2, component3, params3, component4, params4, component5, params5, params, plus_minus, quality,
+                 quality_warrior, quality_priest, quality_wizard, quality_dwarf, quality_elf, quality_human, rarity,
+                 function_tags, attach_image, status, audio_key, audio_key2, from_set, level, slot_types, art):
         self.ID = ID
         self.name = name
         self.short_name = short_name
@@ -25,6 +23,8 @@ class CardType:
         self.trigger = trigger
         self.keep = keep
         self.trigger_effect = trigger_effect
+        self.trigger2 = trigger2
+        self.keep2 = keep2
         self.trigger_effect2 = trigger_effect2
         self.text = text
         self.flavor_text = flavor_text

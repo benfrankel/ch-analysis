@@ -11,36 +11,27 @@ class SFSBasicType:
         self.tag = tag
         self.name = name
         self.value = None
-        # Convert the string value into the proper type as dictated by tag.
-        if self.tag == 'utf_string':
-            self.value = value
-        elif self.tag == 'utf_string_array':
-            if value[0] == '[' and value[-1] == ']':
+
+        # If possible, convert the string value into the proper type as dictated by tag.
+        try:
+            if self.tag == 'utf_string':
+                self.value = value
+            elif self.tag == 'utf_string_array':
                 self.value = value[1:-1].split(',')
-        elif self.tag == 'bool':
-            if value in ('true', 'false'):
+            elif self.tag == 'bool':
                 self.value = value == 'true'
-        elif self.tag == 'bool_array':
-            if value[0] == '[' and value[-1] == ']':
-                values = value[1:-1].split(',')
-                if all(e in ('true', 'false') for e in values):
-                    self.value = [e == 'true' for e in values]
-        elif self.tag == 'int':
-            if value.isdigit():
+            elif self.tag == 'bool_array':
+                self.value = [e == 'true' for e in value[1:-1].split(',')]
+            elif self.tag == 'int':
                 self.value = int(value)
-        elif self.tag == 'int_array':
-            if value[0] == '[' and value[-1] == ']':
-                values = value[1:-1].split(',')
-                if all(e.isdigit() for e in values):
-                    self.value = [int(e) for e in values]
-        elif self.tag == 'double':
-            if value.isdecimal():
-                self.value = float(value)
-        elif self.tag == 'double_array':
-            if value[0] == '[' and value[-1] == ']':
-                values = value[1:-1].split(',')
-                if all(e.isdecimal() for e in values):
-                    self.value = [float(e) for e in values]
+            elif self.tag == 'int_array':
+                self.value = [int(e) for e in value[1:-1].split(',')]
+            elif self.tag == 'double':
+                self.value = [float(value)]
+            elif self.tag == 'double_array':
+                self.value = [float(e) for e in value[1:-1].split(',')]
+        except ValueError:
+            pass
 
     def __eq__(self, other):
         return self.tag == other.tag and self.name == other.name and self.value == other.value

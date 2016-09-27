@@ -60,7 +60,7 @@ def load():
         except ValueError:
             return None
 
-    # Extract the info from every line of cards.csv, store it in a CardType object, and add it to a temporary dictionary.
+    # Extract the info from every line of cards.csv, store it in a CardType object and add it to a temporary dictionary.
     with open('cards.csv', newline='') as f:
         cards = csv.reader(f, delimiter=',', quotechar='"')
         skip_line = 2
@@ -84,51 +84,53 @@ def load():
             trigger = to_int(card_vals[11])
             keep = to_int(card_vals[12])
             trigger_effect = card_vals[13]
-            trigger_effect2 = card_vals[14]
-            text = card_vals[15]
-            flavor_text = card_vals[16]
-            play_text = card_vals[17]
-            trigger_text = card_vals[18]
-            trigger_attempt_text = card_vals[19]
-            trigger_succeed_text = card_vals[20]
-            trigger_fail_text = card_vals[21]
-            trigger_text2 = card_vals[22]
-            trigger_attempt_text2 = card_vals[23]
-            trigger_succeed_text2 = card_vals[24]
-            trigger_fail_text2 = card_vals[25]
-            component1 = card_vals[26]
-            params1 = card_vals[27]
-            component2 = card_vals[28]
-            params2 = card_vals[29]
-            component3 = card_vals[30]
-            params3 = card_vals[31]
-            component4 = card_vals[32]
-            params4 = card_vals[33]
-            component5 = card_vals[34]
-            params5 = card_vals[35]
-            params = card_vals[36]
-            plus_minus = card_vals[37]
-            quality = card_vals[38]
-            quality_warrior = card_vals[39]
-            quality_priest = card_vals[40]
-            quality_wizard = card_vals[41]
-            quality_dwarf = card_vals[42]
-            quality_elf = card_vals[43]
-            quality_human = card_vals[44]
-            rarity = card_vals[45]
-            function_tags = card_vals[46]
-            attach_image = card_vals[47]
-            status = card_vals[48]
-            audio_key = card_vals[49]
-            audio_key2 = card_vals[50]
-            from_set = to_int(card_vals[51])
-            level = to_int(card_vals[52])
-            slot_types = card_vals[53].split(',')
-            art = card_vals[54]
+            trigger2 = card_vals[15]
+            keep2 = card_vals[16]
+            trigger_effect2 = card_vals[16]
+            text = card_vals[17]
+            flavor_text = card_vals[18]
+            play_text = card_vals[19]
+            trigger_text = card_vals[20]
+            trigger_attempt_text = card_vals[21]
+            trigger_succeed_text = card_vals[22]
+            trigger_fail_text = card_vals[23]
+            trigger_text2 = card_vals[24]
+            trigger_attempt_text2 = card_vals[25]
+            trigger_succeed_text2 = card_vals[26]
+            trigger_fail_text2 = card_vals[27]
+            component1 = card_vals[28]
+            params1 = card_vals[29]
+            component2 = card_vals[30]
+            params2 = card_vals[31]
+            component3 = card_vals[32]
+            params3 = card_vals[33]
+            component4 = card_vals[34]
+            params4 = card_vals[35]
+            component5 = card_vals[36]
+            params5 = card_vals[37]
+            params = card_vals[38]
+            plus_minus = card_vals[39]
+            quality = card_vals[40]
+            quality_warrior = card_vals[41]
+            quality_priest = card_vals[42]
+            quality_wizard = card_vals[43]
+            quality_dwarf = card_vals[44]
+            quality_elf = card_vals[45]
+            quality_human = card_vals[46]
+            rarity = card_vals[47]
+            function_tags = card_vals[48]
+            attach_image = card_vals[49]
+            status = card_vals[50]
+            audio_key = card_vals[51]
+            audio_key2 = card_vals[52]
+            from_set = to_int(card_vals[53])
+            level = to_int(card_vals[54])
+            slot_types = card_vals[55].split(',')
+            art = card_vals[56]
 
             new_card = model.CardType(ID, name, short_name, types, attack_type, damage_type, damage, min_range,
-                                      max_range, move_points, duration, trigger, keep, trigger_effect, trigger_effect2,
-                                      text, flavor_text, play_text, trigger_text, trigger_attempt_text,
+                                      max_range, move_points, duration, trigger, keep, trigger_effect, trigger2, keep2,
+                                      trigger_effect2, text, flavor_text, play_text, trigger_text, trigger_attempt_text,
                                       trigger_succeed_text, trigger_fail_text, trigger_text2, trigger_attempt_text2,
                                       trigger_succeed_text2, trigger_fail_text2, component1, params1, component2,
                                       params2, component3, params3, component4, params4, component5, params5, params,

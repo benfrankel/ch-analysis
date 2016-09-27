@@ -1,4 +1,3 @@
-Converting battle logs into a list of events.
 Incorporating BATTLE LOG: messages into a separate list, because they contain some info not found in verbose. The out-of-sync issue can be worked around.
 Updating active_model.Battle's state given an event.
 Downloading CH images.

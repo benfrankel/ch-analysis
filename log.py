@@ -4,25 +4,99 @@ import active_model
 import log_parser
 
 
-# A card related event such as "Draw", "Play", "Show", "Discard".
+# A card related event such as "Draw", "Play", "Show", "Discard"
 class CardEvent:
-    def __init__(self, event_name, original_player_index, original_actor_index, player_index, actor_index, card_index,
-                 card_name, item_name, target_players, target_actors):
+    def __init__(self, event_name, player_turn, original_player_index, original_group_index, player_index, group_index,
+                 card_index, card_name, item_name, target_player_indices, target_group_indices):
+        self.event = 'Card'
         self.event_name = event_name
+        self.player_turn = player_turn
         self.original_player_index = original_player_index
-        self.original_actor_index = original_actor_index
-        self.player_index = player_index
-        self.actor_index = actor_index
+        self.original_group_index = original_group_index
         self.card_index = card_index
         self.card_name = card_name
         self.item_name = item_name
-        self.targets = [battle.players[player].team[actor] for player, actor in zip(target_players, target_actors)]
+        self.target_player_indices = target_player_indices
+        self.target_group_indices = target_group_indices
+
+    def __str__(self):
+        return '(%d)[%s] %s - %s' % (self.player_turn, self.event, self.event_name, self.card_name)
+
+
+# A discard event that does not specify card details.
+class DiscardEvent:
+    def __init__(self, event_name, player_turn, player_index, group_index, card_index):
+        self.event = 'Discard'
+        self.event_name = event_name
+        self.player_turn = player_turn
+        self.player_index = player_index
+        self.group_index = group_index
+        self.card_index = card_index
+
+    def __str__(self):
+        return '(%d)[%s] %s - ' % (self.player_turn, self.event, self.event_name)
 
 
 # A trigger related event such as "Success", "Failure".
 class TriggerEvent:
-    def __init__(self, event_name):
+    def __init__(self, event_name, player_turn, location, player_index, group_index, card_index, x, y, die_roll,
+                 required_roll, keep, hard_to_block, easy_to_block):
+        self.event = 'Trigger'
         self.event_name = event_name
+        self.player_turn = player_turn
+        self.location = location
+        self.player_index = player_index
+        self.group_index = group_index
+        self.card_index = card_index
+        self.x = x
+        self.y = y
+        self.die_roll = die_roll
+        self.required_roll = required_roll
+        self.keep = keep
+        self.hard_to_block = hard_to_block
+        self.easy_to_block = easy_to_block
+
+    def __str__(self):
+        return '(%d)[%s] %s - %s' % (self.player_turn, self.event, self.event_name, ('Hand', 'Attached', 'Terrain')[self.location])
+
+
+# A target selecting event such as during a step attack.
+class TargetEvent:
+    def __init__(self, event_name, player_turn, target_player_indices, target_group_indices):
+        self.event = 'Target'
+        self.event_name = event_name
+        self.player_turn = player_turn
+        self.target_player_indices = target_player_indices
+        self.target_group_indices = target_group_indices
+
+    def __str__(self):
+        return '(%d)[%s] %s - ' % (self.player_turn, self.event, self.event_name)
+
+
+# A tile related event such as selecting a tile to move to.
+class TileEvent:
+    def __init__(self, event_name, player_turn, x, y, fx, fy):
+        self.event = 'Tile'
+        self.event_name = event_name
+        self.player_turn = player_turn
+        self.x = x
+        self.y = y
+        self.fx = fx
+        self.fy = fy
+
+    def __str__(self):
+        return '(%d)[%s] %s - (%d, %d)' % (self.player_turn, self.event, self.event_name, self.x, self.y)
+
+
+# A pass event.
+class PassEvent:
+    def __init__(self, event_name, player_turn):
+        self.event = 'Pass'
+        self.event_name = event_name
+        self.player_turn = player_turn
+
+    def __str__(self):
+        return '(%d)[%s] %s - ' % (self.player_turn, self.event, self.event_name)
 
 
 log = ''
@@ -38,7 +112,7 @@ def load_log(filename):
 
 
 # Use the log text to construct a sequence of events.
-def update_battle():
+def load_battle():
     # Find the most recent joinbattle and use log_parser.py to parse the battle.
     log_lines = log.splitlines()
     first_line_index = len(log_lines) - 1 - log_lines[::-1].index('Received extension response: joinbattle')
@@ -81,9 +155,17 @@ def update_battle():
                     actor.fy = obj['facing.y']
                     break
 
-    # Figure out who the enemy is and create a list of "events".
-    events = []
+    # Figure out who the enemy is and construct a sequence of 'events'.
+    must_discard = [-1, -1]
+    player_turn = -1
+    global events
     for ex in parsed[1:]:
+        if ex.name == 'battleTimer':
+            player_index = ex['playerIndex']
+            if ex['start']:
+                player_turn = player_index
+            else:
+                player_turn = -1
         if ex.name != 'battle':
             continue
         if ex['type'] in ('deckPeeks', 'handPeeks', 'action'):
@@ -99,38 +181,86 @@ def update_battle():
                     battle.set_enemy(1 - ex['SENDID'][0])
 
             # If this is a "Play" event, determine the targets.
-            target_players = []
-            target_actors = []
+            target_player_indices = []
+            target_group_indices = []
             if 'TARG' in ex:
-                target_actors = ex['TARG']
-                target_players = ex['TARP']
+                target_group_indices = ex['TARG']
+                target_player_indices = ex['TARP']
 
             # For every card in the peeks array, extract its info and append an event for it.
             for info in ex[peek]['peeks']:
                 original_player_index = info['cownerp']
-                original_actor_index = info['cownerg']
+                original_group_index = info['cownerg']
                 card_index = info['card']
                 card_name = info['type']
                 item_name = info['origin']
-                player_index = info['group']
-                actor_index = info['owner']
-                events.append(CardEvent(event_name, original_player_index, original_actor_index, player_index,
-                                        actor_index, card_index, card_name, item_name, target_players, target_actors))
+                player_index = info['owner']
+                group_index = info['group']
+                events.append(CardEvent(event_name, player_turn, original_player_index, original_group_index,
+                                        player_index, group_index, card_index, card_name, item_name,
+                                        target_player_indices, target_group_indices))
         elif ex['type'] == 'selectCard':
-            pass
+            event_name = 'Discard'
+            if 'HP' in ex:
+                info = ex['HP']['peeks'][0]
+                original_player_index = info['cownerp']
+                original_group_index = info['cownerg']
+                card_index = info['card']
+                card_name = info['type']
+                item_name = info['origin']
+                player_index = info['owner']
+                group_index = info['group']
+                events.append(CardEvent(event_name, player_turn, original_player_index, original_group_index,
+                                        player_index, group_index, card_index, card_name, item_name, [], []))
+            else:
+                selected_player_index = must_discard[0]
+                selected_group_index = must_discard[1]
+                selected_card_index = ex['sel']
+                events.append(DiscardEvent(event_name, player_turn, selected_player_index, selected_group_index,
+                                           selected_card_index))
         elif ex['type'] == 'selectCards':
-            pass
-        elif ex['type'] == 'triggerSucceed':
-            # Not yet implemented.
-            events.append(TriggerEvent())
-        elif ex['type'] == 'triggerFail':
-            pass
+            if 'SELP' in ex:
+                event_name = 'Discard'
+                selected_player_indices = ex['SELP']
+                selected_group_indices = ex['SELG']
+                selected_card_indices = ex['SELCC']
+                for i in range(len(selected_player_indices)):
+                    events.append(DiscardEvent(event_name, player_turn, selected_player_indices[i],
+                                               selected_group_indices[i], selected_card_indices[i]))
+        elif ex['type'] == 'mustDiscard':
+            must_discard[0] = ex['PUI']
+            must_discard[1] = ex['ACTG']
+        elif ex['type'] in ('triggerFail', 'triggerSucceed') and 'TCLOC' in ex:
+            event_name = {'triggerSucceed': 'Success', 'triggerFail': 'Failure'}[ex['type']]
+            location = ex['TCLOC']
+            player_index = group_index = card_index = x = y = None
+            if location != 2:
+                player_index = ex['PUI']
+                group_index = ex['ACTG']
+            else:
+                x = ex['TARX']
+                y = ex['TARY']
+            if location == 0:
+                card_index = ex['ACTC']
+            die_roll = ex['TROLL']
+            required_roll = ex['TTHRESH']
+            keep = ex['DTHRESH'] != 8
+            hard_to_block = ex['TPEN']
+            easy_to_block = ex['TBON']
+            events.append(TriggerEvent(event_name, player_turn, location, player_index, group_index, card_index, x, y,
+                                       die_roll, required_roll, keep, hard_to_block, easy_to_block))
         elif ex['type'] == 'target':
-            pass
-        elif ex['type'] == 'pass':
-            pass
+            event_name = 'Select'
+            target_player_indices = ex['TARP']
+            target_group_indices = ex['TARG']
+            events.append(TargetEvent(event_name, player_turn, target_player_indices, target_group_indices))
         elif ex['type'] == 'selectSquare':
-            pass
-
-    # Some other class will be able to deal with the list of events. We can just return the list.
-
+            event_name = 'Select'
+            x = ex['TARX']
+            y = ex['TARY']
+            fx = ex['TARFX']
+            fy = ex['TARFY']
+            events.append(TileEvent(event_name, player_turn, x, y, fx, fy))
+        elif ex['type'] == 'pass':
+            event_name = 'Pass'
+            events.append(PassEvent(event_name, player_turn))
