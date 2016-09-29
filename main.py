@@ -3,6 +3,7 @@ import log
 
 
 log_filename = 'temp/example_logs/log1'
+#gamedata.download()
 gamedata.load()
 
 

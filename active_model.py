@@ -233,10 +233,12 @@ class Player:
         self.name = ''
         self.rating = -1
         self.index = index
-        self.team = [Actor(i) for i in range(3)]
+        self.playerID = -1
+        self.userID = -1
+        self.actorGroup = [Actor(i) for i in range(3)]
 
     def is_described(self):
-        return self.name and self.index != -1 and self.rating != -1 and all([c.is_described() for c in self.team])
+        return self.name and self.index != -1 and self.rating != -1 and all([c.is_described() for c in self.actorGroup])
 
 
 # An instance of a map tile during a battle.

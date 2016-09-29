@@ -114,7 +114,7 @@ Normal battle logs may be out of sync with verbose battle logs.
 ------------------------------------------------------------------- Card Parameters
 
 Parameters:
-    IUID: ?
+    IUID: internal(?) user id (userID in class com.cardhunter.battle.Player)
     TARG: target character indices
     TARP: corresponding target player indices
     TARA: ?
