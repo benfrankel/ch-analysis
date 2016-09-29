@@ -126,7 +126,7 @@ class SFSObject:
 
 
 # Input is a single line, output is the indent level along with the object created from the line.
-def parse_line(line):
+def parse_verbose_line(line):
     # Count tabs at start of line.
     indent = 0
     while line[indent] == '\t':
@@ -157,7 +157,7 @@ def parse_line(line):
     return indent, result
 
 
-def parse_battle(raw):
+def parse_verbose(raw):
     # List of parsed extension responses so far.
     extension_responses = []
 
@@ -180,7 +180,7 @@ def parse_battle(raw):
             continue
 
         # Parse the current line.
-        indent, line_obj = parse_line(line)
+        indent, line_obj = parse_verbose_line(line)
 
         # Adjust to the proper layer, if this line de-indented.
         layer_stack = layer_stack[:indent]
@@ -191,3 +191,19 @@ def parse_battle(raw):
             layer_stack.append(line_obj)
 
     return extension_responses
+
+
+def parse_messages(raw):
+    # List of messages so far.
+    messages = []
+
+    for line in raw.splitlines():
+        # Ignore non-message lines.
+        if 'BATTLE LOG: ' not in line:
+            continue
+
+        params = [param.split('=') for param in line[12:].split(',')]
+
+
+def parse_battle(raw):
+    return parse_verbose(raw), parse_messages(raw)

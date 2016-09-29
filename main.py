@@ -1,5 +1,5 @@
 import gamedata
-import log
+import events
 
 
 log_filename = 'temp/example_logs/log1'
@@ -10,17 +10,18 @@ while True:
     command = input().lower().replace(' ', '')
 
     if command in ('u', 'r'):
-        log.load_log(log_filename)
-        log.load_battle()
+        events.reset()
+        events.load_log(log_filename)
+        events.load_battle()
     if command in ('d', 'r'):
-        for enemy in log.battle.enemy.team:
+        for enemy in events.battle.enemy.team:
             print()
             print(enemy)
             print()
-        print('Enemy =', log.battle.enemy.name, 'index', log.battle.enemy.index)
-        print(log.battle.scenario_name, 'aka', log.battle.scenario_display_name)
-        print(log.battle.room_name)
+        print('Enemy =', events.battle.enemy.name, 'index', events.battle.enemy.index)
+        print(events.battle.scenario_name, 'aka', events.battle.scenario_display_name)
+        print(events.battle.room_name)
         print()
-        print(log.battle.map)
-        for i, event in enumerate(log.events):
+        print(events.battle.map)
+        for i, event in enumerate(events.events):
             print(i, event)

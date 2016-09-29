@@ -321,4 +321,22 @@ class Battle:
         return self.room_name and self.scenario_name and self.scenario_display_name and \
                all([p.is_described() for p in self.players]) and self.enemy is not None
 
+    def update_battle(self, event):
+        if event.event_name == 'CardShow':
+            pass
+        elif event.event_name == 'CardDraw':
+            pass
+        elif event.event_name == 'CardPlay':
+            pass
+        elif event.event_name == 'CardDiscard':
+            pass
+        elif event.event_name == 'SelectDiscard':
+            pass
+        elif event.event_name == 'TriggerSuccess':
+            pass
+        elif event.event_name == 'TriggerFailure':
+            pass
+        elif event.event_name == 'PassPass':
+            pass
+
 

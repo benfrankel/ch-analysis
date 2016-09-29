@@ -1,6 +1,6 @@
 # This file extracts information and a list of battle events from verbose battle logs.
 
-import active_model
+import battle_model
 import log_parser
 
 
@@ -8,8 +8,7 @@ import log_parser
 class CardEvent:
     def __init__(self, event_name, player_turn, original_player_index, original_group_index, player_index, group_index,
                  card_index, card_name, item_name, target_player_indices, target_group_indices):
-        self.event = 'Card'
-        self.event_name = event_name
+        self.event_name = 'Card' + event_name
         self.player_turn = player_turn
         self.original_player_index = original_player_index
         self.original_group_index = original_group_index
@@ -20,29 +19,27 @@ class CardEvent:
         self.target_group_indices = target_group_indices
 
     def __str__(self):
-        return '(%d)[%s] %s - %s' % (self.player_turn, self.event, self.event_name, self.card_name)
+        return '(%d) %s - %s' % (self.player_turn, self.event_name, self.card_name)
 
 
-# A discard event that does not specify card details.
-class DiscardEvent:
+# An event in which a card index is selected.
+class SelectEvent:
     def __init__(self, event_name, player_turn, player_index, group_index, card_index):
-        self.event = 'Discard'
-        self.event_name = event_name
+        self.event_name = 'Select' + event_name
         self.player_turn = player_turn
         self.player_index = player_index
         self.group_index = group_index
         self.card_index = card_index
 
     def __str__(self):
-        return '(%d)[%s] %s - ' % (self.player_turn, self.event, self.event_name)
+        return '(%d) %s - ' % (self.player_turn, self.event_name)
 
 
 # A trigger related event such as "Success", "Failure".
 class TriggerEvent:
     def __init__(self, event_name, player_turn, location, player_index, group_index, card_index, x, y, die_roll,
                  required_roll, keep, hard_to_block, easy_to_block):
-        self.event = 'Trigger'
-        self.event_name = event_name
+        self.event_name = 'Trigger' + event_name
         self.player_turn = player_turn
         self.location = location
         self.player_index = player_index
@@ -57,27 +54,27 @@ class TriggerEvent:
         self.easy_to_block = easy_to_block
 
     def __str__(self):
-        return '(%d)[%s] %s - %s' % (self.player_turn, self.event, self.event_name, ('Hand', 'Attached', 'Terrain')[self.location])
+        return '(%d) %s - %s' % (self.player_turn, self.event_name, ('Hand', 'Attached', 'Terrain')[self.location])
 
 
 # A target selecting event such as during a step attack.
 class TargetEvent:
     def __init__(self, event_name, player_turn, target_player_indices, target_group_indices):
         self.event = 'Target'
-        self.event_name = event_name
+        self.event_name = 'Target' + event_name
         self.player_turn = player_turn
         self.target_player_indices = target_player_indices
         self.target_group_indices = target_group_indices
 
     def __str__(self):
-        return '(%d)[%s] %s - ' % (self.player_turn, self.event, self.event_name)
+        return '(%d) %s - ' % (self.player_turn, self.event_name)
 
 
 # A tile related event such as selecting a tile to move to.
 class TileEvent:
     def __init__(self, event_name, player_turn, x, y, fx, fy):
         self.event = 'Tile'
-        self.event_name = event_name
+        self.event_name = 'Tile' + event_name
         self.player_turn = player_turn
         self.x = x
         self.y = y
@@ -85,23 +82,31 @@ class TileEvent:
         self.fy = fy
 
     def __str__(self):
-        return '(%d)[%s] %s - (%d, %d)' % (self.player_turn, self.event, self.event_name, self.x, self.y)
+        return '(%d) %s - (%d, %d)' % (self.player_turn, self.event_name, self.x, self.y)
 
 
 # A pass event.
 class PassEvent:
     def __init__(self, event_name, player_turn):
-        self.event = 'Pass'
-        self.event_name = event_name
+        self.event_name = 'Pass' + event_name
         self.player_turn = player_turn
 
     def __str__(self):
-        return '(%d)[%s] %s - ' % (self.player_turn, self.event, self.event_name)
+        return '(%d) %s - ' % (self.player_turn, self.event_name)
 
 
 log = ''
 events = []
-battle = active_model.Battle()
+battle = battle_model.Battle()
+
+
+def reset():
+    global log
+    global events
+    global battle
+    log = ''
+    events = []
+    battle = battle_model.Battle()
 
 
 # Load the log file into program memory.
@@ -111,16 +116,16 @@ def load_log(filename):
         log = f.read()
 
 
-# Use the log text to construct a sequence of events.
+# Use the log text to construct a sequence of events that can be fed into a Battle.
 def load_battle():
     # Find the most recent joinbattle and use log_parser.py to parse the battle.
     log_lines = log.splitlines()
     first_line_index = len(log_lines) - 1 - log_lines[::-1].index('Received extension response: joinbattle')
-    parsed = log_parser.parse_battle('\n'.join(log_lines[first_line_index:]))
+    extension_responses, messages = log_parser.parse_battle('\n'.join(log_lines[first_line_index:]))
 
     # Set up the battle by extracting all relevant info from joinbattle.
     player_index = 0
-    for obj in parsed[0]['objects']:
+    for obj in extension_responses[0]['objects']:
         if obj['_class_'] == 'com.cardhunter.battle.Battle':
             battle.scenario_name = obj['scenarioName']
             battle.scenario_display_name = obj['scenarioDisplayName']
@@ -155,11 +160,11 @@ def load_battle():
                     actor.fy = obj['facing.y']
                     break
 
-    # Figure out who the enemy is and construct a sequence of 'events'.
+    # Figure out who the enemy is and construct a sequence of events.
     must_discard = [-1, -1]
     player_turn = -1
     global events
-    for ex in parsed[1:]:
+    for ex in extension_responses[1:]:
         if ex.name == 'battleTimer':
             player_index = ex['playerIndex']
             if ex['start']:
@@ -216,17 +221,17 @@ def load_battle():
                 selected_player_index = must_discard[0]
                 selected_group_index = must_discard[1]
                 selected_card_index = ex['sel']
-                events.append(DiscardEvent(event_name, player_turn, selected_player_index, selected_group_index,
-                                           selected_card_index))
+                events.append(SelectEvent(event_name, player_turn, selected_player_index, selected_group_index,
+                                          selected_card_index))
         elif ex['type'] == 'selectCards':
             if 'SELP' in ex:
-                event_name = 'Discard'
+                event_name = 'Card'
                 selected_player_indices = ex['SELP']
                 selected_group_indices = ex['SELG']
                 selected_card_indices = ex['SELCC']
                 for i in range(len(selected_player_indices)):
-                    events.append(DiscardEvent(event_name, player_turn, selected_player_indices[i],
-                                               selected_group_indices[i], selected_card_indices[i]))
+                    events.append(SelectEvent(event_name, player_turn, selected_player_indices[i],
+                                              selected_group_indices[i], selected_card_indices[i]))
         elif ex['type'] == 'mustDiscard':
             must_discard[0] = ex['PUI']
             must_discard[1] = ex['ACTG']
@@ -264,3 +269,6 @@ def load_battle():
         elif ex['type'] == 'pass':
             event_name = 'Pass'
             events.append(PassEvent(event_name, player_turn))
+
+    global messages
+
