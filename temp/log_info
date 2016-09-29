@@ -60,7 +60,7 @@ selectCard      # A player selects a card to discard
     selected_card_index: sel
    ?selected_card_info: HP/peeks/0/
 
-selectCards     # Some cards are selected (might contain no info--why?)
+selectCards     # Some cards are selected by the server (damage calculation for traits like blind rage, ouch; card removal like boiling armor)
    ?selected_player_indices: SELP
    ?selected_group_indices: SELG
    ?selected_card_indices: SELCC
@@ -114,7 +114,7 @@ Normal battle logs may be out of sync with verbose battle logs.
 ------------------------------------------------------------------- Card Parameters
 
 Parameters:
-    IUID: ?
+    IUID: internal(?) user id (userID in class com.cardhunter.battle.Player)
     TARG: target character indices
     TARP: corresponding target player indices
     TARA: ?
