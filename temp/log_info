@@ -32,7 +32,7 @@ startBattle     # Doesn't seem to convey any useful information (appears exactly
 
 done            # Doesn't seem to convey any useful information
 
-genRand         # Doesn't seem to convey any useful information (?)
+genRand         # Generated random number.
     values: RAND
 
 reconnect       # A player rejoins the battle
@@ -60,7 +60,7 @@ selectCard      # A player selects a card to discard
     selected_card_index: sel
    ?selected_card_info: HP/peeks/0/
 
-selectCards     # Some cards are selected by the server (damage calculation for traits like blind rage, ouch; card removal like boiling armor)
+selectCards     # Some cards are selected by the server (e.g. blind rage, ouch!, boiling armor, perplexing ray)
    ?selected_player_indices: SELP
    ?selected_group_indices: SELG
    ?selected_card_indices: SELCC
@@ -158,4 +158,26 @@ Parameters:
     ATTA: ? seems to always be 0
     ATTAI: ? seems to always be 0, 1, 2
 
+------------------------------------------------------------------- genRand
+
+Every instance of genRand being used to determine an option out of several options is of this form:
+1) Order the options somehow.
+2) option_index = floor(rand * (# options))
+
+
+Traveling Curse: determine to which enemy group's deck the curse will travel.
+    Order of groups: increasing group index, excluding dead groups.
+
+Maze: determine on which square the affected character will be placed.
+    First random value is square
+    Second random value is facing
+
+    Order of squares: increasing x and then increasing y, excluding blocked and impassible terrain.
+    Order of facings: (1,0), (0,1), (-1,0), (0,-1)
+
+Whirlwind (or Whirlwind Enemies): determine on which squares each affected character will be placed.
+    There is an even number of rands. They are in pairs, where each pair is like Maze.
+    Random value pairs are assigned to groups by increasing player index and then increasing group index.
+
 -------------------------------------------------------------------
+

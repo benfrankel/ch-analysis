@@ -173,8 +173,8 @@ def parse_verbose(raw):
             extension_responses.append(SFSObject(line.split(': ')[1]))
             layer_stack = [extension_responses[-1]]
 
-        # If this line doesn't begin with a tab (e.g. BATTLE LOG:...) ignore it.
-        if line[0] != '\t':
+        # If this line is invalid, ignore it.
+        if line[0] != '\t' or ')' not in line:
             if extension_responses and extension_responses[-1].name == 'battleResults':
                 break
             continue
@@ -193,7 +193,7 @@ def parse_verbose(raw):
     return extension_responses
 
 
-def parse_messages(raw):
+def parse_messages(raw):  # TODO
     # List of messages so far.
     messages = []
 
