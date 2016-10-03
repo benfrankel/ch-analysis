@@ -1,0 +1,128 @@
+------------------------------------------------------------------- Components (WIP)
+
+* Marks a component that the program should know how to handle.
+# Explains why.
+
+ActivateTrigger
+Adapt
+AdjacentEndMove
+AffectAdjacent
+AffectAdjacentTarget
+AffectRandom
+Allies
+AnvilStrike
+AttachRandom
+AttachToRandomSquare
+* AttachToSelf                # Attachments must be tracked in order to know when they are discarded.
+* AttachToSquare              # Terrain attachments must be tracked in order to know when they are discarded.
+* AttachToTarget              # Attachments must be tracked in order to know when they are discarded.
+AttachedCardCountDamage
+AttachedDamage
+AttachedDamageOccupant
+AttachedDamageOnDeath
+AttachedDestroyOccupantArmor
+AttachedDiscardOnDeath
+AttachedDiscardOnPlay
+AttachedDraw
+AttachedDrawOnDamaged
+AttachedDrawOnPlay
+AttachedDrawTypeOnDamaged
+AttachedExtraDamage
+AttachedHeal
+AttachedHealOccupant
+AttachedImmuneToTerrain
+AttachedModifyTrigger
+AttachedOccupantAttachRandom
+AttachedOccupantDraw
+AttachedPresence
+AttachedRandomMove
+Block
+BlockLOSTerrain
+BlockModAdd
+* Burst                       # Terrain burst may overlap an attached terrain card, discarding it.
+CancelWhenPlayed
+Clumsy
+* Cone                        # Terrain cone may overlap an attached terrain card, discarding it.
+DamageAdd
+DamageAfterMove
+DamageAtStart
+Damage
+DamageMultiply
+DamageOnMove
+DamageSelf
+DamageToHeal
+DamageWhenBlocked
+DestroyAttachments
+DestroyTerrainAttachments
+DiscardAtStart
+DiscardByType
+DiscardImmediateByType
+DiscardRandomly
+DiscardRevealed
+DiscardThenDraw
+* DiscardToOpponent           # Traveling Curse-type discard must be tracked to know who has it in their discard deck.
+DiscardTypeWhenDamaged
+DiscardWhenBlocked
+DiscardWhenPlayed
+DrawCardTypeEffect
+Draw
+DrawOnResolve
+DrawOnTargeted
+DrawRandom
+DrawTemp
+Encumber
+EveryActor
+EveryActorsSquare
+Halt
+HealAdd
+Heal
+HealOnDamage
+HealToDamage
+HealWhenDiscarded
+Immobile
+ImpassableTerrain
+* Linear                      # Terrain linear may overlap an attached terrain card, discarding it.
+ModifyBlockRoll
+ModifyCardRetention
+ModifyTriggerInHand
+MoveAtStart
+MoveBoost
+* Move                        # Wait for a Select Square event.
+MoveDamage
+MoveHealSelf
+MoveOnTargeted
+MoveRandomly
+* MoveTarget                  # Wait for a Select Square event.
+MoveWhenDamaged
+NearbyTargetedDamage
+Overload
+Pivot
+ProhibitAttachments
+* ReplaceAttachments          # Know which attachments are discarded.
+RestrictPlay
+* ReturnOnKill                # Know whether the card is discarded. (have to check for kill)
+RevealHandAndDamage
+RevealHand
+* SelfDestroyAttachments      # Know which attachments are discarded.
+SelfDiscardByType
+SelfDiscardOldest
+SelfDrawAdjacentEnemy
+SelfDraw
+SelfDrawDiscard
+SelfMove
+SelfTarget
+SelfTargetSquare
+Squeamish
+* Step                        # Wait for a Select Square event.
+Stun
+TalentedHealer
+TargetActor
+TargetSquare
+TargetedDamage
+ThreeSixty
+TransferSelectedCard
+TriggeredArmor
+TriggeredExtraDamage
+TriggeredHeal
+
+-------------------------------------------------------------------
