@@ -1,21 +1,23 @@
 ------------------------------------------------------------------- Components (WIP)
 
+- Marks a component that the program can ignore.
 * Marks a component that the program should know how to handle.
-# Explains why.
+@ Marks a component that the program definitely should know how to handle.
+# Explains what it represents.
 
-ActivateTrigger
-Adapt
-AdjacentEndMove
-AffectAdjacent
-AffectAdjacentTarget
-AffectRandom
-Allies
-AnvilStrike
-AttachRandom
-AttachToRandomSquare
-* AttachToSelf                # Attachments must be tracked in order to know when they are discarded.
-* AttachToSquare              # Terrain attachments must be tracked in order to know when they are discarded.
-* AttachToTarget              # Attachments must be tracked in order to know when they are discarded.
+ActivateTrigger               # Accelerate Time or Instant Burn.
+Adapt                         # Adaptable.
+AdjacentEndMove               # Something happens if you end adjacent, such as in Mus. Through, Trickery, Dang. Move.
+AffectAdjacent                # Affect nearby characters, such as in Firestorm, Smashing Spin, Inspiring Presence, etc.
+AffectAdjacentTarget          # Spreading Laser.
+AffectRandom                  # Target a random character, such as in Friendly Fire.
+Allies                        # Target allies, such as in Leadership or Mass Frenzy.
+AnvilStrike                   # Flaring damage if adjacent to blocking terrain, such as in Anvil Strike.
+AttachRandom                  # Radiation Bolt, Radiation Bomb, Genetic Engineering.
+* AttachToRandomSquare        # Radioactive Spray.
+@ AttachToSelf                # Attach to self when played.
+@ AttachToSquare              # Attach to the selected square when played.
+@ AttachToTarget              # Attach to target when played.
 AttachedCardCountDamage
 AttachedDamage
 AttachedDamageOccupant
@@ -37,7 +39,7 @@ AttachedOccupantDraw
 AttachedPresence
 AttachedRandomMove
 Block
-BlockLOSTerrain
+- BlockLOSTerrain             # Illusory Barrier.
 BlockModAdd
 * Burst                       # Terrain burst may overlap an attached terrain card, discarding it.
 CancelWhenPlayed
@@ -59,51 +61,51 @@ DiscardByType
 DiscardImmediateByType
 DiscardRandomly
 DiscardRevealed
-DiscardThenDraw
-* DiscardToOpponent           # Traveling Curse-type discard must be tracked to know who has it in their discard deck.
+* DiscardThenDraw             # Leadership.
+@ DiscardToOpponent           # Traveling Curse-type discard to an enemy group.
 DiscardTypeWhenDamaged
 DiscardWhenBlocked
 DiscardWhenPlayed
 DrawCardTypeEffect
-Draw
+* Draw                        # Bless/Delegate/Inspiration/Unholy Energy, but not Lateral Thinking.
 DrawOnResolve
 DrawOnTargeted
 DrawRandom
 DrawTemp
-Encumber
+- Encumber                    # Everyone knows what Encumber is.
 EveryActor
 EveryActorsSquare
-Halt
+- Halt                        # Entangling Roots.
 HealAdd
 Heal
 HealOnDamage
 HealToDamage
 HealWhenDiscarded
 Immobile
-ImpassableTerrain
+- ImpassableTerrain           # Flash Flood
 * Linear                      # Terrain linear may overlap an attached terrain card, discarding it.
 ModifyBlockRoll
 ModifyCardRetention
 ModifyTriggerInHand
 MoveAtStart
-MoveBoost
-* Move                        # Wait for a Select Square event.
+- MoveBoost
+@ Move                        # Wait for a Select Square event, then update position to there.
 MoveDamage
 MoveHealSelf
 MoveOnTargeted
-MoveRandomly
-* MoveTarget                  # Wait for a Select Square event.
+* MoveRandomly                # Wait for a Random event, then update position based on that.
+* MoveTarget                  # Wait for a Select Square event, then update position of target to there.
 MoveWhenDamaged
 NearbyTargetedDamage
-Overload
+Overload                      # Erratic damage.
 Pivot
-ProhibitAttachments
-* ReplaceAttachments          # Know which attachments are discarded.
-RestrictPlay
-* ReturnOnKill                # Know whether the card is discarded. (have to check for kill)
+* ProhibitAttachments         # Wyrmhide/Drakehide/Arrogant.
+* ReplaceAttachments          # Gene Therapy.
+- RestrictPlay
+* ReturnOnKill                # Laser Cutdown. (have to check for kill)
 RevealHandAndDamage
 RevealHand
-* SelfDestroyAttachments      # Know which attachments are discarded.
+* SelfDestroyAttachments      # Lateral Thinking/Shrug it Off.
 SelfDiscardByType
 SelfDiscardOldest
 SelfDrawAdjacentEnemy
@@ -113,8 +115,8 @@ SelfMove
 SelfTarget
 SelfTargetSquare
 Squeamish
-* Step                        # Wait for a Select Square event.
-Stun
+* Step                        # Treat this the same as Move.
+- Stun                        # Brains!/Anvil Strike.
 TalentedHealer
 TargetActor
 TargetSquare
