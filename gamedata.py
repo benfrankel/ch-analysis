@@ -60,6 +60,12 @@ def load():
         except ValueError:
             return None
 
+    def convert(s):
+        j = to_int(s)
+        if j is None:
+            return s
+        return j
+
     # Extract the info from every line of cards.csv, store it in a CardType object and add it to a temporary dictionary.
     with open('cards.csv', newline='') as f:
         cards = csv.reader(f, delimiter=',', quotechar='"')
@@ -70,7 +76,7 @@ def load():
             if skip_line > 0:
                 skip_line -= 1
                 continue
-            ID = to_int(card_vals[0])
+            id = to_int(card_vals[0])
             name = card_vals[1]
             short_name = card_vals[2]
             types = card_vals[3].split(',')
@@ -98,17 +104,19 @@ def load():
             trigger_attempt_text2 = card_vals[25]
             trigger_succeed_text2 = card_vals[26]
             trigger_fail_text2 = card_vals[27]
-            component1 = card_vals[28]
-            params1 = card_vals[29]
-            component2 = card_vals[30]
-            params2 = card_vals[31]
-            component3 = card_vals[32]
-            params3 = card_vals[33]
-            component4 = card_vals[34]
-            params4 = card_vals[35]
-            component5 = card_vals[36]
-            params5 = card_vals[37]
-            params = card_vals[38]
+            params = []
+            components = []
+            for i in range(5):
+                components.append(card_vals[2*i+28])
+                params.append([])
+                if card_vals[2*i+29]:
+                    for param in card_vals[2*i+29].split(';'):
+                        if '=' in param:
+                            p, value = param.split('=')
+                            params[i].append([p, convert(value)])
+                        else:
+                            params[i].append([param])
+            card_params = card_vals[38].split(',')
             plus_minus = card_vals[39]
             quality = card_vals[40]
             quality_warrior = card_vals[41]
@@ -128,12 +136,11 @@ def load():
             slot_types = card_vals[55].split(',')
             art = card_vals[56]
 
-            new_card = model.CardType(ID, name, short_name, types, attack_type, damage_type, damage, min_range,
+            new_card = model.CardType(id, name, short_name, types, attack_type, damage_type, damage, min_range,
                                       max_range, move_points, duration, trigger, keep, trigger_effect, trigger2, keep2,
                                       trigger_effect2, text, flavor_text, play_text, trigger_text, trigger_attempt_text,
                                       trigger_succeed_text, trigger_fail_text, trigger_text2, trigger_attempt_text2,
-                                      trigger_succeed_text2, trigger_fail_text2, component1, params1, component2,
-                                      params2, component3, params3, component4, params4, component5, params5, params,
+                                      trigger_succeed_text2, trigger_fail_text2, components, params, card_params,
                                       plus_minus, quality, quality_warrior, quality_priest, quality_wizard,
                                       quality_dwarf, quality_elf, quality_human, rarity, function_tags, attach_image,
                                       status, audio_key, audio_key2, from_set, level, slot_types, art)
@@ -159,7 +166,7 @@ def load():
                     global short_card_dict
                     card_dict[card.name.lower()] = card
                     short_card_dict[card.short_name.lower()] = card
-            ID = to_int(item_vals[0])
+            id = to_int(item_vals[0])
             name = item_vals[1]
             short_name = item_vals[2]
             rarity = item_vals[3]
@@ -176,7 +183,7 @@ def load():
             from_set = item_vals[23]
             manual_rarity = to_int(item_vals[24])
             manual_value = to_int(item_vals[25])
-            new_item = model.ItemType(ID, name, short_name, rarity, level, intro_level, total_value, token_cost, cards,
+            new_item = model.ItemType(id, name, short_name, rarity, level, intro_level, total_value, token_cost, cards,
                                       slot_type, slot_type_default, image_name, tags, from_set, manual_rarity,
                                       manual_value)
             global item_dict

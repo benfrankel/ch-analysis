@@ -90,9 +90,6 @@ class Card:
     def in_discard(self):
         return self.location == 4
 
-    def __eq__(self, other):
-        return self.card_type == other.card_type
-
     def __str__(self):
         return self.name if self.name else '?'
 
@@ -190,7 +187,7 @@ class ItemFrame:
         return ', '.join(str(slot) for slot in self.slots)
 
 
-# An instance of an actor group during a battle (name, figure, archetype, item frame, and draw/hand/discard deck).
+# An instance of an actor group during a battle (name, figure, archetype, item frame).
 class Group:
     def __init__(self, player_index, index):
         self.player_index = player_index
@@ -200,7 +197,6 @@ class Group:
         self.alive = True
         self.archetype = None
         self.item_frame = None
-        self.deck = [Card(player_index, index) for _ in range(36)]
 
     def is_described(self):
         return self.name and self.figure and self.archetype is not None and self.item_frame is not None
@@ -209,71 +205,6 @@ class Group:
         self.archetype = gamedata.get_archetype(archetype_name)
         self.item_frame = ItemFrame(self.player_index, self.index, self.archetype)
 
-    def get_hand(self):
-        result = []
-        for card in self.deck:
-            if card.in_hand() and card.player_index == self.player_index and card.group_index == self.index:
-                result.append(card)
-        return sorted(result, key=lambda x: x.card_index)
-
-    def get_draw_deck(self):
-        result = []
-        for card in self.deck:
-            if card.in_draw():
-                result.append(card)
-        return result
-
-    def get_discard_deck(self):
-        result = []
-        for card in self.deck:
-            if card.in_discard():
-                result.append(card)
-        return result
-
-    def update_deck_from_new_item(self, item_type, revealing_card_type):
-        for card_type in item_type.cards:
-            for card in self.deck:
-                if not card.is_known() and card.in_draw():
-                    card.reveal(item_type, card_type)
-                    break
-        for card in self.deck:
-            if card.card_type == revealing_card_type and not card.in_discard():
-                card.discard()
-                break
-
-    def reveal_card(self, item_type, card_type):
-        if item_type in self.item_frame:
-            for slot in self.item_frame.slots:
-                if item_type in slot:
-                    for active_card in slot.item.cards:
-                        if active_card.card_type == card_type and active_card.in_draw():
-                            active_card.reveal()
-                            return active_card
-        self.item_frame.add_item(item_type)
-        self.update_deck_from_new_item(item_type, card_type)
-        for slot in self.item_frame.slots:
-            if item_type in slot:
-                for active_card in slot.item.cards:
-                    if active_card.card_type == card_type and active_card.in_draw():
-                        active_card.reveal()
-                        return active_card
-
-    def play_card(self, item_type, card_type):
-        active_card = self.reveal_card(item_type, card_type)
-        active_card.discard()
-        return active_card
-
-    def discard_card(self, item_type, card_type):
-        for card in self.deck:
-            if card.card_type == card_type and not card.in_discard():
-                card.discard()
-                return card
-        for card in self.deck:
-            if not card.is_known():
-                card.reveal(item_type, card_type)
-                card.discard()
-                return card
-
     def reshuffle(self):
         for slot in self.item_frame.slots:
             slot.item.reshuffle()
@@ -281,9 +212,6 @@ class Group:
     def __str__(self):
         result = self.name + ' (' + self.archetype.race + ' ' + self.archetype.role + '):\n'
         result += 'Equipment: ' + str(self.item_frame) + '\n'
-        result += 'Hand: ' + ', '.join(str(c) for c in self.get_hand()) + '\n'
-        result += 'Draw Deck: ' + ', '.join(str(c) for c in self.get_draw_deck()) + '\n'
-        result += 'Discard Deck: ' + ', '.join(str(c) for c in self.get_discard_deck())
         return result
 
     def __repr__(self):
@@ -377,38 +305,103 @@ class Battle:
         self.scenario_name = ''
         self.scenario_display_name = ''
         self.players = [Player(i) for i in range(2)]
+        self.user = None
         self.enemy = None
+        self.card_pool = [Card(p_index, g_index) for p_index in range(1) for g_index in range(3) for _ in range(36)]
 
-    def set_enemy(self, enemy_index):
-        self.enemy = self.players[enemy_index]
+    def set_user(self, user_index):
+        self.user = self.players[user_index]
+        self.enemy = self.players[1 - user_index]
 
     def is_described(self):
-        return self.room_name and self.scenario_name and self.scenario_display_name and \
-               all([p.is_described() for p in self.players]) and self.enemy is not None
+        return self.room_name and self.scenario_name and self.scenario_display_name and self.enemy is not None and\
+               all([p.is_described() for p in self.players])
+
+    def get_discard_deck(self, player_index, group_index):
+        discard_deck = []
+        for card in self.card_pool:
+            if card.player_index == player_index and card.group_index == group_index and card.in_discard():
+                discard_deck.append(card)
+        return discard_deck
+
+    def get_draw_deck(self, player_index, group_index):
+        draw_deck = []
+        for card in self.card_pool:
+            if card.player_index == player_index and card.group_index == group_index and card.in_draw():
+                draw_deck.append(card)
+        return draw_deck
 
     def get_hand(self, player_index, group_index):
-        return self.players[player_index].groups[group_index].get_hand()
+        hand = []
+        for card in self.card_pool:
+            if card.player_index == player_index and card.group_index == group_index and card.in_hand():
+                hand.append(card)
+        return sorted(hand, key=lambda x: x.card_index)
 
-    def update_battle(self, event):  # TODO
-        if event.event_name == 'Draw':
+    def get_attachments(self, player_index, group_index):
+        attachments = []
+        for card in self.card_pool:
+            if card.player_index == player_index and card.group_index == group_index and card.is_attached():
+                attachments.append(card)
+        return attachments
+
+    def reveal_card(self, event):
+        revealed_card = self.get_hand(event.player_index, event.group_index)[event.card_index]
+        if not revealed_card.is_known():
+            self.card_pool.remove(revealed_card)
+            item_type = gamedata.get_item(event.item_name)
+            card_type = gamedata.get_card(event.card_name)
+            draw_deck = self.get_draw_deck(event.player_index, event.group_index)
+            for card in draw_deck:
+                if card.card_type == card_type and card.item_type == item_type:
+                    card.draw(event.card_index)
+                    break
+            else:
+                self.players[event.player_index].groups[event.group_index].item_frame.add_item(item_type)
+                skipped = False
+                for card_type in item_type.cards:
+                    if card_type == revealed_card.card_type and not skipped:
+                        skipped = True
+                        continue
+                    for card in draw_deck:
+                        if not card.is_known():
+                            card.reveal(item_type, card_type)
+                            break
+                for card in draw_deck:
+                    if card.card_type == card_type and card.item_type == item_type:
+                        card.draw(event.card_index)
+                        break
+
+    def discard_card(self, event):  # TODO: DiscardToOpponent
+        self.reveal_card(event)
+        # If DiscardToOpponentComponent, wait for genRand to determine where to travel to.
+        # components = gamedata.get_card(event.card_name).components
+        for card in self.get_hand(event.player_index, event.group_index)[event.card_index:]:
+            if card.card_index == event.card_index:
+                card.discard()
+            elif card.card_index > event.card_index:
+                card.card_index -= 1
+
+    def update(self, event):  # TODO
+        if event.name == 'Card Draw':
+            self.draw_card(event)
+        elif event.name == 'Card Reveal':
+            self.reveal_card(event)
+        elif event.name == 'Card Discard':
+            self.discard_card(event)
+        elif event.name == 'Card Play':
+            self.play_card(event)
+        elif event.name == 'Target':
             pass
-        elif event.event_name == 'Reveal':
+        elif event.name == 'Square':
             pass
-        elif event.event_name == 'Discard':
+        elif event.name == 'Trigger Hand':
             pass
-        elif event.event_name == 'Play':
+        elif event.name == 'Trigger Attachment':
             pass
-        elif event.event_name == 'Target':
+        elif event.name == 'Trigger Terrain':
             pass
-        elif event.event_name == 'SelectSquare':
-            pass
-        elif event.event_name == 'TriggerHand':
-            pass
-        elif event.event_name == 'TriggerAttached':
-            pass
-        elif event.event_name == 'TriggerTerrain':
-            pass
-        elif event.event_name == 'Pass':
+        elif event.name == 'Pass':
             pass
 
 

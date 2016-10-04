@@ -1,4 +1,4 @@
-# This file parses verbose battle logs.
+# This file parses verbose battle logs and battle log messages.
 
 # List of tags that may appear.
 basic_tags = 'utf_string', 'utf_string_array', 'bool', 'bool_array', 'int', 'int_array', 'double', 'double_array'
@@ -193,16 +193,53 @@ def parse_verbose(raw):
     return extension_responses
 
 
-def parse_messages(raw):  # TODO
+def parse_messages(raw):
     # List of messages so far.
     messages = []
+
+    def convert(val):
+        try:
+            return int(val)
+        except ValueError:
+            try:
+                return float(val)
+            except ValueError:
+                if len(val) != 0 and val[0] + val[-1] in ('()', '[]', '{}'):
+                    return [convert(x) for x in val[1:-1].split(', ')]
+                if '|' in val:
+                    return val.split('|')
+                if ',' in val and '=' not in val:
+                    return val.split(',')
+                return val
 
     for line in raw.splitlines():
         # Ignore non-message lines.
         if 'BATTLE LOG: ' not in line:
             continue
+        line = line[12:]
 
-        params = [param.split('=') for param in line[12:].split(',')]
+        values = []
+        names = []
+        parsing_value = True
+        end_index = len(line)
+        for i, c in enumerate(line[::-1]):
+            index = len(line) - i - 1
+            if parsing_value:
+                if c == '=':
+                    if line[index-1] != ' ':
+                        values.append(convert(line[index+1:end_index]))
+                        end_index = index
+                        parsing_value = False
+            elif c == ',':
+                names.append(line[index+1:end_index])
+                end_index = index
+                parsing_value = True
+
+        params = dict()
+        for i, name in enumerate(names):
+            params[name] = values[i]
+        messages.append(params)
+    return messages
 
 
 def parse_battle(raw):

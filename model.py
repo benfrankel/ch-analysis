@@ -3,14 +3,14 @@
 
 # A card type (e.g. "Ouch!", "Sprint, Team!", "Amorphous Body").
 class CardType:
-    def __init__(self, ID, name, short_name, types, attack_type, damage_type, damage, min_range, max_range, move_points,
+    def __init__(self, id, name, short_name, types, attack_type, damage_type, damage, min_range, max_range, move_points,
                  duration, trigger, keep, trigger_effect, trigger2, keep2, trigger_effect2, text, flavor_text,
                  play_text, trigger_text, trigger_attempt_text, trigger_succeed_text, trigger_fail_text, trigger_text2,
-                 trigger_attempt_text2, trigger_succeed_text2, trigger_fail_text2, component1, params1, component2,
-                 params2, component3, params3, component4, params4, component5, params5, params, plus_minus, quality,
-                 quality_warrior, quality_priest, quality_wizard, quality_dwarf, quality_elf, quality_human, rarity,
-                 function_tags, attach_image, status, audio_key, audio_key2, from_set, level, slot_types, art):
-        self.ID = ID
+                 trigger_attempt_text2, trigger_succeed_text2, trigger_fail_text2, components, params, card_params,
+                 plus_minus, quality, quality_warrior, quality_priest, quality_wizard, quality_dwarf, quality_elf,
+                 quality_human, rarity, function_tags, attach_image, status, audio_key, audio_key2, from_set, level,
+                 slot_types, art):
+        self.id = id
         self.name = name
         self.short_name = short_name
         self.types = types
@@ -37,17 +37,9 @@ class CardType:
         self.trigger_attempt_text2 = trigger_attempt_text2
         self.trigger_succeed_text2 = trigger_succeed_text2
         self.trigger_fail_text2 = trigger_fail_text2
-        self.component1 = component1
-        self.params1 = params1
-        self.component2 = component2
-        self.params2 = params2
-        self.component3 = component3
-        self.params3 = params3
-        self.component4 = component4
-        self.params4 = params4
-        self.component5 = component5
-        self.params5 = params5
+        self.components = components
         self.params = params
+        self.card_params = card_params
         self.plus_minus = plus_minus
         self.quality = quality
         self.quality_warrior = quality_warrior
@@ -70,9 +62,9 @@ class CardType:
 
 # An item type (e.g. "Bejeweled Shortsword", "Staff of the Misanthrope", "Armorbane Pendant").
 class ItemType:
-    def __init__(self, ID, name, short_name, rarity, level, intro_level, total_value, token_cost, cards, slot_type,
+    def __init__(self, id, name, short_name, rarity, level, intro_level, total_value, token_cost, cards, slot_type,
                  slot_type_default, image_name, tags, from_set, manual_rarity, manual_value):
-        self.ID = ID
+        self.id = id
         self.name = name
         self.short_name = short_name
         self.rarity = rarity

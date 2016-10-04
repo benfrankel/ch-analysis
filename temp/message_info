@@ -1,0 +1,37 @@
+Following is an attempt to dissect and comprehend simple
+battle log messages.
+
+------------------------------------------------------------------- Msg
+
+GENERAL
+Player turn:         'The active player is now Pyrious'
+Attach terrain:      'Attaching Bless to (4;6)'
+Cancel card:         'Accelerated Thought was cancelled.'
+                     'Scoring Phase: initiated'
+                     'Discard Phase: initiated'
+                     'Turn Complete'
+                     'Starting round 2'
+
+
+USER
+Draw card:           'Pyrious drew Escaping Run for Euclid'
+Has trait:           'Pyrious must play a Trait'
+Attach card:         'Attaching Firestarter to Euclid'
+Discard attachment:  'Detaching and discarding Firestarter from Euclid'
+Take damage:         'Euclid took 3 damage'
+Heal:                'Euclid healed 2'
+End round:           'Pyrious ended the round.'
+                     'Euler;health = 25 (pi:0;gi:1;ai:0)'
+Death:               'Euclid died'
+Defeat:              'Pyrious was defeated'
+
+
+ENEMY
+Draw card:           'Vampyrious drew a card for Body', 'Vampyrious drew Walk for Body'
+Has trait:           'Vampyrious must play a Trait'
+Attach card:         'Attaching Defensiveness to Mind'
+Discard attachment:  'Detaching and discarding Defensiveness from Mind'
+Heal:                'Mind healed 3'
+Pass:                'Vampyrious passed.'
+                     'Mind;health = 21 (pi:1;gi:2;ai:0)' *
+Death:               'Body died'
