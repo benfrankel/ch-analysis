@@ -1,9 +1,12 @@
-# This file interfaces with the CH databases.
+"""
+This file interfaces with the CH databases.
+"""
 
-import urllib.request
+import os.path
 import csv
+import urllib.request
 
-import model
+from gamedata import model
 
 
 # URLs to access CH databases.
@@ -13,7 +16,13 @@ items_url = 'data/gameplay/Equipment/Equipment.csv'
 archetypes_url = 'data/gameplay/CharacterArchetypes/CharacterArchetypes.csv'
 
 
-# Dictionaries where the databases will be stored.
+# Files where the databases will be stored locally.
+cards_filename = os.path.join('localdata', 'cards.csv')
+items_filename = os.path.join('localdata', 'items.csv')
+archetypes_filename = os.path.join('localdata', 'archetypes.csv')
+
+
+# Dictionaries where the databases will be stored in program memory.
 card_dict = dict()
 short_card_dict = dict()
 item_dict = dict()
@@ -37,13 +46,13 @@ def download():
     archetypes_csv = archetypes_req.read().decode('utf-8', 'ignore')
 
     # Write the text to local files.
-    with open('cards.csv', 'w') as f:
+    with open(cards_filename, 'w') as f:
         f.write(cards_csv)
 
-    with open('items.csv', 'w') as f:
+    with open(items_filename, 'w') as f:
         f.write(items_csv)
 
-    with open('archetypes.csv', 'w') as f:
+    with open(archetypes_filename, 'w') as f:
         f.write(archetypes_csv)
 
 
@@ -67,7 +76,7 @@ def load():
         return j
 
     # Extract the info from every line of cards.csv, store it in a CardType object and add it to a temporary dictionary.
-    with open('cards.csv', newline='') as f:
+    with open(cards_filename, newline='') as f:
         cards = csv.reader(f, delimiter=',', quotechar='"')
         skip_line = 2
         for card_vals in cards:
@@ -76,7 +85,7 @@ def load():
             if skip_line > 0:
                 skip_line -= 1
                 continue
-            id = to_int(card_vals[0])
+            id_ = to_int(card_vals[0])
             name = card_vals[1]
             short_name = card_vals[2]
             types = card_vals[3].split(',')
@@ -104,19 +113,18 @@ def load():
             trigger_attempt_text2 = card_vals[25]
             trigger_succeed_text2 = card_vals[26]
             trigger_fail_text2 = card_vals[27]
-            params = []
-            components = []
+            components = dict()
             for i in range(5):
-                components.append(card_vals[2*i+28])
-                params.append([])
+                params = dict()
                 if card_vals[2*i+29]:
                     for param in card_vals[2*i+29].split(';'):
                         if '=' in param:
                             p, value = param.split('=')
-                            params[i].append([p, convert(value)])
+                            params[p] = convert(value)
                         else:
-                            params[i].append([param])
-            card_params = card_vals[38].split(',')
+                            params[param] = ''
+                components[card_vals[2*i + 28]] = params
+            card_params = card_vals[38].split(';')
             plus_minus = card_vals[39]
             quality = card_vals[40]
             quality_warrior = card_vals[41]
@@ -136,19 +144,19 @@ def load():
             slot_types = card_vals[55].split(',')
             art = card_vals[56]
 
-            new_card = model.CardType(id, name, short_name, types, attack_type, damage_type, damage, min_range,
+            new_card = model.CardType(id_, name, short_name, types, attack_type, damage_type, damage, min_range,
                                       max_range, move_points, duration, trigger, keep, trigger_effect, trigger2, keep2,
                                       trigger_effect2, text, flavor_text, play_text, trigger_text, trigger_attempt_text,
                                       trigger_succeed_text, trigger_fail_text, trigger_text2, trigger_attempt_text2,
-                                      trigger_succeed_text2, trigger_fail_text2, components, params, card_params,
-                                      plus_minus, quality, quality_warrior, quality_priest, quality_wizard,
-                                      quality_dwarf, quality_elf, quality_human, rarity, function_tags, attach_image,
-                                      status, audio_key, audio_key2, from_set, level, slot_types, art)
+                                      trigger_succeed_text2, trigger_fail_text2, components, card_params, plus_minus,
+                                      quality, quality_warrior, quality_priest, quality_wizard, quality_dwarf,
+                                      quality_elf, quality_human, rarity, function_tags, attach_image, status,
+                                      audio_key, audio_key2, from_set, level, slot_types, art)
             all_cards_dict[new_card.name] = new_card
 
     # Extract the info from every line of items.csv, store it in a ItemType object, and add it to the dictionary.
     # Use the item list to narrow down the set of cards to non-monster cards.
-    with open('items.csv', newline='') as f:
+    with open(items_filename, newline='') as f:
         items = csv.reader(f, delimiter=',', quotechar='"')
         skip_line = 2
         for item_vals in items:
@@ -162,11 +170,10 @@ def load():
                 if item_vals[i] != '':
                     card = all_cards_dict[item_vals[i]]
                     cards.append(card)
-                    global card_dict
-                    global short_card_dict
+                    global card_dict, short_card_dict
                     card_dict[card.name.lower()] = card
                     short_card_dict[card.short_name.lower()] = card
-            id = to_int(item_vals[0])
+            id_ = to_int(item_vals[0])
             name = item_vals[1]
             short_name = item_vals[2]
             rarity = item_vals[3]
@@ -175,7 +182,7 @@ def load():
             total_value = to_int(item_vals[6])
             token_cost1 = to_int(item_vals[7])
             token_cost2 = to_int(item_vals[8])
-            token_cost = [token_cost1, token_cost2]
+            token_cost = token_cost1, token_cost2
             slot_type = item_vals[19]
             slot_type_default = item_vals[20]
             image_name = item_vals[21]
@@ -183,16 +190,15 @@ def load():
             from_set = item_vals[23]
             manual_rarity = to_int(item_vals[24])
             manual_value = to_int(item_vals[25])
-            new_item = model.ItemType(id, name, short_name, rarity, level, intro_level, total_value, token_cost, cards,
+            new_item = model.ItemType(id_, name, short_name, rarity, level, intro_level, total_value, token_cost, cards,
                                       slot_type, slot_type_default, image_name, tags, from_set, manual_rarity,
                                       manual_value)
-            global item_dict
-            global short_item_dict
+            global item_dict, short_item_dict
             item_dict[new_item.name.lower()] = new_item
             short_item_dict[new_item.short_name.lower()] = new_item
 
     # Extract the info from every line of archetypes.csv, store it in an Archetype object, and add it to the dictionary.
-    with open('archetypes.csv', newline='') as f:
+    with open(archetypes_filename, newline='') as f:
         archetypes = csv.reader(f, delimiter=',', quotechar='"')
         skip_line = 2
         for archetype_vals in archetypes:
@@ -231,8 +237,9 @@ def load():
             level9 = to_int(archetype_vals[44])
             slot10 = archetype_vals[47]
             level10 = to_int(archetype_vals[48])
-            slot_types = [slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9, slot10]
-            levels = [level1, level2, level3, level4, level5, level6, level7, level8, level9, level10]
+            slot_types = slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9, slot10
+            slot_types = tuple(filter(lambda slot: slot != '', slot_types))
+            levels = level1, level2, level3, level4, level5, level6, level7, level8, level9, level10
             new_archetype = model.CharacterArchetype(name, character_type, role, race, description, default_move,
                                                      default_figure, start_items, slot_types, levels)
             global archetype_dict

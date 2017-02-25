@@ -93,6 +93,9 @@ class Card:
     def __str__(self):
         return self.name if self.name else '?'
 
+    def __repr__(self):
+        return '{}("{}")'.format(self.__class__.__name__, self.name)
+
 
 # An instance of an item during a battle. Item type may be hidden.
 class Item:
@@ -133,6 +136,9 @@ class Item:
     def __str__(self):
         return self.name if self.name else '?'
 
+    def __repr__(self):
+        return '{}("{}")'.format(self.__class__.__name__, self.name)
+
 
 # An instance of a slot type (e.g. Weapon, Staff, Divine Skill) that can contain an Item during a battle.
 class ItemSlot:
@@ -160,6 +166,9 @@ class ItemSlot:
     def __str__(self):
         return str(self.item)
 
+    def __repr__(self):
+        return '{}("{}")'.format(self.__class__.__name__, self.name)
+
 
 # Models an instance of a character archetype's list of item slots during a battle.
 class ItemFrame:
@@ -185,6 +194,9 @@ class ItemFrame:
 
     def __str__(self):
         return ', '.join(str(slot) for slot in self.slots)
+
+    def __repr__(self):
+        return '{}("{}")'.format(self.__class__.__name__, self.archetype_name)
 
 
 # An instance of an actor group during a battle (name, figure, archetype, item frame).
@@ -215,7 +227,7 @@ class Group:
         return result
 
     def __repr__(self):
-        return str(self)
+        return '{}("{}")'.format(self.__class__.__name__, self.name)
 
 
 # An instance of a player during a battle.
