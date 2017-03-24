@@ -3,9 +3,9 @@ import reconstruct
 import optimize
 
 
-log_filename = 'temp/example_logs/log1'
+log_filename = 'temp/example_logs/log2'
 
-# gamedata.download()
+
 gamedata.load()
 
 
@@ -46,10 +46,12 @@ def optimize_test():
 
 
 def battle_test():
+    event_list = []
+    battle = None
+
     while True:
         print('Commands: (u)pdate, (r)efresh, (s)how, (d)ownload')
 
-        event_list = []
         command = input().lower().replace(' ', '')
 
         if command in "ur":
@@ -57,15 +59,20 @@ def battle_test():
             if not event_list:
                 event_list, battle = reconstruct.load_battle(log_filename)
         if command in "sr":
-            for enemy in battle.enemy.groups:
-                print()
-                print(enemy)
-                print()
-            print('Enemy =', battle.enemy.name, 'index', battle.enemy.index)
+            print('- TITLE')
             print(battle.scenario_name, 'aka', battle.scenario_display_name)
             print(battle.room_name)
             print()
+            print('- PLAYERS')
+            print('User is', battle.user.name + ', index', battle.user.index)
+            print('Enemy is', battle.enemy.name + ', index', battle.enemy.index)
+            print()
+            print('- CHARACTERS')
+            for i, enemy in enumerate(battle.enemy.groups):
+                print(i, enemy)
+            print('- MAP')
             print(battle.map)
+            print('- EVENTS')
             for i, event in enumerate(event_list):
                 print(i, event)
         if command == 'd':

@@ -222,7 +222,7 @@ class Group:
             slot.item.reshuffle()
 
     def __str__(self):
-        result = self.name + ' (' + self.archetype.race + ' ' + self.archetype.role + '):\n'
+        result = self.name + ' (' + self.archetype.race + ' ' + self.archetype.role + ')\n'
         result += 'Equipment: ' + str(self.item_frame) + '\n'
         return result
 
@@ -238,6 +238,7 @@ class Player:
         self.id = -1
         self.user_id = -1
         self.rating = -1
+        self.must_draw = -1
         self.groups = [Group(index, i) for i in range(3)]
 
     def is_described(self):
@@ -288,21 +289,12 @@ class Map:
         return self.squares[x, y]
 
     def __str__(self):
+        square_char = {'Open': '.', 'Difficult': '-', 'Impassable': 'o', 'Blocked': '#', 'Victory': '@'}
         result = ''
-        for y in range(self.max_y+1):
-            for x in range(self.max_x+1):
+        for x in range(self.max_x+1):
+            for y in range(self.max_y+1):
                 if (x, y) in self.squares:
-                    square = self.squares[x, y]
-                    if square.terrain == 'Open':
-                        result += '.'
-                    elif square.terrain == 'Difficult':
-                        result += '-'
-                    elif square.terrain == 'Impassable':
-                        result += 'o'
-                    elif square.terrain == 'Blocked':
-                        result += '#'
-                    elif square.terrain == 'Victory':
-                        result += '@'
+                    result += square_char[self.squares[x, y].terrain]
                 else:
                     result += ' '
             result += '\n'
@@ -319,7 +311,7 @@ class Battle:
         self.players = [Player(i) for i in range(2)]
         self.user = None
         self.enemy = None
-        self.card_pool = [Card(p_index, g_index) for p_index in range(1) for g_index in range(3) for _ in range(36)]
+        self.card_pool = [Card(p_index, g_index) for p_index in range(2) for g_index in range(3) for _ in range(36)]
 
     def set_user(self, user_index):
         self.user = self.players[user_index]
@@ -348,7 +340,8 @@ class Battle:
         for card in self.card_pool:
             if card.player_index == player_index and card.group_index == group_index and card.in_hand():
                 hand.append(card)
-        return sorted(hand, key=lambda x: x.card_index)
+        hand.sort(key=lambda x: x.index)
+        return hand
 
     def get_attachments(self, player_index, group_index):
         attachments = []
@@ -394,9 +387,37 @@ class Battle:
             elif card.card_index > event.card_index:
                 card.card_index -= 1
 
+    def draw_card(self, event):
+        self.reveal_card(event)
+        pass  # TODO
+
+    def hidden_draw(self, event):  # TODO: Shamefully ugly method.
+        if self.enemy.must_draw == -1:
+            self.enemy.must_draw = 15  # TODO: this is a hack
+        elif self.enemy.must_draw == 0:
+            self.enemy.must_draw = 6  # TODO: what about bless/unholy energy/etc.?
+        if self.enemy.must_draw > 6:
+            group_index = (15 - self.enemy.must_draw) // 3
+        else:
+            group_index = (6 - self.enemy.must_draw) // 2
+        hand = self.get_hand(self.enemy.index, group_index)
+        for card in self.get_draw_deck(self.enemy.index, group_index):
+            if not card.is_known():
+                card.draw(len(hand))
+                break
+        self.enemy.must_draw -= 1
+        if self.enemy.must_draw == 6:
+            self.enemy.must_draw = 0  # TODO: Just burn this down and refactor the whole file
+
+    def play_card(self, event):
+        self.reveal_card(event)
+        pass  # TODO
+
     def update(self, event):  # TODO
         if event.name == 'Card Draw':
             self.draw_card(event)
+        elif event.name == 'Hidden Draw':
+            self.hidden_draw(event)
         elif event.name == 'Card Reveal':
             self.reveal_card(event)
         elif event.name == 'Card Discard':

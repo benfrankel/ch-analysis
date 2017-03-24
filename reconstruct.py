@@ -13,7 +13,7 @@ class Event:
         self.player_turn = player_turn
 
     def __str__(self):
-        return '(%d) %s' % (self.player_turn, self.name)
+        return '({:2}) {}'.format(self.player_turn, self.name)
 
 
 # Superclass for all card-related events.
@@ -30,7 +30,7 @@ class CardEvent(Event):
         self.card_name = card_name
 
     def __str__(self):
-        return super().__str__()
+        return super().__str__() + ' [{} : {}]'.format(self.card_name, self.item_name)
 
 
 # A card play event.
@@ -50,6 +50,15 @@ class DrawEvent(CardEvent):
                  item_name, card_name):
         super().__init__('Draw', player_turn, original_player_index, original_group_index, player_index, group_index,
                          card_index, item_name, card_name)
+
+    def __str__(self):
+        return super().__str__()
+
+
+# An unrevealed card draw event.
+class HiddenDrawEvent(Event):
+    def __init__(self, player_turn):
+        super().__init__('Hidden Draw', player_turn)
 
     def __str__(self):
         return super().__str__()
@@ -88,7 +97,7 @@ class TriggerEvent(Event):
         self.success = die_roll + easy_to_block - hard_to_block >= required_roll
 
     def __str__(self):
-        return super().__str__()
+        return super().__str__() + ' [{}]'.format(['Fail', 'Success'][self.success])
 
 
 # Trigger event where the card is in hand.
@@ -144,7 +153,7 @@ class SquareEvent(Event):
         self.fy = fy
 
     def __str__(self):
-        return super().__str__()
+        return super().__str__() + ' [{}, {}]'.format(self.x, self.y)
 
 
 # A random number generation event.
@@ -173,7 +182,12 @@ def load_battle(filename=''):
 
     # Load log contents into memory.
     if filename == '':
-        log = Tk().selection_get(selection='CLIPBOARD')
+        root = Tk()
+        root.withdraw()
+        try:
+            log = root.clipboard_get()
+        except:
+            return events, battle
         if 'Received extension response: joinbattle' not in log:
             return events, battle
     else:
@@ -224,7 +238,7 @@ def load_battle(filename=''):
     # Figure out who the enemy is and construct a sequence of events.
     must_discard = [-1, -1]
     player_turn = -1
-    for ex in extension_responses[1:]:
+    for ex, prev in zip(extension_responses[1:], extension_responses):
         if ex.name == 'battleTimer':
             player_index = ex['playerIndex']
             if ex['start']:
@@ -234,6 +248,13 @@ def load_battle(filename=''):
 
         if ex.name != 'battle':
             continue
+
+        if ex['type'] == 'deckPeeksSent' and ('type' not in prev or prev['type'] != 'deckPeeks'):
+            events.append(HiddenDrawEvent(player_turn))
+            try:
+                battle.update(events[-1])
+            except:
+                pass
 
         if ex['type'] == 'deckPeeks':
             # If the user is still unknown, use this deckPeeks to determine who it is.
@@ -251,7 +272,10 @@ def load_battle(filename=''):
                 group_index = info['group']
                 events.append(DrawEvent(player_turn, original_player_index, original_group_index, player_index,
                                         group_index, card_index, item_name, card_name))
-                battle.update(events[-1])
+                try:
+                    battle.update(events[-1])
+                except:
+                    pass
         elif ex['type'] == 'handPeeks':
             # For every card in the peeks array, extract its info and append an event for it.
             for info in ex['HP']['peeks']:
@@ -264,7 +288,10 @@ def load_battle(filename=''):
                 group_index = info['group']
                 events.append(RevealEvent(player_turn, original_player_index, original_group_index, player_index,
                                           group_index, card_index, item_name, card_name))
-                battle.update(events[-1])
+                try:
+                    battle.update(events[-1])
+                except:
+                    pass
         elif ex['type'] == 'action':
             # For every card in the peeks array, extract its info and append an event for it.
             for info in ex['HP']['peeks']:
@@ -281,7 +308,10 @@ def load_battle(filename=''):
                     target_player_indices = ex['TARP']
                     target_group_indices = ex['TARG']
                     events.append(TargetEvent(player_turn, target_player_indices, target_group_indices))
-                    battle.update(events[-1])
+                    try:
+                        battle.update(events[-1])
+                    except:
+                        pass
         elif ex['type'] == 'selectCard':
             if 'HP' in ex:
                 for info in ex['HP']['peeks']:
@@ -294,7 +324,10 @@ def load_battle(filename=''):
                     group_index = info['group']
                     events.append(DiscardEvent(player_turn, original_player_index, original_group_index, player_index,
                                                group_index, card_index, item_name, card_name))
-                    battle.update(events[-1])
+                    try:
+                        battle.update(events[-1])
+                    except:
+                        pass
             else:
                 player_index = must_discard[0]
                 group_index = must_discard[1]
@@ -332,13 +365,19 @@ def load_battle(filename=''):
                 card_index = ex['ACTC']
                 events.append(HandEvent(player_turn, die_roll, required_roll, hard_to_block, easy_to_block, player_index,
                                         group_index, card_index))
-                battle.update(events[-1])
+                try:
+                    battle.update(events[-1])
+                except:
+                    pass
             elif location == 1:
                 player_index = ex['PUI']
                 group_index = ex['ACTG']
                 events.append(AttachmentEvent(player_turn, die_roll, required_roll, hard_to_block, easy_to_block,
                                               player_index, group_index))
-                battle.update(events[-1])
+                try:
+                    battle.update(events[-1])
+                except:
+                    pass
             elif location == 2:
                 x = ex['TARX']
                 y = ex['TARY']
