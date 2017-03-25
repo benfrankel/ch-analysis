@@ -1,18 +1,18 @@
-# This file parses verbose battle logs and battle log messages.
+# This file parses verbose battle logs and battle log messages
 
-# List of tags that may appear.
+# List of tags that may appear
 basic_tags = 'utf_string', 'utf_string_array', 'bool', 'bool_array', 'int', 'int_array', 'double', 'double_array'
 struct_tags = 'sfs_array', 'sfs_object'
 
 
-# A primitive type, as in, any type from basic_tags. It has a tag (type), a name, and a value.
+# A primitive type, as in, any type from basic_tags. It has a tag (type), a name, and a value
 class SFSBasicType:
     def __init__(self, tag, name, value):
         self.tag = tag
         self.name = name
         self.value = None
 
-        # If possible, convert the string value into the proper type as dictated by tag.
+        # If possible, convert the string value into the proper type as dictated by tag
         try:
             if self.tag == 'utf_string':
                 self.value = value
@@ -43,7 +43,7 @@ class SFSBasicType:
         return '%s(%s, %s, %s)' % (self.__class__.__name__, self.tag, self.name, self.value)
 
 
-# An (sfs_array). Behaves identically to an array but also has .name and .tag attributes.
+# An (sfs_array). Behaves identically to an array but also has .name and .tag attributes
 class SFSArray:
     def __init__(self, name):
         self.tag = 'sfs_array'
@@ -84,7 +84,7 @@ class SFSArray:
         return '<%s %s %s>' % (self.__class__.__name__, self.name, self.array)
 
 
-# An (sfs_object). Behaves identically to a dictionary but also has .name and .tag attributes.
+# An (sfs_object). Behaves identically to a dictionary but also has .name and .tag attributes
 class SFSObject:
     def __init__(self, name):
         self.tag = 'sfs_object'
@@ -125,28 +125,28 @@ class SFSObject:
         return '<%s %s%s>' % (self.__class__.__name__, self.name, self.attr)
 
 
-# Input is a single line, output is the indent level along with the object created from the line.
+# Input is a single line, output is the indent level along with the object created from the line
 def parse_verbose_line(line):
-    # Count tabs at start of line.
+    # Count tabs at start of line
     indent = 0
     while line[indent] == '\t':
         indent += 1
 
-    # Remove leading whitespace from the line (should just strip away tabs).
+    # Remove leading whitespace from the line (should just strip away tabs)
     line = line.lstrip()
 
-    # Split off the tag value between ( and ).
+    # Split off the tag value between ( and )
     end_tag_index = line.index(')')
     tag, line = line[1:end_tag_index], line[end_tag_index+2:]
 
-    # If there is a : character, then this line has a name, otherwise it's just a value. Get the name and value.
+    # If there is a : character, then this line has a name, otherwise it's just a value. Get the name and value
     delim_index = line.find(':')
     if delim_index == -1:
         name, value = '', line
     else:
         name, value = line[:delim_index], line[delim_index+2:]
 
-    # Create the appropriate object from tag, name, and value.
+    # Create the appropriate object from tag, name, and value
     if tag in basic_tags:
         result = SFSBasicType(tag, name, value)
     elif tag == 'sfs_array':
@@ -158,34 +158,34 @@ def parse_verbose_line(line):
 
 
 def parse_verbose(raw):
-    # List of parsed extension responses so far.
+    # List of parsed extension responses so far
     extension_responses = []
 
-    # Keep track of the current object or array that we're constructing.
+    # Keep track of the current object or array that we're constructing
     layer_stack = []
     for line in raw.splitlines():
-        # Ignore whitespace and empty lines.
+        # Ignore whitespace and empty lines
         if not line or line.isspace():
             continue
 
-        # If this is a new extension response, append it to the list and set it as the current layer.
+        # If this is a new extension response, append it to the list and set it as the current layer
         if 'Received extension response:' in line:
             extension_responses.append(SFSObject(line.split(': ')[1]))
             layer_stack = [extension_responses[-1]]
 
-        # If this line is invalid, ignore it.
+        # If this line is invalid, ignore it
         if line[0] != '\t' or ')' not in line:
             if extension_responses and extension_responses[-1].name == 'battleResults':
                 break
             continue
 
-        # Parse the current line.
+        # Parse the current line
         indent, line_obj = parse_verbose_line(line)
 
-        # Adjust to the proper layer, if this line de-indented.
+        # Adjust to the proper layer, if this line de-indented
         layer_stack = layer_stack[:indent]
 
-        # Add the line's object to the growing structure.
+        # Add the line's object to the growing structure
         layer_stack[-1].add_item(line_obj)
         if line_obj.tag in struct_tags:
             layer_stack.append(line_obj)
@@ -194,7 +194,7 @@ def parse_verbose(raw):
 
 
 def parse_messages(raw):
-    # List of messages so far.
+    # List of messages so far
     messages = []
 
     def convert(val):
@@ -213,7 +213,7 @@ def parse_messages(raw):
                 return val
 
     for line in raw.splitlines():
-        # Ignore non-message lines.
+        # Ignore non-message lines
         if 'BATTLE LOG: ' not in line:
             continue
         line = line[12:]

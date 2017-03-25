@@ -1,0 +1,272 @@
+Initializing battle screen
+Battle joined
+stopTimer 1 1200
+startTimer 0 1200
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=StartGame
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Starting round 1
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=Attachment Phase Initiated
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=Draw Phase Initiated
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Pyrious drew Walk for Euclid
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Pyrious drew Silver Bolt for Euclid
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Pyrious drew Wall of Fire for Euclid
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Pyrious drew Gusts of War for Euclid
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Pyrious drew Walk for Euler
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Pyrious drew Gusts of War for Euler
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Pyrious drew Chilling Rime for Euler
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Pyrious drew Force Bolt for Euler
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Pyrious drew Walk for Erdos
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Pyrious drew Telekinesis for Erdos
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Pyrious drew Wall of Fire for Erdos
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Pyrious drew Escaping Run for Erdos
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 drew Dash for Dhrosrimecurgnor
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 drew a card for Dhrosrimecurgnor
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 drew a card for Dhrosrimecurgnor
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 drew a card for Dhrosrimecurgnor
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 drew Run for Buchroboak
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 drew a card for Buchroboak
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 drew a card for Buchroboak
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 drew a card for Buchroboak
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 drew Walk for Zakungor
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 drew a card for Zakungor
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 drew a card for Zakungor
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 drew a card for Zakungor
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=Action Phase Initiated
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=PlayAction,Action=Walk,Instigator=Euclid,Targets=
+stopTimer 0 1167
+startTimer 0 1167
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Player=Pyrious,Participant=Pyrious,Actor=Euclid,Event=Move,Origin=(1, 7),StartFacing=(1, 0),Destination=(3, 7),EndFacing=(1, 0)
+stopTimer 0 1164
+startTimer 1 1200
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 must play a Trait
+BATTLE LOG: Player=AgusS6,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=PlayAction,Action=Crusher,Instigator=Buchroboak,Targets=
+stopTimer 1 1137
+startTimer 1 1137
+stopTimer 1 1136
+startTimer 1 1136
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Attaching Crusher to Buchroboak
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 drew a card for Buchroboak
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 must play a Trait
+BATTLE LOG: Player=AgusS6,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=PlayAction,Action=Holy Presence,Instigator=Dhrosrimecurgnor,Targets=
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Attaching Holy Presence to Dhrosrimecurgnor
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 drew a card for Dhrosrimecurgnor
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now AgusS6
+BATTLE LOG: Player=AgusS6,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=PlayAction,Action=Walk,Instigator=Zakungor,Targets=
+stopTimer 1 1119
+startTimer 1 1119
+stopTimer 1 1118
+startTimer 0 1164
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Player=AgusS6,Participant=AgusS6,Actor=Zakungor,Event=Move,Origin=(11, 5),StartFacing=(-1, 0),Destination=(9, 6),EndFacing=(-1, 0)
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=PlayAction,Action=Walk,Instigator=Euler,Targets=
+stopTimer 0 1135
+startTimer 0 1135
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Player=Pyrious,Participant=Pyrious,Actor=Euler,Event=Move,Origin=(1, 5),StartFacing=(1, 0),Destination=(3, 4),EndFacing=(1, 0)
+stopTimer 0 1132
+startTimer 1 1118
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now AgusS6
+BATTLE LOG: Player=AgusS6,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=PlayAction,Action=Dash,Instigator=Dhrosrimecurgnor,Targets=
+stopTimer 1 1108
+startTimer 1 1108
+stopTimer 1 1106
+startTimer 0 1132
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Player=AgusS6,Participant=AgusS6,Actor=Dhrosrimecurgnor,Event=Move,Origin=(11, 6),StartFacing=(-1, 0),Destination=(7, 6),EndFacing=(-1, 0)
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=PlayAction,Action=Walk,Instigator=Erdos,Targets=
+stopTimer 0 1096
+startTimer 0 1096
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Player=Pyrious,Participant=Pyrious,Actor=Erdos,Event=Move,Origin=(1, 6),StartFacing=(1, 0),Destination=(3, 6),EndFacing=(1, 0)
+stopTimer 0 1095
+startTimer 1 1106
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now AgusS6
+BATTLE LOG: Player=AgusS6,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=PlayAction,Action=Inquisition Bolt,Instigator=Zakungor,Targets=Erdos
+stopTimer 1 1050
+startTimer 0 1095
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Erdos took 2 damage
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=PlayAction,Action=Wall of Fire,Instigator=Erdos,Targets=
+stopTimer 0 1077
+startTimer 1 1050
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Attaching Wall of Fire to (9, 6)
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Attaching Wall of Fire to (8, 6)
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Attaching Wall of Fire to (7, 6)
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now AgusS6
+BATTLE LOG: Player=AgusS6,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=PlayAction,Action=Force Bolt,Instigator=Zakungor,Targets=Dhrosrimecurgnor
+stopTimer 1 1042
+stopTimer 1 1034
+startTimer 0 1077
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Dhrosrimecurgnor took 1 damage
+BATTLE LOG: Player=AgusS6,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=TriggerFail,Trigger=,TriggeringActor=Dhrosrimecurgnor,AffectedActors=,TriggerType=PostDamage,TriggerLocation=Hand
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Player=AgusS6,Participant=AgusS6,Actor=Dhrosrimecurgnor,Event=Move,Origin=(7, 6),StartFacing=(-1, 0),Destination=(6, 6),EndFacing=(-1, 0)
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=PlayAction,Action=Silver Bolt,Instigator=Euclid,Targets=Dhrosrimecurgnor
+stopTimer 0 1070
+stopTimer 1 1019
+startTimer 1 1019
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=TriggerSucceed,Trigger=,TriggeringActor=Dhrosrimecurgnor,AffectedActors=,TriggerType=Unknown,TriggerLocation=Hand
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Player=AgusS6,Participant=AgusS6,Actor=Dhrosrimecurgnor,Event=Move,Origin=(6, 6),StartFacing=(-1, 0),Destination=(8, 6),EndFacing=(-1, 0)
+BATTLE WARNING: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Invalid action: Silver Bolt, played by Euclid - too few target actors (0/1)
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now AgusS6
+BATTLE LOG: Player=AgusS6,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=PlayAction,Action=Obliterating Spark,Instigator=Zakungor,Targets=Erdos
+stopTimer 1 1002
+startTimer 0 1070
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Erdos took 9 damage
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now Pyrious
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Pyrious passed.
+stopTimer 0 1064
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now AgusS6
+startTimer 1 1002
+BATTLE LOG: Player=AgusS6,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=PlayAction,Action=Jump Back,Instigator=Dhrosrimecurgnor,Targets=
+stopTimer 1 997
+startTimer 1 997
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Player=AgusS6,Participant=AgusS6,Actor=Dhrosrimecurgnor,Event=Move,Origin=(8, 6),StartFacing=(-1, 0),Destination=(6, 5),EndFacing=(-1, 0)
+stopTimer 1 993
+startTimer 0 1064
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=PlayAction,Action=Force Bolt,Instigator=Euler,Targets=Euclid
+stopTimer 0 1048
+stopTimer 0 1032
+startTimer 1 993
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Euclid took 1 damage
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Player=Pyrious,Participant=Pyrious,Actor=Euclid,Event=Move,Origin=(3, 7),StartFacing=(1, 0),Destination=(3, 8),EndFacing=(1, 0)
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now AgusS6
+BATTLE LOG: Player=AgusS6,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=PlayAction,Action=Run,Instigator=Buchroboak,Targets=
+stopTimer 1 986
+startTimer 1 986
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Player=AgusS6,Participant=AgusS6,Actor=Buchroboak,Event=Move,Origin=(11, 7),StartFacing=(-1, 0),Destination=(8, 9),EndFacing=(-1, 0)
+stopTimer 1 985
+startTimer 0 1032
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=PlayAction,Action=Chilling Rime,Instigator=Euler,Targets=Buchroboak
+stopTimer 0 1026
+startTimer 1 985
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Buchroboak took 2 damage
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Attaching Chilling Rime to Buchroboak
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now AgusS6
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 passed.
+stopTimer 1 981
+startTimer 0 1026
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=PlayAction,Action=Wall of Fire,Instigator=Euclid,Targets=
+stopTimer 0 1024
+startTimer 1 981
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Attaching Wall of Fire to (6, 8)
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Attaching Wall of Fire to (7, 9)
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Attaching Wall of Fire to (8, 9)
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now AgusS6
+BATTLE LOG: Player=AgusS6,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=PlayAction,Action=Dangerous Maneuver,Instigator=Buchroboak,Targets=
+stopTimer 1 977
+startTimer 1 977
+BATTLE LOG: Player=AgusS6,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=TriggerSucceed,Trigger=Chilling Rime,TriggeringActor=Buchroboak,AffectedActors=,TriggerType=Unknown,TriggerLocation=ActorAttachment
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Player=AgusS6,Participant=AgusS6,Actor=Buchroboak,Event=Move,Origin=(8, 9),StartFacing=(-1, 0),Destination=(5, 9),EndFacing=(-1, 0)
+stopTimer 1 975
+startTimer 0 1024
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=PlayAction,Action=Gusts of War,Instigator=Euclid,Targets=Dhrosrimecurgnor,Buchroboak
+stopTimer 0 1018
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Dhrosrimecurgnor took 1 damage
+startTimer 0 1018
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=TriggerFail,Trigger=Boosted Heal,TriggeringActor=Dhrosrimecurgnor,AffectedActors=,TriggerType=PostDamage,TriggerLocation=Hand
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Buchroboak took 1 damage
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Player=Pyrious,Participant=Pyrious,Actor=Dhrosrimecurgnor,Event=Move,Origin=(6, 5),StartFacing=(-1, 0),Destination=(8, 6),EndFacing=(-1, 0)
+stopTimer 0 1016
+startTimer 0 1016
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Player=Pyrious,Participant=Pyrious,Actor=Buchroboak,Event=Move,Origin=(5, 9),StartFacing=(-1, 0),Destination=(7, 9),EndFacing=(-1, 0)
+stopTimer 0 1015
+startTimer 1 975
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now AgusS6
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 passed.
+stopTimer 1 973
+startTimer 0 1015
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now Pyrious
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Pyrious ended the round.
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Scoring Phase: initiated
+stopTimer 0 1013
+startTimer 1 973
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Discard Phase: initiated
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Turn Complete
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Starting round 2
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=Attachment Phase Initiated
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=TriggerSucceed,Trigger=Holy Presence,TriggeringActor=Dhrosrimecurgnor,AffectedActors=,TriggerType=StartTurn,TriggerLocation=ActorAttachment
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Zakungor healed 1
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=TriggerSucceed,Trigger=Wall of Fire,TriggeringActor=[Null],AffectedActors=Dhrosrimecurgnor,TriggerType=StartTurn,TriggerLocation=SquareAttachment
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Dhrosrimecurgnor took 8 damage
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=TriggerFail,Trigger=Boosted Heal,TriggeringActor=Dhrosrimecurgnor,AffectedActors=,TriggerType=PostDamage,TriggerLocation=Hand
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=TriggerSucceed,Trigger=Wall of Fire,TriggeringActor=[Null],AffectedActors=Zakungor,TriggerType=StartTurn,TriggerLocation=SquareAttachment
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Zakungor took 8 damage
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=TriggerSucceed,Trigger=Wall of Fire,TriggeringActor=[Null],AffectedActors=Buchroboak,TriggerType=StartTurn,TriggerLocation=SquareAttachment
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Buchroboak took 8 damage
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=Draw Phase Initiated
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 drew Dash for Dhrosrimecurgnor
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 drew a card for Dhrosrimecurgnor
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 drew a card for Dhrosrimecurgnor
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 drew Run for Buchroboak
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 drew a card for Buchroboak
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 drew a card for Buchroboak
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 drew Walk for Zakungor
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 drew a card for Zakungor
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 drew a card for Zakungor
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Pyrious drew Walk for Euclid
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Pyrious drew Gusts of War for Euclid
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Pyrious drew Dangerous Maneuver for Euclid
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Pyrious drew Walk for Euler
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Pyrious drew Force Bolt for Euler
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Pyrious drew Reliable Mail for Euler
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Pyrious drew Walk for Erdos
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Pyrious drew Stone Spikes for Erdos
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Pyrious drew Silver Bolt for Erdos
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=Action Phase Initiated
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now AgusS6
+BATTLE LOG: Player=AgusS6,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=PlayAction,Action=Dangerous Maneuver,Instigator=Buchroboak,Targets=
+stopTimer 1 960
+startTimer 1 960
+BATTLE LOG: Player=AgusS6,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=TriggerSucceed,Trigger=Chilling Rime,TriggeringActor=Buchroboak,AffectedActors=,TriggerType=Unknown,TriggerLocation=ActorAttachment
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Player=AgusS6,Participant=AgusS6,Actor=Buchroboak,Event=Move,Origin=(7, 9),StartFacing=(-1, 0),Destination=(4, 9),EndFacing=(-1, 0)
+stopTimer 1 958
+startTimer 0 1013
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Buchroboak took 3 damage
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=PlayAction,Action=Walk,Instigator=Euclid,Targets=
+stopTimer 0 1006
+startTimer 0 1006
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Player=Pyrious,Participant=Pyrious,Actor=Euclid,Event=Move,Origin=(3, 8),StartFacing=(1, 0),Destination=(4, 6),EndFacing=(1, 0)
+stopTimer 0 1003
+startTimer 1 958
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now AgusS6
+BATTLE LOG: Player=AgusS6,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=PlayAction,Action=Run,Instigator=Buchroboak,Targets=
+stopTimer 1 948
+startTimer 1 948
+BATTLE LOG: Player=AgusS6,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=TriggerSucceed,Trigger=Chilling Rime,TriggeringActor=Buchroboak,AffectedActors=,TriggerType=Unknown,TriggerLocation=ActorAttachment
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Player=AgusS6,Participant=AgusS6,Actor=Buchroboak,Event=Move,Origin=(4, 9),StartFacing=(-1, 0),Destination=(3, 7),EndFacing=(0, -1)
+stopTimer 1 947
+startTimer 0 1003
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=PlayAction,Action=Force Bolt,Instigator=Euler,Targets=Buchroboak
+stopTimer 0 993
+stopTimer 0 983
+startTimer 1 947
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Buchroboak took 1 damage
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Player=Pyrious,Participant=Pyrious,Actor=Buchroboak,Event=Move,Origin=(3, 7),StartFacing=(0, -1),Destination=(3, 8),EndFacing=(0, -1)
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now AgusS6
+BATTLE LOG: Player=AgusS6,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=PlayAction,Action=Dash,Instigator=Dhrosrimecurgnor,Targets=
+stopTimer 1 939
+startTimer 1 939
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Player=AgusS6,Participant=AgusS6,Actor=Dhrosrimecurgnor,Event=Move,Origin=(8, 6),StartFacing=(-1, 0),Destination=(5, 6),EndFacing=(-1, 0)
+stopTimer 1 938
+startTimer 0 983
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=PlayAction,Action=Gusts of War,Instigator=Euler,Targets=Dhrosrimecurgnor,Buchroboak
+stopTimer 0 970
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Dhrosrimecurgnor took 1 damage
+startTimer 0 970
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=TriggerFail,Trigger=Boosted Heal,TriggeringActor=Dhrosrimecurgnor,AffectedActors=,TriggerType=PostDamage,TriggerLocation=Hand
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=Buchroboak took 1 damage
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Player=Pyrious,Participant=Pyrious,Actor=Dhrosrimecurgnor,Event=Move,Origin=(5, 6),StartFacing=(-1, 0),Destination=(7, 6),EndFacing=(-1, 0)
+stopTimer 0 968
+startTimer 0 968
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Player=Pyrious,Participant=Pyrious,Actor=Buchroboak,Event=Move,Origin=(3, 8),StartFacing=(0, -1),Destination=(5, 9),EndFacing=(0, -1)
+stopTimer 0 967
+startTimer 1 938
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=The active player is now AgusS6
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Msg=AgusS6 was defeated
+BATTLE LOG: Scenario=MP Celestial Koi,Room=AgusS6 vs Pyrious,RoomID=1295368,Event=GameOver

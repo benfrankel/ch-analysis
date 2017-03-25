@@ -1,0 +1,829 @@
+Initializing battle screen
+Battle joined
+stopTimer 1 1200
+startTimer 0 1200
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=StartGame
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Starting round 1
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=Attachment Phase Initiated
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=Draw Phase Initiated
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Walk for Brilliant Shimmer
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Touch of Death for Brilliant Shimmer
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Touch of Death for Brilliant Shimmer
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Boosted Heal for Brilliant Shimmer
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Walk for Brilliant Wonder
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Healing Spirit for Brilliant Wonder
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Parry for Brilliant Wonder
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Touch of Death for Brilliant Wonder
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Walk for Brilliant Radiance
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Boosted Heal for Brilliant Radiance
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Healing Spirit for Brilliant Radiance
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Dwarven Battle Cry for Brilliant Radiance
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew Walk for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew Walk for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew Run for P&C FakeAgent
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C FakeAgent
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C FakeAgent
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C FakeAgent
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=Action Phase Initiated
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious must play a Trait
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Healing Spirit,Instigator=Brilliant Wonder,Targets=
+stopTimer 0 1177
+startTimer 0 1177
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Attaching Healing Spirit to Brilliant Wonder
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Reliable Mail for Brilliant Wonder
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious must play a Trait
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Healing Spirit,Instigator=Brilliant Radiance,Targets=
+stopTimer 0 1175
+startTimer 0 1175
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Attaching Healing Spirit to Brilliant Radiance
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Minor Heal for Brilliant Radiance
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Walk,Instigator=Brilliant Wonder,Targets=
+stopTimer 0 1173
+startTimer 0 1173
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=Pyrious,Participant=Pyrious,Actor=Brilliant Wonder,Event=Move,Origin=(2, 6),StartFacing=(1, 0),Destination=(2, 5),EndFacing=(0, -1)
+stopTimer 0 1172
+startTimer 1 1200
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide must play a Trait
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Traveling Curse,Instigator=P&C Crood,Targets=
+stopTimer 1 1162
+startTimer 1 1162
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=P&C Crood took 5 damage
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Walk,Instigator=P&C Crood,Targets=
+stopTimer 1 1154
+startTimer 1 1154
+stopTimer 1 1153
+startTimer 0 1172
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=spionecefalide,Participant=spionecefalide,Actor=P&C Crood,Event=Move,Origin=(12, 0),StartFacing=(-1, 0),Destination=(10, 2),EndFacing=(-1, 0)
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Walk,Instigator=Brilliant Shimmer,Targets=
+stopTimer 0 1169
+startTimer 0 1169
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=Pyrious,Participant=Pyrious,Actor=Brilliant Shimmer,Event=Move,Origin=(1, 11),StartFacing=(1, 0),Destination=(3, 9),EndFacing=(1, 0)
+stopTimer 0 1169
+startTimer 1 1153
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Walk,Instigator=P&C Crood,Targets=
+stopTimer 1 1152
+startTimer 1 1152
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=spionecefalide,Participant=spionecefalide,Actor=P&C Crood,Event=Move,Origin=(12, 11),StartFacing=(-1, 0),Destination=(10, 9),EndFacing=(-1, 0)
+stopTimer 1 1150
+startTimer 0 1169
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Walk,Instigator=Brilliant Radiance,Targets=
+stopTimer 0 1168
+startTimer 0 1168
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=Pyrious,Participant=Pyrious,Actor=Brilliant Radiance,Event=Move,Origin=(1, 0),StartFacing=(1, 0),Destination=(3, 2),EndFacing=(1, 0)
+stopTimer 0 1167
+startTimer 1 1150
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Run,Instigator=P&C FakeAgent,Targets=
+stopTimer 1 1142
+startTimer 1 1142
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=spionecefalide,Participant=spionecefalide,Actor=P&C FakeAgent,Event=Move,Origin=(11, 5),StartFacing=(-1, 0),Destination=(11, 6),EndFacing=(0, 1)
+stopTimer 1 1141
+startTimer 0 1167
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious passed.
+stopTimer 0 1166
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+startTimer 1 1141
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Dodge,Instigator=P&C Crood,Targets=
+stopTimer 1 1135
+startTimer 1 1135
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=spionecefalide,Participant=spionecefalide,Actor=P&C Crood,Event=Move,Origin=(10, 9),StartFacing=(-1, 0),Destination=(9, 7),EndFacing=(-1, 0)
+stopTimer 1 1134
+startTimer 0 1166
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious passed.
+stopTimer 0 1165
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+startTimer 1 1134
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Martyr Blessing,Instigator=P&C FakeAgent,Targets=P&C Crood
+stopTimer 1 1127
+startTimer 0 1165
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Attaching Martyr Blessing to P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious passed.
+stopTimer 0 1163
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+startTimer 1 1127
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide ended the round.
+stopTimer 1 1125
+startTimer 0 1163
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Scoring Phase: initiated
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Discard Phase: initiated
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Shimmer,Event=Needs to discard a card
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=Pyrious,PlayerID=440531,User=289864,Event=SelectCardRequired,ChoiceType=selCardDis,Selections=Boosted Heal|Touch of Death|Touch of Death
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=Pyrious,Event=SelectCard,Selection=Touch of Death
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Shimmer,Event=Discard,Card=Touch of Death
+stopTimer 0 1161
+startTimer 0 1161
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Wonder,Event=Needs to discard a card
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=Pyrious,PlayerID=440531,User=289864,Event=SelectCardRequired,ChoiceType=selCardDis,Selections=Reliable Mail|Touch of Death|Parry
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=Pyrious,Event=SelectCard,Selection=Reliable Mail
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Wonder,Event=Discard,Card=Reliable Mail
+stopTimer 0 1160
+startTimer 0 1160
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Radiance,Event=Needs to discard a card
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=Pyrious,PlayerID=440531,User=289864,Event=SelectCardRequired,ChoiceType=selCardDis,Selections=Minor Heal|Dwarven Battle Cry|Boosted Heal
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=Pyrious,Event=SelectCard,Selection=Dwarven Battle Cry
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Radiance,Event=Discard,Card=Dwarven Battle Cry
+stopTimer 0 1160
+startTimer 1 1125
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=P&C Crood,Event=Needs to discard a card
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=spionecefalide,PlayerID=205019,User=289926,Event=SelectCardRequired,ChoiceType=selCardDis,Selections=null|null|null
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=spionecefalide,Event=SelectCard,Selection=[NULL]
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=P&C Crood,Event=Discard,Card=Toughened Hide Strips
+stopTimer 1 1123
+startTimer 0 1160
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=P&C Crood healed 2
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Turn Complete
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Starting round 2
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=Attachment Phase Initiated
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=Draw Phase Initiated
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Walk for Brilliant Shimmer
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Touch of Death for Brilliant Shimmer
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Impenetrable Nimbus for Brilliant Shimmer
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Walk for Brilliant Wonder
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Touch of Death for Brilliant Wonder
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Minor Heal for Brilliant Wonder
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Walk for Brilliant Radiance
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Reliable Mail for Brilliant Radiance
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Officer's Harness for Brilliant Radiance
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew Walk for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew Walk for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew Run for P&C FakeAgent
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C FakeAgent
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C FakeAgent
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=Action Phase Initiated
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Walk,Instigator=Brilliant Shimmer,Targets=
+stopTimer 0 1153
+startTimer 0 1153
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=Pyrious,Participant=Pyrious,Actor=Brilliant Shimmer,Event=Move,Origin=(3, 9),StartFacing=(1, 0),Destination=(5, 10),EndFacing=(1, 0)
+stopTimer 0 1151
+startTimer 1 1123
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide must play a Trait
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Blind Rage,Instigator=P&C Crood,Targets=
+stopTimer 1 1121
+startTimer 1 1121
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Attaching Blind Rage to P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Howl,Instigator=P&C Crood,Targets=
+stopTimer 1 1114
+startTimer 0 1151
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=P&C Crood healed 2
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious passed.
+stopTimer 0 1149
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+startTimer 1 1114
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Walk,Instigator=P&C Crood,Targets=
+stopTimer 1 1111
+startTimer 1 1111
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=spionecefalide,Participant=spionecefalide,Actor=P&C Crood,Event=Move,Origin=(10, 2),StartFacing=(-1, 0),Destination=(8, 1),EndFacing=(-1, 0)
+stopTimer 1 1110
+startTimer 0 1149
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious passed.
+stopTimer 0 1147
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+startTimer 1 1110
+stopTimer 1 1109
+startTimer 1 1109
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=spionecefalide,Participant=spionecefalide,Actor=P&C Crood,Event=Move,Origin=(8, 1),StartFacing=(-1, 0),Destination=(7, 2),EndFacing=(-1, 0)
+stopTimer 1 1108
+startTimer 1 1108
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Participant spionecefalide must select targets
+BATTLE WARNING: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Invalid action: Nimble Strike, played by P&C Crood - too few target actors (0/1)
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Action: Nimble Strike is invalid - cancelling
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Nimble Strike was cancelled.
+stopTimer 1 1107
+startTimer 0 1147
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Walk,Instigator=Brilliant Radiance,Targets=
+stopTimer 0 1145
+startTimer 0 1145
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=Pyrious,Participant=Pyrious,Actor=Brilliant Radiance,Event=Move,Origin=(3, 2),StartFacing=(1, 0),Destination=(4, 4),EndFacing=(1, 0)
+stopTimer 0 1143
+startTimer 1 1107
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide passed.
+stopTimer 1 1090
+startTimer 0 1143
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Walk,Instigator=Brilliant Wonder,Targets=
+stopTimer 0 1125
+startTimer 0 1125
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=Pyrious,Participant=Pyrious,Actor=Brilliant Wonder,Event=Move,Origin=(2, 5),StartFacing=(0, -1),Destination=(4, 5),EndFacing=(1, 0)
+stopTimer 0 1125
+startTimer 1 1090
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Run,Instigator=P&C FakeAgent,Targets=
+stopTimer 1 1068
+startTimer 1 1068
+stopTimer 1 1067
+startTimer 0 1125
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=spionecefalide,Participant=spionecefalide,Actor=P&C FakeAgent,Event=Move,Origin=(11, 6),StartFacing=(0, -1),Destination=(9, 6),EndFacing=(0, -1)
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Minor Heal,Instigator=Brilliant Wonder,Targets=P&C Crood
+stopTimer 0 1122
+startTimer 1 1067
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Healing Spirit,TriggeringActor=Brilliant Wonder,AffectedActors=,TriggerType=Action,TriggerLocation=ActorAttachment
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=P&C Crood healed 3
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Purge,Instigator=P&C FakeAgent,Targets=Brilliant Radiance
+stopTimer 1 1061
+startTimer 0 1122
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Detaching and discarding Healing Spirit from Brilliant Radiance
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Impenetrable Nimbus,Instigator=Brilliant Shimmer,Targets=P&C FakeAgent
+stopTimer 0 1114
+startTimer 1 1061
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Attaching Impenetrable Nimbus to P&C FakeAgent
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Walk,Instigator=P&C Crood,Targets=
+stopTimer 1 1046
+startTimer 1 1046
+stopTimer 1 1044
+startTimer 0 1114
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=spionecefalide,Participant=spionecefalide,Actor=P&C Crood,Event=Move,Origin=(9, 7),StartFacing=(-1, 0),Destination=(7, 5),EndFacing=(-1, 0)
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious passed.
+stopTimer 0 1106
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+startTimer 1 1044
+stopTimer 1 1036
+startTimer 1 1036
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=spionecefalide,Participant=spionecefalide,Actor=P&C Crood,Event=Move,Origin=(7, 5),StartFacing=(-1, 0),Destination=(5, 5),EndFacing=(-1, 0)
+stopTimer 1 1033
+startTimer 1 1033
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Participant spionecefalide must select targets
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Dancing Cut,Instigator=P&C Crood,Targets=Brilliant Radiance
+stopTimer 1 1033
+startTimer 0 1106
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerFail,Trigger=Officer's Harness,TriggeringActor=Brilliant Radiance,AffectedActors=,TriggerType=PreDamage,TriggerLocation=Hand
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Reliable Mail,TriggeringActor=Brilliant Radiance,AffectedActors=,TriggerType=PreDamage,TriggerLocation=Hand
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Brilliant Radiance took 2 damage
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Boosted Heal,TriggeringActor=Brilliant Radiance,AffectedActors=,TriggerType=PostDamage,TriggerLocation=Hand
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Brilliant Radiance healed 3
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Touch of Death,Instigator=Brilliant Wonder,Targets=P&C Crood
+stopTimer 0 1100
+startTimer 1 1033
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=P&C Crood took 6 damage
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Obliterating Chop,Instigator=P&C Crood,Targets=Brilliant Wonder,Brilliant Radiance
+stopTimer 1 1029
+startTimer 0 1100
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Parry,TriggeringActor=Brilliant Wonder,AffectedActors=Brilliant Wonder,TriggerType=Action,TriggerLocation=Hand
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Brilliant Wonder, health = 29 (pi:0, gi:1, ai:0)
+	Attached cards: Healing Spirit (2) blocks Obliterating Chop
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Boosted Heal for Brilliant Wonder
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Wonder,Event=Discard,Card=Parry
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Officer's Harness,TriggeringActor=Brilliant Radiance,AffectedActors=,TriggerType=PreDamage,TriggerLocation=Hand
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Reliable Mail,TriggeringActor=Brilliant Radiance,AffectedActors=,TriggerType=PreDamage,TriggerLocation=Hand
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Brilliant Radiance took 7 damage
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerFail,Trigger=Boosted Heal,TriggeringActor=Brilliant Radiance,AffectedActors=,TriggerType=PostDamage,TriggerLocation=Hand
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Minor Heal,Instigator=Brilliant Radiance,Targets=Brilliant Radiance
+stopTimer 0 1095
+startTimer 1 1029
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Brilliant Radiance healed 2
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Impaling Stab,Instigator=P&C Crood,Targets=Brilliant Radiance
+stopTimer 1 1024
+startTimer 0 1095
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Brilliant Radiance took 9 damage
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerFail,Trigger=Boosted Heal,TriggeringActor=Brilliant Radiance,AffectedActors=,TriggerType=PostDamage,TriggerLocation=Hand
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious passed.
+stopTimer 0 1091
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+startTimer 1 1024
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Impaling Stab,Instigator=P&C Crood,Targets=Brilliant Radiance
+stopTimer 1 1021
+startTimer 0 1091
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Brilliant Radiance took 9 damage
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Boosted Heal,TriggeringActor=Brilliant Radiance,AffectedActors=,TriggerType=PostDamage,TriggerLocation=Hand
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Brilliant Radiance healed 3
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Boosted Heal,Instigator=Brilliant Wonder,Targets=Brilliant Radiance
+stopTimer 0 1086
+startTimer 1 1021
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Healing Spirit,TriggeringActor=Brilliant Wonder,AffectedActors=,TriggerType=Action,TriggerLocation=ActorAttachment
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Brilliant Radiance healed 7
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+stopTimer 1 1019
+startTimer 1 1019
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=spionecefalide,Participant=spionecefalide,Actor=P&C Crood,Event=Move,Origin=(7, 2),StartFacing=(-1, 0),Destination=(5, 4),EndFacing=(-1, 0)
+stopTimer 1 1018
+startTimer 1 1018
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Participant spionecefalide must select targets
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Nimble Strike,Instigator=P&C Crood,Targets=Brilliant Radiance
+stopTimer 1 1017
+startTimer 0 1086
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Blind Rage,TriggeringActor=P&C Crood,AffectedActors=,TriggerType=Action,TriggerLocation=ActorAttachment
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerFail,Trigger=Officer's Harness,TriggeringActor=Brilliant Radiance,AffectedActors=,TriggerType=PreDamage,TriggerLocation=Hand
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Reliable Mail,TriggeringActor=Brilliant Radiance,AffectedActors=,TriggerType=PreDamage,TriggerLocation=Hand
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Brilliant Radiance took 4 damage
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerFail,Trigger=Boosted Heal,TriggeringActor=Brilliant Radiance,AffectedActors=,TriggerType=PostDamage,TriggerLocation=Hand
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious passed.
+stopTimer 0 1079
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+startTimer 1 1017
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Massive Jaws,Instigator=P&C Crood,Targets=Brilliant Radiance
+stopTimer 1 1015
+startTimer 0 1079
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Blind Rage,TriggeringActor=P&C Crood,AffectedActors=,TriggerType=Action,TriggerLocation=ActorAttachment
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Brilliant Radiance took 10 damage
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerFail,Trigger=Boosted Heal,TriggeringActor=Brilliant Radiance,AffectedActors=,TriggerType=PostDamage,TriggerLocation=Hand
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Boosted Heal,Instigator=Brilliant Radiance,Targets=Brilliant Radiance
+stopTimer 0 1074
+startTimer 1 1015
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Brilliant Radiance healed 6
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide passed.
+stopTimer 1 1001
+startTimer 0 1074
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious ended the round.
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Scoring Phase: initiated
+stopTimer 0 1071
+startTimer 0 1071
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Discard Phase: initiated
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Shimmer,Event=Needs to discard a card
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=Pyrious,PlayerID=440531,User=289864,Event=SelectCardRequired,ChoiceType=selCardDis,Selections=Touch of Death|Boosted Heal|Touch of Death
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=Pyrious,Event=SelectCard,Selection=Boosted Heal
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Shimmer,Event=Discard,Card=Boosted Heal
+stopTimer 0 1069
+startTimer 1 1001
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=P&C FakeAgent,Event=Needs to discard a card
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=spionecefalide,PlayerID=205019,User=289926,Event=SelectCardRequired,ChoiceType=selCardDis,Selections=null|null|null
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=spionecefalide,Event=SelectCard,Selection=[NULL]
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=P&C FakeAgent,Event=Discard,Card=Muscle Through
+stopTimer 1 1000
+startTimer 1 1000
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Turn Complete
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Starting round 3
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=Attachment Phase Initiated
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Blind Rage,TriggeringActor=P&C Crood,AffectedActors=,TriggerType=StartTurn,TriggerLocation=ActorAttachment
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=P&C Crood took 0 damage
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=AttachmentExpired,Attachment=Martyr Blessing,AttachedTo=P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=AttachmentExpired,Attachment=Impenetrable Nimbus,AttachedTo=P&C FakeAgent
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Detaching and discarding Martyr Blessing from P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Detaching and discarding Impenetrable Nimbus from P&C FakeAgent
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=Draw Phase Initiated
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew Walk for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew Walk for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew Run for P&C FakeAgent
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C FakeAgent
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C FakeAgent
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Walk for Brilliant Shimmer
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Lifesaving Block for Brilliant Shimmer
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Subtle Parry for Brilliant Shimmer
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Walk for Brilliant Wonder
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Touch of Death for Brilliant Wonder
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Parry for Brilliant Wonder
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Walk for Brilliant Radiance
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Subtle Parry for Brilliant Radiance
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Parry for Brilliant Radiance
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=Action Phase Initiated
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide must play a Trait
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Blind Rage,Instigator=P&C Crood,Targets=
+stopTimer 1 997
+startTimer 1 997
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Attaching Blind Rage to P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Obliterating Chop,Instigator=P&C Crood,Targets=Brilliant Wonder,Brilliant Radiance
+stopTimer 1 995
+startTimer 0 1069
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Blind Rage,TriggeringActor=P&C Crood,AffectedActors=,TriggerType=Action,TriggerLocation=ActorAttachment
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerFail,Trigger=Parry,TriggeringActor=Brilliant Wonder,AffectedActors=Brilliant Wonder,TriggerType=Action,TriggerLocation=Hand
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Parry,TriggeringActor=Brilliant Radiance,AffectedActors=Brilliant Radiance,TriggerType=Action,TriggerLocation=Hand
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Brilliant Radiance, health = 8 (pi:0, gi:2, ai:0)  blocks Obliterating Chop
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Touch of Death for Brilliant Radiance
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Radiance,Event=Discard,Card=Parry
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Brilliant Wonder took 12 damage
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Touch of Death,Instigator=Brilliant Radiance,Targets=P&C Crood
+stopTimer 0 1061
+startTimer 1 995
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=P&C Crood took 8 damage
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+stopTimer 1 988
+startTimer 1 988
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=spionecefalide,Participant=spionecefalide,Actor=P&C Crood,Event=Move,Origin=(5, 4),StartFacing=(-1, 0),Destination=(3, 4),EndFacing=(-1, 0)
+stopTimer 1 987
+startTimer 1 987
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Participant spionecefalide must select targets
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Nimble Strike,Instigator=P&C Crood,Targets=Brilliant Wonder
+stopTimer 1 986
+startTimer 0 1061
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Blind Rage,TriggeringActor=P&C Crood,AffectedActors=,TriggerType=Action,TriggerLocation=ActorAttachment
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Brilliant Wonder took 6 damage
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Touch of Death,Instigator=Brilliant Wonder,Targets=P&C Crood
+stopTimer 0 1057
+startTimer 1 986
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=P&C Crood took 6 damage
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+stopTimer 1 983
+startTimer 1 983
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=spionecefalide,Participant=spionecefalide,Actor=P&C Crood,Event=Move,Origin=(5, 5),StartFacing=(-1, 0),Destination=(5, 6),EndFacing=(0, 1)
+stopTimer 1 982
+startTimer 1 982
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Participant spionecefalide must select targets
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Dancing Cut,Instigator=P&C Crood,Targets=Brilliant Wonder
+stopTimer 1 981
+startTimer 0 1057
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Blind Rage,TriggeringActor=P&C Crood,AffectedActors=,TriggerType=Action,TriggerLocation=ActorAttachment
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Brilliant Wonder took 6 damage
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Touch of Death,Instigator=Brilliant Wonder,Targets=P&C Crood
+stopTimer 0 1054
+startTimer 1 981
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=P&C Crood took 6 damage
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+stopTimer 1 978
+startTimer 1 978
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=spionecefalide,Participant=spionecefalide,Actor=P&C Crood,Event=Move,Origin=(3, 4),StartFacing=(0, 1),Destination=(4, 6),EndFacing=(0, 1)
+stopTimer 1 977
+startTimer 1 977
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Participant spionecefalide must select targets
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Nimble Strike,Instigator=P&C Crood,Targets=Brilliant Wonder
+stopTimer 1 977
+startTimer 0 1054
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Blind Rage,TriggeringActor=P&C Crood,AffectedActors=,TriggerType=Action,TriggerLocation=ActorAttachment
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Brilliant Wonder took 6 damage
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Detaching and discarding Healing Spirit from Brilliant Wonder
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Brilliant Wonder died
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Wonder,Event=Discard,Card=Parry
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Wonder,Event=Discard,Card=Walk
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Walk,Instigator=Brilliant Shimmer,Targets=
+stopTimer 0 1050
+startTimer 0 1050
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=Pyrious,Participant=Pyrious,Actor=Brilliant Shimmer,Event=Move,Origin=(5, 10),StartFacing=(1, 0),Destination=(6, 9),EndFacing=(1, 0)
+stopTimer 0 1049
+startTimer 1 977
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Demonic Feedback,Instigator=P&C FakeAgent,Targets=P&C Crood
+stopTimer 1 968
+startTimer 0 1049
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=P&C FakeAgent took 4 damage
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious passed.
+stopTimer 0 1046
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+startTimer 1 968
+StaticCardRenderer::checkTextArea Bless Card Description is too tall.
+StaticCardRenderer::checkTextArea Bless Card Description is too tall.
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Bless,Instigator=P&C FakeAgent,Targets=
+stopTimer 1 949
+startTimer 0 1046
+StaticCardRenderer::checkTextArea Bless Card Description is too tall.
+StaticCardRenderer::checkTextArea Bless Card Description is too tall.
+StaticCardRenderer::checkTextArea Bless Card Description is too tall.
+StaticCardRenderer::checkTextArea Bless Card Description is too tall.
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Attaching Bless to (5, 6)
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Attaching Bless to (4, 6)
+StaticCardRenderer::checkTextArea Bless Card Description is too tall.
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Attaching Bless to (9, 6)
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Walk,Instigator=Brilliant Radiance,Targets=
+stopTimer 0 1045
+startTimer 0 1045
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=Pyrious,Participant=Pyrious,Actor=Brilliant Radiance,Event=Move,Origin=(4, 4),StartFacing=(1, 0),Destination=(2, 5),EndFacing=(0, 1)
+stopTimer 0 1044
+startTimer 1 949
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide passed.
+stopTimer 1 947
+startTimer 0 1044
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious ended the round.
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Scoring Phase: initiated
+stopTimer 0 1043
+startTimer 1 947
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Discard Phase: initiated
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=P&C FakeAgent,Event=Needs to discard a card
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=spionecefalide,PlayerID=205019,User=289926,Event=SelectCardRequired,ChoiceType=selCardDis,Selections=null|Run|null
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=spionecefalide,Event=SelectCard,Selection=[NULL]
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=P&C FakeAgent,Event=Discard,Card=Purge
+stopTimer 1 943
+startTimer 0 1043
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Shimmer,Event=Needs to discard a card
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=Pyrious,PlayerID=440531,User=289864,Event=SelectCardRequired,ChoiceType=selCardDis,Selections=Subtle Parry|Lifesaving Block|Touch of Death|Touch of Death
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=Pyrious,Event=SelectCard,Selection=Lifesaving Block
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Shimmer,Event=Discard,Card=Lifesaving Block
+stopTimer 0 1042
+startTimer 0 1042
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Shimmer,Event=Needs to discard a card
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=Pyrious,PlayerID=440531,User=289864,Event=SelectCardRequired,ChoiceType=selCardDis,Selections=Subtle Parry|Touch of Death|Touch of Death
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=Pyrious,Event=SelectCard,Selection=Subtle Parry
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Shimmer,Event=Discard,Card=Subtle Parry
+stopTimer 0 1042
+startTimer 1 943
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Turn Complete
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Starting round 4
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=Attachment Phase Initiated
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Blind Rage,TriggeringActor=P&C Crood,AffectedActors=,TriggerType=StartTurn,TriggerLocation=ActorAttachment
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=SeeverSelectCardsCommand:: selected card
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=P&C Crood took 3 damage
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Blind Rage,TriggeringActor=P&C Crood,AffectedActors=,TriggerType=StartTurn,TriggerLocation=ActorAttachment
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=P&C Crood took 0 damage
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Bless,TriggeringActor=[Null],AffectedActors=P&C Crood,TriggerType=StartTurn,TriggerLocation=SquareAttachment
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=P&C Crood healed 2
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Bless,TriggeringActor=[Null],AffectedActors=P&C Crood,TriggerType=StartTurn,TriggerLocation=SquareAttachment
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=P&C Crood healed 2
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Bless,TriggeringActor=[Null],AffectedActors=P&C FakeAgent,TriggerType=StartTurn,TriggerLocation=SquareAttachment
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C FakeAgent
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=P&C FakeAgent healed 2
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=AttachmentExpired,Attachment=Blind Rage,AttachedTo=P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Detaching and discarding Blind Rage from P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=Draw Phase Initiated
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew Walk for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew Walk for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew Run for P&C FakeAgent
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C FakeAgent
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C FakeAgent
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Walk for Brilliant Shimmer
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Parry for Brilliant Shimmer
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Parry for Brilliant Shimmer
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Walk for Brilliant Radiance
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Parry for Brilliant Radiance
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Touch of Death for Brilliant Radiance
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=Action Phase Initiated
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Martyr Blessing,Instigator=P&C FakeAgent,Targets=P&C Crood
+stopTimer 1 931
+startTimer 0 1042
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Attaching Martyr Blessing to P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious passed.
+stopTimer 0 1040
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+startTimer 1 931
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Walk,Instigator=P&C Crood,Targets=
+stopTimer 1 921
+startTimer 1 921
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=spionecefalide,Participant=spionecefalide,Actor=P&C Crood,Event=Move,Origin=(5, 6),StartFacing=(-1, 0),Destination=(4, 5),EndFacing=(-1, 0)
+stopTimer 1 919
+startTimer 0 1040
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious passed.
+stopTimer 0 1032
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+startTimer 1 919
+stopTimer 1 917
+startTimer 1 917
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=spionecefalide,Participant=spionecefalide,Actor=P&C Crood,Event=Move,Origin=(4, 5),StartFacing=(-1, 0),Destination=(3, 4),EndFacing=(-1, 0)
+stopTimer 1 916
+startTimer 1 916
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Participant spionecefalide must select targets
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Dancing Cut,Instigator=P&C Crood,Targets=Brilliant Radiance
+stopTimer 1 915
+startTimer 0 1032
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Blind Rage,TriggeringActor=P&C Crood,AffectedActors=,TriggerType=Action,TriggerLocation=ActorAttachment
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Officer's Harness,TriggeringActor=Brilliant Radiance,AffectedActors=,TriggerType=PreDamage,TriggerLocation=Hand
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Reliable Mail,TriggeringActor=Brilliant Radiance,AffectedActors=,TriggerType=PreDamage,TriggerLocation=Hand
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Brilliant Radiance took 3 damage
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious passed.
+stopTimer 0 1029
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+startTimer 1 915
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Walk,Instigator=P&C Crood,Targets=
+stopTimer 1 909
+startTimer 1 909
+stopTimer 1 908
+startTimer 0 1029
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=spionecefalide,Participant=spionecefalide,Actor=P&C Crood,Event=Move,Origin=(4, 6),StartFacing=(0, -1),Destination=(2, 6),EndFacing=(0, -1)
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Touch of Death,Instigator=Brilliant Radiance,Targets=P&C Crood
+stopTimer 0 1025
+startTimer 1 908
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=P&C Crood took 10 damage
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Powerful Hack,Instigator=P&C Crood,Targets=Brilliant Radiance
+stopTimer 1 893
+startTimer 0 1025
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerFail,Trigger=Parry,TriggeringActor=Brilliant Radiance,AffectedActors=Brilliant Radiance,TriggerType=Action,TriggerLocation=Hand
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerFail,Trigger=Subtle Parry,TriggeringActor=Brilliant Radiance,AffectedActors=Brilliant Radiance,TriggerType=Action,TriggerLocation=Hand
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerFail,Trigger=Officer's Harness,TriggeringActor=Brilliant Radiance,AffectedActors=,TriggerType=PreDamage,TriggerLocation=Hand
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Reliable Mail,TriggeringActor=Brilliant Radiance,AffectedActors=,TriggerType=PreDamage,TriggerLocation=Hand
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Brilliant Radiance took 9 damage
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Brilliant Radiance died
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Radiance,Event=Discard,Card=Parry
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Radiance,Event=Discard,Card=Walk
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Radiance,Event=Discard,Card=Subtle Parry
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Radiance,Event=Discard,Card=Officer's Harness
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Radiance,Event=Discard,Card=Reliable Mail
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious passed.
+stopTimer 0 1011
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+startTimer 1 893
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Walk,Instigator=P&C Crood,Targets=
+stopTimer 1 884
+startTimer 1 884
+stopTimer 1 883
+startTimer 0 1011
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=spionecefalide,Participant=spionecefalide,Actor=P&C Crood,Event=Move,Origin=(2, 6),StartFacing=(0, -1),Destination=(2, 5),EndFacing=(0, -1)
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious passed.
+stopTimer 0 1007
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+startTimer 1 883
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Walk,Instigator=P&C Crood,Targets=
+stopTimer 1 867
+startTimer 1 867
+stopTimer 1 867
+startTimer 0 1007
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=spionecefalide,Participant=spionecefalide,Actor=P&C Crood,Event=Move,Origin=(3, 4),StartFacing=(-1, 0),Destination=(4, 4),EndFacing=(1, 0)
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious passed.
+stopTimer 0 1005
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+startTimer 1 867
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Howl,Instigator=P&C Crood,Targets=
+stopTimer 1 837
+startTimer 0 1005
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=P&C Crood healed 2
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious passed.
+stopTimer 0 1001
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+startTimer 1 837
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Run,Instigator=P&C FakeAgent,Targets=
+stopTimer 1 822
+startTimer 1 822
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=spionecefalide,Participant=spionecefalide,Actor=P&C FakeAgent,Event=Move,Origin=(9, 6),StartFacing=(-1, 0),Destination=(7, 3),EndFacing=(-1, 0)
+stopTimer 1 819
+startTimer 0 1001
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious passed.
+stopTimer 0 1000
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+startTimer 1 819
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Run,Instigator=P&C FakeAgent,Targets=
+stopTimer 1 818
+startTimer 1 818
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=spionecefalide,Participant=spionecefalide,Actor=P&C FakeAgent,Event=Move,Origin=(7, 3),StartFacing=(-1, 0),Destination=(7, 2),EndFacing=(0, -1)
+stopTimer 1 817
+startTimer 0 1000
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious passed.
+stopTimer 0 998
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+startTimer 1 817
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide ended the round.
+stopTimer 1 816
+startTimer 1 816
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Scoring Phase: initiated
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Discard Phase: initiated
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=P&C Crood,Event=Needs to discard a card
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=spionecefalide,PlayerID=205019,User=289926,Event=SelectCardRequired,ChoiceType=selCardDis,Selections=null|null|Backbiting Strike
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=spionecefalide,Event=SelectCard,Selection=Backbiting Strike
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=P&C Crood,Event=Discard,Card=Backbiting Strike
+stopTimer 1 813
+startTimer 1 813
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=P&C Crood,Event=Needs to discard a card
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=spionecefalide,PlayerID=205019,User=289926,Event=SelectCardRequired,ChoiceType=selCardDis,Selections=null|null|null
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=spionecefalide,Event=SelectCard,Selection=[NULL]
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=P&C Crood,Event=Discard,Card=Vicious Bite
+stopTimer 1 812
+startTimer 1 812
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=P&C FakeAgent,Event=Needs to discard a card
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=spionecefalide,PlayerID=205019,User=289926,Event=SelectCardRequired,ChoiceType=selCardDis,Selections=null|null|null
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=spionecefalide,Event=SelectCard,Selection=[NULL]
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=P&C FakeAgent,Event=Discard,Card=Curse of Fragility
+stopTimer 1 811
+startTimer 0 998
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Shimmer,Event=Needs to discard a card
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=Pyrious,PlayerID=440531,User=289864,Event=SelectCardRequired,ChoiceType=selCardDis,Selections=Parry|Parry|Walk|Touch of Death|Touch of Death
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=Pyrious,Event=SelectCard,Selection=Parry
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Shimmer,Event=Discard,Card=Parry
+stopTimer 0 998
+startTimer 0 998
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Shimmer,Event=Needs to discard a card
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=Pyrious,PlayerID=440531,User=289864,Event=SelectCardRequired,ChoiceType=selCardDis,Selections=Parry|Walk|Touch of Death|Touch of Death
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=Pyrious,Event=SelectCard,Selection=Parry
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Shimmer,Event=Discard,Card=Parry
+stopTimer 0 997
+startTimer 0 997
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Shimmer,Event=Needs to discard a card
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=Pyrious,PlayerID=440531,User=289864,Event=SelectCardRequired,ChoiceType=selCardDis,Selections=Walk|Touch of Death|Touch of Death
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Participant=Pyrious,Event=SelectCard,Selection=Touch of Death
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Group=Brilliant Shimmer,Event=Discard,Card=Touch of Death
+stopTimer 0 996
+startTimer 0 996
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Turn Complete
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Starting round 5
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=Attachment Phase Initiated
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=TriggerSucceed,Trigger=Blind Rage,TriggeringActor=P&C Crood,AffectedActors=,TriggerType=StartTurn,TriggerLocation=ActorAttachment
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=P&C Crood took 0 damage
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=AttachmentExpired,Attachment=Blind Rage,AttachedTo=P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=AttachmentExpired,Attachment=Bless,AttachedTo=(4, 6)
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=AttachmentExpired,Attachment=Bless,AttachedTo=(5, 6)
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=AttachmentExpired,Attachment=Bless,AttachedTo=(9, 6)
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Detaching and discarding Blind Rage from P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=Draw Phase Initiated
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Walk for Brilliant Shimmer
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Healing Spirit for Brilliant Shimmer
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Subtle Parry for Brilliant Shimmer
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew Walk for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew Walk for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew Run for P&C FakeAgent
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C FakeAgent
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C FakeAgent
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=Action Phase Initiated
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious must play a Trait
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Healing Spirit,Instigator=Brilliant Shimmer,Targets=
+stopTimer 0 994
+startTimer 0 994
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Attaching Healing Spirit to Brilliant Shimmer
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious drew Lifesaving Block for Brilliant Shimmer
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Walk,Instigator=Brilliant Shimmer,Targets=
+stopTimer 0 990
+startTimer 0 990
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=Pyrious,Participant=Pyrious,Actor=Brilliant Shimmer,Event=Move,Origin=(6, 9),StartFacing=(1, 0),Destination=(5, 7),EndFacing=(0, -1)
+stopTimer 0 989
+startTimer 1 811
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide must play a Trait
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Blind Rage,Instigator=P&C Crood,Targets=
+stopTimer 1 809
+startTimer 1 809
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Attaching Blind Rage to P&C Crood
+stopTimer 1 808
+startTimer 1 808
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide must play a Trait
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Blind Rage,Instigator=P&C Crood,Targets=
+stopTimer 1 807
+startTimer 1 807
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Attaching Blind Rage to P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide must play a Trait
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Superstitious,Instigator=P&C FakeAgent,Targets=
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Attaching Superstitious to P&C FakeAgent
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C FakeAgent
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+BATTLE LOG: Player=spionecefalide,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Howl,Instigator=P&C Crood,Targets=
+stopTimer 1 805
+startTimer 0 989
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=P&C Crood healed 2
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide drew a card for P&C Crood
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Player=Pyrious,Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=PlayAction,Action=Walk,Instigator=Brilliant Shimmer,Targets=
+stopTimer 0 986
+startTimer 0 986
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Player=Pyrious,Participant=Pyrious,Actor=Brilliant Shimmer,Event=Move,Origin=(5, 7),StartFacing=(0, -1),Destination=(6, 9),EndFacing=(0, 1)
+stopTimer 0 985
+startTimer 1 805
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now spionecefalide
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=spionecefalide passed.
+stopTimer 1 780
+startTimer 0 985
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=The active player is now Pyrious
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious ended the round.
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Scoring Phase: initiated
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Msg=Pyrious was defeated
+BATTLE LOG: Scenario=MP Celestial Lions,Room=spionecefalide vs Pyrious,RoomID=1294636,Event=GameOver
+stopTimer 0 982

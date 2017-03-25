@@ -1,4 +1,4 @@
-# This file extracts information and a list of battle events from verbose battle logs.
+# This file extracts information and a list of battle events from verbose battle logs
 
 from tkinter import Tk
 
@@ -6,7 +6,7 @@ import battle_model
 import log_parser
 
 
-# Basic superclass for all events.
+# Basic superclass for all events
 class Event:
     def __init__(self, name, player_turn):
         self.name = name
@@ -16,7 +16,7 @@ class Event:
         return '({:2}) {}'.format(self.player_turn, self.name)
 
 
-# Superclass for all card-related events.
+# Superclass for all card-related events
 class CardEvent(Event):
     def __init__(self, name, player_turn, original_player_index, original_group_index, player_index, group_index,
                  card_index, item_name, card_name):
@@ -33,7 +33,7 @@ class CardEvent(Event):
         return super().__str__() + ' [{} : {}]'.format(self.card_name, self.item_name)
 
 
-# A card play event.
+# A card play event
 class PlayEvent(CardEvent):
     def __init__(self, player_turn, original_player_index, original_group_index, player_index, group_index, card_index,
                  item_name, card_name):
@@ -44,7 +44,7 @@ class PlayEvent(CardEvent):
         return super().__str__()
 
 
-# A card draw event.
+# A card draw event
 class DrawEvent(CardEvent):
     def __init__(self, player_turn, original_player_index, original_group_index, player_index, group_index, card_index,
                  item_name, card_name):
@@ -55,7 +55,7 @@ class DrawEvent(CardEvent):
         return super().__str__()
 
 
-# An unrevealed card draw event.
+# An unrevealed card draw event
 class HiddenDrawEvent(Event):
     def __init__(self, player_turn):
         super().__init__('Hidden Draw', player_turn)
@@ -64,7 +64,7 @@ class HiddenDrawEvent(Event):
         return super().__str__()
 
 
-# A card reveal event.
+# A card reveal event
 class RevealEvent(CardEvent):
     def __init__(self, player_turn, original_player_index, original_group_index, player_index, group_index, card_index,
                  item_name, card_name):
@@ -75,7 +75,7 @@ class RevealEvent(CardEvent):
         return super().__str__()
 
 
-# A card discard event.
+# A card discard event
 class DiscardEvent(CardEvent):
     def __init__(self, player_turn, original_player_index, original_group_index, player_index, group_index, card_index,
                  item_name, card_name):
@@ -86,7 +86,7 @@ class DiscardEvent(CardEvent):
         return super().__str__()
 
 
-# Superclass for trigger related events such as "Success", "Failure".
+# Superclass for trigger related events such as "Success", "Failure"
 class TriggerEvent(Event):
     def __init__(self, name, player_turn, die_roll, required_roll, hard_to_block, easy_to_block):
         super().__init__('Trigger ' + name, player_turn)
@@ -100,7 +100,7 @@ class TriggerEvent(Event):
         return super().__str__() + ' [{}]'.format(['Fail', 'Success'][self.success])
 
 
-# Trigger event where the card is in hand.
+# Trigger event where the card is in hand
 class HandEvent(TriggerEvent):
     def __init__(self, player_turn, die_roll, required_roll, hard_to_block, easy_to_block, player_index,
                  group_index, card_index):
@@ -113,7 +113,7 @@ class HandEvent(TriggerEvent):
         return super().__str__()
 
 
-# Trigger event where the card is an attachment.
+# Trigger event where the card is an attachment
 class AttachmentEvent(TriggerEvent):
     def __init__(self, player_turn, die_roll, required_roll, hard_to_block, easy_to_block, player_index, group_index):
         super().__init__('Attachment', player_turn, die_roll, required_roll, hard_to_block, easy_to_block)
@@ -121,7 +121,7 @@ class AttachmentEvent(TriggerEvent):
         self.group_index = group_index
 
 
-# Trigger event where the card is a terrain attachment.
+# Trigger event where the card is a terrain attachment
 class TerrainEvent(TriggerEvent):
     def __init__(self, player_turn, die_roll, required_roll, hard_to_block, easy_to_block, x, y):
         super().__init__('Terrain', player_turn, die_roll, required_roll, hard_to_block, easy_to_block)
@@ -132,7 +132,7 @@ class TerrainEvent(TriggerEvent):
         return super().__str__()
 
 
-# A target selection event such as for a step attack.
+# A target selection event such as for a step attack
 class TargetEvent(Event):
     def __init__(self, player_turn, target_player_indices, target_group_indices):
         super().__init__('Target', player_turn)
@@ -143,7 +143,7 @@ class TargetEvent(Event):
         return super().__str__()
 
 
-# A square selection event such as for movement.
+# A square selection event such as for movement
 class SquareEvent(Event):
     def __init__(self, player_turn, x, y, fx, fy):
         super().__init__('Square', player_turn)
@@ -156,7 +156,7 @@ class SquareEvent(Event):
         return super().__str__() + ' [{}, {}]'.format(self.x, self.y)
 
 
-# A random number generation event.
+# A random number generation event
 class RandomEvent(Event):
     def __init__(self, player_turn, rands):
         super().__init__('Random', player_turn)
@@ -166,7 +166,7 @@ class RandomEvent(Event):
         return super().__str__()
 
 
-# A pass event.
+# A pass event
 class PassEvent(Event):
     def __init__(self, player_turn):
         super().__init__('Pass', player_turn)
@@ -175,57 +175,57 @@ class PassEvent(Event):
         return super().__str__()
 
 
-# Use the log text to construct a sequence of events that can be fed into a Battle.
+# Use the log text to construct a sequence of events that can be fed into a Battle
 def load_battle(filename=''):
     events = []
-    battle = battle_model.Battle()
+    scenario = battle_model.Scenario()
 
-    # Load log contents into memory.
+    # Load log contents into memory
     if filename == '':
         root = Tk()
         root.withdraw()
         try:
             log = root.clipboard_get()
         except:
-            return events, battle
+            return events, scenario
         if 'Received extension response: joinbattle' not in log:
-            return events, battle
+            return events, scenario
     else:
         with open(filename) as f:
             log = f.read()
 
-    # Find the most recent joinbattle and use log_parser.py to parse the battle.
+    # Find the most recent joinbattle and use log_parser.py to parse the battle
     log_lines = log.splitlines()
     first_line_index = len(log_lines) - 1 - log_lines[::-1].index('Received extension response: joinbattle')
     extension_responses, messages = log_parser.parse_battle('\n'.join(log_lines[first_line_index:]))
 
-    # Set up the battle by extracting all relevant info from joinbattle.
+    # Set up the battle by extracting all relevant info from joinbattle
     for obj in extension_responses[0]['objects']:
         if obj['_class_'] == 'com.cardhunter.battle.Battle':
-            battle.scenario_name = obj['scenarioName']
-            battle.scenario_display_name = obj['scenarioDisplayName']
-            battle.game_type = obj['gameType']
-            battle.audio_tag = obj['audioTag']
-            battle.room_name = obj['roomName']
+            scenario.name = obj['scenarioName']
+            scenario.display_name = obj['scenarioDisplayName']
+            scenario.game_type = obj['gameType']
+            scenario.audio_tag = obj['audioTag']
+            scenario.map.name = obj['roomName']
         elif obj['_class_'] == 'com.cardhunter.battle.Player':
             player_index = obj['playerIndex']
-            player = battle.players[player_index]
+            player = scenario.players[player_index]
             player.name = obj['playerName']
             player.rating = obj['rating']
         elif obj['_class_'] == 'com.cardhunter.battle.Square':
-            battle.map.add_square(obj['location.x'], obj['location.y'], obj['imageFlipX'], obj['imageFlipY'],
-                                  obj['imageName'], obj['terrain'])
+            scenario.map.add_square(obj['location.x'], obj['location.y'], obj['imageFlipX'], obj['imageFlipY'],
+                                    obj['imageName'], obj['terrain'])
         elif obj['_class_'] == 'com.cardhunter.battle.Doodad':
-            battle.map.add_doodad(obj['displayPosition.x'], obj['displayPosition.y'], obj['imageFlipX'],
-                                  obj['imageFlipY'], obj['imageName'], obj['marker'])
+            scenario.map.add_doodad(obj['displayPosition.x'], obj['displayPosition.y'], obj['imageFlipX'],
+                                    obj['imageFlipY'], obj['imageName'], obj['marker'])
         elif obj['_class_'] == 'com.cardhunter.battle.ActorGroup':
-            for group in battle.players[0].groups + battle.players[1].groups:
+            for group in scenario.players[0].groups + scenario.players[1].groups:
                 if not group.is_described():
                     group.name = obj['name']
-                    group.set_archetype(obj['race'] + ' ' + obj['characterClass'])
+                    group.set_archetype(' '.join([obj['race'], obj['characterClass']]))
                     break
         elif obj['_class_'] == 'com.cardhunter.battle.ActorInstance':
-            for group in battle.players[0].groups + battle.players[1].groups:
+            for group in scenario.players[0].groups + scenario.players[1].groups:
                 if not group.is_described():
                     group.figure = obj['depiction']
                     group.audio_key = obj['audioKey']
@@ -235,7 +235,10 @@ def load_battle(filename=''):
                     group.fy = obj['facing.y']
                     break
 
-    # Figure out who the enemy is and construct a sequence of events.
+    if not scenario.is_described():
+        pass  # Scenario not completely started
+
+    # Figure out who the enemy is and construct a sequence of events
     must_discard = [-1, -1]
     player_turn = -1
     for ex, prev in zip(extension_responses[1:], extension_responses):
@@ -252,16 +255,16 @@ def load_battle(filename=''):
         if ex['type'] == 'deckPeeksSent' and ('type' not in prev or prev['type'] != 'deckPeeks'):
             events.append(HiddenDrawEvent(player_turn))
             try:
-                battle.update(events[-1])
+                scenario.update(events[-1])
             except:
                 pass
 
         if ex['type'] == 'deckPeeks':
-            # If the user is still unknown, use this deckPeeks to determine who it is.
-            if battle.user is None:
-                battle.set_user(ex['SENDID'][0])
+            # If the user is still unknown, use this deckPeeks to determine who it is
+            if scenario.user is None:
+                scenario.set_user(ex['SENDID'][0])
 
-            # For every card in the peeks array, extract its info and append an event for it.
+            # For every card in the peeks array, extract its info and append an event for it
             for info in ex['DP']['peeks']:
                 original_player_index = info['cownerp']
                 original_group_index = info['cownerg']
@@ -273,11 +276,11 @@ def load_battle(filename=''):
                 events.append(DrawEvent(player_turn, original_player_index, original_group_index, player_index,
                                         group_index, card_index, item_name, card_name))
                 try:
-                    battle.update(events[-1])
+                    scenario.update(events[-1])
                 except:
                     pass
         elif ex['type'] == 'handPeeks':
-            # For every card in the peeks array, extract its info and append an event for it.
+            # For every card in the peeks array, extract its info and append an event for it
             for info in ex['HP']['peeks']:
                 original_player_index = info['cownerp']
                 original_group_index = info['cownerg']
@@ -289,11 +292,11 @@ def load_battle(filename=''):
                 events.append(RevealEvent(player_turn, original_player_index, original_group_index, player_index,
                                           group_index, card_index, item_name, card_name))
                 try:
-                    battle.update(events[-1])
+                    scenario.update(events[-1])
                 except:
                     pass
         elif ex['type'] == 'action':
-            # For every card in the peeks array, extract its info and append an event for it.
+            # For every card in the peeks array, extract its info and append an event for it
             for info in ex['HP']['peeks']:
                 original_player_index = info['cownerp']
                 original_group_index = info['cownerg']
@@ -309,7 +312,7 @@ def load_battle(filename=''):
                     target_group_indices = ex['TARG']
                     events.append(TargetEvent(player_turn, target_player_indices, target_group_indices))
                     try:
-                        battle.update(events[-1])
+                        scenario.update(events[-1])
                     except:
                         pass
         elif ex['type'] == 'selectCard':
@@ -325,7 +328,7 @@ def load_battle(filename=''):
                     events.append(DiscardEvent(player_turn, original_player_index, original_group_index, player_index,
                                                group_index, card_index, item_name, card_name))
                     try:
-                        battle.update(events[-1])
+                        scenario.update(events[-1])
                     except:
                         pass
             else:
@@ -333,7 +336,7 @@ def load_battle(filename=''):
                 group_index = must_discard[1]
                 card_index = ex['sel']
                 try:
-                    card = battle.get_hand(player_index, group_index)[card_index]
+                    card = scenario.get_hand(player_index, group_index)[card_index]
                     original_player_index = card.original_player_index
                     original_group_index = card.original_group_index
                     item_name = card.item_name
@@ -366,7 +369,7 @@ def load_battle(filename=''):
                 events.append(HandEvent(player_turn, die_roll, required_roll, hard_to_block, easy_to_block, player_index,
                                         group_index, card_index))
                 try:
-                    battle.update(events[-1])
+                    scenario.update(events[-1])
                 except:
                     pass
             elif location == 1:
@@ -375,28 +378,28 @@ def load_battle(filename=''):
                 events.append(AttachmentEvent(player_turn, die_roll, required_roll, hard_to_block, easy_to_block,
                                               player_index, group_index))
                 try:
-                    battle.update(events[-1])
+                    scenario.update(events[-1])
                 except:
                     pass
             elif location == 2:
                 x = ex['TARX']
                 y = ex['TARY']
                 events.append(TerrainEvent(player_turn, die_roll, required_roll, hard_to_block, easy_to_block, x, y))
-                battle.update(events[-1])
+                scenario.update(events[-1])
         elif ex['type'] == 'target':
             target_player_indices = ex['TARP']
             target_group_indices = ex['TARG']
             events.append(TargetEvent(player_turn, target_player_indices, target_group_indices))
-            battle.update(events[-1])
+            scenario.update(events[-1])
         elif ex['type'] == 'selectSquare':
             x = ex['TARX']
             y = ex['TARY']
             fx = ex['TARFX']
             fy = ex['TARFY']
             events.append(SquareEvent(player_turn, x, y, fx, fy))
-            battle.update(events[-1])
+            scenario.update(events[-1])
         elif ex['type'] == 'pass':
             events.append(PassEvent(player_turn))
-            battle.update(events[-1])
+            scenario.update(events[-1])
 
-    return events, battle
+    return events, scenario

@@ -1,7 +1,7 @@
-# This file models the static CH structures (cards, items, characters).
+# This file models the static CH structures (cards, items, characters)
 
 
-# A card type (e.g. "Ouch!", "Sprint, Team!", "Amorphous Body").
+# A card type (e.g. "Ouch!", "Sprint, Team!", "Amorphous Body")
 class CardType:
     def __init__(self, id_, name, short_name, types, attack_type, damage_type, damage, min_range, max_range, move_points,
                  duration, trigger, keep, trigger_effect, trigger2, keep2, trigger_effect2, text, flavor_text,
@@ -69,7 +69,7 @@ class CardType:
         return self.name
 
 
-# An item type (e.g. "Bejeweled Shortsword", "Staff of the Misanthrope", "Armorbane Pendant").
+# An item type (e.g. "Bejeweled Shortsword", "Staff of the Misanthrope", "Armorbane Pendant")
 class ItemType:
     def __init__(self, id_, name, short_name, rarity, level, intro_level, total_value, token_cost, cards, slot_type,
                  slot_type_default, image_name, tags, from_set, manual_rarity, manual_value):
@@ -103,7 +103,7 @@ class ItemType:
         return self.name
 
 
-# A character archetype (e.g. "Dwarf Warrior", "Elf Priest").
+# A character archetype (e.g. "Dwarf Warrior", "Elf Priest")
 class CharacterArchetype:
     def __init__(self, name, character_type, role, race, description, default_move, default_figure, start_items,
                  slot_types, levels):

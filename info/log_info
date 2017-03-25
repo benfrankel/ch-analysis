@@ -32,7 +32,7 @@ startBattle     # Doesn't seem to convey any useful information (appears exactly
 
 done            # Doesn't seem to convey any useful information
 
-genRand         # Generated random number.
+genRand         # Generated random number
     values: RAND
 
 reconnect       # A player rejoins the battle
