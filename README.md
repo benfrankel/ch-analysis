@@ -3,16 +3,18 @@
 This is an assorted collection of scripts & utilities for the game Card Hunter.
 
 
-## Verbose Log Parser [COMPLETE]
+## Verbose Log Parser
 
 The module `util.log_parse` parses verbose CH logs into a dictionary structure.
 
 
-## Battle Reconstructor [WIP]
+## Battle Reconstructor
 
 The package `battle` parses verbose battle logs in order to extract battle information. The information can then be used to reconstruct the battle. Currently the package extracts all available battle information but cannot yet reconstruct from this information.
 
-### Enemy Deck Tracker [FUNCTIONAL]
+This package is incomplete.
+
+### Enemy Deck Tracker
 
 The enemy's deck is among the information that `battle` is able to extract.
 
@@ -27,7 +29,7 @@ The package `optimize` receives a character archetype together with a list of ca
 
 ## Guild Utilities
 
-I use scripts to automate several guild-related tasks.
+I have scripts to automate several guild-related tasks.
 
 ### Pizzatron3000
 
