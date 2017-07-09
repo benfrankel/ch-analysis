@@ -1,26 +1,16 @@
-#!/usr/bin/env python3.6
-
 import urllib.request
 import urllib.error
 import urllib.parse
 import optparse
 import os
 
-# user editable config
-#
-# automatic syntax highlighting choice by file extension
-# defaults are pastebin's common extensions from web interface
-# add your own based on the filetypes you use
 syntax_filetypes = {
     '.sh': 'bash', '.c': 'c', '.h': 'c', '.cpp': 'cpp', '.cs': 'csharp', '.css': 'css', '.html': 'html',
     '.htm': 'html', '.java': 'java', '.js': 'javascript', '.lua': 'lua', '.pl': 'perl', '.php': 'php',
     '.py': 'python', '.rb': 'rails', '.patch': 'diff'
 }
-#
-# end of config
 
-
-devkey = '6c71766cdadff9f33347e80131397ac2'  # don't edit this
+devkey = '6c71766cdadff9f33347e80131397ac2'
 
 
 def guess_syntax(ext):
@@ -28,7 +18,6 @@ def guess_syntax(ext):
 
 
 def paste(name, syntax, expire, filenames, private=False, quiet=False):
-    # validate expiry/format options
     if syntax:
         syntaxes = (
             '4cs', '6502acme', '6502kickass', '6502tasm', 'abap', 'actionscript',
@@ -110,30 +99,3 @@ def paste(name, syntax, expire, filenames, private=False, quiet=False):
                         print(filename, 'uploaded to:', reply)
                     else:
                         return reply
-
-
-def main():
-    parser = optparse.OptionParser(usage='usage: %prog [OPTIONS] [FILE]...\nPastebin FILE(s) or standard input')
-    parser.add_option('-n', '--name', dest='name', metavar='NAME',
-                      help='Name/title of paste (ignored for multiple files)')
-    parser.add_option('-s', '--syntax', dest='syntax', metavar='FORMAT',
-                      help='Specify syntax format (common types will be guessed from filename otherwise, use -s none to stop this)')
-    parser.add_option('-p', '--private', dest='private', action='store_true', default=False,
-                      help='Private paste')
-    parser.add_option('-e', '--expire', dest='expire', metavar='EXPIRY',
-                      help='Specify expiry date: N = never, 10M = 10 minutes, 1H = 1 hour, 1D = 1 day, 1M = 1 month')
-    parser.add_option('-q', '--quiet', dest='quiet', action='store_true', default=False,
-                      help='Suppress information messages and print only URLs')
-
-    options, args = parser.parse_args()
-
-    paste(options.name,
-          options.syntax,
-          options.expire,
-          args,
-          options.private,
-          options.quiet)
-
-
-if __name__ == '__main__':
-    main()

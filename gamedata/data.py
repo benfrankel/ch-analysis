@@ -7,19 +7,22 @@ import csv
 import urllib.request
 
 from gamedata import model
+from const import root_dir
 
 
 # URLs to access CH databases
 ch_live = 'http://live.cardhunter.com/'
 cards_url = 'data/gameplay/Cards/Cards.csv'
 items_url = 'data/gameplay/Equipment/Equipment.csv'
+item_img_url = 'assets/item_illustrations/'
 archetypes_url = 'data/gameplay/CharacterArchetypes/CharacterArchetypes.csv'
 
 
 # Files where the databases will be stored locally
-cards_filename = os.path.join('localdata', 'cards.csv')
-items_filename = os.path.join('localdata', 'items.csv')
-archetypes_filename = os.path.join('localdata', 'archetypes.csv')
+localdata = os.path.join(root_dir, 'localdata')
+cards_filename = os.path.join(localdata, 'cards.csv')
+items_filename = os.path.join(localdata, 'items.csv')
+archetypes_filename = os.path.join(localdata, 'archetypes.csv')
 
 
 # Dictionaries where the databases will be stored in program memory
@@ -294,3 +297,11 @@ def get_archetypes():
 def is_archetype(name):
     name = ' '.join(name.lower().split())
     return name in archetype_dict or name in other_archetype_dict
+
+
+def download_item_image(image_name):
+    image_name = image_name.replace(' ', '%20').replace('\'', '%27')
+    img_path = os.path.join(localdata, image_name)
+    urllib.request.urlretrieve(ch_live + item_img_url + image_name, img_path)
+
+    return img_path

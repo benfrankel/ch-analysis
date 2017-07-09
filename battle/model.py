@@ -271,20 +271,26 @@ class Group:
         self.must_draw = -1
 
     def is_described(self):
-        return self.name and self.figure and self.archetype is not None and self.item_frame is not None
+        return self.name != '?' and self.figure != '?'  and self.archetype is not None
 
     def set_archetype(self, archetype_name):
         archetype = gamedata.get_archetype(archetype_name)
         self.archetype = archetype
         self.item_frame.set_archetype(archetype)
+        self.draw_deck = [card for slot in self.item_frame.slots for card in slot.item.cards]
 
     def reshuffle(self):
         for slot in self.item_frame.slots:
             slot.item.reshuffle()
 
     def reveal_card(self, event):
+        print(self.hand, event)
+        if event.original_player_index == -1:
+            pass  # TODO: Create card and put in hand
+            return
+
         revealed_card = self.hand[event.card_index]
-        if not revealed_card.is_hidden():
+        if revealed_card.is_hidden():
             item_type = gamedata.get_item(event.item_name)
             card_type = gamedata.get_card(event.card_name)
             for card in self.draw_deck:
@@ -299,7 +305,7 @@ class Group:
                         skipped = True
                         continue
                     for card in self.draw_deck:
-                        if not card.is_hidden():
+                        if card.is_hidden():
                             card.reveal(item_type, card_type)
                             break
                 for card in self.draw_deck:
@@ -308,40 +314,44 @@ class Group:
                         break
 
     def discard_card(self, event):  # TODO: DiscardToOpponent
-        self.reveal_card(event)
         # If DiscardToOpponentComponent, wait for genRand to determine where to travel to
         # components = gamedata.get_card(event.card_name).components
+        self.hand[event.card_index].discard()
+        self.draw_deck.append(self.hand.pop(event.card_index))
         for card in self.hand[event.card_index:]:
-            if card.card_index == event.card_index:
-                card.discard()
-            elif card.card_index > event.card_index:
-                card.card_index -= 1
+            card.card_index -= 1
 
     def draw_card(self, event):
-        self.reveal_card(event)
-        pass  # TODO
+        for i, card in enumerate(self.draw_deck):
+            if card.name == event.card_name and card.item.name == event.item_name:
+                self.hand.append(self.draw_deck.pop(i))
+                card.draw(event.card_index)
+                break
+        else:
+            pass  # TODO
 
-    def hidden_draw(self, event):  # TODO: Shamefully ugly method
+    def hidden_draw(self):  # TODO: Shamefully ugly method
         if self.must_draw == -1:
-            self.must_draw = 15  # TODO: this is a hack
+            self.must_draw = 5  # TODO: this is a hack
         elif self.must_draw == 0:
-            self.must_draw = 6  # TODO: what about bless/unholy energy/etc.?
-        for card in self.draw_deck:
-            if not card.is_hidden():
+            self.must_draw = 2  # TODO: what about bless/unholy energy/etc.?
+        for i, card in enumerate(self.draw_deck):
+            if card.is_hidden():
+                self.draw_deck.pop(i)
+                self.hand.append(card)
                 card.draw(len(self.hand))
                 break
         self.must_draw -= 1
-        if self.must_draw == 6:
+        if self.must_draw == 2:
             self.must_draw = 0  # TODO: Just burn this down and refactor the whole file
+        return self.must_draw == 0
 
     def play_card(self, event):
-        self.reveal_card(event)
+        self.discard_card(event)
         pass  # TODO
 
     def __str__(self):
-        result = self.name + ' (' + self.archetype.race + ' ' + self.archetype.role + ')\n'
-        result += 'Equipment: ' + str(self.item_frame) + '\n'
-        return result
+        return '{} ({} {})\nEquipment: {}'.format(self.name, self.archetype.race, self.archetype.role, self.item_frame)
 
     def __repr__(self):
         return '{}("{}")'.format(self.__class__.__name__, self.name)
@@ -367,6 +377,7 @@ class Player:
 
         # State
         self.stars = 0
+        self.drawing_group = 0
 
     def is_described(self):
         return self.name != '?' and self.rating != -1 and self.user_id != -1 and\
@@ -381,8 +392,10 @@ class Player:
     def draw_card(self, event):
         self.groups[event.group_index].draw_card(event)
 
-    def hidden_draw(self, event):
-        pass  # self.groups[event.group_index].hidden_draw(event)
+    def hidden_draw(self):
+        if self.groups[self.drawing_group].hidden_draw():
+            self.drawing_group += 1
+            self.drawing_group %= 3
 
     def play_card(self, event):
         self.groups[event.group_index].play_card(event)
@@ -422,7 +435,6 @@ class Doodad:
 class Map:
     def __init__(self, scenario):
         # Info
-        self.name = '?'
         self.max_x = 0
         self.max_y = 0
 
@@ -434,7 +446,7 @@ class Map:
         self.doodads = list()
 
     def is_described(self):
-        return self.name != '?'
+        return True  # TODO?
 
     def add_square(self, x, y, flip_x, flip_y, image_name, terrain):
         if x > self.max_x:
@@ -453,12 +465,13 @@ class Map:
         square_char = {'Open': '.', 'Difficult': '-', 'Impassable': 'o', 'Blocked': '#', 'Victory': '@'}
         result = ''
         for x in range(self.max_x+1):
+            if x != 0:
+                result += '\n'
             for y in range(self.max_y+1):
                 if (x, y) in self.squares:
                     result += square_char[self.squares[x, y].terrain]
                 else:
                     result += ' '
-            result += '\n'
         return result
 
 
@@ -468,6 +481,7 @@ class Scenario:
         # Info
         self.name = '?'
         self.display_name = '?'
+        self.room_name = '?'
 
         # Children
         self.map = Map(self)
@@ -480,19 +494,22 @@ class Scenario:
         self.enemy = self.players[1 - user_index]
 
     def is_described(self):
-        return self.name != '?' and self.display_name != '?' and self.enemy is not None and\
+        return self.name != '?' and self.display_name != '?' and self.room_name != '?' and self.enemy is not None and\
                self.map.is_described() and all(p.is_described() for p in self.players)
 
     def update(self, event):  # TODO
         if event.name == 'Card Draw':
             self.players[event.player_index].draw_card(event)
+            self.players[event.player_index].reveal_card(event)
         elif event.name == 'Hidden Draw':
-            self.enemy.hidden_draw(event)
+            self.enemy.hidden_draw()
         elif event.name == 'Card Reveal':
             self.players[event.player_index].reveal_card(event)
         elif event.name == 'Card Discard':
+            self.players[event.player_index].reveal_card(event)
             self.players[event.player_index].discard_card(event)
         elif event.name == 'Card Play':
+            self.players[event.player_index].reveal_card(event)
             self.players[event.player_index].play_card(event)
         elif event.name == 'Target':
             pass
@@ -506,6 +523,3 @@ class Scenario:
             pass
         elif event.name == 'Pass':
             pass
-
-
-

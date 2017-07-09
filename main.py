@@ -1,9 +1,11 @@
+#!/usr/bin/env python3.6
+
 import gamedata
-import reconstruct
 import optimize
+from battle import reconstruct
 
 
-log_filename = 'info/example_logs/log2'
+log_filename = 'info/example_logs/log1'
 
 
 gamedata.load()
@@ -59,20 +61,23 @@ def battle_test():
             if not event_list:
                 event_list, scenario = reconstruct.load_battle(log_filename)
         if command in "sr":
-            print('- TITLE')
+            print('> TITLE')
             print(scenario.name, 'aka', scenario.display_name)
-            print(scenario.map.name)
-            print()
-            print('- PLAYERS')
-            print('User is', scenario.user.name + ', index', scenario.user.index)
-            print('Enemy is', scenario.enemy.name + ', index', scenario.enemy.index)
-            print()
-            print('- CHARACTERS')
+            print(scenario.room_name)
+            print('\n')
+            print('> PLAYERS')
+            print('User is {}, index {}'.format(scenario.user.name, scenario.user.index))
+            print('Enemy is {}, index {}'.format(scenario.enemy.name, scenario.enemy.index))
+            print('\n')
+            print('> CHARACTERS')
             for i, enemy in enumerate(scenario.enemy.groups):
                 print(i, enemy)
-            print('- MAP')
+                print()
+            print()
+            print('> MAP')
             print(scenario.map)
-            print('- EVENTS')
+            print('\n')
+            print('> EVENTS')
             for i, event in enumerate(event_list):
                 print(i, event)
         if command == 'd':

@@ -17,7 +17,7 @@ def guild_seasons(guild_name):
 
     # Extract monthly placements
     placements = [int(x[0]) for x in re.findall(r'([0-9]+)(st|nd|rd|th)', text)]
-    pizza = [[0, 5, 4, 3, 2, 1][x] if x < 6 else 0 for x in placements]
+    pizzas = reversed([[0, 5, 4, 3, 2, 1][x] if x < 6 else 0 for x in placements])
 
     # Next we'll get per-player participation
     text = site.text
@@ -26,10 +26,7 @@ def guild_seasons(guild_name):
     text = text[text.find('Season Contributions'):text.rfind('<div id="footer_wrapper">')]
 
     # Isolate season names
-    def insert_pizza(match):
-        return f'\n\n{match.groups()[0]}\n{pizza.pop(0)}'
-
-    text = re.sub(r'Season Contributions - ([^<]+)', insert_pizza, text).strip('\n')
+    text = re.sub(r'Season Contributions - ([^<]+)', r'\n\n\1', text).strip('\n')
 
     # Strip away HTML elements
     text = re.sub(r'<[^>]+>', r',', text)
@@ -59,12 +56,12 @@ def guild_seasons(guild_name):
     seasons.reverse()
 
     info = []
-    for season in seasons:
+    for pizza, season in zip(pizzas, seasons):
         lines = season.split('\n')
         season_info = {'name': lines[0],
-                       'pizza': int(lines[1]),
+                       'pizza': pizza,
                        'players': []}
-        for line in lines[2:]:
+        for line in lines[1:]:
             player, games, contribution = line.split(',')
             season_info['players'].append((player, int(games), int(contribution)))
         info.append(season_info)

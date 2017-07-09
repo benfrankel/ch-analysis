@@ -1,7 +1,7 @@
 #!/usr/bin/env python3.6
 
-from . import summary
-from . import report
+from util.guild import pizza_distribution
+from util.guild.chat import announce
 
 
 BOG = 'Braves of Glory'
@@ -16,8 +16,8 @@ def _ord(n):
 
 
 def main(guild_name):
-    link, guild = summary.auto_summary(guild_name)
-    placement = summary.Season.pizza_to_placement(guild.pizza[-1])
+    link, guild = pizza_distribution.auto_summary(guild_name)
+    placement = pizza_distribution.Season.pizza_to_placement(guild.pizza[-1])
 
     if placement >= 6:
         return
@@ -36,11 +36,11 @@ def main(guild_name):
                 breadwinners += ', '.join(player.name for player in tier[:-1])
                 breadwinners += f', and {tier[-1].name} receive {pizza} pizza.\n'
 
-    report.announce((f'@everyone\n'
-                     f'**{guild_name} wins {_ord(placement)} place in {season_name}!**\n'
-                     f'\n'
-                     f'{breadwinners}\n'
-                     f'*Updated distribution*: {link}'))
+    announce((f'@everyone\n'
+              f'**{guild_name} wins {_ord(placement)} place in {season_name}!**\n'
+              f'\n'
+              f'{breadwinners}\n'
+              f'*Updated distribution*: {link}'))
 
 
 if __name__ == '__main__':

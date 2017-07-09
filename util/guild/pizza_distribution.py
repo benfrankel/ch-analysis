@@ -1,7 +1,5 @@
-#!/usr/bin/env python3.6
-
-from . import scrape
-from . import paste
+from util import scrape
+from util.pastebin import paste
 
 import os
 
@@ -68,13 +66,13 @@ class Season:
                      'Third Place',
                      'Fourth Place',
                      'Fifth Place',
-                     'No Pizza'][Season.pizza_to_placement(self.pizza)]
+                     'No Pizza'][Season.pizza_to_placement(self.pizza) - 1]
         result = f'{self.name} - {self.guild_name}\n{placement} ({self.pizza} pizza)\n\n'
         for player in sorted(self.players, key=lambda x: x[0]):
             if player[1]:
-                result += f'{player[0]}: {player[1]} awarded, {player[2]:.2f} remaining in account\n'
+                result += f'{player[0]}: {player[1]} awarded, {player[2]:.2f} remaining in account ({player[3]:+.2f})\n'
             else:
-                result += f'{player[0]}: {player[2]:.2f} pizza in account\n'
+                result += f'{player[0]}: {player[2]:.2f} pizza in account ({player[3]:+.2f})\n'
         return result
 
 
@@ -125,7 +123,11 @@ class Guild(Entity):
             next_player = max(self.players, key=lambda x: x.pizza_score[-1])
             next_player.award_pizza(1)
 
-        players = [(p.name, p.pizza[-1], p.pizza_score[-1]) for p in self.players]
+        players = [(p.name,
+                    p.pizza[-1],
+                    p.pizza_score[-1],
+                    p.pizza_score[-1] + p.pizza[-1] - (p.pizza_score[-2] if len(p.pizza_score) > 1 else 0))
+                   for p in self.players if p.games_played[-1]]
         self.seasons.append(Season(self.name, season['name'], season['pizza'], players))
 
     def init_season(self):
@@ -163,22 +165,7 @@ def auto_summary(guild_name):
     report_filename = f'report ({guild_name})'
     seasons = scrape.guild_seasons(guild_name)
     guild = generate_summary(guild_name, seasons, report_filename)
-    link = paste.paste(None, None, None, [os.path.join('results', report_filename)], False, True)
+    link = paste(None, None, None, [os.path.join('results', report_filename)], False, True)
     if link is None or not link.startswith('http'):
         raise IOError(f'Failed to paste to pastebin. Received response \'{link}\'')
     return link, guild
-
-
-def main():
-    while True:
-        guild_name = input('Guild name (exact): ')
-        if not guild_name:
-            break
-        if not auto_summary(guild_name):
-            print(f'The guild \'{guild_name}\' does not exist\n')
-            continue
-        print()
-
-
-if __name__ == '__main__':
-    main()
