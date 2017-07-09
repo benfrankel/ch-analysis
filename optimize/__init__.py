@@ -1,5 +1,5 @@
-from .main import optimum, load
+from .optimize import find, load
 from .classify import get_card_class, get_card_classes
 
 
-__all__ = ['classify', 'main']
+__all__ = ['classify', 'optimize.py']

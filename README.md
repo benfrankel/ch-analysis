@@ -1,6 +1,32 @@
-# CH Analysis
+# Introduction
 
 This is an assorted collection of scripts & utilities for the game Card Hunter.
+
+
+## Dependencies
+
+You need to have [Python 3.6](https://www.python.org/downloads/release/python-361/) installed.
+
+You should also install [git](https://git-scm.com/downloads) to easily download the repository from here.
+
+
+## Installation
+
+Open a terminal (or command prompt on Windows) and navigate to the place you would like to install CH Analysis.
+
+Enter the command "git clone --depth=1 https://github.com/BenFrankel/CH-Analysis" to download this repository.
+
+Now you can execute any script by running "python <name of script>" in your terminal.
+
+
+### Discord
+
+Some scripts attempt to operate a Discord bot. Those scripts will fail unless you create your own Discord bot and enter its token in the file `util.guild.chat`.
+
+
+# Utilities
+
+Below is a description of the scripts & utilities provided by this repository.
 
 
 ## Verbose Log Parser

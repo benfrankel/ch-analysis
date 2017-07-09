@@ -168,7 +168,7 @@ def load():
     cycling_class = classify.get_card_class('cycling')
 
 
-def optimum(archetype, card_weights):
+def find(archetype, card_weights):
     archetype = gamedata.get_archetype(archetype)
     slot_items = {slot: list(filter(lambda item: item.slot_type == slot, items)) for slot in set(archetype.slot_types)}
 
