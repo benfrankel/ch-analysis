@@ -16,7 +16,7 @@ Open a terminal (or command prompt on Windows) and navigate to the place you wou
 
 Enter the command "git clone --depth=1 https://github.com/BenFrankel/CH-Analysis" to download this repository.
 
-Now you can execute any script by running "python <name of script>" in your terminal.
+Now you can execute any script by running "python \<name of script\>" in your terminal.
 
 
 ### Discord
@@ -26,7 +26,7 @@ Some scripts attempt to operate a Discord bot. Those scripts will fail unless yo
 
 # Utilities
 
-Below is a description of the scripts & utilities provided by this repository.
+Below is an overview of the scripts & utilities provided by this repository.
 
 
 ## Verbose Log Parser
@@ -55,11 +55,11 @@ The package `optimize` receives a character archetype together with a list of ca
 
 ## Guild Utilities
 
-I have scripts to automate several guild-related tasks.
+The following scripts are used to automate several guild-related tasks.
 
 ### Pizzatron3000
 
-`control_pizzatron` allows me to make announcements as the Discord bot Pizzatron3000 manually.
+`control_pizzatron` allows me to make announcements as my Discord bot Pizzatron3000 manually.
 
 ### Daily Deal Wishlist
 
