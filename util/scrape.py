@@ -39,17 +39,17 @@ def guild_seasons(guild_name):
     text = text.replace('Contribution', '')
 
     # Remove winrates and placings
-    text = re.sub(r'[0-9]+%', r'', text)
-    text = re.sub(r'[0-9]+(st|nd|rd|th)', r'', text)
+    text = re.sub(r'[0-9]+%', '', text)
+    text = re.sub(r'[0-9]+(st|nd|rd|th)', '', text)
 
     # Reduce commas
-    text = re.sub(r',+', r',', text)
+    text = re.sub(r',+', ',', text)
 
     # Put players on their own lines
     text = re.sub(r',([^,]+,-?[0-9]+,-?[0-9]+)', r'\n\1', text)
 
     # Remove trailing commas
-    text = re.sub(r',(\n|\r)', r'\n', text).rstrip('\n')
+    text = re.sub(r',(\n|\r)', '\n', text).rstrip('\n')
 
     # Reorder from oldest to newest season
     seasons = text.split('\n\n')
@@ -76,10 +76,10 @@ def daily_deal():
     text = text[text.find('<b>Date:</b>'):text.find('<span style="color: rgb(0, 0, 0)">')]
 
     # Strip away HTML elements
-    text = re.sub(r'<[^>]+>', r'', text).strip()
+    text = re.sub(r'<[^>]+>', '', text).strip()
 
     # Remove labels
-    text = re.sub(r'[^:\s]+:\s*', r'', text)
+    text = re.sub(r'[^:\s]+:\s*', '', text)
 
     # Remove empty lines
     text = text.replace('\n\n', '\n')
@@ -91,3 +91,68 @@ def daily_deal():
             'items': lines[2:]}
 
     return info
+
+
+def _parse_battle_history_page(text):
+    text = text[text.find('<td style=\'white-space:nowrap;\'>'):text.find('\n<div id="footer_wrapper">')]
+
+    # Get link to previous page, if it exists
+    try:
+        prev = re.findall(r'<a href="(\?page=prev[^"]*)"', text)[0]
+    except IndexError:
+        prev = False
+
+    # Remove link HTML elements
+    text = re.sub(r'</?a[^>]*>', '', text)
+
+    # Compress remaining HTML elements
+    text = re.sub(r'(<(/[^>]*|[^t>]|t[^r>]|tr[^>])*>)+', ';', text).strip()
+
+    # Translate HTML character codes
+    text = text.replace('&amp;', '&')
+
+    # Split rows of the table
+    lines = [line[1:-1] for line in text.split('<tr>')][:-1]
+    battles = []
+
+    for line in lines:
+        try:
+            date, result, contribution = line.split(';')
+        except ValueError:
+            continue
+        contribution = int(contribution)
+        blitz = ' blitzed ' in result and not contribution % 2
+        if not blitz and ' defeated ' not in result:
+            continue
+        result = result[:-1]
+        if blitz:
+            winner, loser = result.split(' blitzed ')
+        else:
+            winner, loser = result.split(' defeated ')
+        winner = winner.split(', ')
+        loser = loser.split(', ')
+        battles.append({'date': date,
+                        'winner': winner,
+                        'loser': loser,
+                        'contribution': contribution,
+                        'blitz': blitz})
+        print(battles[-1])
+
+    return prev, battles
+
+
+def battle_history(player_name):
+    base_url = 'http://cardhuntermeta.farbs.org/guildhistory.php'
+    end_url = f'?player={player_name}&page=last'
+    battles = []
+
+    count = 1
+    while end_url:
+        print()
+        print(count, ':', f'{base_url}{end_url}')
+        count += 1
+        site = requests.get(f'{base_url}{end_url}')
+        end_url, lines = _parse_battle_history_page(site.text)
+        battles.extend(lines)
+
+    return battles

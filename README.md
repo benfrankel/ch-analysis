@@ -1,13 +1,20 @@
-# Introduction
+# CH Analysis
 
-This is an assorted collection of scripts & utilities for the game Card Hunter.
+This repository holds a collection of scripts & utilities for the game Card Hunter.
 
 
 ## Dependencies
 
-You need to have [Python 3.6](https://www.python.org/downloads/release/python-361/) installed.
+You'll need [Python 3.6](https://www.python.org/downloads/release/python-361/) installed to run the scripts.
 
-You should also install [git](https://git-scm.com/downloads) to easily download the repository from here.
+You should also install [git](https://git-scm.com/downloads) to download the repository from here.
+
+
+### Discord
+
+Some scripts attempt to operate a Discord bot. Those scripts will fail unless you create your own Discord bot and enter its token in the file `util.guild.chat`.
+
+Furthermore, they require the module `discord.py`, which is available on PyPI (so you can download it using pip).
 
 
 ## Installation
@@ -19,14 +26,9 @@ Enter the command "git clone --depth=1 https://github.com/BenFrankel/CH-Analysis
 Now you can execute any script by running "python \<name of script\>" in your terminal.
 
 
-### Discord
-
-Some scripts attempt to operate a Discord bot. Those scripts will fail unless you create your own Discord bot and enter its token in the file `util.guild.chat`.
-
-
 # Utilities
 
-Below is an overview of the scripts & utilities provided by this repository.
+Below is an overview of the utilities provided by this repository.
 
 
 ## Verbose Log Parser
@@ -47,7 +49,7 @@ The enemy's deck is among the information that `battle` is able to extract.
 
 ## Extreme Deck Optimizer
 
-The package `optimize` receives a character archetype together with a list of card values as input, and finds the deck that maximizes sum of card values.
+The package `optimize` receives a character archetype together with a list of card values as input, and finds the deck that maximizes total card value. In addition,
 
 - Cycling is handled properly (traits or Toughness / Shield Block / etc.)
 - Card value packs are available (direct magic damage, crowd healing, direct vampire damage, etc.)
@@ -57,18 +59,18 @@ The package `optimize` receives a character archetype together with a list of ca
 
 The following scripts are used to automate several guild-related tasks.
 
-### Pizzatron3000
+### Discord Bot Manual Control
 
-`control_pizzatron` allows me to make announcements as my Discord bot Pizzatron3000 manually.
+`control_discord_bot` allows you to make announcements as your Discord bot manually.
 
 ### Daily Deal Wishlist
 
-`dd_wishlist` scrapes the Daily Deal forum thread and checks for matches against a wishlist, and if a match is found, makes an announcement on Discord.
+`daily_deal_wishlist` scrapes the Daily Deal forum thread and checks for matches against a wishlist, and if a match is found, makes an announcement on Discord.
 
 ### Guild Pizza Distribution Summary
 
-`guild_summary` scrapes the meta site for the per-season performance of any guild and generates a summary of its ideal pizza distribution history.
+`guild_summary` scrapes the meta site for the per-season performance of any guild, then generates a summary of its ideal pizza distribution history.
 
 ### Guild Pizza Distribution Report
 
-`distribute_pizza` uses `guild_summary` to upload a summary to pastebin and make an appropriate announcement on Discord.
+`distribute_pizza` uses `guild_summary` to upload a summary to pastebin and then announce the results on Discord.

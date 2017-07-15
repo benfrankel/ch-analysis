@@ -27,7 +27,9 @@ wishlist = [
     'Instant Snowman',
     'True Silver',
     'Flame Warper',
+    'Wym\'s Spiteful Bucket',
     'Phantom Pain',
+    'Vial of Spite',
     'Asmod\'s Telekinetic Chain',
     'Vasyl\'s Ectoplasmic Raiments',
 ]
@@ -62,12 +64,14 @@ def main():
         link = subprocess.check_output(f'imgur "{image_path}"', shell=True).decode('ascii')[:-1]
         message += f'**{match}** in DD, {now:%b. %m, %Y}. ({card_names}) [__{link}__]\n'
 
+    print('Done!')
+
     if message:
         print('\nMaking announcement on Discord')
         chat.announce(message.strip())
         print(message.strip())
     else:
-        print('No item from wishlist today\n\n', '\n'.join(info['items']), sep='')
+        print('\nNo item from wishlist today\n\n', '\n'.join(info['items']), sep='')
 
 if __name__ == '__main__':
     main()

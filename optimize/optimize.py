@@ -1,5 +1,4 @@
 import itertools
-import time
 
 import gamedata
 from . import classify

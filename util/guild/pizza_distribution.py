@@ -1,5 +1,5 @@
-from util import scrape
-from util.pastebin import paste
+from .. import scrape
+from ..pastebin import paste
 
 import os
 
@@ -148,24 +148,28 @@ class Guild(Entity):
         return result
 
 
-def generate_summary(guild_name, seasons, outfile):
+def guild_history(guild_name, seasons):
     guild = Guild(guild_name)
 
     for season in seasons:
         guild.init_season()
         guild.end_season(season)
 
-    with open(os.path.join('results', outfile), 'w') as report:
-        report.write(str(guild))
-
     return guild
 
 
 def auto_summary(guild_name):
-    report_filename = f'report ({guild_name})'
     seasons = scrape.guild_seasons(guild_name)
-    guild = generate_summary(guild_name, seasons, report_filename)
-    link = paste(None, None, None, [os.path.join('results', report_filename)], False, True)
+    guild = guild_history(guild_name, seasons)
+
+    path = os.path.join('localdata', 'guild_pizza', guild_name)
+
+    with open(path, 'w') as f:
+        f.write(str(guild))
+
+    link = paste(None, None, None, [path], False, True)
+
     if link is None or not link.startswith('http'):
         raise IOError(f'Failed to paste to pastebin. Received response \'{link}\'')
+
     return link, guild

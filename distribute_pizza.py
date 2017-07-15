@@ -4,11 +4,7 @@ from util.guild import pizza_distribution
 from util.guild.chat import announce
 
 
-BOG = 'Braves of Glory'
-BA = 'Brave Academy'
-WC = 'Walking Carpets'
-POF = 'Power of Fires'
-L = 'Leviathan'
+GUILD = 'Braves of Glory'
 
 
 def _ord(n):
@@ -44,4 +40,4 @@ def main(guild_name):
 
 
 if __name__ == '__main__':
-    main(BOG)
+    main(GUILD)

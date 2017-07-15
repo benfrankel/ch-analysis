@@ -7,7 +7,7 @@ import csv
 import urllib.request
 
 from gamedata import model
-from const import root_dir
+from const import gamedata_dir
 
 
 # URLs to access CH databases
@@ -19,10 +19,9 @@ archetypes_url = 'data/gameplay/CharacterArchetypes/CharacterArchetypes.csv'
 
 
 # Files where the databases will be stored locally
-localdata = os.path.join(root_dir, 'localdata')
-cards_filename = os.path.join(localdata, 'cards.csv')
-items_filename = os.path.join(localdata, 'items.csv')
-archetypes_filename = os.path.join(localdata, 'archetypes.csv')
+cards_filename = os.path.join(gamedata_dir, 'cards.csv')
+items_filename = os.path.join(gamedata_dir, 'items.csv')
+archetypes_filename = os.path.join(gamedata_dir, 'archetypes.csv')
 
 
 # Dictionaries where the databases will be stored in program memory
@@ -301,7 +300,7 @@ def is_archetype(name):
 
 def download_item_image(image_name):
     image_name = image_name.replace(' ', '%20').replace('\'', '%27')
-    img_path = os.path.join(localdata, image_name)
+    img_path = os.path.join(gamedata_dir, image_name)
     urllib.request.urlretrieve(ch_live + item_img_url + image_name, img_path)
 
     return img_path

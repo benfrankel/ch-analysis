@@ -1,6 +1,6 @@
 #!/usr/bin/env python3.6
 
-from util.guild.chat import TOKEN, CHANNEL_ANNOUNCE
+from util.guild.chat import TOKEN, CHANNEL_ID
 import discord
 
 
@@ -9,7 +9,7 @@ def main():
 
     @client.event
     async def on_ready():
-        announcements = client.get_channel(CHANNEL_ANNOUNCE)
+        announcements = client.get_channel(CHANNEL_ID)
         while True:
             message = input('Announce: ')
             if not message:

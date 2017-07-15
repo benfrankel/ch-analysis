@@ -1,7 +1,7 @@
+from gamedata import data
+
 import os.path
 import json
-
-from gamedata import data
 
 
 card_classes_filename = os.path.join('localdata', 'card_classes.json')

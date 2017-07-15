@@ -1,7 +1,6 @@
 import urllib.request
 import urllib.error
 import urllib.parse
-import optparse
 import os
 
 syntax_filetypes = {
