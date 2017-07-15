@@ -47,6 +47,15 @@ This package is incomplete.
 The enemy's deck is among the information that `battle` is able to extract.
 
 
+## Battle History
+
+The package `battle_history` can download a player's battle history from the meta site. It also provides functions to query the resulting data, and to calculate statistics from the data.
+
+The following queries are available:
+
+- All recorded battles between two players
+
+
 ## Extreme Deck Optimizer
 
 The package `optimize` receives a character archetype together with a list of card values as input, and finds the deck that maximizes total card value. In addition,
