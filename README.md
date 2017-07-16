@@ -51,9 +51,14 @@ The enemy's deck is among the information that `battle` is able to extract.
 
 The package `battle_history` can download a player's battle history from the meta site. It also provides functions to query the resulting data, and to calculate statistics from the data.
 
-The following queries are available:
+The following statistics are available:
 
-- All recorded battles between two players
+- Summary of a list of battles, showing win percentage, wins - defeats, and blitz wins - normal wins - normal defeats - blitz defeats
+    - Summary applied to one player
+    - Summary applied to all matchups between two players
+- Ladder of a player's performance against guild players or guilds
+    - Ladder ranking a player's net contribution gain / loss against opponents
+    - Ladder ranking a player's net wins / defeats against opponents
 
 
 ## Extreme Deck Optimizer

@@ -12,9 +12,19 @@ def download(player_name):
         with open(path, 'wb') as f:
             pickle.dump(battles, f)
     else:
+        battles = []
         pass  # TODO: Download only the newest battles & append to file
+    return battles
+
+
+def _load(player_name):
+    with open(os.path.join(battle_history_dir, player_name), 'rb') as f:
+        return pickle.load(f)
 
 
 def load(player_name):
-    with open(os.path.join(battle_history_dir, player_name), 'rb') as f:
-        return pickle.load(f)
+    try:
+        return _load(player_name)
+    except FileNotFoundError:
+        download(player_name)
+        return _load(player_name)
