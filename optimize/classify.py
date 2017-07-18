@@ -10,7 +10,14 @@ card_packs_filename = os.path.join('localdata', 'card_packs.json')
 card_packs = dict()
 
 
+is_loaded = False
+
+
 def load():
+    global is_loaded
+    if is_loaded:
+        return
+
     cards = data.get_cards()
 
     # Built-in classes
@@ -47,6 +54,8 @@ def load():
         for name, info in card_packs_info.items():
             card_packs[name] = card_packs.get(name, dict())
             card_packs[name].update(info)
+
+    is_loaded = True
 
 
 def is_card_pack(name):

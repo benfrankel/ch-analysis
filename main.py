@@ -2,7 +2,7 @@
 
 import gamedata
 
-from battle import reconstruct
+from battle_parse import reconstruct
 
 
 log_filename = 'info/example_logs/log1'

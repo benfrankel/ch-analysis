@@ -1,6 +1,5 @@
 from django.shortcuts import render
 import optimize
-import gamedata
 
 
 def optimize_for(archetype, values):
@@ -39,7 +38,6 @@ def optimize_for(archetype, values):
 
 
 def index(request):
-    gamedata.load()
     optimize.load()
     context = {'card_packs': sorted(optimize.get_card_packs().keys())}
     if request.POST:

@@ -11,7 +11,7 @@ class CardLocation(enum.Enum):
     Discard = 4
 
 
-# An instance of a card during a battle (type may be hidden)
+# An instance of a card during a battle_parse (type may be hidden)
 class Card:
     def __init__(self, item):
         # Info
@@ -111,7 +111,7 @@ class Card:
         return '{}("{}")'.format(self.__class__.__name__, self.name)
 
 
-# An instance of an item during a battle (type may be hidden)
+# An instance of an item during a battle_parse (type may be hidden)
 class Item:
     def __init__(self, slot):
         # Info
@@ -163,7 +163,7 @@ class Item:
         return '{}("{}")'.format(self.__class__.__name__, self.name)
 
 
-# An instance of a slot type (e.g. Weapon, Staff, Divine Skill) that can contain an Item during a battle
+# An instance of a slot type (e.g. Weapon, Staff, Divine Skill) that can contain an Item during a battle_parse
 class ItemSlot:
     def __init__(self, frame, name):
         # Info
@@ -200,7 +200,7 @@ class ItemSlot:
         return '{}("{}")'.format(self.__class__.__name__, self.name)
 
 
-# Models an instance of a character archetype's list of item slots during a battle
+# Models an instance of a character archetype's list of item slots during a battle_parse
 class ItemFrame:
     def __init__(self, group):
         # Info
@@ -245,7 +245,7 @@ class ItemFrame:
         return '{}("{}")'.format(self.__class__.__name__, self.name)
 
 
-# An instance of an actor group during a battle (name, figure, archetype, item frame)
+# An instance of an actor group during a battle_parse (name, figure, archetype, item frame)
 class Group:
     def __init__(self, player, index):
         # Info
@@ -357,7 +357,7 @@ class Group:
         return '{}("{}")'.format(self.__class__.__name__, self.name)
 
 
-# An instance of a player during a battle
+# An instance of a player during a battle_parse
 class Player:
     def __init__(self, scenario, index):
         # Info
@@ -401,7 +401,7 @@ class Player:
         self.groups[event.group_index].play_card(event)
 
 
-# An instance of a map tile during a battle
+# An instance of a map tile during a battle_parse
 class Square:
     def __init__(self, x, y, flip_x, flip_y, image_name, terrain):
         # Info
@@ -417,7 +417,7 @@ class Square:
         self.terrain = terrain
 
 
-# An instance of a map doodad during a battle (static; doodads stay the same throughout the battle)
+# An instance of a map doodad during a battle_parse (static; doodads stay the same throughout the battle_parse)
 class Doodad:
     def __init__(self, x, y, flip_x, flip_y, image_name, marker):
         # Info
@@ -431,7 +431,7 @@ class Doodad:
         self.y = y
 
 
-# An instance of a map during a battle (bunch of tiles and doodads)
+# An instance of a map during a battle_parse (bunch of tiles and doodads)
 class Map:
     def __init__(self, scenario):
         # Info

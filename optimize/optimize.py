@@ -4,6 +4,9 @@ from optimize import classify
 import gamedata
 
 
+is_loaded = False
+
+
 class ItemFinder:
     slot_hash = {
         'Weapon': 0,
@@ -159,12 +162,19 @@ trait_class = dict()
 
 
 def load():
+    global is_loaded
+    if is_loaded:
+        return
+
     global items, trait_class
 
+    gamedata.load()
     classify.load()
     items = gamedata.get_items()
     trait_class = classify.get_card_pack('trait')
     cycling_class = classify.get_card_pack('cycling')
+
+    is_loaded = True
 
 
 def find(archetype, card_weights):

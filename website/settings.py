@@ -28,7 +28,8 @@ SECRET_KEY = '%j0&+=ipa8&=&$qyrd5jnn+uxgh-yn49-p@z7*fc7t!tc3$0r#'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'pyrious.herokuapp.com'
+    'localhost',
+    'pyrious.herokuapp.com',
 ]
 
 

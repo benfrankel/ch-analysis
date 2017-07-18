@@ -33,6 +33,10 @@ archetype_dict = dict()
 other_archetype_dict = dict()
 
 
+# Flags
+is_loaded = False
+
+
 def download():
     """
     Download live data from CH and store it locally.
@@ -65,6 +69,10 @@ def load():
     """
     Load local CH data into program memory.
     """
+    global is_loaded
+    if is_loaded:
+        return
+
     all_cards_dict = dict()
 
     # Convert to integer, None if this is impossible
@@ -254,6 +262,8 @@ def load():
             global other_archetype_dict
             archetype_dict[new_archetype.name.lower()] = new_archetype
             other_archetype_dict[new_archetype.race.lower() + ' ' + new_archetype.role.lower()] = new_archetype
+
+    is_loaded = True
 
 
 def get_card(name):

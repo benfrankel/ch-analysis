@@ -93,7 +93,7 @@ def daily_deal():
     return info
 
 
-def _parse_battle_history_page(text):
+def _parse_battles_page(text):
     text = text[text.find('<td style=\'white-space:nowrap;\'>'):text.find('\n<div id="footer_wrapper">')]
 
     # Get link to previous page, if it exists
@@ -141,10 +141,10 @@ def _parse_battle_history_page(text):
     return prev, battles
 
 
-def battle_history(player_name):
+def battles(player_name):
     base_url = 'http://cardhuntermeta.farbs.org/guildhistory.php'
     end_url = f'?player={player_name}&page=last'
-    battles = []
+    result = []
 
     count = 1
     while end_url:
@@ -152,7 +152,7 @@ def battle_history(player_name):
         print(count, ':', f'{base_url}{end_url}')
         count += 1
         site = requests.get(f'{base_url}{end_url}')
-        end_url, lines = _parse_battle_history_page(site.text)
-        battles.extend(lines)
+        end_url, lines = _parse_battles_pagrye(site.text)
+        result.extend(lines)
 
-    return battles
+    return result

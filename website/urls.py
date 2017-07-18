@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     url(r'^optimize/', include('optimize.urls')),
+    url(r'^battles/', include('battles.urls')),
 ]
