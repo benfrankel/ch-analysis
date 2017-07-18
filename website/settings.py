@@ -27,7 +27,9 @@ SECRET_KEY = '%j0&+=ipa8&=&$qyrd5jnn+uxgh-yn49-p@z7*fc7t!tc3$0r#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'pyrious.herokuapp.com'
+]
 
 
 # Application definition
