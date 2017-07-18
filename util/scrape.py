@@ -152,7 +152,7 @@ def battles(player_name):
         print(count, ':', f'{base_url}{end_url}')
         count += 1
         site = requests.get(f'{base_url}{end_url}')
-        end_url, lines = _parse_battles_pagrye(site.text)
+        end_url, lines = _parse_battles_page(site.text)
         result.extend(lines)
 
     return result
