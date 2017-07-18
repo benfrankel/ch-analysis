@@ -1,7 +1,8 @@
-import os
-
 from util import scrape
 from util.pastebin import paste
+from const import guild_pizza_dir
+
+import os
 
 
 class Entity:
@@ -162,7 +163,10 @@ def auto_summary(guild_name):
     seasons = scrape.guild_seasons(guild_name)
     guild = guild_history(guild_name, seasons)
 
-    path = os.path.join('localdata', 'guild_pizza', guild_name)
+    if not os.path.exists(guild_pizza_dir):
+        os.makedirs(guild_pizza_dir)
+
+    path = os.path.join(guild_pizza_dir, guild_name)
 
     with open(path, 'w') as f:
         f.write(str(guild))

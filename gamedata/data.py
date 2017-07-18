@@ -37,6 +37,9 @@ def download():
     """
     Download live data from CH and store it locally.
     """
+    if not os.path.exists(gamedata_dir):
+        os.makedirs(gamedata_dir)
+
     # Request the .csv files from CH live
     cards_req = urllib.request.urlopen(ch_live + cards_url)
     items_req = urllib.request.urlopen(ch_live + items_url)
@@ -76,6 +79,9 @@ def load():
         if j is None:
             return s
         return j
+
+    if not os.path.exists(cards_filename):
+        download()
 
     # Extract the info from every line of cards.csv, store it in a CardType object and add it to a temporary dictionary
     with open(cards_filename, newline='') as f:

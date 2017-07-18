@@ -7,6 +7,9 @@ from const import battle_history_dir
 
 
 def download(player_name):
+    if not os.path.exists(battle_history_dir):
+        os.makedirs(battle_history_dir)
+
     path = os.path.join(battle_history_dir, player_name)
     if not os.path.isfile(path):
         battles = scrape.battle_history(player_name)
