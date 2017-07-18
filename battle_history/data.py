@@ -1,8 +1,9 @@
-from util import scrape
-from const import battle_history_dir
-
 import os.path
 import pickle
+
+from util import scrape
+
+from const import battle_history_dir
 
 
 def download(player_name):

@@ -1,5 +1,5 @@
 from .optimize import find, load
-from .classify import get_card_class, get_card_classes
+from .classify import get_card_pack, get_card_packs
 
 
 __all__ = ['classify', 'optimize.py']

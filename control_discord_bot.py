@@ -1,7 +1,8 @@
 #!/usr/bin/env python3.6
 
-from util.guild.chat import TOKEN, CHANNEL_ID
 import discord
+
+from util.guild.chat import TOKEN, CHANNEL_ID
 
 
 def main():

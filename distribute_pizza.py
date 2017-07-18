@@ -1,7 +1,8 @@
 #!/usr/bin/env python3.6
 
-from util.guild import pizza_distribution
 from util.guild.chat import announce
+
+from util.guild import pizza_distribution
 
 
 GUILD = 'Braves of Glory'

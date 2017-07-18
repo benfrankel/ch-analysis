@@ -1,7 +1,7 @@
 import itertools
 
+from optimize import classify
 import gamedata
-from . import classify
 
 
 class ItemFinder:
@@ -163,8 +163,8 @@ def load():
 
     classify.load()
     items = gamedata.get_items()
-    trait_class = classify.get_card_class('trait')
-    cycling_class = classify.get_card_class('cycling')
+    trait_class = classify.get_card_pack('trait')
+    cycling_class = classify.get_card_pack('cycling')
 
 
 def find(archetype, card_weights):

@@ -1,8 +1,7 @@
-from util.guild import pizza_distribution, chat
-
+from util.guild import pizza_distribution
+from . import log_parse
 from . import pastebin
 from . import scrape
-from . import log_parse
 
 
 __all__ = [

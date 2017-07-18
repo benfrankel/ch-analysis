@@ -1,7 +1,8 @@
-from . import data
-from . import query
-
 from collections import defaultdict
+
+from battle_history import data
+
+from battle_history import query
 
 
 def _net_win(player, battle):

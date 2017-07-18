@@ -1,7 +1,7 @@
-from .. import scrape
-from ..pastebin import paste
-
 import os
+
+from util import scrape
+from util.pastebin import paste
 
 
 class Entity:

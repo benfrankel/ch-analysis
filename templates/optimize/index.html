@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CH Optimize</title>
+</head>
+<body>
+<h1>CH Extreme Deck Optimizer</h1>
+<b>Card packs</b>:<br/>
+<ul>
+{% for card_pack in card_packs %}
+    <li>{{ card_pack }}</li>
+{% endfor %}
+</ul>
+<form method="post">
+    {% csrf_token %}
+    <label><b>Character archetype</b>:<br/><br/>
+        <select name="race">
+            <option value="dwarf">Dwarf</option>
+            <option value="human">Human</option>
+            <option value="elf">Elf</option>
+        </select>
+        <select name="class">
+            <option value="warrior">Warrior</option>
+            <option value="priest">Priest</option>
+            <option value="wizard">Wizard</option>
+        </select>
+    </label><br/><br/>
+    <label>
+        <b>Optimize for</b>:<br/><br/>
+        <textarea name="card-values"></textarea>
+    </label><br/><br/>
+    <input type="submit" value="Optimize">
+</form>
+{% if result %}
+    <br/>
+    <b>Result</b>:
+    <div style="background-color: #dff">{{ result | linebreaks }}</div>
+{% endif %}
+</body>
+</html>

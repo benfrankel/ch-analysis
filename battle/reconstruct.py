@@ -1,9 +1,9 @@
 # This file extracts information and a list of battle events from verbose battle logs
 
-from . import model
-from util import log_parse
-
 from tkinter import Tk
+
+from util import log_parse
+from . import model
 
 
 # Basic superclass for all events

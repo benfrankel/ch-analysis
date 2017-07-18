@@ -1,6 +1,7 @@
 #!/usr/bin/env python3.6
 
 import gamedata
+
 from battle import reconstruct
 
 
