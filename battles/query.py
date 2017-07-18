@@ -1,4 +1,4 @@
-from battle_history import data
+from . import data
 
 
 def _load_either(player, opponent):
