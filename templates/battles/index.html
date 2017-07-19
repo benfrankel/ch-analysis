@@ -11,8 +11,10 @@
     <label>
         <b>Generate</b>:
         <select name="to-generate">
-            {% for value, name in generate_options %}
-                <option value="{{ value }}"{% if to_generate == value %} selected{% endif %}>{{ name }}</option>
+            {% for option in generate_options %}
+                {% with value=option|slugify %}
+                    <option value="{{ value }}"{% if to_generate == value %} selected{% endif %}>{{ option }}</option>
+                {% endwith %}
             {% endfor %}
         </select>
     </label><br/><br/>
@@ -24,7 +26,7 @@
 {% if result %}
     <br/>
     <b>Result</b>:
-    <div style="background-color: #dff">{{ result | linebreaks }}</div>
+    <div style="background-color: #dff">{{ result|linebreaks }}</div>
 {% endif %}
 </body>
 </html>

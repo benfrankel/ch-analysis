@@ -1,6 +1,6 @@
 from util import scrape
 from util.pastebin import paste
-from const import guild_pizza_dir
+from const import GUILD_PIZZA_DIR
 
 import os
 
@@ -163,10 +163,10 @@ def auto_summary(guild_name):
     seasons = scrape.guild_seasons(guild_name)
     guild = guild_history(guild_name, seasons)
 
-    if not os.path.exists(guild_pizza_dir):
-        os.makedirs(guild_pizza_dir)
+    if not os.path.exists(GUILD_PIZZA_DIR):
+        os.makedirs(GUILD_PIZZA_DIR)
 
-    path = os.path.join(guild_pizza_dir, guild_name)
+    path = os.path.join(GUILD_PIZZA_DIR, guild_name)
 
     with open(path, 'w') as f:
         f.write(str(guild))

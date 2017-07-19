@@ -1,8 +1,9 @@
 import os.path
 
+from website.settings import BASE_DIR
 
-root_dir = os.path.dirname(os.path.abspath(__file__))
-localdata_dir = os.path.join(root_dir, 'localdata')
-gamedata_dir = os.path.join(localdata_dir, 'gamedata')
-guild_pizza_dir = os.path.join(localdata_dir, 'guild_pizza')
-battles_dir = os.path.join(localdata_dir, 'battles')
+
+LOCALDATA_DIR = os.path.join(BASE_DIR, 'localdata')
+GAMEDATA_DIR = os.path.join(LOCALDATA_DIR, 'gamedata')
+GUILD_PIZZA_DIR = os.path.join(LOCALDATA_DIR, 'guild_pizza')
+BATTLES_DIR = os.path.join(LOCALDATA_DIR, 'battles')

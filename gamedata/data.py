@@ -7,7 +7,7 @@ import csv
 import urllib.request
 
 from gamedata import model
-from const import gamedata_dir
+from const import GAMEDATA_DIR
 
 
 # URLs to access CH databases
@@ -19,9 +19,9 @@ archetypes_url = 'data/gameplay/CharacterArchetypes/CharacterArchetypes.csv'
 
 
 # Files where the databases will be stored locally
-cards_filename = os.path.join(gamedata_dir, 'cards.csv')
-items_filename = os.path.join(gamedata_dir, 'items.csv')
-archetypes_filename = os.path.join(gamedata_dir, 'archetypes.csv')
+cards_filename = os.path.join(GAMEDATA_DIR, 'cards.csv')
+items_filename = os.path.join(GAMEDATA_DIR, 'items.csv')
+archetypes_filename = os.path.join(GAMEDATA_DIR, 'archetypes.csv')
 
 
 # Dictionaries where the databases will be stored in program memory
@@ -41,8 +41,8 @@ def download():
     """
     Download live data from CH and store it locally.
     """
-    if not os.path.exists(gamedata_dir):
-        os.makedirs(gamedata_dir)
+    if not os.path.exists(GAMEDATA_DIR):
+        os.makedirs(GAMEDATA_DIR)
 
     # Request the .csv files from CH live
     cards_req = urllib.request.urlopen(ch_live + cards_url)
@@ -88,7 +88,7 @@ def load():
             return s
         return j
 
-    if not os.path.exists(cards_filename):
+    if not os.path.isfile(cards_filename):
         download()
 
     # Extract the info from every line of cards.csv, store it in a CardType object and add it to a temporary dictionary
@@ -316,7 +316,7 @@ def is_archetype(name):
 
 def download_item_image(image_name):
     image_name = image_name.replace(' ', '%20').replace('\'', '%27')
-    img_path = os.path.join(gamedata_dir, image_name)
+    img_path = os.path.join(GAMEDATA_DIR, image_name)
     urllib.request.urlretrieve(ch_live + item_img_url + image_name, img_path)
 
     return img_path

@@ -41,7 +41,9 @@ def index(request):
     optimize.load()
     context = {'card_packs': sorted(optimize.get_card_packs().keys())}
     if request.POST:
+        context['race'] = request.POST['race']
+        context['class'] = request.POST['class']
         archetype = f'{request.POST["race"]} {request.POST["class"]}'
-        values = request.POST['card-values']
+        context['values'] = values = request.POST['card-values']
         context['result'] = optimize_for(archetype, values)
     return render(request, 'optimize/index.html', context)

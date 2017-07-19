@@ -13,11 +13,11 @@ generate_dict = {
 
 
 generate_options = (
-    ('summary', 'Summary'),
-    ('contribution-player-ladder', 'Contribution player ladder'),
-    ('contribution-guild-ladder', 'Contribution guild ladder'),
-    ('net-win-player-ladder', 'Net win player ladder'),
-    ('net-win-guild-ladder', 'Net win guild ladder'),
+    'Summary',
+    'Contribution player ladder',
+    'Contribution guild ladder',
+    'Net win player ladder',
+    'Net win guild ladder',
 )
 
 
