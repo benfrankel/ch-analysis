@@ -49,7 +49,7 @@ The enemy's deck is among the information that `battle` is able to extract.
 
 ## Battle History
 
-The package `battles` can download a player's battle history from the meta site. It also provides functions to query the resulting data, and to calculate statistics from the data.
+The package `meta` can download a player's battle history from the meta site. It also provides functions to query the resulting data, and to calculate statistics from the data.
 
 The following statistics are available:
 

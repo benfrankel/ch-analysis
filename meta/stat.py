@@ -25,7 +25,7 @@ def summary(player, battles):
     blitz_defeats = list(filter(lambda battle: battle['blitz'], defeats))
 
     return (
-        f'Winrate: {100 * len(wins) // len(battles)}%\n'
+        f'Winrate: {100 * len(wins) // len(meta)}%\n'
         f'Win-Lose: {len(wins)}-{len(defeats)}\n'
         f'Extended W-L: {len(blitz_wins)}-{len(wins) - len(blitz_wins)}-{len(defeats) - len(blitz_defeats)}-{len(blitz_defeats)}'
     )
@@ -33,12 +33,12 @@ def summary(player, battles):
 
 def matchup_summary(player, opponent):
     battles = list(query.matchup_history(player, opponent))
-    return f'{player} vs {opponent}\n\n{summary(player, battles)}'
+    return f'{player} vs {opponent}\n\n{summary(player, meta)}'
 
 
 def player_summary(player):
     battles = list(data.load(player))
-    return f'{player}\n\n{summary(player, battles)}'
+    return f'{player}\n\n{summary(player, meta)}'
 
 
 def _player_ladder(player, score):

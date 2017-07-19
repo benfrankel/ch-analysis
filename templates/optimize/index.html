@@ -8,7 +8,9 @@
 <h1>CH Extreme Deck Optimizer</h1>
 <b>Card packs</b>:<br/>
 {% if card_packs %}
-    {{ card_packs|unordered_list }}
+    <ul>
+        {{ card_packs|unordered_list }}
+    </ul>
 {% else %}
     No card packs loaded
 {% endif %}

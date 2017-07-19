@@ -24,13 +24,13 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = '%j0&+=ipa8&=&$qyrd5jnn+uxgh-yn49-p@z7*fc7t!tc3$0r#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # Application definition
 
 INSTALLED_APPS = [
     'optimize',
-    'battles',
+    'meta',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -82,9 +82,12 @@ WSGI_APPLICATION = 'website.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2'
     }
 }
+
+DATABASES['default'].update(dj_database_url.config(conn_max_age=500))
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -113,10 +116,6 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-# Update database configuration with $DATABASE_URL.
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
-
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -135,3 +134,10 @@ STATICFILES_DIRS = ()
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+# Try to load local_settings.py if it exists
+try:
+    from local_settings import *
+except Exception as e:
+    pass

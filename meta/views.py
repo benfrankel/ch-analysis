@@ -27,4 +27,13 @@ def index(request):
         context['player_name'] = player_name = request.POST['player-name']
         context['result'] = generate_dict[request.POST['to-generate']](player_name)
         context['to_generate'] = request.POST['to-generate']
-    return render(request, 'battles/index.html', context)
+    return render(request, 'meta/index.html', context)
+
+
+def battles(request):
+    context = {'generate_options': generate_options}
+    if request.POST:
+        context['player_name'] = player_name = request.POST['player-name']
+        context['result'] = generate_dict[request.POST['to-generate']](player_name)
+        context['to_generate'] = request.POST['to-generate']
+    return render(request, 'meta/battles.html', context)

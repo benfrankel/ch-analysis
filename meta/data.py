@@ -25,7 +25,7 @@ def download(player_name):
             pickle.dump(battles, f)
     else:
         battles = []
-        pass  # TODO: Download only the newest battles & append to file
+        pass  # TODO: Download only the newest meta & append to file
     return battles
 
 
