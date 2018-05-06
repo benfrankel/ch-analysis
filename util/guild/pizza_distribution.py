@@ -128,7 +128,7 @@ class Guild(Entity):
                     p.pizza[-1],
                     p.pizza_score[-1],
                     p.pizza_score[-1] + p.pizza[-1] - (p.pizza_score[-2] if len(p.pizza_score) > 1 else 0))
-                   for p in self.players if p.games_played[-1]]
+                   for p in self.players if p.games_played[-1] or p.pizza[-1]]
         self.seasons.append(Season(self.name, season['name'], season['pizza'], players))
 
     def init_season(self):
