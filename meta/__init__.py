@@ -1,4 +1,4 @@
-from .data import load, download
+from .data import load_player, download
 from .query import matchup_history
 from .stat import\
     matchup_summary,\
@@ -7,7 +7,7 @@ from .stat import\
 
 
 __all__ = [
-    'load', 'download',
+    'load_player', 'download',
 
     'matchup_history',
 

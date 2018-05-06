@@ -3,10 +3,10 @@ from . import data
 
 def _load_either(player, opponent):
     try:
-        return data._load(player)
+        return data.load_player(player)
     except FileNotFoundError:
         try:
-            return data._load(opponent)
+            return data.load_player(opponent)
         except FileNotFoundError:
             return data.download(player)
 
@@ -22,7 +22,7 @@ def matchup_history(player, opponent):
 
 def player_query(predicate):
     def wrapped(player):
-        return filter(lambda battle: predicate(player, battle), data.load(player))
+        return filter(lambda battle: predicate(player, battle), data.load_player(player))
     return wrapped
 
 

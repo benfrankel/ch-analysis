@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.6
+#!/usr/bin/env python
 
 from util.guild.chat import announce
 
@@ -13,6 +13,7 @@ def _ord(n):
 
 
 def main(guild_name):
+    print('Generating summary...')
     link, guild = pizza_distribution.auto_summary(guild_name)
     placement = pizza_distribution.Season.pizza_to_placement(guild.pizza[-1])
 
@@ -33,11 +34,15 @@ def main(guild_name):
                 breadwinners += ', '.join(player.name for player in tier[:-1])
                 breadwinners += f', and {tier[-1].name} receive {pizza} pizza.\n'
 
-    announce((f'@everyone\n'
-              f'**{guild_name} wins {_ord(placement)} place in {season_name}!**\n'
-              f'\n'
-              f'{breadwinners}\n'
-              f'*Updated distribution*: {link}'))
+    msg = ((f'@everyone\n'
+            f'**{guild_name} wins {_ord(placement)} place in {season_name}!**\n'
+            f'\n'
+            f'{breadwinners}\n'
+            f'*Updated distribution*: {link}'))
+
+    print('Announcing...')
+    announce(msg)
+    print(msg)
 
 
 if __name__ == '__main__':

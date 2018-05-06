@@ -16,7 +16,7 @@ def guild_seasons(guild_name):
         raise KeyError(f'The guild \'{guild_name}\' does not exist')
 
     # Extract monthly placements
-    placements = [int(x[0]) for x in re.findall(r'([0-9]+)(st|nd|rd|th)', text)]
+    placements = [int(x[0]) for x in re.findall(r'([0-9]+)(st|nd|rd|th)', text)][1:]
     pizzas = reversed([[0, 5, 4, 3, 2, 1][x] if x < 6 else 0 for x in placements])
 
     # Next we'll get per-player participation
@@ -141,9 +141,8 @@ def _parse_battles_page(text):
     return prev, battles
 
 
-def battles(player_name):
+def _parse_battles_since_page(end_url):
     base_url = 'http://cardhuntermeta.farbs.org/guildhistory.php'
-    end_url = f'?player={player_name}&page=last'
     result = []
 
     count = 1
@@ -156,3 +155,11 @@ def battles(player_name):
         result.extend(lines)
 
     return result
+
+
+def player_battles(player_name):
+    return _parse_battles_since_page(f'?player={player_name}&page=last')
+
+
+def all_battles():
+    return _parse_battles_since_page(f'?page=last')

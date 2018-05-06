@@ -7,20 +7,22 @@ import pickle
 from collections import defaultdict
 
 
-players = {}
+battles = []
 
 
 # Flags
-is_loaded = defaultdict(bool)
+is_loaded = False
 
 
-def download(player_name):
+def download():
+    global battles
+
     if not os.path.exists(BATTLES_DIR):
         os.makedirs(BATTLES_DIR)
 
-    path = os.path.join(BATTLES_DIR, player_name)
+    path = os.path.join(BATTLES_DIR, '.all')
     if not os.path.isfile(path):
-        battles = scrape.battles(player_name)
+        battles = scrape.all_battles()
         with open(path, 'wb') as f:
             pickle.dump(battles, f)
     else:
@@ -29,18 +31,20 @@ def download(player_name):
     return battles
 
 
-def _load(player_name):
-    global is_loaded
-    if not is_loaded[player_name]:
-        with open(os.path.join(BATTLES_DIR, player_name), 'rb') as f:
-            players[player_name] = pickle.load(f)
-        is_loaded[player_name] = True
-    return players[player_name]
+def load():
+    global is_loaded, battles
+    with open(os.path.join(BATTLES_DIR, '.all'), 'rb') as f:
+        battles = pickle.load(f)
+    is_loaded = True
 
 
-def load(player_name):
-    try:
-        return _load(player_name)
-    except FileNotFoundError:
-        download(player_name)
-        return _load(player_name)
+def load_player(player_name):
+    if not is_loaded:
+        load()
+    return filter(lambda x: x['winner'][0] == player_name or x['loser'][0] == player_name, battles)
+
+
+def load_guild(guild_name):
+    if not is_loaded:
+        load()
+    return filter(lambda x: x['winner'][1] == guild_name or x['loser'][1] == guild_name, battles)
