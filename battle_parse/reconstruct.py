@@ -181,7 +181,7 @@ def load_battle(filename=''):
     scenario = model.Scenario()
 
     def update_scenario():
-        print('Updating scenario with new event:', events[-1])
+        print(' + EVENT', events[-1])
         scenario.update(events[-1])
 
     # Load log contents into memory

@@ -13,26 +13,27 @@ class CardLocation(enum.Enum):
 
 # An instance of a card during a battle (type may be hidden)
 class Card:
-    def __init__(self, item):
+    def __init__(self, item=None):
         # Info
         self.name = '?'
         self.card_type = None
 
         # Index
-        self.player_index = item.player_index
-        self.group_index = item.group_index
+        self.player_index = None if item is None else item.player_index
+        self.group_index = None if item is None else item.group_index
         self.index = -1
 
         # Parents
-        self.player = item.player
-        self.group = item.group
-        self.frame = item.frame
-        self.slot = item.slot
+        self.player = None if item is None else item.player
+        self.group = None if item is None else item.group
+        self.frame = None if item is None else item.frame
+        self.slot = None if item is None else item.slot
         self.item = item
+        self.item_name = None
 
         # State
-        self.original_player_index = item.player_index
-        self.original_group_index = item.group_index
+        self.original_player_index = None if item is None else item.player_index
+        self.original_group_index = None if item is None else item.group_index
         self.location = CardLocation.Draw
         self.x = -1
         self.y = -1
@@ -233,8 +234,7 @@ class ItemFrame:
         for slot in self.slots:
             if item_type.slot_type == slot.name and slot.is_empty():
                 slot.item.reveal(item_type)
-                return slot.item
-        print(self.group)
+                return
         raise ValueError('Cannot add "{}" ({}) to {} Frame without such a slot open'.format(item_type.name, item_type.slot_type, self.name))
 
     def get_cards(self):
@@ -288,39 +288,38 @@ class Group:
         for slot in self.item_frame.slots:
             slot.item.reshuffle()
 
-    def reveal_card(self, event):
-        print()
-        print('Reveal card; event =', event)
-        print('Hand:', self.hand)
-        print()
+    def reveal_card(self, event, from_deck=False):
+        # TODO: Should this be in draw_card?
         if event.original_player_index == -1:
-            pass  # TODO: Create card and put in hand
+            print('Creating new card')
+            card = Card()
+
+            card.original_player_index = event.original_player_index
+            card.original_group_index = event.original_group_index
+            card.player_index = event.player_index
+            card.group_index = event.group_index
+            card.index = event.card_index
+            card.name = event.card_name
+            card.item_name = event.item_name
+
+            self.hand.insert(card.index, card)
             return
 
-        print('Card index:', event.card_index)
-        revealed_card = self.hand[event.card_index]
-        if revealed_card.is_hidden():
+        if from_deck:
             item_type = gamedata.get_item(event.item_name)
             card_type = gamedata.get_card(event.card_name)
+
             for card in self.draw_deck:
                 if card.card_type == card_type and card.item.item_type == item_type:
-                    card.draw(event.card_index)
-                    break
+                    print('Card found in draw deck')
+                    return
             else:
-                item = self.item_frame.add_item(item_type)
-                skipped = False
-                for card_type in item_type.cards:
-                    if card_type == revealed_card.card_type and not skipped:
-                        skipped = True
-                        continue
-                    for card in self.draw_deck:
-                        if card.is_hidden():
-                            card.reveal(item, card_type)
-                            break
-                for card in self.draw_deck:
-                    if card.card_type == card_type and card.item.item_type == item_type:
-                        card.draw(event.card_index)
-                        break
+                print('Revealing new item')
+                self.item_frame.add_item(item_type)
+
+        elif not self.hand[event.card_index].is_hidden():
+            print('Card is already revealed')
+            return
 
     def discard_card(self, event):  # TODO: DiscardToOpponent
         # If DiscardToOpponentComponent, wait for genRand to determine where to travel to
@@ -328,15 +327,20 @@ class Group:
         self.hand[event.card_index].discard()
         self.draw_deck.append(self.hand.pop(event.card_index))
         for card in self.hand[event.card_index:]:
-            card.card_index -= 1
+            card.index -= 1
 
     def draw_card(self, event):
+        item_type = gamedata.get_item(event.item_name)
+        card_type = gamedata.get_card(event.card_name)
+
         for i, card in enumerate(self.draw_deck):
-            if card.name == event.card_name and card.item.name == event.item_name:
+            if card.card_type == card_type and card.item.item_type == item_type:
                 break
+        else:
+            raise Exception('Could not find card in draw deck:', event.card_name)
 
         card = self.draw_deck.pop(i)
-        self.hand.append(card)
+        self.hand.insert(event.card_index, card)
         card.draw(event.card_index)
 
     def hidden_draw(self):  # TODO: Shamefully ugly method
@@ -392,8 +396,8 @@ class Player:
         return self.name != '?' and self.rating != -1 and self.user_id != -1 and\
                all([c.is_described() for c in self.groups])
 
-    def reveal_card(self, event):
-        self.groups[event.group_index].reveal_card(event)
+    def reveal_card(self, event, from_deck=False):
+        self.groups[event.group_index].reveal_card(event, from_deck)
 
     def discard_card(self, event):  # TODO: DiscardToOpponent
         self.groups[event.group_index].discard_card(event)
@@ -507,9 +511,16 @@ class Scenario:
                self.map.is_described() and all(p.is_described() for p in self.players)
 
     def update(self, event):  # TODO
+        try:
+            print()
+            print('Hand before:', self.players[event.player_index].groups[event.group_index].hand)
+            print('Draw deck before:', self.players[event.player_index].groups[event.group_index].draw_deck)
+        except Exception:
+            pass
+
         if event.name == 'Card Draw':
+            self.players[event.player_index].reveal_card(event, from_deck=True)
             self.players[event.player_index].draw_card(event)
-            self.players[event.player_index].reveal_card(event)
         elif event.name == 'Hidden Draw':
             self.enemy.hidden_draw()
         elif event.name == 'Card Reveal':
@@ -531,4 +542,11 @@ class Scenario:
         elif event.name == 'Trigger Terrain':
             pass
         elif event.name == 'Pass':
+            pass
+
+        try:
+            print('Hand after:', self.players[event.player_index].groups[event.group_index].hand)
+            print('Draw deck after:', self.players[event.player_index].groups[event.group_index].draw_deck)
+            print()
+        except Exception:
             pass
