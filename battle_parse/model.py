@@ -289,9 +289,9 @@ class Group:
             slot.item.reshuffle()
 
     def reveal_card(self, event, from_deck=False):
-        # TODO: Should this be in draw_card?
+        card_type = gamedata.get_card(event.card_name)
+
         if event.original_player_index == -1:
-            print('Creating new card')
             card = Card()
 
             card.original_player_index = event.original_player_index
@@ -299,27 +299,44 @@ class Group:
             card.player_index = event.player_index
             card.group_index = event.group_index
             card.index = event.card_index
-            card.name = event.card_name
-            card.item_name = event.item_name
+
+            card.reveal(None, card_type)
 
             self.hand.insert(card.index, card)
             return
 
-        if from_deck:
-            item_type = gamedata.get_item(event.item_name)
-            card_type = gamedata.get_card(event.card_name)
+        item_type = gamedata.get_item(event.item_name)
 
+        if from_deck:
+            # See if card has already been revealed in draw deck
             for card in self.draw_deck:
                 if card.card_type == card_type and card.item.item_type == item_type:
-                    print('Card found in draw deck')
                     return
             else:
-                print('Revealing new item')
+                # Reveal item
                 self.item_frame.add_item(item_type)
 
-        elif not self.hand[event.card_index].is_hidden():
-            print('Card is already revealed')
-            return
+        elif self.hand[event.card_index].is_hidden():
+            # Reveal item
+            self.item_frame.add_item(item_type)
+
+            # Card in hand should match reveal
+            for i, back in enumerate(self.draw_deck):
+                if back.card_type == card_type and back.item.item_type == item_type:
+                    self.draw_deck[i] = self.hand[event.card_index]
+                    self.hand[event.card_index] = back
+                    break
+
+            # Previously hidden cards in hand should remain hidden
+            for i, card in enumerate(self.hand):
+                if i == event.card_index:
+                    continue
+
+                if card.item is self.hand[event.card_index].item:
+                    for j, back in enumerate(self.draw_deck):
+                        if back.is_hidden():
+                            self.draw_deck[j] = card
+                            self.hand[i] = back
 
     def discard_card(self, event):  # TODO: DiscardToOpponent
         # If DiscardToOpponentComponent, wait for genRand to determine where to travel to
@@ -330,8 +347,8 @@ class Group:
             card.index -= 1
 
     def draw_card(self, event):
-        item_type = gamedata.get_item(event.item_name)
         card_type = gamedata.get_card(event.card_name)
+        item_type = gamedata.get_item(event.item_name)
 
         for i, card in enumerate(self.draw_deck):
             if card.card_type == card_type and card.item.item_type == item_type:
@@ -511,13 +528,6 @@ class Scenario:
                self.map.is_described() and all(p.is_described() for p in self.players)
 
     def update(self, event):  # TODO
-        try:
-            print()
-            print('Hand before:', self.players[event.player_index].groups[event.group_index].hand)
-            print('Draw deck before:', self.players[event.player_index].groups[event.group_index].draw_deck)
-        except Exception:
-            pass
-
         if event.name == 'Card Draw':
             self.players[event.player_index].reveal_card(event, from_deck=True)
             self.players[event.player_index].draw_card(event)
@@ -542,11 +552,4 @@ class Scenario:
         elif event.name == 'Trigger Terrain':
             pass
         elif event.name == 'Pass':
-            pass
-
-        try:
-            print('Hand after:', self.players[event.player_index].groups[event.group_index].hand)
-            print('Draw deck after:', self.players[event.player_index].groups[event.group_index].draw_deck)
-            print()
-        except Exception:
             pass
