@@ -181,6 +181,7 @@ def load_battle(filename=''):
     scenario = model.Scenario()
 
     def update_scenario():
+        print('Updating scenario with new event:', events[-1])
         scenario.update(events[-1])
 
     # Load log contents into memory
@@ -197,37 +198,37 @@ def load_battle(filename=''):
         with open(filename) as f:
             log = f.read()
 
-    # Find the most recent joinbattle and use log_parse.py to parse the battle_parse
+    # Find the most recent joinbattle and use log_parse.py to parse the battle
     log_lines = log.splitlines()
     first_line_index = len(log_lines) - 1 - log_lines[::-1].index('Received extension response: joinbattle')
     extension_responses, messages = log_parse.parse_battle('\n'.join(log_lines[first_line_index:]))
 
-    # Set up the battle_parse by extracting all relevant info from joinbattle
+    # Set up the battle by extracting all relevant info from joinbattle
     for obj in extension_responses[0]['objects']:
-        if obj['_class_'] == 'com.cardhunter.battle_parse.Battle':
+        if obj['_class_'] == 'com.cardhunter.battle.Battle':
             scenario.name = obj['scenarioName']
             scenario.display_name = obj['scenarioDisplayName']
             scenario.game_type = obj['gameType']
             scenario.audio_tag = obj['audioTag']
             scenario.room_name = obj['roomName']
-        elif obj['_class_'] == 'com.cardhunter.battle_parse.Player':
+        elif obj['_class_'] == 'com.cardhunter.battle.Player':
             player_index = obj['playerIndex']
             player = scenario.players[player_index]
             player.name = obj['playerName']
             player.rating = obj['rating']
-        elif obj['_class_'] == 'com.cardhunter.battle_parse.Square':
+        elif obj['_class_'] == 'com.cardhunter.battle.Square':
             scenario.map.add_square(obj['location.x'], obj['location.y'], obj['imageFlipX'], obj['imageFlipY'],
                                     obj['imageName'], obj['terrain'])
-        elif obj['_class_'] == 'com.cardhunter.battle_parse.Doodad':
+        elif obj['_class_'] == 'com.cardhunter.battle.Doodad':
             scenario.map.add_doodad(obj['displayPosition.x'], obj['displayPosition.y'], obj['imageFlipX'],
                                     obj['imageFlipY'], obj['imageName'], obj['marker'])
-        elif obj['_class_'] == 'com.cardhunter.battle_parse.ActorGroup':
+        elif obj['_class_'] == 'com.cardhunter.battle.ActorGroup':
             for group in scenario.players[0].groups + scenario.players[1].groups:
                 if not group.is_described():
                     group.name = obj['name']
                     group.set_archetype(' '.join([obj['race'], obj['characterClass']]))
                     break
-        elif obj['_class_'] == 'com.cardhunter.battle_parse.ActorInstance':
+        elif obj['_class_'] == 'com.cardhunter.battle.ActorInstance':
             for group in scenario.players[0].groups + scenario.players[1].groups:
                 if not group.is_described():
                     group.figure = obj['depiction']
@@ -252,7 +253,7 @@ def load_battle(filename=''):
             else:
                 player_turn = -1
 
-        if ex.name != 'battle_parse':
+        if ex.name != 'battle':
             continue
 
         if ex['type'] == 'deckPeeksSent' and ('type' not in prev or prev['type'] != 'deckPeeks'):

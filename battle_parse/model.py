@@ -11,7 +11,7 @@ class CardLocation(enum.Enum):
     Discard = 4
 
 
-# An instance of a card during a battle_parse (type may be hidden)
+# An instance of a card during a battle (type may be hidden)
 class Card:
     def __init__(self, item):
         # Info
@@ -37,7 +37,8 @@ class Card:
         self.x = -1
         self.y = -1
 
-    def reveal(self, card_type):
+    def reveal(self, item, card_type):
+        self.item = item
         self.card_type = card_type
         self.name = card_type.name
 
@@ -111,7 +112,7 @@ class Card:
         return '{}("{}")'.format(self.__class__.__name__, self.name)
 
 
-# An instance of an item during a battle_parse (type may be hidden)
+# An instance of an item during a battle (type may be hidden)
 class Item:
     def __init__(self, slot):
         # Info
@@ -138,7 +139,7 @@ class Item:
         self.item_type = item_type
         self.name = item_type.name
         for card, card_type in zip(self.cards, item_type.cards):
-            card.reveal(item_type, card_type)
+            card.reveal(self, card_type)
 
     def reshuffle(self):
         for card in self.cards:
@@ -163,7 +164,7 @@ class Item:
         return '{}("{}")'.format(self.__class__.__name__, self.name)
 
 
-# An instance of a slot type (e.g. Weapon, Staff, Divine Skill) that can contain an Item during a battle_parse
+# An instance of a slot type (e.g. Weapon, Staff, Divine Skill) that can contain an Item during a battle
 class ItemSlot:
     def __init__(self, frame, name):
         # Info
@@ -182,13 +183,16 @@ class ItemSlot:
         self.item = Item(self)
 
     def set_item_type(self, item_type):
-        if item_type.slot_type == self.name:
-            self.item.reveal(item_type)
-        else:
+        if item_type.slot_type != self.name:
             raise ValueError('Cannot place "{}" ({}) in {} slot'.format(item_type.name, item_type.slot_type, self.name))
+
+        self.item.reveal(item_type)
 
     def remove_item(self):
         self.item = Item(self)
+
+    def is_empty(self):
+        return self.item.is_hidden()
 
     def __contains__(self, item_type):
         return self.item.item_type == item_type
@@ -200,7 +204,7 @@ class ItemSlot:
         return '{}("{}")'.format(self.__class__.__name__, self.name)
 
 
-# Models an instance of a character archetype's list of item slots during a battle_parse
+# Models an instance of a character archetype's list of item slots during a battle
 class ItemFrame:
     def __init__(self, group):
         # Info
@@ -229,7 +233,8 @@ class ItemFrame:
         for slot in self.slots:
             if item_type.slot_type == slot.name and slot.is_empty():
                 slot.item.reveal(item_type)
-                return
+                return slot.item
+        print(self.group)
         raise ValueError('Cannot add "{}" ({}) to {} Frame without such a slot open'.format(item_type.name, item_type.slot_type, self.name))
 
     def get_cards(self):
@@ -245,7 +250,7 @@ class ItemFrame:
         return '{}("{}")'.format(self.__class__.__name__, self.name)
 
 
-# An instance of an actor group during a battle_parse (name, figure, archetype, item frame)
+# An instance of an actor group during a battle (name, figure, archetype, item frame)
 class Group:
     def __init__(self, player, index):
         # Info
@@ -284,21 +289,25 @@ class Group:
             slot.item.reshuffle()
 
     def reveal_card(self, event):
-        print(self.hand, event)
+        print()
+        print('Reveal card; event =', event)
+        print('Hand:', self.hand)
+        print()
         if event.original_player_index == -1:
             pass  # TODO: Create card and put in hand
             return
 
+        print('Card index:', event.card_index)
         revealed_card = self.hand[event.card_index]
         if revealed_card.is_hidden():
             item_type = gamedata.get_item(event.item_name)
             card_type = gamedata.get_card(event.card_name)
             for card in self.draw_deck:
-                if card.card_type == card_type and card.item_type == item_type:
+                if card.card_type == card_type and card.item.item_type == item_type:
                     card.draw(event.card_index)
                     break
             else:
-                self.item_frame.add_item(item_type)
+                item = self.item_frame.add_item(item_type)
                 skipped = False
                 for card_type in item_type.cards:
                     if card_type == revealed_card.card_type and not skipped:
@@ -306,10 +315,10 @@ class Group:
                         continue
                     for card in self.draw_deck:
                         if card.is_hidden():
-                            card.reveal(item_type, card_type)
+                            card.reveal(item, card_type)
                             break
                 for card in self.draw_deck:
-                    if card.card_type == card_type and card.item_type == item_type:
+                    if card.card_type == card_type and card.item.item_type == item_type:
                         card.draw(event.card_index)
                         break
 
@@ -324,11 +333,11 @@ class Group:
     def draw_card(self, event):
         for i, card in enumerate(self.draw_deck):
             if card.name == event.card_name and card.item.name == event.item_name:
-                self.hand.append(self.draw_deck.pop(i))
-                card.draw(event.card_index)
                 break
-        else:
-            pass  # TODO
+
+        card = self.draw_deck.pop(i)
+        self.hand.append(card)
+        card.draw(event.card_index)
 
     def hidden_draw(self):  # TODO: Shamefully ugly method
         if self.must_draw == -1:
@@ -357,7 +366,7 @@ class Group:
         return '{}("{}")'.format(self.__class__.__name__, self.name)
 
 
-# An instance of a player during a battle_parse
+# An instance of a player during a battle
 class Player:
     def __init__(self, scenario, index):
         # Info
@@ -401,7 +410,7 @@ class Player:
         self.groups[event.group_index].play_card(event)
 
 
-# An instance of a map tile during a battle_parse
+# An instance of a map tile during a battle
 class Square:
     def __init__(self, x, y, flip_x, flip_y, image_name, terrain):
         # Info
@@ -417,7 +426,7 @@ class Square:
         self.terrain = terrain
 
 
-# An instance of a map doodad during a battle_parse (static; doodads stay the same throughout the battle_parse)
+# An instance of a map doodad during a battle (static; doodads stay the same throughout the battle)
 class Doodad:
     def __init__(self, x, y, flip_x, flip_y, image_name, marker):
         # Info
@@ -431,7 +440,7 @@ class Doodad:
         self.y = y
 
 
-# An instance of a map during a battle_parse (bunch of tiles and doodads)
+# An instance of a map during a battle (bunch of tiles and doodads)
 class Map:
     def __init__(self, scenario):
         # Info

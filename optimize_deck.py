@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.6
+#!/usr/bin/env python
 
 import optimize
 
@@ -36,6 +36,7 @@ def main():
 
     score, num_traits, optimum = optimize.find(archetype, card_pack_combo)[0]
     print('\nTotal value: {}\nNumber of traits: {}\nAverage value: {}'.format(score, num_traits, score / (36 - num_traits)))
+    print()
     print(', '.join(str(x) for x in optimum))
     print()
     for item in optimum:
