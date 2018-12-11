@@ -157,10 +157,48 @@ class SquareEvent(Event):
 
 
 # A random number generation event
-class RandomEvent(Event):
+class RNGEvent(Event):
     def __init__(self, player_turn, rands):
-        super().__init__('Random', player_turn)
+        super().__init__('RNG', player_turn)
         self.rands = rands
+
+    def __str__(self):
+        return super().__str__()
+
+
+# A group must play a trait
+class MustPlayTraitEvent(Event):
+    def __init__(self, player_turn, player_index):
+        super().__init__('Must Play Trait', player_turn)
+        self.player_index = player_index
+
+    def __str__(self):
+        return super().__str__()
+
+
+# No more traits must be played
+class NoMoreTraitsEvent(Event):
+    def __init__(self, player_turn):
+        super().__init__('No More Traits', player_turn)
+
+    def __str__(self):
+        return super().__str__()
+
+
+# A group must discard
+class MustDiscardEvent(Event):
+    def __init__(self, player_turn, player_index, group_index):
+        super().__init__('Must Discard', player_turn)
+        self.player_index = player_index
+        self.group_index = group_index
+
+    def __str__(self):
+        return super().__str__()
+
+# No more cards must be discarded
+class NoMoreDiscardsEvent(Event):
+    def __init__(self, player_turn):
+        super().__init__('No More Discards', player_turn)
 
     def __str__(self):
         return super().__str__()
@@ -181,7 +219,6 @@ def load_battle(filename=''):
     scenario = model.Scenario()
 
     def update_scenario():
-        print(' + EVENT', events[-1])
         scenario.update(events[-1])
 
     # Load log contents into memory
@@ -243,8 +280,8 @@ def load_battle(filename=''):
         pass  # Scenario not completely started
 
     # Figure out who the enemy is and construct a sequence of events
-    must_discard = [-1, -1]
     player_turn = -1
+    must_discard = [-1, -1]
     for ex, prev in zip(extension_responses[1:], extension_responses):
         if ex.name == 'battleTimer':
             player_index = ex['playerIndex']
@@ -252,6 +289,7 @@ def load_battle(filename=''):
                 player_turn = player_index
             else:
                 player_turn = -1
+            continue
 
         if ex.name != 'battle':
             continue
@@ -274,9 +312,11 @@ def load_battle(filename=''):
                 card_name = info['type']
                 player_index = info['owner']
                 group_index = info['group']
+
                 events.append(DrawEvent(player_turn, original_player_index, original_group_index, player_index,
                                         group_index, card_index, item_name, card_name))
                 update_scenario()
+
         elif ex['type'] == 'handPeeks':
             # For every card in the peeks array, extract its info and append an event for it
             for info in ex['HP']['peeks']:
@@ -287,9 +327,11 @@ def load_battle(filename=''):
                 card_name = info['type']
                 player_index = info['owner']
                 group_index = info['group']
+
                 events.append(RevealEvent(player_turn, original_player_index, original_group_index, player_index,
                                           group_index, card_index, item_name, card_name))
                 update_scenario()
+
         elif ex['type'] == 'action':
             # For every card in the peeks array, extract its info and append an event for it
             for info in ex['HP']['peeks']:
@@ -300,14 +342,20 @@ def load_battle(filename=''):
                 card_name = info['type']
                 player_index = info['owner']
                 group_index = info['group']
+
                 events.append(PlayEvent(player_turn, original_player_index, original_group_index, player_index,
                                         group_index, card_index, item_name, card_name))
+
                 if 'TARP' in ex:
                     target_player_indices = ex['TARP']
                     target_group_indices = ex['TARG']
+
                     events.append(TargetEvent(player_turn, target_player_indices, target_group_indices))
-                    update_scenario()
+
+                update_scenario()
+
         elif ex['type'] == 'selectCard':
+            # Discard during round
             if 'HP' in ex:
                 for info in ex['HP']['peeks']:
                     original_player_index = info['cownerp']
@@ -317,23 +365,30 @@ def load_battle(filename=''):
                     card_name = info['type']
                     player_index = info['owner']
                     group_index = info['group']
+
                     events.append(DiscardEvent(player_turn, original_player_index, original_group_index, player_index,
                                                group_index, card_index, item_name, card_name))
                     update_scenario()
+
+            # Discard at end of round
             else:
                 player_index = must_discard[0]
                 group_index = must_discard[1]
                 card_index = ex['sel']
+
                 try:
                     card = scenario.players[player_index].groups[group_index].hand[card_index]
                     original_player_index = card.original_player_index
                     original_group_index = card.original_group_index
                     item_name = card.item_name
                     card_name = card.card_name
-                    events.append(DiscardEvent(player_turn, original_player_index, original_group_index, player_index,
-                                               group_index, card_index, item_name, card_name))
                 except:
                     pass
+                else:
+                    events.append(DiscardEvent(player_turn, original_player_index, original_group_index, player_index,
+                                               group_index, card_index, item_name, card_name))
+                    update_scenario()
+
         # elif ex['type'] == 'selectCards':
         #     if 'SELP' in ex:
         #         selected_player_indices = ex['SELP']
@@ -342,47 +397,90 @@ def load_battle(filename=''):
         #         for i in range(len(selected_player_indices)):
         #             events.append(SelectEvent(player_turn, selected_player_indices[i], selected_group_indices[i],
         #                                       selected_card_indices[i]))
+
         elif ex['type'] == 'mustDiscard':
-            must_discard[0] = ex['PUI']
-            must_discard[1] = ex['ACTG']
+            # Remember who must discard
+            player_index = ex['PUI']
+            group_index = ex['ACTG']
+
+            must_discard[0] = player_index
+            must_discard[1] = group_index
+
+            events.append(MustDiscardEvent(player_turn, player_index, group_index))
+            update_scenario()
+
+        elif ex['type'] == 'noMoreDiscards':
+            events.append(NoMoreDiscardsEvent(player_turn))
+            update_scenario()
+
+        elif ex['type'] == 'hasTrait':
+            player_index = ex['PUI']
+
+            events.append(MustPlayTraitEvent(player_turn, player_index))
+            update_scenario()
+
+        elif ex['type'] == 'noMoreTraits':
+            events.append(NoMoreTraitsEvent(player_turn))
+            update_scenario()
+
         elif ex['type'] in ('triggerFail', 'triggerSucceed') and 'TCLOC' in ex:
             die_roll = ex['TROLL']
             required_roll = ex['TTHRESH']
             hard_to_block = ex['TPEN']
             easy_to_block = ex['TBON']
             location = ex['TCLOC']
+
             if location == 0:
                 player_index = ex['PUI']
                 group_index = ex['ACTG']
                 card_index = ex['ACTC']
+
                 events.append(HandEvent(player_turn, die_roll, required_roll, hard_to_block, easy_to_block, player_index,
                                         group_index, card_index))
                 update_scenario()
+
             elif location == 1:
                 player_index = ex['PUI']
                 group_index = ex['ACTG']
+
                 events.append(AttachmentEvent(player_turn, die_roll, required_roll, hard_to_block, easy_to_block,
                                               player_index, group_index))
                 update_scenario()
+
             elif location == 2:
                 x = ex['TARX']
                 y = ex['TARY']
+
                 events.append(TerrainEvent(player_turn, die_roll, required_roll, hard_to_block, easy_to_block, x, y))
                 update_scenario()
+
         elif ex['type'] == 'target':
             target_player_indices = ex['TARP']
             target_group_indices = ex['TARG']
+
             events.append(TargetEvent(player_turn, target_player_indices, target_group_indices))
             update_scenario()
+
         elif ex['type'] == 'selectSquare':
             x = ex['TARX']
             y = ex['TARY']
             fx = ex['TARFX']
             fy = ex['TARFY']
+
             events.append(SquareEvent(player_turn, x, y, fx, fy))
             update_scenario()
+
+        elif ex['type'] == 'genRand':
+            rands = ex['RAND']
+
+            events.append(RNGEvent(player_turn, rands))
+            update_scenario()
+
         elif ex['type'] == 'pass':
             events.append(PassEvent(player_turn))
             update_scenario()
+
+        else:
+            print('Ignored event:', ex)
 
     return events, scenario

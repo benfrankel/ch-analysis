@@ -302,7 +302,8 @@ class Group:
 
             card.reveal(None, card_type)
 
-            self.hand.insert(card.index, card)
+            self.hand.append(card)
+            self.hand.sort(key=lambda x: x.index)
             return
 
         item_type = gamedata.get_item(event.item_name)
@@ -357,7 +358,8 @@ class Group:
             raise Exception('Could not find card in draw deck:', event.card_name)
 
         card = self.draw_deck.pop(i)
-        self.hand.insert(event.card_index, card)
+        self.hand.append(card)
+        self.hand.sort(key=lambda x: x.index)
         card.draw(event.card_index)
 
     def hidden_draw(self):  # TODO: Shamefully ugly method
@@ -528,6 +530,13 @@ class Scenario:
                self.map.is_described() and all(p.is_described() for p in self.players)
 
     def update(self, event):  # TODO
+        try:
+            print()
+            print('Event:', event)
+            print('Hand before:', self.players[event.player_index].groups[event.group_index].hand)
+        except Exception:
+            pass
+
         if event.name == 'Card Draw':
             self.players[event.player_index].reveal_card(event, from_deck=True)
             self.players[event.player_index].draw_card(event)
@@ -552,4 +561,9 @@ class Scenario:
         elif event.name == 'Trigger Terrain':
             pass
         elif event.name == 'Pass':
+            pass
+
+        try:
+            print('Hand after:', self.players[event.player_index].groups[event.group_index].hand)
+        except Exception:
             pass
