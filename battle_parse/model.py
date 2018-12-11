@@ -537,6 +537,10 @@ class Scenario:
         except Exception:
             pass
 
+        # TODO: Fix traits (Must Play Trait -> No More Traits)
+        # TODO: In the interim, REPLACE cards played by enemy
+        # TODO: What about cards drawn by user? How do you know what should be replaced by the new card?
+
         if event.name == 'Card Draw':
             self.players[event.player_index].reveal_card(event, from_deck=True)
             self.players[event.player_index].draw_card(event)

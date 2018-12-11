@@ -345,14 +345,14 @@ def load_battle(filename=''):
 
                 events.append(PlayEvent(player_turn, original_player_index, original_group_index, player_index,
                                         group_index, card_index, item_name, card_name))
+                update_scenario()
 
                 if 'TARP' in ex:
                     target_player_indices = ex['TARP']
                     target_group_indices = ex['TARG']
 
                     events.append(TargetEvent(player_turn, target_player_indices, target_group_indices))
-
-                update_scenario()
+                    update_scenario()
 
         elif ex['type'] == 'selectCard':
             # Discard during round
@@ -397,6 +397,7 @@ def load_battle(filename=''):
         #         for i in range(len(selected_player_indices)):
         #             events.append(SelectEvent(player_turn, selected_player_indices[i], selected_group_indices[i],
         #                                       selected_card_indices[i]))
+        #             update_scenario()
 
         elif ex['type'] == 'mustDiscard':
             # Remember who must discard
