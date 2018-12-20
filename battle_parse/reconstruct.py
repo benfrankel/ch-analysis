@@ -235,36 +235,41 @@ def load_battle(filename=''):
         with open(filename) as f:
             log = f.read()
 
-    # Find the most recent joinbattle and use log_parse.py to parse the battle
+    # Find the most recent joinbattle parse the battle
     log_lines = log.splitlines()
     first_line_index = len(log_lines) - 1 - log_lines[::-1].index('Received extension response: joinbattle')
-    extension_responses, messages = log_parse.parse_battle('\n'.join(log_lines[first_line_index:]))
+    extensions, messages = log_parse.parse_battle('\n'.join(log_lines[first_line_index:]))
 
     # Set up the battle by extracting all relevant info from joinbattle
-    for obj in extension_responses[0]['objects']:
+    for obj in extensions[0]['objects']:
         if obj['_class_'] == 'com.cardhunter.battle.Battle':
             scenario.name = obj['scenarioName']
             scenario.display_name = obj['scenarioDisplayName']
             scenario.game_type = obj['gameType']
             scenario.audio_tag = obj['audioTag']
             scenario.room_name = obj['roomName']
+
         elif obj['_class_'] == 'com.cardhunter.battle.Player':
             player_index = obj['playerIndex']
             player = scenario.players[player_index]
             player.name = obj['playerName']
             player.rating = obj['rating']
+
         elif obj['_class_'] == 'com.cardhunter.battle.Square':
             scenario.map.add_square(obj['location.x'], obj['location.y'], obj['imageFlipX'], obj['imageFlipY'],
                                     obj['imageName'], obj['terrain'])
+
         elif obj['_class_'] == 'com.cardhunter.battle.Doodad':
             scenario.map.add_doodad(obj['displayPosition.x'], obj['displayPosition.y'], obj['imageFlipX'],
                                     obj['imageFlipY'], obj['imageName'], obj['marker'])
+
         elif obj['_class_'] == 'com.cardhunter.battle.ActorGroup':
             for group in scenario.players[0].groups + scenario.players[1].groups:
                 if not group.is_described():
                     group.name = obj['name']
                     group.set_archetype(' '.join([obj['race'], obj['characterClass']]))
                     break
+
         elif obj['_class_'] == 'com.cardhunter.battle.ActorInstance':
             for group in scenario.players[0].groups + scenario.players[1].groups:
                 if not group.is_described():
@@ -280,25 +285,28 @@ def load_battle(filename=''):
         pass  # Scenario not completely started
 
     # Figure out who the enemy is and construct a sequence of events
-    player_turn = -1
+    player_turn = 0
     must_discard = [-1, -1]
-    for ex, prev in zip(extension_responses[1:], extension_responses):
-        if ex.name == 'battleTimer':
+    for ex, prev in zip(extensions[1:], extensions):
+        ex_name = ex['_NAME']
+
+        if ex_name == 'battleTimer':
             player_index = ex['playerIndex']
-            if ex['start']:
+            new_turn = ex['start']
+            if new_turn:
                 player_turn = player_index
-            else:
-                player_turn = -1
             continue
 
-        if ex.name != 'battle':
+        if ex_name != 'battle':
             continue
 
-        if ex['type'] == 'deckPeeksSent' and ('type' not in prev or prev['type'] != 'deckPeeks'):
+        ex_type = ex['type']
+
+        if ex_type == 'deckPeeksSent' and ('type' not in prev or prev['type'] != 'deckPeeks'):
             events.append(HiddenDrawEvent(player_turn))
             update_scenario()
 
-        if ex['type'] == 'deckPeeks':
+        if ex_type == 'deckPeeks':
             # If the user is still unknown, use this deckPeeks to determine who it is
             if scenario.user is None:
                 scenario.set_user(ex['SENDID'][0])
@@ -317,7 +325,7 @@ def load_battle(filename=''):
                                         group_index, card_index, item_name, card_name))
                 update_scenario()
 
-        elif ex['type'] == 'handPeeks':
+        elif ex_type == 'handPeeks':
             # For every card in the peeks array, extract its info and append an event for it
             for info in ex['HP']['peeks']:
                 original_player_index = info['cownerp']
@@ -332,7 +340,7 @@ def load_battle(filename=''):
                                           group_index, card_index, item_name, card_name))
                 update_scenario()
 
-        elif ex['type'] == 'action':
+        elif ex_type == 'action':
             # For every card in the peeks array, extract its info and append an event for it
             for info in ex['HP']['peeks']:
                 original_player_index = info['cownerp']
@@ -354,7 +362,7 @@ def load_battle(filename=''):
                     events.append(TargetEvent(player_turn, target_player_indices, target_group_indices))
                     update_scenario()
 
-        elif ex['type'] == 'selectCard':
+        elif ex_type == 'selectCard':
             # Discard during round
             if 'HP' in ex:
                 for info in ex['HP']['peeks']:
@@ -399,7 +407,7 @@ def load_battle(filename=''):
         #                                       selected_card_indices[i]))
         #             update_scenario()
 
-        elif ex['type'] == 'mustDiscard':
+        elif ex_type == 'mustDiscard':
             # Remember who must discard
             player_index = ex['PUI']
             group_index = ex['ACTG']
@@ -410,21 +418,21 @@ def load_battle(filename=''):
             events.append(MustDiscardEvent(player_turn, player_index, group_index))
             update_scenario()
 
-        elif ex['type'] == 'noMoreDiscards':
+        elif ex_type == 'noMoreDiscards':
             events.append(NoMoreDiscardsEvent(player_turn))
             update_scenario()
 
-        elif ex['type'] == 'hasTrait':
+        elif ex_type == 'hasTrait':
             player_index = ex['PUI']
 
             events.append(MustPlayTraitEvent(player_turn, player_index))
             update_scenario()
 
-        elif ex['type'] == 'noMoreTraits':
+        elif ex_type == 'noMoreTraits':
             events.append(NoMoreTraitsEvent(player_turn))
             update_scenario()
 
-        elif ex['type'] in ('triggerFail', 'triggerSucceed') and 'TCLOC' in ex:
+        elif ex_type in ('triggerFail', 'triggerSucceed') and 'TCLOC' in ex:
             die_roll = ex['TROLL']
             required_roll = ex['TTHRESH']
             hard_to_block = ex['TPEN']
@@ -455,14 +463,14 @@ def load_battle(filename=''):
                 events.append(TerrainEvent(player_turn, die_roll, required_roll, hard_to_block, easy_to_block, x, y))
                 update_scenario()
 
-        elif ex['type'] == 'target':
+        elif ex_type == 'target':
             target_player_indices = ex['TARP']
             target_group_indices = ex['TARG']
 
             events.append(TargetEvent(player_turn, target_player_indices, target_group_indices))
             update_scenario()
 
-        elif ex['type'] == 'selectSquare':
+        elif ex_type == 'selectSquare':
             x = ex['TARX']
             y = ex['TARY']
             fx = ex['TARFX']
@@ -471,13 +479,13 @@ def load_battle(filename=''):
             events.append(SquareEvent(player_turn, x, y, fx, fy))
             update_scenario()
 
-        elif ex['type'] == 'genRand':
+        elif ex_type == 'genRand':
             rands = ex['RAND']
 
             events.append(RNGEvent(player_turn, rands))
             update_scenario()
 
-        elif ex['type'] == 'pass':
+        elif ex_type == 'pass':
             events.append(PassEvent(player_turn))
             update_scenario()
 

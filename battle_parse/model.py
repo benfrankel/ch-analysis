@@ -379,6 +379,7 @@ class Group:
         return self.must_draw == 0
 
     def play_card(self, event):
+        print('Playing card ...')
         self.discard_card(event)
         pass  # TODO
 
@@ -569,5 +570,6 @@ class Scenario:
 
         try:
             print('Hand after:', self.players[event.player_index].groups[event.group_index].hand)
+            print()
         except Exception:
             pass
