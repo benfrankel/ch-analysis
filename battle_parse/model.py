@@ -1,6 +1,7 @@
 import enum
 
 import gamedata
+from .event import *
 
 
 class CardLocation(enum.Enum):
@@ -532,9 +533,8 @@ class Scenario:
 
     def update(self, event):  # TODO
         try:
-            print()
-            print('Event:', event)
-            print('Hand before:', self.players[event.player_index].groups[event.group_index].hand)
+            print('    |', event)
+            print('    | Hand before:', self.players[event.player_index].groups[event.group_index].hand)
         except Exception:
             pass
 
@@ -542,34 +542,33 @@ class Scenario:
         # TODO: In the interim, REPLACE cards played by enemy
         # TODO: What about cards drawn by user? How do you know what should be replaced by the new card?
 
-        if event.name == 'Card Draw':
+        if isinstance(event, CardDraw):
             self.players[event.player_index].reveal_card(event, from_deck=True)
             self.players[event.player_index].draw_card(event)
-        elif event.name == 'Hidden Draw':
+        elif isinstance(event, CardHiddenDraw):
             self.enemy.hidden_draw()
-        elif event.name == 'Card Reveal':
+        elif isinstance(event, CardReveal):
             self.players[event.player_index].reveal_card(event)
-        elif event.name == 'Card Discard':
+        elif isinstance(event, CardDiscard):
             self.players[event.player_index].reveal_card(event)
             self.players[event.player_index].discard_card(event)
-        elif event.name == 'Card Play':
+        elif isinstance(event, CardPlay):
             self.players[event.player_index].reveal_card(event)
             self.players[event.player_index].play_card(event)
-        elif event.name == 'Target':
+        elif isinstance(event, SelectTarget):
             pass
-        elif event.name == 'Square':
+        elif isinstance(event, SelectSquare):
             pass
-        elif event.name == 'Trigger Hand':
+        elif isinstance(event, TriggerHand):
             pass
-        elif event.name == 'Trigger Attachment':
+        elif isinstance(event, TriggerAttachment):
             pass
-        elif event.name == 'Trigger Terrain':
+        elif isinstance(event, TriggerTerrain):
             pass
-        elif event.name == 'Pass':
+        elif isinstance(event, Pass):
             pass
 
         try:
-            print('Hand after:', self.players[event.player_index].groups[event.group_index].hand)
-            print()
+            print('    | Hand after:', self.players[event.player_index].groups[event.group_index].hand)
         except Exception:
             pass
