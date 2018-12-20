@@ -99,7 +99,7 @@ def load_battle(filename=''):
             continue
 
         elif ex_type == 'deckPeeksSent' and ('type' not in prev or prev['type'] != 'deckPeeks'):
-            update_scenario(CardHiddenDraw(player_turn))
+            update_scenario(HiddenDraw(player_turn))
 
         elif ex_type == 'deckPeeks':
             # If the user is still unknown, use this deckPeeks to determine who it is

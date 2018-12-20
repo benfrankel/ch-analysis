@@ -32,7 +32,7 @@ class CardEvent(Event):
 class CardPlay(CardEvent):
     def __init__(self, player_turn, original_player_index, original_group_index, player_index, group_index, card_index,
                  item_name, card_name):
-        super().__init__('Card Play', player_turn, original_player_index, original_group_index, player_index, group_index,
+        super().__init__('Play', player_turn, original_player_index, original_group_index, player_index, group_index,
                          card_index, item_name, card_name)
 
     def __str__(self):
@@ -43,7 +43,7 @@ class CardPlay(CardEvent):
 class CardDraw(CardEvent):
     def __init__(self, player_turn, original_player_index, original_group_index, player_index, group_index, card_index,
                  item_name, card_name):
-        super().__init__('Card Draw', player_turn, original_player_index, original_group_index, player_index, group_index,
+        super().__init__('Draw', player_turn, original_player_index, original_group_index, player_index, group_index,
                          card_index, item_name, card_name)
 
     def __str__(self):
@@ -51,9 +51,9 @@ class CardDraw(CardEvent):
 
 
 # A hidden card is drawn
-class CardHiddenDraw(Event):
+class HiddenDraw(Event):
     def __init__(self, player_turn):
-        super().__init__('Hidden Card Draw', player_turn)
+        super().__init__('Hidden Draw', player_turn)
 
     def __str__(self):
         return super().__str__()
@@ -63,7 +63,7 @@ class CardHiddenDraw(Event):
 class CardReveal(CardEvent):
     def __init__(self, player_turn, original_player_index, original_group_index, player_index, group_index, card_index,
                  item_name, card_name):
-        super().__init__('Card Reveal', player_turn, original_player_index, original_group_index, player_index, group_index,
+        super().__init__('Reveal', player_turn, original_player_index, original_group_index, player_index, group_index,
                          card_index, item_name, card_name)
 
     def __str__(self):
@@ -99,7 +99,7 @@ class TriggerEvent(Event):
 class TriggerHand(TriggerEvent):
     def __init__(self, player_turn, die_roll, required_roll, hard_to_block, easy_to_block, player_index,
                  group_index, card_index):
-        super().__init__('Trigger Hand', player_turn, die_roll, required_roll, hard_to_block, easy_to_block)
+        super().__init__('Hand', player_turn, die_roll, required_roll, hard_to_block, easy_to_block)
         self.player_index = player_index
         self.group_index = group_index
         self.card_index = card_index
@@ -111,7 +111,7 @@ class TriggerHand(TriggerEvent):
 # Trigger event where the card is an attachment
 class TriggerAttachment(TriggerEvent):
     def __init__(self, player_turn, die_roll, required_roll, hard_to_block, easy_to_block, player_index, group_index):
-        super().__init__('Trigger Attachment', player_turn, die_roll, required_roll, hard_to_block, easy_to_block)
+        super().__init__('Attachment', player_turn, die_roll, required_roll, hard_to_block, easy_to_block)
         self.player_index = player_index
         self.group_index = group_index
 
@@ -119,7 +119,7 @@ class TriggerAttachment(TriggerEvent):
 # Trigger event where the card is a terrain attachment
 class TriggerTerrain(TriggerEvent):
     def __init__(self, player_turn, die_roll, required_roll, hard_to_block, easy_to_block, x, y):
-        super().__init__('Trigger Terrain', player_turn, die_roll, required_roll, hard_to_block, easy_to_block)
+        super().__init__('Terrain', player_turn, die_roll, required_roll, hard_to_block, easy_to_block)
         self.x = x
         self.y = y
 

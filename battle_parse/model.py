@@ -545,7 +545,7 @@ class Scenario:
         if isinstance(event, CardDraw):
             self.players[event.player_index].reveal_card(event, from_deck=True)
             self.players[event.player_index].draw_card(event)
-        elif isinstance(event, CardHiddenDraw):
+        elif isinstance(event, HiddenDraw):
             self.enemy.hidden_draw()
         elif isinstance(event, CardReveal):
             self.players[event.player_index].reveal_card(event)
