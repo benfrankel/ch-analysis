@@ -48,56 +48,56 @@ handPeeksSent   # A handPeeks was sent
 deckPeeks       # A card is drawn from deck
     card_info: DP/peeks/0/
 
-handPeeks       # An in-hand card is revealed to everyone
+handPeeks       # An card is created and placed in hand
     card_info: HP/peeks/*/
 
 action          # A character plays a card
     target_player_indices: TARP
-    target_group_indices: TARG
-    card_info: HP/peeks/0/
+    target_group_indices:  TARG
+    card_info:             HP/peeks/0/
 
 selectCard      # A player selects a card to discard
     selected_card_index: sel
-   ?selected_card_info: HP/peeks/0/
+   ?selected_card_info:  HP/peeks/0/
 
 selectCards     # Some cards are selected by the server (e.g. blind rage, ouch!, boiling armor, perplexing ray)
    ?selected_player_indices: SELP
-   ?selected_group_indices: SELG
-   ?selected_card_indices: SELCC
+   ?selected_group_indices:  SELG
+   ?selected_card_indices:   SELCC
 
 selectSquare    # A square is selected
-    x: TARX
-    y: TARY
-    fx: TARFX
-    fy: TARFY
+    x:  TARX   # target x
+    y:  TARY   # target y
+    fx: TARFX  # target facing x
+    fy: TARFY  # target facing y
 
 target          # A target is selected for an action (step attacks cause this type)
     target_player_indices: TARP
-    target_group_indices: TARG
+    target_group_indices:  TARG
 
 triggerFail or  # A reaction fails to trigger
 triggerSucceed  # A reaction successfully triggers
-    location: TCLOC         # 0=hand, 1=attached, 2=terrain
-   ?player_index: PUI       # appears when TCLOC=0,1
-   ?group_index: ACTG       # appears when TCLOC=0,1
-   ?card_index: ACTC        # appears when TCLOC=0
-   ?x: TARX                 # appears when TCLOC=2
-   ?y: TARY                 # appears when TCLOC=2
-    die_roll: TROLL
+    location:      TCLOC    # 0=hand, 1=attached, 2=terrain
+   ?player_index:  PUI      # when TCLOC=0,1
+   ?group_index:   ACTG     # when TCLOC=0,1
+   ?card_index:    ACTC     # when TCLOC=0
+   ?x:             TARX     # when TCLOC=2
+   ?y:             TARY     # when TCLOC=2
+    die_roll:      TROLL
     required_roll: TTHRESH  # -1=0?
-    keep: DTHRESH           # -1=0?, 0=keep, 8=discard
+    keep:          DTHRESH  # -1=0?, 0=keep, 8=discard
     hard_to_block: TPEN
     easy_to_block: TBON     # e.g. Reaching Swing
 
-hasTrait        # A player has a trait that must be played
+hasTrait        # A player must play a trait
     player_index: PUI
 
-noMoreTraits    # A player has no more traits to play
+noMoreTraits    # A player finishes playing traits
 
 mustDiscard     # A character must discard
     player_index: PUI
-    group_index: ACTG
-    quantity: DISCC
+    group_index:  ACTG
+    quantity:     DISCC
 
 noMoreDiscards  # A player finishes discarding
 
@@ -105,10 +105,10 @@ pass            # A player passes (only shows when the enemy passes)
 
 ------------------------------------------------------------------- General Remarks
 
-IIU=true iff __[[REQUESTID]]__ exists.
+IIU=true iff __[[REQUESTID]]__ exists. Indicates a response to a client request (i.e., a player took an action that had to be sent to the server).
 type=deckPeeks implies card owner is user.
 SENDID exists iff type=deckPeeks. Value of SENDID is [i] where i is user index.
-Enemy racial movement isn't specifically mentioned when drawn except with a "handPeeksSent".
+Enemy racial movement isn't explicitly mentioned when drawn; all you see is "handPeeksSent".
 Normal battle logs may be out of sync with verbose battle logs.
 
 ------------------------------------------------------------------- Card Parameters
@@ -137,7 +137,7 @@ Parameters:
 Parameters:
     type: triggerSucceed or triggerFail, whether the trigger happened
     TROLL: die roll (1, ..., 6)
-    TPEN: hard to block (0, 1, 2, 3)
+    TPEN: (penalty?) hard to block (0, 1, 2, 3)
     DPEN: ? seems to always equal TPEN
     TBON: easy to block, such as reaching swing (0, 1, 2, 3)
     DBON: ? seems to always equal TBON
@@ -165,17 +165,17 @@ Every instance of genRand being used to determine an option out of several optio
 2) option_index = floor(rand * (# options))
 
 
-Traveling Curse: determine to which enemy group's deck the curse will travel.
-    Order of groups: increasing group index, excluding dead groups.
+Traveling Curse: Which enemy group's deck will the curse travel to?
+    Order of groups: Increasing group index, excluding dead groups.
 
-Maze: determine on which square the affected character will be placed.
+Maze: Which square will the affected character be placed on?
     First random value is square
     Second random value is facing
 
     Order of squares: increasing x and then increasing y, excluding blocked and impassible terrain.
     Order of facings: (1,0), (0,1), (-1,0), (0,-1)
 
-Whirlwind (or Whirlwind Enemies): determine on which squares each affected character will be placed.
+Whirlwind (or Whirlwind Enemies): Which square will each affected character be placed on?
     There is an even number of rands. They are in pairs, where each pair is like Maze.
     Random value pairs are assigned to groups by increasing player index and then increasing group index.
 

@@ -206,3 +206,35 @@ class Pass(Event):
 
     def __str__(self):
         return super().__str__()
+
+
+# Player peeks at card in their hand
+class HandPeek(Event):
+    def __init__(self, player_turn):
+        super().__init__('Hand Peek', player_turn)
+
+    def __str__(self):
+        return super().__str__()
+
+
+# Player peeks at card in their deck
+def DeckPeek(Event):
+    def __init__(self, player_turn):
+        super().__init__('Deck Peek', player_turn)
+
+    def __str__(self):
+        return super().__str__()
+
+
+# The time of an action is recorded
+class Timer(Event):
+    def __init__(self, player_turn, switch_player, remaining):
+        super().__init__('Timer', player_turn)
+        self.switch_player = switch_player
+        self.remaining = remaining
+
+    def __str__(self):
+        h = self.remaining // 3600
+        m = (self.remaining % 3600) // 60
+        s = self.remaining % 60
+        return super().__str__() + ' [{:02}:{:02}:{:02}]'.format(h, m, s)
