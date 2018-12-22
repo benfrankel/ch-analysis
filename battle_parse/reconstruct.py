@@ -1,6 +1,7 @@
 # This file extracts information and a list of battle events from verbose battle logs
 
 from tkinter import Tk
+import re
 
 from util import log_parse
 from .event import *
@@ -65,9 +66,6 @@ def extension_events(scenario, extensions):
 
         if ex_name != 'battleTimer' and (ex_name != 'battle' or event_type == 'done'):
             continue
-
-        print()
-        print(ex)
 
         if ex_name == 'battleTimer':
             player_turn = ex['playerIndex']
@@ -247,8 +245,11 @@ def extension_events(scenario, extensions):
         elif event_type == 'pass':
             events.append(Pass(player_turn))
 
+        elif event_type == 'forceLoss':
+            events.append(Resign(player_turn))
+
         else:
-            print('    | Ignored')
+            print('Ignored:', ex)
 
     return events
 
@@ -257,9 +258,123 @@ def extension_events(scenario, extensions):
 def message_events(scenario, messages):
     events = []
 
-    for msg in messages:
-        print(msg)
-        # TODO
+    p0 = re.escape(scenario.players[0].name)
+    p1 = re.escape(scenario.players[1].name)
+    user = re.escape(scenario.user.name)
+    enem = re.escape(scenario.enemy.name)
+    player = '({}|{})'.format(user, enem)
+    user_g0 = re.escape(scenario.user.groups[0].name)
+    user_g1 = re.escape(scenario.user.groups[1].name)
+    user_g2 = re.escape(scenario.user.groups[2].name)
+    user_group = '({}|{}|{})'.format(user_g0, user_g1, user_g2)
+    enem_g0 = re.escape(scenario.enemy.groups[0].name)
+    enem_g1 = re.escape(scenario.enemy.groups[1].name)
+    enem_g2 = re.escape(scenario.enemy.groups[2].name)
+    enem_group = '({}|{}|{})'.format(enem_g0, enem_g1, enem_g2)
+    group = '({}|{}|{}|{}|{}|{})'.format(user_g0, user_g1, user_g2, enem_g0, enem_g1, enem_g2)
+
+    start_round = re.compile(r'^Starting round (\d+)$')
+    end_round = re.compile(r'^Turn Complete$')
+    scoring_phase = re.compile(r'^Scoring Phase: initiated$')
+    discard_phase = re.compile(r'^Discard Phase: initiated$')
+    defeat = re.compile(r'^{} was defeated$'.format(player))
+    user_draw = re.compile(r'^{} drew (.+) for {}$'.format(user, user_group))
+    enem_draw = re.compile(r'^{} drew (.+) for {}$'.format(enem, enem_group))
+    must_trait = re.compile(r'^{} must play a Trait$'.format(player))
+    must_target = re.compile(r'^Participant {} must select targets$'.format(player))
+    attach_trait = re.compile(r'^Attaching (.+) to {}$'.format(group))
+    detach_trait = re.compile(r'^Detaching and discarding (.+) from {}$'.format(group))
+    attach_terrain = re.compile(r'^Attaching (.+) to \((\d+), (\d+)\)$')
+    active_player = re.compile(r'^The active player is now {}$'.format(player))
+    passed = re.compile(r'^{} passed\.$'.format(player))
+    ended_round = re.compile(r'^{} ended the round.$'.format(player))
+    cancelling = re.compile(r'^Action: (.+) is invalid - cancelling$')
+    cancelled = re.compile(r'^(.+) was cancelled.$')
+    damage = re.compile(r'^{} took (\d+) damage$'.format(group))
+    heal = re.compile(r'^{} healed (\d+)$'.format(group))
+    die = re.compile(r'^{} died$'.format(group))
+
+    for m in messages:
+        event = m.get('Event')
+        msg = m.get('Msg')
+
+        if event is not None:
+            if event == 'StartGame':
+                pass
+            elif event == 'GameOver':
+                pass
+            elif event == 'Attachment Phase Initiated':
+                pass
+            elif event == 'Draw Phase Initiated':
+                pass
+            elif event == 'Action Phase Initiated':
+                pass
+            elif event == 'PlayAction':
+                pass
+            elif event == 'Move':
+                pass
+            elif event == 'TriggerSucceed':
+                pass
+            elif event == 'TriggerFail':
+                pass
+            elif event == 'Needs to discard a card':
+                pass
+            elif event == 'SelectCardRequired':
+                pass
+            elif event == 'SelectCard':
+                pass
+            elif event == 'Discard':
+                pass
+            elif event == 'AttachmentExpired':
+                pass
+            else:
+                print('Ignored:', m)
+
+        elif msg is not None:
+            if start_round.fullmatch(msg):
+                pass
+            elif end_round.fullmatch(msg):
+                pass
+            elif scoring_phase.fullmatch(msg):
+                pass
+            elif discard_phase.fullmatch(msg):
+                pass
+            elif defeat.fullmatch(msg):
+                pass
+            elif user_draw.fullmatch(msg):
+                pass
+            elif enem_draw.fullmatch(msg):
+                pass
+            elif must_trait.fullmatch(msg):
+                pass
+            elif must_target.fullmatch(msg):
+                pass
+            elif attach_trait.fullmatch(msg):
+                pass
+            elif detach_trait.fullmatch(msg):
+                pass
+            elif attach_terrain.fullmatch(msg):
+                pass
+            elif active_player.fullmatch(msg):
+                pass
+            elif passed.fullmatch(msg):
+                pass
+            elif ended_round.fullmatch(msg):
+                pass
+            elif cancelling.fullmatch(msg):
+                pass
+            elif cancelled.fullmatch(msg):
+                pass
+            elif damage.fullmatch(msg):
+                pass
+            elif heal.fullmatch(msg):
+                pass
+            elif die.fullmatch(msg):
+                pass
+            else:
+                print('Ignored:', m)
+        else:
+            print('Ignored:', m)
 
     return events
 
@@ -267,6 +382,13 @@ def message_events(scenario, messages):
 # Form higher-level events
 def refine_events(scenario, ex_events, msg_events):
     # TODO
+
+    for event in ex_events:
+        print(event)
+
+    for event in msg_events:
+        print(event)
+
     return ex_events
 
 

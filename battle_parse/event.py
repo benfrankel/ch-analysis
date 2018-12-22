@@ -208,6 +208,15 @@ class Pass(Event):
         return super().__str__()
 
 
+# Player resigns
+class Resign(Event):
+    def __init__(self, player_turn):
+        super().__init__('Resign', player_turn)
+
+    def __str__(self):
+        return super().__str__()
+
+
 # Player peeks at card in their hand
 class HandPeek(Event):
     def __init__(self, player_turn):
@@ -218,7 +227,7 @@ class HandPeek(Event):
 
 
 # Player peeks at card in their deck
-def DeckPeek(Event):
+class DeckPeek(Event):
     def __init__(self, player_turn):
         super().__init__('Deck Peek', player_turn)
 

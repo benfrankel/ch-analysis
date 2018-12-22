@@ -9,8 +9,8 @@ Attach terrain:      'Attaching <card-name> to (<x>;<y>)'
 Invalid action:      'Invalid action: <card-name>, played by <group-name> - too few target actors (<num-actors>/<required-actors>)'
 Cancel action:       'Action: <card-name> is invalid - cancelling'
 Cancel card:         '<card-name> was cancelled.'
-Counting VPs:        'Scoring Phase: initiated'
-Selecting discards:  'Discard Phase: initiated'
+Scoring phase:       'Scoring Phase: initiated'
+Discard phase:       'Discard Phase: initiated'
 Full round done:     'Turn Complete'
 Starting next round: 'Starting round <round>'
 
@@ -41,3 +41,9 @@ Pass:                '<player-name> passed.'
 End round:           '<player-name> ended the round.'
                      '<group-name>;health = <hp> (pi:<player-index>;gi:<group-index>;ai:<actor-index>)' *
 Death:               '<group-name> died'
+
+------------------------------------------------------------------- Event
+
+GENERAL
+Start game:   'StartGame'
+Action phase: 'Action Phase Initiated'

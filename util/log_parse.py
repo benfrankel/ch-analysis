@@ -109,16 +109,19 @@ def parse_battle_log(raw):
         try:
             return int(val)
         except ValueError:
-            try:
-                return float(val)
-            except ValueError:
-                if len(val) != 0 and val[0] + val[-1] in ('()', '[]', '{}'):
-                    return [convert(x) for x in val[1:-1].split(', ')]
-                if '|' in val:
-                    return val.split('|')
-                if ',' in val and '=' not in val:
-                    return val.split(',')
-                return val
+            pass
+
+        try:
+            return float(val)
+        except ValueError:
+            pass
+
+        if len(val) != 0 and val[0] + val[-1] in ('()', '[]', '{}'):
+            return [convert(x) for x in val[1:-1].split(', ')]
+        if '|' in val:
+            return val.split('|')
+
+        return val
 
     for line in raw.splitlines():
         # Ignore non-message lines
