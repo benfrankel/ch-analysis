@@ -58,7 +58,7 @@ def load_scenario(objs):
 # Extract extension events
 def extension_events(scenario, extensions):
     events = []
-    player_turn = 0
+    player_turn = -1
     must_discard = [-1, -1]
     for ex in extensions:
         ex_name = ex.get('_NAME')
@@ -68,11 +68,16 @@ def extension_events(scenario, extensions):
             continue
 
         if ex_name == 'battleTimer':
-            player_turn = ex['playerIndex']
-            switch_player = ex['start']
+            player_index = ex['playerIndex']
+            start = ex['start']
             remaining = ex['timeRemaining']
 
-            events.append(Timer(player_turn, switch_player, remaining))
+            if start:
+                player_turn = player_index
+            else:
+                player_turn = -1
+
+            events.append(Timer(-1, player_index, start, remaining))
 
         elif event_type == 'deckPeeksSent':
             events.append(DeckPeek(player_turn))
@@ -190,7 +195,7 @@ def extension_events(scenario, extensions):
         elif event_type == 'hasTrait':
             player_index = ex['PUI']
 
-            events.append(MustPlayTrait(player_turn, player_index))
+            events.append(MustTrait(player_turn, player_index))
 
         elif event_type == 'noMoreTraits':
             events.append(NoTraits(player_turn))
@@ -278,8 +283,7 @@ def message_events(scenario, messages):
     scoring_phase = re.compile(r'^Scoring Phase: initiated$')
     discard_phase = re.compile(r'^Discard Phase: initiated$')
     defeat = re.compile(r'^{} was defeated$'.format(player))
-    user_draw = re.compile(r'^{} drew (.+) for {}$'.format(user, user_group))
-    enem_draw = re.compile(r'^{} drew (.+) for {}$'.format(enem, enem_group))
+    draw = re.compile(r'^{} drew (.+) for {}$'.format(player, group))
     must_trait = re.compile(r'^{} must play a Trait$'.format(player))
     must_target = re.compile(r'^Participant {} must select targets$'.format(player))
     attach_trait = re.compile(r'^Attaching (.+) to {}$'.format(group))
@@ -300,79 +304,201 @@ def message_events(scenario, messages):
 
         if event is not None:
             if event == 'StartGame':
-                pass
+                events.append(MsgStartGame())
+
             elif event == 'GameOver':
-                pass
+                events.append(MsgEndGame())
+
             elif event == 'Attachment Phase Initiated':
-                pass
+                events.append(MsgAttachmentPhase())
+
             elif event == 'Draw Phase Initiated':
-                pass
+                events.append(MsgDrawPhase())
+
             elif event == 'Action Phase Initiated':
-                pass
+                events.append(MsgActionPhase())
+
             elif event == 'PlayAction':
-                pass
+                targets = m['Targets']
+                if targets == '':
+                    targets = []
+                elif isinstance(targets, str):
+                    targets = [targets]
+                group = m['Instigator']
+                card = m['Action']
+                events.append(MsgCardPlay(group, card, targets))
+
             elif event == 'Move':
-                pass
-            elif event == 'TriggerSucceed':
-                pass
-            elif event == 'TriggerFail':
-                pass
+                start_facing = m['StartFacing']
+                end_facing = m['EndFacing']
+                start = m['Origin']
+                end = m['Destination']
+                group = m['Actor']
+                player = m['Player']
+                events.append(MsgMove(player, group, start, end, start_facing, end_facing))
+
+            elif event.startswith('Trigger'):
+                success = event.endswith('Succeed')
+                group = m['TriggeringActor']
+                card = m['Trigger']
+                target = m['AffectedActors']
+                loc = m['TriggerLocation']
+                cause = m['TriggerType']
+                if loc == 'SquareAttachment':
+                    events.append(MsgTriggerTerrain(group, card, target, success, cause))
+                elif loc == 'ActorAttachment':
+                    events.append(MsgTriggerTrait(group, card, target, success, cause))
+                else:
+                    events.append(MsgTriggerHand(group, card, target, success, cause))
+
             elif event == 'Needs to discard a card':
-                pass
+                group = m['Group']
+                events.append(MsgMustDiscard(group))
+
             elif event == 'SelectCardRequired':
-                pass
+                player = m['Participant']
+                player_id = m['PlayerID']
+                options = m['Selections']
+                choice_type = m['ChoiceType']  # TODO: What can this be?
+                events.append(MsgSelectFrom(player, options))
+
             elif event == 'SelectCard':
-                pass
+                card = m['Selection']
+                player = m['Participant']
+                events.append(MsgSelect(player, card))
+
             elif event == 'Discard':
-                pass
+                card = m['Card']
+                group = m['Group']
+                events.append(MsgDiscard(group, card))
+
             elif event == 'AttachmentExpired':
-                pass
+                card = m['Attachment']
+                loc = m['AttachedTo']
+                if isinstance(loc, list):
+                    square = loc
+                    events.append(MsgDetachTerrain(square, card))
+                else:
+                    group = loc
+                    events.append(MsgDetachTrait(group, card))
+
+            elif event == 'startTimer':
+                player_index = m['PlayerIndex']
+                remaining = m['Remaining']
+                events.append(MsgStartTimer(player_index, remaining))
+
+            elif event == 'stopTimer':
+                player_index = m['PlayerIndex']
+                remaining = m['Remaining']
+                events.append(MsgStopTimer(player_index, remaining))
+
             else:
                 print('Ignored:', m)
 
         elif msg is not None:
             if start_round.fullmatch(msg):
-                pass
+                match = start_round.fullmatch(msg)
+                round_ = int(match.groups()[0])
+                events.append(MsgStartRound(round_))
+
             elif end_round.fullmatch(msg):
-                pass
+                events.append(MsgEndRound())
+
             elif scoring_phase.fullmatch(msg):
-                pass
+                events.append(MsgScoringPhase())
+
             elif discard_phase.fullmatch(msg):
-                pass
+                events.append(MsgDiscardPhase())
+
             elif defeat.fullmatch(msg):
-                pass
-            elif user_draw.fullmatch(msg):
-                pass
-            elif enem_draw.fullmatch(msg):
-                pass
+                match = defeat.fullmatch(msg)
+                player = match.groups()[0]
+                events.append(MsgDefeat(player))
+
+            elif draw.fullmatch(msg):
+                match = draw.fullmatch(msg)
+                player = match.groups()[0]
+                card = match.groups()[1]
+                group = match.groups()[2]
+                if card == 'a card':
+                    events.append(MsgHiddenDraw(player, group))
+                else:
+                    events.append(MsgCardDraw(player, group, card))
+
             elif must_trait.fullmatch(msg):
-                pass
+                match = must_trait.fullmatch(msg)
+                player = match.groups()[0]
+                events.append(MsgMustTrait(player))
+
             elif must_target.fullmatch(msg):
-                pass
+                match = must_target.fullmatch(msg)
+                print(msg, match.groups())
+                pass # TODO
+
             elif attach_trait.fullmatch(msg):
-                pass
+                match = attach_trait.fullmatch(msg)
+                card = match.groups()[0]
+                group = match.groups()[1]
+                events.append(MsgAttachTrait(group, card))
+
             elif detach_trait.fullmatch(msg):
-                pass
+                match = detach_trait.fullmatch(msg)
+                card = match.groups()[0]
+                group = match.groups()[1]
+                events.append(MsgDetachTrait(group, card))
+
             elif attach_terrain.fullmatch(msg):
-                pass
+                match = attach_terrain.fullmatch(msg)
+                card = match.groups()[0]
+                x = int(match.groups()[1])
+                y = int(match.groups()[2])
+                events.append(MsgAttachTerrain([x, y], card))
+
             elif active_player.fullmatch(msg):
-                pass
+                match = active_player.fullmatch(msg)
+                player = match.groups()[0]
+                events.append(MsgPlayerTurn(player))
+
             elif passed.fullmatch(msg):
-                pass
+                match = passed.fullmatch(msg)
+                player = match.groups()[0]
+                events.append(MsgPass(player))
+
             elif ended_round.fullmatch(msg):
-                pass
+                match = ended_round.fullmatch(msg)
+                player = match.groups()[0]
+                events.append(MsgPass(player))
+
             elif cancelling.fullmatch(msg):
+                match = cancelling.fullmatch(msg)
+                print(msg, match.groups())
                 pass
+
             elif cancelled.fullmatch(msg):
-                pass
+                match = cancelled.fullmatch(msg)
+                card = match.groups()[0]
+                print('Cancelled:', card, 'was cancelled')
+
             elif damage.fullmatch(msg):
-                pass
+                match = damage.fullmatch(msg)
+                group = match.groups()[0]
+                hp = int(match.groups()[1])
+                events.append(MsgDamage(group, hp))
+
             elif heal.fullmatch(msg):
-                pass
+                match = heal.fullmatch(msg)
+                group = match.groups()[0]
+                hp = int(match.groups()[1])
+                events.append(MsgHeal(group, hp))
+
             elif die.fullmatch(msg):
-                pass
+                match = die.fullmatch(msg)
+                group = match.groups()[0]
+                events.append(MsgDeath(group))
+
             else:
                 print('Ignored:', m)
+
         else:
             print('Ignored:', m)
 
@@ -384,7 +510,8 @@ def refine_events(scenario, ex_events, msg_events):
     # TODO
 
     for event in ex_events:
-        print(event)
+        pass
+        # print(event)
 
     for event in msg_events:
         print(event)

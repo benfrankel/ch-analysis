@@ -8,7 +8,10 @@ class Event:
         self.player_turn = player_turn
 
     def __str__(self):
-        return 'Player {}: {}'.format(self.player_turn, self.name)
+        if self.player_turn == -1:
+            return 'The Game: {}'.format(self.name)
+        else:
+            return 'Player {}: {}'.format(self.player_turn, self.name)
 
 
 # Superclass for card events
@@ -162,9 +165,9 @@ class RNG(Event):
 
 
 # A group must play a trait
-class MustPlayTrait(Event):
+class MustTrait(Event):
     def __init__(self, player_turn, player_index):
-        super().__init__('Must Play Trait', player_turn)
+        super().__init__('Must Trait', player_turn)
         self.player_index = player_index
 
     def __str__(self):
@@ -237,9 +240,10 @@ class DeckPeek(Event):
 
 # The time of an action is recorded
 class Timer(Event):
-    def __init__(self, player_turn, switch_player, remaining):
+    def __init__(self, player_turn, player_index, start, remaining):
         super().__init__('Timer', player_turn)
-        self.switch_player = switch_player
+        self.player_index = player_index
+        self.start = start
         self.remaining = remaining
 
     def __str__(self):

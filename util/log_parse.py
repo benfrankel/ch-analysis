@@ -125,7 +125,14 @@ def parse_battle_log(raw):
 
     for line in raw.splitlines():
         # Ignore non-message lines
-        if 'BATTLE LOG: ' not in line:
+        if not line.startswith('BATTLE LOG: '):
+            words = line.split()
+            if len(words) == 3:
+                event, player_index, remaining = words
+                if event == 'startTimer' or event == 'stopTimer':
+                    player_index = int(player_index)
+                    remaining = int(remaining)
+                    messages.append({'Event': 'startTimer', 'PlayerIndex': player_index, 'Remaining': remaining})
             continue
 
         line = line[12:]
