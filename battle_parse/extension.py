@@ -1,28 +1,52 @@
 # Verbose battle log extension events
 
 
-# Helper function
+# Helper function to display time
 def display_seconds(sec):
     s = sec % 60
     m = sec // 60
     h, m = divmod(m, 60)
     return '{:02}:{:02}:{:02}'.format(h, m, s)
 
+# Helper function to display cards
+def display_card(ex):
+    return '{} from {}'.format(ex.card_name, ex.item_name)
 
-# Superclass for all extension events
+# Populate params via args
+def populate(obj, params, args):
+    if len(params) != len(args):
+        raise TypeError('Expected {} arguments ({} given)'.format(len(params), len(args)))
+    for param, arg in zip(params, args):
+        setattr(obj, param, arg)
+
+# Superclass for extension events
 class Extension:
     def __init__(self, name, player_turn):
         self.name = name
         self.player_turn = player_turn
 
     def __str__(self):
-        if self.player_turn == -1:
-            return 'The Game: {}'.format(self.name)
-        else:
-            return 'Player {}: {}'.format(self.player_turn, self.name)
+        turn = ' '
+        if self.player_turn != -1:
+            turn = '{}'.format(self.player_turn)
+        return '{} [{}]'.format(turn, self.name)
 
+# Factory for extension events
+def build_ex(name, *params, describe=None):
+    class _ExCustom(Extension):
+        def __init__(self, player_turn, *args):
+            super().__init__(name, player_turn)
+            populate(self, params, args)
 
-# Superclass for card events
+        def __str__(self):
+            description = ''
+            if describe is not None:
+                description = ' ' + describe(self)
+            return super().__str__() + description
+    
+    return _ExCustom
+
+# Superclass for card extension events
 class CardExtension(Extension):
     def __init__(self, name, player_turn, original_player_index, original_group_index, player_index, group_index,
                  card_index, item_name, card_name):
@@ -36,63 +60,26 @@ class CardExtension(Extension):
         self.card_name = card_name
 
     def __str__(self):
-        return super().__str__() + ' [{} from {}]'.format(self.card_name, self.item_name)
+        return super().__str__() + ' {}'.format(display_card(self))
 
+# Factory for card extension events
+def build_card_ex(action, *params, describe=None):
+    class _CustomExCard(CardExtension):
+        def __init__(self, player_turn, original_player_index, original_group_index, player_index, group_index, card_index,
+                     item_name, card_name, *args):
+            super().__init__(action, player_turn, original_player_index, original_group_index, player_index, group_index,
+                             card_index, item_name, card_name)
+            populate(self, params, args)
 
-# A card is played
-class ExCardPlay(CardExtension):
-    def __init__(self, player_turn, original_player_index, original_group_index, player_index, group_index, card_index,
-                 item_name, card_name):
-        super().__init__('Play', player_turn, original_player_index, original_group_index, player_index, group_index,
-                         card_index, item_name, card_name)
+        def __str__(self):
+            description = ''
+            if describe is not None:
+                description = ' ' + describe(self)
+            return super().__str__() + description
 
-    def __str__(self):
-        return super().__str__()
+    return _CustomExCard
 
-
-# A card is drawn
-class ExCardDraw(CardExtension):
-    def __init__(self, player_turn, original_player_index, original_group_index, player_index, group_index, card_index,
-                 item_name, card_name):
-        super().__init__('Draw', player_turn, original_player_index, original_group_index, player_index, group_index,
-                         card_index, item_name, card_name)
-
-    def __str__(self):
-        return super().__str__()
-
-
-# A hidden card is drawn
-class ExHiddenDraw(Extension):
-    def __init__(self, player_turn):
-        super().__init__('Hidden Draw', player_turn)
-
-    def __str__(self):
-        return super().__str__()
-
-
-# A card is revealed
-class ExCardReveal(CardExtension):
-    def __init__(self, player_turn, original_player_index, original_group_index, player_index, group_index, card_index,
-                 item_name, card_name):
-        super().__init__('Reveal', player_turn, original_player_index, original_group_index, player_index, group_index,
-                         card_index, item_name, card_name)
-
-    def __str__(self):
-        return super().__str__()
-
-
-# A card is discarded
-class ExCardDiscard(CardExtension):
-    def __init__(self, player_turn, original_player_index, original_group_index, player_index, group_index, card_index,
-                 item_name, card_name):
-        super().__init__('Discard', player_turn, original_player_index, original_group_index, player_index, group_index,
-                         card_index, item_name, card_name)
-
-    def __str__(self):
-        return super().__str__()
-
-
-# Superclass for trigger events
+# Superclass for trigger extension events
 class TriggerExtension(Extension):
     def __init__(self, name, player_turn, die_roll, required_roll, hard_to_block, easy_to_block):
         super().__init__('Trigger ' + name, player_turn)
@@ -103,156 +90,63 @@ class TriggerExtension(Extension):
         self.success = die_roll + easy_to_block - hard_to_block >= required_roll
 
     def __str__(self):
-        return super().__str__() + ' [{}]'.format(['Fail', 'Success'][self.success])
+        trigger = 'Failed to trigger'
+        if self.success:
+            trigger = 'Successfully triggered'
+        return super().__str__() + ' {}'.format(trigger)
 
+# Factory for trigger extension events
+def build_trigger_ex(location, *params, describe=None):
+    class _CustomExTrigger(TriggerExtension):
+        def __init__(self, player_turn, die_roll, required_roll, hard_to_block, easy_to_block, *args):
+            super().__init__(location, player_turn, die_roll, required_roll, hard_to_block, easy_to_block)
+            populate(self, params, args)
 
-# Trigger event where the card is in hand
-class ExTriggerHand(TriggerExtension):
-    def __init__(self, player_turn, die_roll, required_roll, hard_to_block, easy_to_block, player_index,
-                 group_index, card_index):
-        super().__init__('Hand', player_turn, die_roll, required_roll, hard_to_block, easy_to_block)
-        self.player_index = player_index
-        self.group_index = group_index
-        self.card_index = card_index
+        def __str__(self):
+            description = ''
+            if describe is not None:
+                description = ' ' + describe(self)
+            return super().__str__() + description
 
-    def __str__(self):
-        return super().__str__()
+    return _CustomExTrigger
 
-
-# Trigger event where the card is an attachment
-class ExTriggerAttachment(TriggerExtension):
-    def __init__(self, player_turn, die_roll, required_roll, hard_to_block, easy_to_block, player_index, group_index):
-        super().__init__('Attachment', player_turn, die_roll, required_roll, hard_to_block, easy_to_block)
-        self.player_index = player_index
-        self.group_index = group_index
-
-
-# Trigger event where the card is a terrain attachment
-class ExTriggerTerrain(TriggerExtension):
-    def __init__(self, player_turn, die_roll, required_roll, hard_to_block, easy_to_block, x, y):
-        super().__init__('Terrain', player_turn, die_roll, required_roll, hard_to_block, easy_to_block)
-        self.x = x
-        self.y = y
-
-    def __str__(self):
-        return super().__str__()
-
-
-# A target selection event such as for a step attack
-class ExSelectTarget(Extension):
-    def __init__(self, player_turn, target_player_indices, target_group_indices):
-        super().__init__('Select Target', player_turn)
-        self.target_player_indices = target_player_indices
-        self.target_group_indices = target_group_indices
-
-    def __str__(self):
-        return super().__str__()
-
-
-# A square selection event such as for movement
-class ExSelectSquare(Extension):
-    def __init__(self, player_turn, x, y, fx, fy):
-        super().__init__('Select Square', player_turn)
-        self.x = x
-        self.y = y
-        self.fx = fx
-        self.fy = fy
-
-    def __str__(self):
-        return super().__str__() + ' [{}, {}]'.format(self.x, self.y)
-
-
-# Random numbers are generated
-class ExRNG(Extension):
-    def __init__(self, player_turn, rands):
-        super().__init__('RNG', player_turn)
-        self.rands = rands
-
-    def __str__(self):
-        return super().__str__()
-
-
-# A group must play a trait
-class ExMustTrait(Extension):
-    def __init__(self, player_turn, player_index):
-        super().__init__('Must Trait', player_turn)
-        self.player_index = player_index
-
-    def __str__(self):
-        return super().__str__()
-
-
-# No traits must be played
-class ExNoTraits(Extension):
-    def __init__(self, player_turn):
-        super().__init__('No Traits', player_turn)
-
-    def __str__(self):
-        return super().__str__()
-
-
-# A group must discard
-class ExMustDiscard(Extension):
-    def __init__(self, player_turn, player_index, group_index):
-        super().__init__('Must Discard', player_turn)
-        self.player_index = player_index
-        self.group_index = group_index
-
-    def __str__(self):
-        return super().__str__()
-
-# No cards must be discarded
-class ExNoDiscards(Extension):
-    def __init__(self, player_turn):
-        super().__init__('No Discards', player_turn)
-
-    def __str__(self):
-        return super().__str__()
-
-
-# Player passes their turn
-class ExPass(Extension):
-    def __init__(self, player_turn):
-        super().__init__('Pass', player_turn)
-
-    def __str__(self):
-        return super().__str__()
-
-
-# Player resigns
-class ExResign(Extension):
-    def __init__(self, player_turn):
-        super().__init__('Resign', player_turn)
-
-    def __str__(self):
-        return super().__str__()
-
-
-# Player peeks at card in their hand
-class ExHandPeek(Extension):
-    def __init__(self, player_turn):
-        super().__init__('Hand Peek', player_turn)
-
-    def __str__(self):
-        return super().__str__()
-
-
-# Player peeks at card in their deck
-class ExDeckPeek(Extension):
-    def __init__(self, player_turn):
-        super().__init__('Deck Peek', player_turn)
-
-    def __str__(self):
-        return super().__str__()
-
-
-# The time of an action is recorded
-class ExTimer(Extension):
-    def __init__(self, player_turn, player_index, start, remaining):
-        super().__init__('Timer', player_turn)
-        self.player_index = player_index
-        self.start = start
-        self.remaining = remaining
-
-    def __str__(self):
-        return super().__str__() + ' [{}]'.format(display_seconds(self.remaining))
+ExCardPlay       = build_card_ex('Play')
+ExCardDraw       = build_card_ex('Draw')
+ExCardReveal     = build_card_ex('Reveal')
+ExCardDiscard    = build_card_ex('Discard')
+ExTriggerInHand  = build_trigger_ex('In Hand', 'player_index', 'group_index', 'card_index',
+                                    describe=lambda m:'card {} of group {} of player {}'.format(
+                                        m.card_index, m.group_index, m.player_index))
+ExTriggerTrait   = build_trigger_ex('Trait', 'player_index', 'group_index',
+                                    describe=lambda m:'trait attached to group {} of player {}'.format(
+                                        m.group_index, m.player_index))
+ExTriggerTerrain = build_trigger_ex('Terrain', 'square',
+                                    describe=lambda m:'square {}'.format(
+                                        m.square))
+ExSelectTarget   = build_ex('Select Target', 'target_player_indices', 'target_group_indices',
+                            describe=lambda m:'Selected groups {} of players {}'.format(
+                                m.target_group_indices, m.target_player_indices))
+ExSelectSquare   = build_ex('Select Square', 'square', 'facing',
+                            describe=lambda m:'Selected square {} with facing {}'.format(
+                                m.square, m.facing))
+ExRNG            = build_ex('RNG', 'rands',
+                            describe=lambda m:'Result: {}'.format(
+                                m.rands))
+ExMustTrait      = build_ex('Must Play Trait', 'player_index',
+                            describe=lambda m:'Player {} must play trait'.format(
+                                m.player_index))
+ExNoTraits       = build_ex('No Traits')
+ExMustDiscard    = build_ex('Must Discard', 'player_index', 'group_index',
+                            describe=lambda m:'Group {} of player {} must discard'.format(
+                                m.group_index, m.player_index))
+ExNoDiscards     = build_ex('No Discards')
+ExPass           = build_ex('Pass')
+ExResign         = build_ex('Resign')
+ExHandPeek       = build_ex('Hand Peek')
+ExDeckPeek       = build_ex('Deck Peek')
+ExStartTimer     = build_ex('Start Timer', 'player_index', 'remaining',
+                            describe=lambda m:'{} remaining'.format(
+                                display_seconds(m.remaining)))
+ExStopTimer      = build_ex('Stop Timer', 'player_index', 'remaining',
+                            describe=lambda m:'{} remaining'.format(
+                                display_seconds(m.remaining)))

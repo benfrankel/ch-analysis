@@ -132,7 +132,7 @@ def parse_battle_log(raw):
                 if event == 'startTimer' or event == 'stopTimer':
                     player_index = int(player_index)
                     remaining = int(remaining)
-                    messages.append({'Event': 'startTimer', 'PlayerIndex': player_index, 'Remaining': remaining})
+                    messages.append({'Event': event, 'PlayerIndex': player_index, 'Remaining': remaining})
             continue
 
         line = line[12:]

@@ -75,10 +75,10 @@ def extension_events(scenario, extensions):
 
             if start:
                 player_turn = player_index
+                events.append(ExStartTimer(-1, player_index, remaining))
             else:
                 player_turn = -1
-
-            events.append(ExTimer(-1, player_index, start, remaining))
+                events.append(ExStopTimer(-1, player_index, remaining))
 
         elif event_type == 'deckPeeksSent':
             events.append(ExDeckPeek(player_turn))
@@ -87,45 +87,49 @@ def extension_events(scenario, extensions):
             events.append(ExHandPeek(player_turn))
 
         elif event_type == 'deckPeeks':
-            # If the user is still unknown, use this deckPeeks to determine who it is
+            # If user is still unknown, use this deckPeeks to determine who it is
             if scenario.user is None:
-                scenario.set_user(ex['SENDID'][0])
+                user = ex['SENDID'][0]
+                scenario.set_user(user)
 
             # For every card in the peeks array, extract its info and append an event for it
-            for info in ex['DP']['peeks']:
-                original_player_index = info['cownerp']
-                original_group_index = info['cownerg']
-                card_index = info['card']
-                item_name = info['origin']
-                card_name = info['type']
-                player_index = info['owner']
-                group_index = info['group']
+            deck_peeks = ex['DP']['peeks']
+            for peek in deck_peeks:
+                original_player_index = peek['cownerp']
+                original_group_index = peek['cownerg']
+                card_index = peek['card']
+                item_name = peek['origin']
+                card_name = peek['type']
+                player_index = peek['owner']
+                group_index = peek['group']
                 events.append(ExCardDraw(player_turn, original_player_index, original_group_index, player_index,
                                          group_index, card_index, item_name, card_name))
 
         elif event_type == 'handPeeks':
             # For every card in the peeks array, extract its info and append an event for it
-            for info in ex['HP']['peeks']:
-                original_player_index = info['cownerp']
-                original_group_index = info['cownerg']
-                card_index = info['card']
-                item_name = info['origin']
-                card_name = info['type']
-                player_index = info['owner']
-                group_index = info['group']
+            hand_peeks = ex['HP']['peeks']
+            for peek in hand_peeks:
+                original_player_index = peek['cownerp']
+                original_group_index = peek['cownerg']
+                card_index = peek['card']
+                item_name = peek['origin']
+                card_name = peek['type']
+                player_index = peek['owner']
+                group_index = peek['group']
                 events.append(ExCardReveal(player_turn, original_player_index, original_group_index, player_index,
                                            group_index, card_index, item_name, card_name))
 
         elif event_type == 'action':
             # For every card in the peeks array, extract its info and append an event for it
-            for info in ex['HP']['peeks']:
-                original_player_index = info['cownerp']
-                original_group_index = info['cownerg']
-                card_index = info['card']
-                item_name = info['origin']
-                card_name = info['type']
-                player_index = info['owner']
-                group_index = info['group']
+            hand_peeks = ex['HP']['peeks']
+            for peek in hand_peeks:
+                original_player_index = peek['cownerp']
+                original_group_index = peek['cownerg']
+                card_index = peek['card']
+                item_name = peek['origin']
+                card_name = peek['type']
+                player_index = peek['owner']
+                group_index = peek['group']
                 events.append(ExCardPlay(player_turn, original_player_index, original_group_index, player_index,
                                          group_index, card_index, item_name, card_name))
 
@@ -137,14 +141,15 @@ def extension_events(scenario, extensions):
         elif event_type == 'selectCard':
             # Discard during round
             if 'HP' in ex:
-                for info in ex['HP']['peeks']:
-                    original_player_index = info['cownerp']
-                    original_group_index = info['cownerg']
-                    card_index = info['card']
-                    item_name = info['origin']
-                    card_name = info['type']
-                    player_index = info['owner']
-                    group_index = info['group']
+                hand_peeks = ex['HP']['peeks']
+                for peek in hand_peeks:
+                    original_player_index = peek['cownerp']
+                    original_group_index = peek['cownerg']
+                    card_index = peek['card']
+                    item_name = peek['origin']
+                    card_name = peek['type']
+                    player_index = peek['owner']
+                    group_index = peek['group']
                     events.append(ExCardDiscard(player_turn, original_player_index, original_group_index, player_index,
                                                 group_index, card_index, item_name, card_name))
 
@@ -204,19 +209,20 @@ def extension_events(scenario, extensions):
                 player_index = ex['PUI']
                 group_index = ex['ACTG']
                 card_index = ex['ACTC']
-                events.append(ExTriggerHand(player_turn, die_roll, required_roll, hard_to_block, easy_to_block, player_index,
-                                            group_index, card_index))
+                events.append(ExTriggerInHand(player_turn, die_roll, required_roll, hard_to_block, easy_to_block, player_index,
+                                              group_index, card_index))
 
             elif location == 1:
                 player_index = ex['PUI']
                 group_index = ex['ACTG']
-                events.append(ExTriggerAttachment(player_turn, die_roll, required_roll, hard_to_block, easy_to_block,
-                                                  player_index, group_index))
+                events.append(ExTriggerTrait(player_turn, die_roll, required_roll, hard_to_block, easy_to_block,
+                                             player_index, group_index))
 
             elif location == 2:
                 x = ex['TARX']
                 y = ex['TARY']
-                events.append(ExTriggerTerrain(player_turn, die_roll, required_roll, hard_to_block, easy_to_block, x, y))
+                square = [x, y]
+                events.append(ExTriggerTerrain(player_turn, die_roll, required_roll, hard_to_block, easy_to_block, square))
 
         elif event_type == 'target':
             target_player_indices = ex['TARP']
@@ -226,9 +232,11 @@ def extension_events(scenario, extensions):
         elif event_type == 'selectSquare':
             x = ex['TARX']
             y = ex['TARY']
+            square = [x, y]
             fx = ex['TARFX']
             fy = ex['TARFY']
-            events.append(ExSelectSquare(player_turn, x, y, fx, fy))
+            facing = [fx, fy]
+            events.append(ExSelectSquare(player_turn, square, facing))
 
         elif event_type == 'genRand':
             rands = ex['RAND']
@@ -247,6 +255,7 @@ def extension_events(scenario, extensions):
 
 
 # Extract message events
+# TODO: Active Player = No Traits
 def message_events(scenario, messages):
     events = []
 
@@ -295,7 +304,7 @@ def message_events(scenario, messages):
                 events.append(MsgEndGame())
 
             elif event == 'Attachment Phase Initiated':
-                events.append(MsgAttachmentPhase())
+                events.append(MsgTraitPhase())
 
             elif event == 'Draw Phase Initiated':
                 events.append(MsgDrawPhase())
@@ -437,7 +446,8 @@ def message_events(scenario, messages):
                 card = match.groups()[0]
                 x = int(match.groups()[1])
                 y = int(match.groups()[2])
-                events.append(MsgAttachTerrain([x, y], card))
+                square = [x, y]
+                events.append(MsgAttachTerrain(square, card))
 
             elif active_player.fullmatch(msg):
                 match = active_player.fullmatch(msg)
@@ -512,7 +522,7 @@ def refine_events(scenario, ex_events, msg_events):
 
     for event in ex_events:
         pass
-        # print(event)
+        print(event)
 
     for event in msg_events:
         pass
