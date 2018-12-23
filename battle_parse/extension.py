@@ -1,8 +1,16 @@
-# Battle event objects
+# Verbose battle log extension events
 
 
-# Superclass for all events
-class Event:
+# Helper function
+def display_seconds(sec):
+    s = sec % 60
+    m = sec // 60
+    h, m = divmod(m, 60)
+    return '{:02}:{:02}:{:02}'.format(h, m, s)
+
+
+# Superclass for all extension events
+class Extension:
     def __init__(self, name, player_turn):
         self.name = name
         self.player_turn = player_turn
@@ -15,7 +23,7 @@ class Event:
 
 
 # Superclass for card events
-class CardEvent(Event):
+class CardExtension(Extension):
     def __init__(self, name, player_turn, original_player_index, original_group_index, player_index, group_index,
                  card_index, item_name, card_name):
         super().__init__('Card ' + name, player_turn)
@@ -32,7 +40,7 @@ class CardEvent(Event):
 
 
 # A card is played
-class CardPlay(CardEvent):
+class ExCardPlay(CardExtension):
     def __init__(self, player_turn, original_player_index, original_group_index, player_index, group_index, card_index,
                  item_name, card_name):
         super().__init__('Play', player_turn, original_player_index, original_group_index, player_index, group_index,
@@ -43,7 +51,7 @@ class CardPlay(CardEvent):
 
 
 # A card is drawn
-class CardDraw(CardEvent):
+class ExCardDraw(CardExtension):
     def __init__(self, player_turn, original_player_index, original_group_index, player_index, group_index, card_index,
                  item_name, card_name):
         super().__init__('Draw', player_turn, original_player_index, original_group_index, player_index, group_index,
@@ -54,7 +62,7 @@ class CardDraw(CardEvent):
 
 
 # A hidden card is drawn
-class HiddenDraw(Event):
+class ExHiddenDraw(Extension):
     def __init__(self, player_turn):
         super().__init__('Hidden Draw', player_turn)
 
@@ -63,7 +71,7 @@ class HiddenDraw(Event):
 
 
 # A card is revealed
-class CardReveal(CardEvent):
+class ExCardReveal(CardExtension):
     def __init__(self, player_turn, original_player_index, original_group_index, player_index, group_index, card_index,
                  item_name, card_name):
         super().__init__('Reveal', player_turn, original_player_index, original_group_index, player_index, group_index,
@@ -74,7 +82,7 @@ class CardReveal(CardEvent):
 
 
 # A card is discarded
-class CardDiscard(CardEvent):
+class ExCardDiscard(CardExtension):
     def __init__(self, player_turn, original_player_index, original_group_index, player_index, group_index, card_index,
                  item_name, card_name):
         super().__init__('Discard', player_turn, original_player_index, original_group_index, player_index, group_index,
@@ -85,7 +93,7 @@ class CardDiscard(CardEvent):
 
 
 # Superclass for trigger events
-class TriggerEvent(Event):
+class TriggerExtension(Extension):
     def __init__(self, name, player_turn, die_roll, required_roll, hard_to_block, easy_to_block):
         super().__init__('Trigger ' + name, player_turn)
         self.die_roll = die_roll
@@ -99,7 +107,7 @@ class TriggerEvent(Event):
 
 
 # Trigger event where the card is in hand
-class TriggerHand(TriggerEvent):
+class ExTriggerHand(TriggerExtension):
     def __init__(self, player_turn, die_roll, required_roll, hard_to_block, easy_to_block, player_index,
                  group_index, card_index):
         super().__init__('Hand', player_turn, die_roll, required_roll, hard_to_block, easy_to_block)
@@ -112,7 +120,7 @@ class TriggerHand(TriggerEvent):
 
 
 # Trigger event where the card is an attachment
-class TriggerAttachment(TriggerEvent):
+class ExTriggerAttachment(TriggerExtension):
     def __init__(self, player_turn, die_roll, required_roll, hard_to_block, easy_to_block, player_index, group_index):
         super().__init__('Attachment', player_turn, die_roll, required_roll, hard_to_block, easy_to_block)
         self.player_index = player_index
@@ -120,7 +128,7 @@ class TriggerAttachment(TriggerEvent):
 
 
 # Trigger event where the card is a terrain attachment
-class TriggerTerrain(TriggerEvent):
+class ExTriggerTerrain(TriggerExtension):
     def __init__(self, player_turn, die_roll, required_roll, hard_to_block, easy_to_block, x, y):
         super().__init__('Terrain', player_turn, die_roll, required_roll, hard_to_block, easy_to_block)
         self.x = x
@@ -131,7 +139,7 @@ class TriggerTerrain(TriggerEvent):
 
 
 # A target selection event such as for a step attack
-class SelectTarget(Event):
+class ExSelectTarget(Extension):
     def __init__(self, player_turn, target_player_indices, target_group_indices):
         super().__init__('Select Target', player_turn)
         self.target_player_indices = target_player_indices
@@ -142,7 +150,7 @@ class SelectTarget(Event):
 
 
 # A square selection event such as for movement
-class SelectSquare(Event):
+class ExSelectSquare(Extension):
     def __init__(self, player_turn, x, y, fx, fy):
         super().__init__('Select Square', player_turn)
         self.x = x
@@ -155,7 +163,7 @@ class SelectSquare(Event):
 
 
 # Random numbers are generated
-class RNG(Event):
+class ExRNG(Extension):
     def __init__(self, player_turn, rands):
         super().__init__('RNG', player_turn)
         self.rands = rands
@@ -165,7 +173,7 @@ class RNG(Event):
 
 
 # A group must play a trait
-class MustTrait(Event):
+class ExMustTrait(Extension):
     def __init__(self, player_turn, player_index):
         super().__init__('Must Trait', player_turn)
         self.player_index = player_index
@@ -175,7 +183,7 @@ class MustTrait(Event):
 
 
 # No traits must be played
-class NoTraits(Event):
+class ExNoTraits(Extension):
     def __init__(self, player_turn):
         super().__init__('No Traits', player_turn)
 
@@ -184,7 +192,7 @@ class NoTraits(Event):
 
 
 # A group must discard
-class MustDiscard(Event):
+class ExMustDiscard(Extension):
     def __init__(self, player_turn, player_index, group_index):
         super().__init__('Must Discard', player_turn)
         self.player_index = player_index
@@ -194,7 +202,7 @@ class MustDiscard(Event):
         return super().__str__()
 
 # No cards must be discarded
-class NoDiscards(Event):
+class ExNoDiscards(Extension):
     def __init__(self, player_turn):
         super().__init__('No Discards', player_turn)
 
@@ -203,7 +211,7 @@ class NoDiscards(Event):
 
 
 # Player passes their turn
-class Pass(Event):
+class ExPass(Extension):
     def __init__(self, player_turn):
         super().__init__('Pass', player_turn)
 
@@ -212,7 +220,7 @@ class Pass(Event):
 
 
 # Player resigns
-class Resign(Event):
+class ExResign(Extension):
     def __init__(self, player_turn):
         super().__init__('Resign', player_turn)
 
@@ -221,7 +229,7 @@ class Resign(Event):
 
 
 # Player peeks at card in their hand
-class HandPeek(Event):
+class ExHandPeek(Extension):
     def __init__(self, player_turn):
         super().__init__('Hand Peek', player_turn)
 
@@ -230,7 +238,7 @@ class HandPeek(Event):
 
 
 # Player peeks at card in their deck
-class DeckPeek(Event):
+class ExDeckPeek(Extension):
     def __init__(self, player_turn):
         super().__init__('Deck Peek', player_turn)
 
@@ -239,7 +247,7 @@ class DeckPeek(Event):
 
 
 # The time of an action is recorded
-class Timer(Event):
+class ExTimer(Extension):
     def __init__(self, player_turn, player_index, start, remaining):
         super().__init__('Timer', player_turn)
         self.player_index = player_index
@@ -247,7 +255,4 @@ class Timer(Event):
         self.remaining = remaining
 
     def __str__(self):
-        h = self.remaining // 3600
-        m = (self.remaining % 3600) // 60
-        s = self.remaining % 60
-        return super().__str__() + ' [{:02}:{:02}:{:02}]'.format(h, m, s)
+        return super().__str__() + ' [{}]'.format(display_seconds(self.remaining))

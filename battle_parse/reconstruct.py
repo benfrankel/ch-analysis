@@ -4,7 +4,8 @@ from tkinter import Tk
 import re
 
 from util import log_parse
-from .event import *
+from .extension import *
+from .message import *
 from . import model
 
 
@@ -77,13 +78,13 @@ def extension_events(scenario, extensions):
             else:
                 player_turn = -1
 
-            events.append(Timer(-1, player_index, start, remaining))
+            events.append(ExTimer(-1, player_index, start, remaining))
 
         elif event_type == 'deckPeeksSent':
-            events.append(DeckPeek(player_turn))
+            events.append(ExDeckPeek(player_turn))
 
         elif event_type == 'handPeeksSent':
-            events.append(HandPeek(player_turn))
+            events.append(ExHandPeek(player_turn))
 
         elif event_type == 'deckPeeks':
             # If the user is still unknown, use this deckPeeks to determine who it is
@@ -100,7 +101,7 @@ def extension_events(scenario, extensions):
                 player_index = info['owner']
                 group_index = info['group']
 
-                events.append(CardDraw(player_turn, original_player_index, original_group_index, player_index,
+                events.append(ExCardDraw(player_turn, original_player_index, original_group_index, player_index,
                                          group_index, card_index, item_name, card_name))
 
         elif event_type == 'handPeeks':
@@ -114,7 +115,7 @@ def extension_events(scenario, extensions):
                 player_index = info['owner']
                 group_index = info['group']
 
-                events.append(CardReveal(player_turn, original_player_index, original_group_index, player_index,
+                events.append(ExCardReveal(player_turn, original_player_index, original_group_index, player_index,
                                            group_index, card_index, item_name, card_name))
 
         elif event_type == 'action':
@@ -128,14 +129,14 @@ def extension_events(scenario, extensions):
                 player_index = info['owner']
                 group_index = info['group']
 
-                events.append(CardPlay(player_turn, original_player_index, original_group_index, player_index,
+                events.append(ExCardPlay(player_turn, original_player_index, original_group_index, player_index,
                                          group_index, card_index, item_name, card_name))
 
                 if 'TARP' in ex:
                     target_player_indices = ex['TARP']
                     target_group_indices = ex['TARG']
 
-                    events.append(SelectTarget(player_turn, target_player_indices, target_group_indices))
+                    events.append(ExSelectTarget(player_turn, target_player_indices, target_group_indices))
 
         elif event_type == 'selectCard':
             # Discard during round
@@ -149,7 +150,7 @@ def extension_events(scenario, extensions):
                     player_index = info['owner']
                     group_index = info['group']
 
-                    events.append(CardDiscard(player_turn, original_player_index, original_group_index, player_index,
+                    events.append(ExCardDiscard(player_turn, original_player_index, original_group_index, player_index,
                                                 group_index, card_index, item_name, card_name))
 
             # Discard at end of round
@@ -167,7 +168,7 @@ def extension_events(scenario, extensions):
                 except:
                     pass
                 else:
-                    events.append(CardDiscard(player_turn, original_player_index, original_group_index, player_index,
+                    events.append(ExCardDiscard(player_turn, original_player_index, original_group_index, player_index,
                                                 group_index, card_index, item_name, card_name))
 
         # elif event_type == 'selectCards':
@@ -176,8 +177,8 @@ def extension_events(scenario, extensions):
         #         selected_group_indices = ex['SELG']
         #         selected_card_indices = ex['SELCC']
         #         for i in range(len(selected_player_indices)):
-        #             events.append(SelectEvent(player_turn, selected_player_indices[i], selected_group_indices[i],
-        #                                       selected_card_indices[i]))
+        #             events.append(ExSelectEvent(player_turn, selected_player_indices[i], selected_group_indices[i],
+        #                                         selected_card_indices[i]))
 
         elif event_type == 'mustDiscard':
             # Remember who must discard
@@ -187,18 +188,18 @@ def extension_events(scenario, extensions):
             must_discard[0] = player_index
             must_discard[1] = group_index
 
-            events.append(MustDiscard(player_turn, player_index, group_index))
+            events.append(ExMustDiscard(player_turn, player_index, group_index))
 
         elif event_type == 'noMoreDiscards':
-            events.append(NoDiscards(player_turn))
+            events.append(ExNoDiscards(player_turn))
 
         elif event_type == 'hasTrait':
             player_index = ex['PUI']
 
-            events.append(MustTrait(player_turn, player_index))
+            events.append(ExMustTrait(player_turn, player_index))
 
         elif event_type == 'noMoreTraits':
-            events.append(NoTraits(player_turn))
+            events.append(ExNoTraits(player_turn))
 
         elif event_type in ('triggerFail', 'triggerSucceed') and 'TCLOC' in ex:
             die_roll = ex['TROLL']
@@ -212,27 +213,27 @@ def extension_events(scenario, extensions):
                 group_index = ex['ACTG']
                 card_index = ex['ACTC']
 
-                events.append(TriggerHand(player_turn, die_roll, required_roll, hard_to_block, easy_to_block, player_index,
+                events.append(ExTriggerHand(player_turn, die_roll, required_roll, hard_to_block, easy_to_block, player_index,
                                             group_index, card_index))
 
             elif location == 1:
                 player_index = ex['PUI']
                 group_index = ex['ACTG']
 
-                events.append(TriggerAttachment(player_turn, die_roll, required_roll, hard_to_block, easy_to_block,
+                events.append(ExTriggerAttachment(player_turn, die_roll, required_roll, hard_to_block, easy_to_block,
                                                   player_index, group_index))
 
             elif location == 2:
                 x = ex['TARX']
                 y = ex['TARY']
 
-                events.append(TriggerTerrain(player_turn, die_roll, required_roll, hard_to_block, easy_to_block, x, y))
+                events.append(ExTriggerTerrain(player_turn, die_roll, required_roll, hard_to_block, easy_to_block, x, y))
 
         elif event_type == 'target':
             target_player_indices = ex['TARP']
             target_group_indices = ex['TARG']
 
-            events.append(SelectTarget(player_turn, target_player_indices, target_group_indices))
+            events.append(ExSelectTarget(player_turn, target_player_indices, target_group_indices))
 
         elif event_type == 'selectSquare':
             x = ex['TARX']
@@ -240,18 +241,18 @@ def extension_events(scenario, extensions):
             fx = ex['TARFX']
             fy = ex['TARFY']
 
-            events.append(SelectSquare(player_turn, x, y, fx, fy))
+            events.append(ExSelectSquare(player_turn, x, y, fx, fy))
 
         elif event_type == 'genRand':
             rands = ex['RAND']
 
-            events.append(RNG(player_turn, rands))
+            events.append(ExRNG(player_turn, rands))
 
         elif event_type == 'pass':
-            events.append(Pass(player_turn))
+            events.append(ExPass(player_turn))
 
         elif event_type == 'forceLoss':
-            events.append(Resign(player_turn))
+            events.append(ExResign(player_turn))
 
         else:
             print('Ignored:', ex)
@@ -297,6 +298,8 @@ def message_events(scenario, messages):
     damage = re.compile(r'^{} took (\d+) damage$'.format(group))
     heal = re.compile(r'^{} healed (\d+)$'.format(group))
     die = re.compile(r'^{} died$'.format(group))
+    block = re.compile(r'^{}, health = (\d+) \(pi:(\d), gi:(\d), ai:(\d)\)  blocks (.+)$'.format(group))
+    autoselect = re.compile(r'^SeeverSelectCardsCommand:: selected card (.+)$')
 
     for m in messages:
         event = m.get('Event')
@@ -349,28 +352,28 @@ def message_events(scenario, messages):
                 elif loc == 'ActorAttachment':
                     events.append(MsgTriggerTrait(group, card, target, success, cause))
                 else:
-                    events.append(MsgTriggerHand(group, card, target, success, cause))
+                    events.append(MsgTriggerInHand(group, card, target, success, cause))
 
             elif event == 'Needs to discard a card':
                 group = m['Group']
                 events.append(MsgMustDiscard(group))
+
+            elif event == 'Discard':
+                card = m['Card']
+                group = m['Group']
+                events.append(MsgDiscard(group, card))
 
             elif event == 'SelectCardRequired':
                 player = m['Participant']
                 player_id = m['PlayerID']
                 options = m['Selections']
                 choice_type = m['ChoiceType']  # TODO: What can this be?
-                events.append(MsgSelectFrom(player, options))
+                events.append(MsgMustSelect(player, options))
 
             elif event == 'SelectCard':
                 card = m['Selection']
                 player = m['Participant']
                 events.append(MsgSelect(player, card))
-
-            elif event == 'Discard':
-                card = m['Card']
-                group = m['Group']
-                events.append(MsgDiscard(group, card))
 
             elif event == 'AttachmentExpired':
                 card = m['Attachment']
@@ -432,8 +435,8 @@ def message_events(scenario, messages):
 
             elif must_target.fullmatch(msg):
                 match = must_target.fullmatch(msg)
-                print(msg, match.groups())
-                pass # TODO
+                player = match.groups()[0]
+                events.append(MsgMustTarget(player))
 
             elif attach_trait.fullmatch(msg):
                 match = attach_trait.fullmatch(msg)
@@ -471,13 +474,13 @@ def message_events(scenario, messages):
 
             elif cancelling.fullmatch(msg):
                 match = cancelling.fullmatch(msg)
-                print(msg, match.groups())
-                pass
+                card = match.groups()[0]
+                events.append(MsgCancelAction(card))
 
             elif cancelled.fullmatch(msg):
                 match = cancelled.fullmatch(msg)
                 card = match.groups()[0]
-                print('Cancelled:', card, 'was cancelled')
+                events.append(MsgStopCard(card))
 
             elif damage.fullmatch(msg):
                 match = damage.fullmatch(msg)
@@ -495,6 +498,22 @@ def message_events(scenario, messages):
                 match = die.fullmatch(msg)
                 group = match.groups()[0]
                 events.append(MsgDeath(group))
+
+            elif block.fullmatch(msg):
+                match = block.fullmatch(msg)
+                group = match.groups()[0]
+                hp = int(match.groups()[1])
+                player_index = int(match.groups()[2])
+                group_index = int(match.groups()[3])
+                actor_index = int(match.groups()[4])
+                card = match.groups()[5]
+                events.append(MsgBlock(player_index, group_index, card))
+                events.append(MsgHealth(player_index, group_index, hp))
+
+            elif autoselect.fullmatch(msg):
+                match = autoselect.fullmatch(msg)
+                card = match.groups()[0]
+                events.append(MsgAutoselect(card))
 
             else:
                 print('Ignored:', m)
@@ -514,7 +533,8 @@ def refine_events(scenario, ex_events, msg_events):
         # print(event)
 
     for event in msg_events:
-        print(event)
+        pass
+        # print(event)
 
     return ex_events
 
