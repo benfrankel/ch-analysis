@@ -1,14 +1,14 @@
-* Sending zone extension request: cancelrequestmatch
+Sending zone extension request: cancelrequestmatch
 Parameters: 
 	(utf_string) type: all
 
-* Sending zone extension request: cancelbattle
+Sending zone extension request: cancelbattle
 No Parameters
-* Sending zone extension request: spectatebattle
+Sending zone extension request: spectatebattle
 Parameters: 
 	(utf_string) roomName: Proud Peasant vs drakelione
 
-* Received extension response: joinbattle
+Received extension response: joinbattle
 Parameters: 
 	(int) version: 2
 	(int) root: 0
@@ -5132,7 +5132,7 @@ Initializing battle screen
 Battle joined
 stopTimer 0 1200
 stopTimer 1 1200
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) IUID: 3959
 	(int) INST: 0
@@ -5157,44 +5157,44 @@ Parameters:
 	(int) ACTG: 0
 
 BATTLE LOG: Player=Proud Peasant,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=PlayAction,Action=Wind Dancer,Instigator=Elf Warrior 1,Targets=
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1171
 	(bool) start: false
 
 stopTimer 0 1171
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: deckPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1171
@@ -5204,7 +5204,7 @@ startTimer 0 1171
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Attaching Wind Dancer to Elf Warrior 1
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Proud Peasant drew a card for Elf Warrior 1
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now Proud Peasant
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) IUID: 3959
 	(int) INST: 0
@@ -5229,14 +5229,14 @@ Parameters:
 	(int) ACTG: 0
 
 BATTLE LOG: Player=Proud Peasant,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=PlayAction,Action=Dash,Instigator=Elf Warrior 1,Targets=
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1167
 	(bool) start: false
 
 stopTimer 0 1167
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TBON: 0
 	(int) TRGP: 0
@@ -5261,32 +5261,32 @@ Parameters:
 	(int) TPEN: 0
 	(int) ACTG: 0
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: handPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1167
@@ -5294,7 +5294,7 @@ Parameters:
 
 startTimer 0 1167
 BATTLE LOG: Player=Proud Peasant,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=TriggerSucceed,Trigger=Wind Dancer,TriggeringActor=Elf Warrior 1,AffectedActors=,TriggerType=Unknown,TriggerLocation=ActorAttachment
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TARY: 8
 	(int) IUID: 3959
@@ -5305,24 +5305,24 @@ Parameters:
 	(bool) IIU: true
 	(int) TARFY: -1
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1164
 	(bool) start: false
 
 stopTimer 0 1164
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1200
@@ -5332,11 +5332,11 @@ startTimer 1 1200
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Proud Peasant drew Unreliable Block for Elf Warrior 1
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Player=Proud Peasant,Participant=Proud Peasant,Actor=Elf Warrior 1,Event=Move,Origin=(0, 11),StartFacing=(0, -1),Destination=(4, 8),EndFacing=(0, -1)
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now drakelione
-* Received extension response: serverHeartbeat
+Received extension response: serverHeartbeat
 Parameters: 
 	
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) IUID: 137
 	(int) INST: 0
@@ -5361,36 +5361,36 @@ Parameters:
 	(int) ACTG: 2
 
 BATTLE LOG: Player=drakelione,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=PlayAction,Action=Walk,Instigator=Rilgot,Targets=
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1176
 	(bool) start: false
 
 stopTimer 1 1176
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1176
 	(bool) start: true
 
 startTimer 1 1176
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TARY: 2
 	(int) IUID: 137
@@ -5402,24 +5402,24 @@ Parameters:
 	(int) TARFY: 0
 
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Player=drakelione,Participant=drakelione,Actor=Rilgot,Event=Move,Origin=(12, 0),StartFacing=(-1, 0),Destination=(11, 2),EndFacing=(-1, 0)
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1165
 	(bool) start: false
 
 stopTimer 1 1165
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1164
@@ -5427,11 +5427,11 @@ Parameters:
 
 startTimer 0 1164
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now Proud Peasant
-* Received extension response: serverHeartbeat
+Received extension response: serverHeartbeat
 Parameters: 
 	
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) IUID: 3959
 	(int) INST: 0
@@ -5456,36 +5456,36 @@ Parameters:
 	(int) ACTG: 1
 
 BATTLE LOG: Player=Proud Peasant,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=PlayAction,Action=Walk,Instigator=Dwarf Wizard 1,Targets=
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1152
 	(bool) start: false
 
 stopTimer 0 1152
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1152
 	(bool) start: true
 
 startTimer 0 1152
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TARY: 10
 	(int) IUID: 3959
@@ -5496,24 +5496,24 @@ Parameters:
 	(utf_string) __[[REQUEST_ID]]__: selectSquare
 	(int) TARFY: -1
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1150
 	(bool) start: false
 
 stopTimer 0 1150
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1165
@@ -5522,7 +5522,7 @@ Parameters:
 startTimer 1 1165
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Player=Proud Peasant,Participant=Proud Peasant,Actor=Dwarf Wizard 1,Event=Move,Origin=(0, 12),StartFacing=(0, -1),Destination=(2, 10),EndFacing=(0, -1)
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now drakelione
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(utf_string) type: pass
 	(bool) IIU: true
@@ -5530,19 +5530,19 @@ Parameters:
 	(utf_string) __[[REQUEST_ID]]__: pass
 
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=drakelione passed.
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1153
 	(bool) start: false
 
 stopTimer 1 1153
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1150
@@ -5550,7 +5550,7 @@ Parameters:
 
 startTimer 0 1150
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now Proud Peasant
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) IUID: 3959
 	(int) INST: 0
@@ -5575,36 +5575,36 @@ Parameters:
 	(int) ACTG: 2
 
 BATTLE LOG: Player=Proud Peasant,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=PlayAction,Action=Run,Instigator=Human Priest 1,Targets=
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1147
 	(bool) start: false
 
 stopTimer 0 1147
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1147
 	(bool) start: true
 
 startTimer 0 1147
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TARY: 9
 	(int) IUID: 3959
@@ -5616,24 +5616,24 @@ Parameters:
 	(int) TARFY: -1
 
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Player=Proud Peasant,Participant=Proud Peasant,Actor=Human Priest 1,Event=Move,Origin=(1, 12),StartFacing=(0, -1),Destination=(4, 9),EndFacing=(0, -1)
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1145
 	(bool) start: false
 
 stopTimer 0 1145
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1153
@@ -5641,7 +5641,7 @@ Parameters:
 
 startTimer 1 1153
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now drakelione
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int_array) TARXS: [5]
 	(int) IUID: 137
@@ -5668,19 +5668,19 @@ Parameters:
 	(int) ACTG: 2
 
 BATTLE LOG: Player=drakelione,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=PlayAction,Action=Arcane Burst,Instigator=Rilgot,Targets=
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1149
 	(bool) start: false
 
 stopTimer 1 1149
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TBON: 0
 	(int) TRGP: 0
@@ -5704,7 +5704,7 @@ Parameters:
 	(int) TPEN: 0
 	(int) ACTG: 0
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(utf_string) type: handPeeks
 	(bool) IIU: false
@@ -5723,27 +5723,27 @@ Parameters:
 		
 	
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: handPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TBON: 0
 	(int) TRGP: 0
@@ -5767,7 +5767,7 @@ Parameters:
 	(int) TPEN: 0
 	(int) ACTG: 2
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(utf_string) type: handPeeks
 	(bool) IIU: false
@@ -5786,52 +5786,52 @@ Parameters:
 		
 	
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: handPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1145
@@ -5844,11 +5844,11 @@ BATTLE LOG: Player=drakelione,Scenario=MP Xmas Square,Room=Proud Peasant vs drak
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Human Priest 1 healed 2
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Human Priest 1 took 4 damage
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now Proud Peasant
-* Received extension response: serverHeartbeat
+Received extension response: serverHeartbeat
 Parameters: 
 	
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) IUID: 3959
 	(int) INST: 0
@@ -5873,35 +5873,35 @@ Parameters:
 	(int) ACTG: 1
 
 BATTLE LOG: Player=Proud Peasant,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=PlayAction,Action=Whirlwind Enemies,Instigator=Dwarf Wizard 1,Targets=
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1127
 	(bool) start: false
 
 stopTimer 0 1127
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(utf_string) type: genRand
 	(bool) IIU: false
 	(double_array) RAND: [0.5356332077775483,0.3990995641322921,0.7986428305092296,0.38523727001053765,0.24656576572368571,0.27867516729483155]
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1149
@@ -5909,11 +5909,11 @@ Parameters:
 
 startTimer 1 1149
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now drakelione
-* Received extension response: serverHeartbeat
+Received extension response: serverHeartbeat
 Parameters: 
 	
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) IUID: 137
 	(int) INST: 0
@@ -5938,36 +5938,36 @@ Parameters:
 	(int) ACTG: 1
 
 BATTLE LOG: Player=drakelione,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=PlayAction,Action=Dash,Instigator=Arandil,Targets=
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1118
 	(bool) start: false
 
 stopTimer 1 1118
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1118
 	(bool) start: true
 
 startTimer 1 1118
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TARY: 4
 	(int) IUID: 137
@@ -5979,24 +5979,24 @@ Parameters:
 	(int) TARFY: 0
 
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Player=drakelione,Participant=drakelione,Actor=Arandil,Event=Move,Origin=(12, 0),StartFacing=(1, 0),Destination=(10, 4),EndFacing=(0, 1)
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1104
 	(bool) start: false
 
 stopTimer 1 1104
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1127
@@ -6004,11 +6004,11 @@ Parameters:
 
 startTimer 0 1127
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now Proud Peasant
-* Received extension response: serverHeartbeat
+Received extension response: serverHeartbeat
 Parameters: 
 	
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) IUID: 3959
 	(int) INST: 0
@@ -6032,26 +6032,26 @@ Parameters:
 	(bool) IIU: true
 	(int) ACTG: 0
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1102
 	(bool) start: false
 
 stopTimer 0 1102
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1102
 	(bool) start: true
 
 startTimer 0 1102
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TARY: 6
 	(int) IUID: 3959
@@ -6063,19 +6063,19 @@ Parameters:
 	(int) TARFY: 0
 
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Player=Proud Peasant,Participant=Proud Peasant,Actor=Elf Warrior 1,Event=Move,Origin=(4, 8),StartFacing=(1, 0),Destination=(5, 6),EndFacing=(1, 0)
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1101
 	(bool) start: false
 
 stopTimer 0 1101
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1101
@@ -6083,7 +6083,7 @@ Parameters:
 
 startTimer 0 1101
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Participant Proud Peasant must select targets
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int_array) TARP: []
 	(utf_string) type: target
@@ -6096,19 +6096,19 @@ Parameters:
 BATTLE WARNING: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Invalid action: Dancing Cut, played by Elf Warrior 1 - too few target actors (0/1)
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Action: Dancing Cut is invalid - cancelling
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Dancing Cut was cancelled.
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1099
 	(bool) start: false
 
 stopTimer 0 1099
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1104
@@ -6116,7 +6116,7 @@ Parameters:
 
 startTimer 1 1104
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now drakelione
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int_array) TARP: [0]
 	(utf_string) type: action
@@ -6144,49 +6144,49 @@ Parameters:
 	(int) ACTG: 1
 
 BATTLE LOG: Player=drakelione,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=PlayAction,Action=Cold Snap,Instigator=Arandil,Targets=Human Priest 1
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1101
 	(bool) start: false
 
 stopTimer 1 1101
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1099
@@ -6196,11 +6196,11 @@ startTimer 0 1099
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Human Priest 1 took 4 damage
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Attaching Cold Snap to Human Priest 1
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now Proud Peasant
-* Received extension response: serverHeartbeat
+Received extension response: serverHeartbeat
 Parameters: 
 	
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) IUID: 3959
 	(int) INST: 0
@@ -6225,36 +6225,36 @@ Parameters:
 	(int) ACTG: 1
 
 BATTLE LOG: Player=Proud Peasant,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=PlayAction,Action=Team Shift,Instigator=Dwarf Wizard 1,Targets=
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1087
 	(bool) start: false
 
 stopTimer 0 1087
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1087
 	(bool) start: true
 
 startTimer 0 1087
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TARY: 6
 	(int) IUID: 3959
@@ -6265,24 +6265,24 @@ Parameters:
 	(bool) IIU: true
 	(int) TARFY: -1
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1085
 	(bool) start: false
 
 stopTimer 0 1085
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1085
@@ -6290,7 +6290,7 @@ Parameters:
 
 startTimer 0 1085
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Player=Proud Peasant,Participant=Proud Peasant,Actor=Dwarf Wizard 1,Event=Move,Origin=(2, 10),StartFacing=(0, -1),Destination=(4, 6),EndFacing=(0, -1)
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TARY: 5
 	(int) IUID: 3959
@@ -6302,19 +6302,19 @@ Parameters:
 	(int) TARFY: 0
 
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Player=Proud Peasant,Participant=Proud Peasant,Actor=Elf Warrior 1,Event=Move,Origin=(5, 6),StartFacing=(1, 0),Destination=(6, 5),EndFacing=(1, 0)
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1084
 	(bool) start: false
 
 stopTimer 0 1084
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TBON: 0
 	(int) TRGP: 0
@@ -6339,17 +6339,17 @@ Parameters:
 	(int) TPEN: 0
 	(int) ACTG: 2
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1084
@@ -6357,7 +6357,7 @@ Parameters:
 
 startTimer 0 1084
 BATTLE LOG: Player=Proud Peasant,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=TriggerSucceed,Trigger=Cold Snap,TriggeringActor=Human Priest 1,AffectedActors=,TriggerType=Unknown,TriggerLocation=ActorAttachment
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TARY: 8
 	(int) IUID: 3959
@@ -6369,24 +6369,24 @@ Parameters:
 	(int) TARFY: 0
 
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Player=Proud Peasant,Participant=Proud Peasant,Actor=Human Priest 1,Event=Move,Origin=(4, 9),StartFacing=(1, 0),Destination=(4, 8),EndFacing=(0, -1)
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1082
 	(bool) start: false
 
 stopTimer 0 1082
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1101
@@ -6394,7 +6394,7 @@ Parameters:
 
 startTimer 1 1101
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now drakelione
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int_array) TARP: [0]
 	(utf_string) type: action
@@ -6422,19 +6422,19 @@ Parameters:
 	(int) ACTG: 0
 
 BATTLE LOG: Player=drakelione,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=PlayAction,Action=Glob of Flame,Instigator=Raistlin,Targets=Elf Warrior 1
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1097
 	(bool) start: false
 
 stopTimer 1 1097
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TBON: 0
 	(int) TRGP: 0
@@ -6458,7 +6458,7 @@ Parameters:
 	(int) TPEN: 0
 	(int) ACTG: 0
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(utf_string) type: handPeeks
 	(bool) IIU: false
@@ -6477,27 +6477,27 @@ Parameters:
 		
 	
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: handPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TBON: 0
 	(int) TRGP: 0
@@ -6521,7 +6521,7 @@ Parameters:
 	(int) TPEN: 0
 	(int) ACTG: 2
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(utf_string) type: handPeeks
 	(bool) IIU: false
@@ -6540,42 +6540,42 @@ Parameters:
 		
 	
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: handPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1082
@@ -6585,7 +6585,7 @@ startTimer 0 1082
 BATTLE LOG: Player=drakelione,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=TriggerFail,Trigger=Unreliable Block,TriggeringActor=Elf Warrior 1,AffectedActors=Elf Warrior 1,TriggerType=Action,TriggerLocation=Hand
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Elf Warrior 1 took 1 damage
 BATTLE LOG: Player=drakelione,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=TriggerSucceed,Trigger=Investigate,TriggeringActor=Human Priest 1,AffectedActors=,TriggerType=PostDamage,TriggerLocation=Hand
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) IUID: 3959
 	(int) INST: 0
@@ -6609,26 +6609,26 @@ Parameters:
 	(bool) IIU: true
 	(int) ACTG: 0
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1077
 	(bool) start: false
 
 stopTimer 0 1077
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1077
 	(bool) start: true
 
 startTimer 0 1077
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TARY: 4
 	(int) IUID: 3959
@@ -6639,19 +6639,19 @@ Parameters:
 	(bool) IIU: true
 	(int) TARFY: 0
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1076
 	(bool) start: false
 
 stopTimer 0 1076
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1076
@@ -6663,7 +6663,7 @@ BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=1706
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now Proud Peasant
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Player=Proud Peasant,Participant=Proud Peasant,Actor=Elf Warrior 1,Event=Move,Origin=(6, 5),StartFacing=(1, 0),Destination=(8, 4),EndFacing=(1, 0)
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Participant Proud Peasant must select targets
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int_array) TARP: [1]
 	(utf_string) type: target
@@ -6674,14 +6674,14 @@ Parameters:
 	(bool) IIU: true
 
 BATTLE LOG: Player=Proud Peasant,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=PlayAction,Action=Dancing Cut,Instigator=Elf Warrior 1,Targets=Rilgot
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1075
 	(bool) start: false
 
 stopTimer 0 1075
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TBON: 0
 	(int) TRGP: 0
@@ -6706,32 +6706,32 @@ Parameters:
 	(int) TPEN: 0
 	(int) ACTG: 0
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: handPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TBON: 0
 	(int) TRGP: 1
@@ -6755,7 +6755,7 @@ Parameters:
 	(int) TPEN: 0
 	(int) ACTG: 2
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(utf_string) type: handPeeks
 	(bool) IIU: false
@@ -6774,32 +6774,32 @@ Parameters:
 		
 	
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: handPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1097
@@ -6811,7 +6811,7 @@ BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=1706
 BATTLE LOG: Player=Proud Peasant,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=TriggerSucceed,Trigger=,TriggeringActor=Rilgot,AffectedActors=,TriggerType=PreDamage,TriggerLocation=Hand
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Rilgot took 3 damage
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now drakelione
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int_array) TARP: [0]
 	(utf_string) type: action
@@ -6839,19 +6839,19 @@ Parameters:
 	(int) ACTG: 0
 
 BATTLE LOG: Player=drakelione,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=PlayAction,Action=Force Cannon,Instigator=Raistlin,Targets=Elf Warrior 1
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1090
 	(bool) start: false
 
 stopTimer 1 1090
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TBON: 0
 	(int) TRGP: 0
@@ -6875,7 +6875,7 @@ Parameters:
 	(int) TPEN: 0
 	(int) ACTG: 0
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(utf_string) type: handPeeks
 	(bool) IIU: false
@@ -6894,12 +6894,12 @@ Parameters:
 		
 	
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: handPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TBON: 0
 	(int) TRGP: 0
@@ -6923,7 +6923,7 @@ Parameters:
 	(int) TPEN: 0
 	(int) ACTG: 0
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(utf_string) type: handPeeks
 	(bool) IIU: false
@@ -6942,27 +6942,27 @@ Parameters:
 		
 	
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: handPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TBON: 0
 	(int) TRGP: 0
@@ -6986,7 +6986,7 @@ Parameters:
 	(int) TPEN: 0
 	(int) ACTG: 2
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(utf_string) type: handPeeks
 	(bool) IIU: false
@@ -7005,37 +7005,37 @@ Parameters:
 		
 	
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: handPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TARY: 4
 	(int) TARFX: 1
@@ -7044,31 +7044,31 @@ Parameters:
 	(bool) IIU: false
 	(int) TARFY: 0
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1083
 	(bool) start: false
 
 stopTimer 1 1083
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1075
 	(bool) start: true
 
 startTimer 0 1075
-* Received extension response: serverHeartbeat
+Received extension response: serverHeartbeat
 Parameters: 
 	
 
@@ -7079,7 +7079,7 @@ BATTLE LOG: Player=drakelione,Scenario=MP Xmas Square,Room=Proud Peasant vs drak
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Human Priest 1 healed 2
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Player=drakelione,Participant=drakelione,Actor=Elf Warrior 1,Event=Move,Origin=(8, 4),StartFacing=(1, 0),Destination=(4, 4),EndFacing=(1, 0)
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now Proud Peasant
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(utf_string) type: pass
 	(bool) IIU: true
@@ -7087,19 +7087,19 @@ Parameters:
 	(utf_string) __[[REQUEST_ID]]__: pass
 
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Proud Peasant passed.
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1068
 	(bool) start: false
 
 stopTimer 0 1068
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1083
@@ -7107,7 +7107,7 @@ Parameters:
 
 startTimer 1 1083
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now drakelione
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) IUID: 137
 	(int) INST: 0
@@ -7132,36 +7132,36 @@ Parameters:
 	(int) ACTG: 0
 
 BATTLE LOG: Player=drakelione,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=PlayAction,Action=Run,Instigator=Raistlin,Targets=
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1072
 	(bool) start: false
 
 stopTimer 1 1072
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1072
 	(bool) start: true
 
 startTimer 1 1072
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TARY: 5
 	(int) IUID: 137
@@ -7173,24 +7173,24 @@ Parameters:
 	(int) TARFY: 0
 
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Player=drakelione,Participant=drakelione,Actor=Raistlin,Event=Move,Origin=(11, 3),StartFacing=(-1, 0),Destination=(9, 5),EndFacing=(-1, 0)
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1067
 	(bool) start: false
 
 stopTimer 1 1067
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1068
@@ -7198,7 +7198,7 @@ Parameters:
 
 startTimer 0 1068
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now Proud Peasant
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(utf_string) type: pass
 	(bool) IIU: true
@@ -7206,19 +7206,19 @@ Parameters:
 	(utf_string) __[[REQUEST_ID]]__: pass
 
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Proud Peasant passed.
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1062
 	(bool) start: false
 
 stopTimer 0 1062
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1067
@@ -7226,7 +7226,7 @@ Parameters:
 
 startTimer 1 1067
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now drakelione
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int_array) TARP: [0]
 	(utf_string) type: action
@@ -7254,19 +7254,19 @@ Parameters:
 	(int) ACTG: 0
 
 BATTLE LOG: Player=drakelione,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=PlayAction,Action=Flame Spit,Instigator=Raistlin,Targets=Elf Warrior 1
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1063
 	(bool) start: false
 
 stopTimer 1 1063
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TBON: 0
 	(int) TRGP: 0
@@ -7290,7 +7290,7 @@ Parameters:
 	(int) TPEN: 0
 	(int) ACTG: 0
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(utf_string) type: handPeeks
 	(bool) IIU: false
@@ -7309,12 +7309,12 @@ Parameters:
 		
 	
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: handPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TBON: 0
 	(int) TRGP: 0
@@ -7338,7 +7338,7 @@ Parameters:
 	(int) TPEN: 0
 	(int) ACTG: 0
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(utf_string) type: handPeeks
 	(bool) IIU: false
@@ -7357,30 +7357,30 @@ Parameters:
 		
 	
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: handPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) DROLL: 4
 	(utf_string) type: triggerFail
 	(bool) IIU: false
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1062
 	(bool) start: true
 
 startTimer 0 1062
-* Received extension response: serverHeartbeat
+Received extension response: serverHeartbeat
 Parameters: 
 	
 
@@ -7391,7 +7391,7 @@ BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=1706
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Flame Spit was cancelled.
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Group=Elf Warrior 1,Event=Discard,Card=Unreliable Block
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now Proud Peasant
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(utf_string) type: pass
 	(bool) IIU: true
@@ -7399,19 +7399,19 @@ Parameters:
 	(utf_string) __[[REQUEST_ID]]__: pass
 
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Proud Peasant passed.
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1053
 	(bool) start: false
 
 stopTimer 0 1053
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1063
@@ -7419,7 +7419,7 @@ Parameters:
 
 startTimer 1 1063
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now drakelione
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(utf_string) type: pass
 	(bool) IIU: true
@@ -7427,14 +7427,14 @@ Parameters:
 	(utf_string) __[[REQUEST_ID]]__: pass
 
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=drakelione ended the round.
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1060
 	(bool) start: false
 
 stopTimer 1 1060
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) PUI: 0
 	(int) DISCC: 1
@@ -7442,7 +7442,7 @@ Parameters:
 	(utf_string) type: mustDiscard
 	(int) ACTG: 2
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1053
@@ -7453,11 +7453,11 @@ BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=1706
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Discard Phase: initiated
 BATTLE LOG: Player=Proud Peasant,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Group=Human Priest 1,Event=Needs to discard a card
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Participant=Proud Peasant,PlayerID=1311472,User=3959,Event=SelectCardRequired,ChoiceType=selCardDis,Selections=null|null|Investigate
-* Received extension response: serverHeartbeat
+Received extension response: serverHeartbeat
 Parameters: 
 	
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) sel: 0
 	(int) IUID: 3959
@@ -7481,24 +7481,24 @@ Parameters:
 
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Participant=Proud Peasant,Event=SelectCard,Selection=[NULL]
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Group=Human Priest 1,Event=Discard,Card=Parry
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1026
 	(bool) start: false
 
 stopTimer 0 1026
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreDiscards
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreDiscards
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TBON: 0
 	(int) TRGP: 0
@@ -7523,17 +7523,17 @@ Parameters:
 	(int) TPEN: 0
 	(int) ACTG: 0
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TBON: 0
 	(int) TRGP: 0
@@ -7557,7 +7557,7 @@ Parameters:
 	(int) TPEN: 0
 	(int) ACTG: 2
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(utf_string) type: handPeeks
 	(bool) IIU: false
@@ -7576,107 +7576,107 @@ Parameters:
 		
 	
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: handPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: handPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: deckPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: deckPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: handPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: deckPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: deckPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: handPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: deckPeeksSent
@@ -7685,99 +7685,99 @@ BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=1706
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Starting round 2
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=Attachment Phase Initiated
 BATTLE LOG: Player=Proud Peasant,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=TriggerSucceed,Trigger=Glob of Flame,TriggeringActor=Elf Warrior 1,AffectedActors=,TriggerType=StartTurn,TriggerLocation=ActorAttachment
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: deckPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: handPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: deckPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: deckPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: handPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: deckPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: deckPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: handPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: deckPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: deckPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) PUI: 0
 	(int) PTI: 0
 	(bool) IIU: false
 	(utf_string) type: hasTrait
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1026
@@ -7810,7 +7810,7 @@ BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=1706
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=drakelione drew a card for Rilgot
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=Action Phase Initiated
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Proud Peasant must play a Trait
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) IUID: 3959
 	(int) INST: 0
@@ -7835,44 +7835,44 @@ Parameters:
 	(int) ACTG: 0
 
 BATTLE LOG: Player=Proud Peasant,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=PlayAction,Action=Immovable,Instigator=Elf Warrior 1,Targets=
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1022
 	(bool) start: false
 
 stopTimer 0 1022
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: deckPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1022
@@ -7882,7 +7882,7 @@ startTimer 0 1022
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Attaching Immovable to Elf Warrior 1
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Proud Peasant drew a card for Elf Warrior 1
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now Proud Peasant
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) IUID: 3959
 	(int) INST: 0
@@ -7907,14 +7907,14 @@ Parameters:
 	(int) ACTG: 0
 
 BATTLE LOG: Player=Proud Peasant,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=PlayAction,Action=Dash,Instigator=Elf Warrior 1,Targets=
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1015
 	(bool) start: false
 
 stopTimer 0 1015
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TBON: 0
 	(int) TRGP: 0
@@ -7939,32 +7939,32 @@ Parameters:
 	(int) TPEN: 0
 	(int) ACTG: 0
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: handPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1015
@@ -7972,7 +7972,7 @@ Parameters:
 
 startTimer 0 1015
 BATTLE LOG: Player=Proud Peasant,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=TriggerSucceed,Trigger=Wind Dancer,TriggeringActor=Elf Warrior 1,AffectedActors=,TriggerType=Unknown,TriggerLocation=ActorAttachment
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TARY: 4
 	(int) IUID: 3959
@@ -7983,33 +7983,33 @@ Parameters:
 	(utf_string) __[[REQUEST_ID]]__: selectSquare
 	(int) TARFY: 0
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1013
 	(bool) start: false
 
 stopTimer 0 1013
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) PUI: 1
 	(int) PTI: 0
 	(bool) IIU: false
 	(utf_string) type: hasTrait
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1060
 	(bool) start: true
 
 startTimer 1 1060
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) IUID: 137
 	(int) INST: 0
@@ -8033,44 +8033,44 @@ Parameters:
 	(utf_string) __[[REQUEST_ID]]__: action
 	(int) ACTG: 2
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1059
 	(bool) start: false
 
 stopTimer 1 1059
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: deckPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1059
@@ -8084,11 +8084,11 @@ BATTLE LOG: Player=drakelione,Scenario=MP Xmas Square,Room=Proud Peasant vs drak
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Attaching Hover to Rilgot
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=drakelione drew a card for Rilgot
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now drakelione
-* Received extension response: serverHeartbeat
+Received extension response: serverHeartbeat
 Parameters: 
 	
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int_array) TARP: [0]
 	(utf_string) type: action
@@ -8116,19 +8116,19 @@ Parameters:
 	(int) ACTG: 0
 
 BATTLE LOG: Player=drakelione,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=PlayAction,Action=Gusts of War,Instigator=Raistlin,Targets=Elf Warrior 1
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1049
 	(bool) start: false
 
 stopTimer 1 1049
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TBON: 0
 	(int) TRGP: 0
@@ -8152,7 +8152,7 @@ Parameters:
 	(int) TPEN: 0
 	(int) ACTG: 0
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(utf_string) type: handPeeks
 	(bool) IIU: false
@@ -8171,12 +8171,12 @@ Parameters:
 		
 	
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: handPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TBON: 0
 	(int) TRGP: 0
@@ -8200,7 +8200,7 @@ Parameters:
 	(int) TPEN: 0
 	(int) ACTG: 0
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(utf_string) type: handPeeks
 	(bool) IIU: false
@@ -8219,27 +8219,27 @@ Parameters:
 		
 	
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: handPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TBON: 0
 	(int) TRGP: 0
@@ -8263,7 +8263,7 @@ Parameters:
 	(int) TPEN: 0
 	(int) ACTG: 2
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(utf_string) type: handPeeks
 	(bool) IIU: false
@@ -8282,42 +8282,42 @@ Parameters:
 		
 	
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: handPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1013
@@ -8330,7 +8330,7 @@ BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=1706
 BATTLE LOG: Player=drakelione,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=TriggerSucceed,Trigger=Investigate,TriggeringActor=Human Priest 1,AffectedActors=,TriggerType=PostDamage,TriggerLocation=Hand
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Human Priest 1 healed 2
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now Proud Peasant
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int_array) TARP: [1]
 	(utf_string) type: action
@@ -8358,29 +8358,29 @@ Parameters:
 	(int) ACTG: 0
 
 BATTLE LOG: Player=Proud Peasant,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=PlayAction,Action=Backbiting Strike,Instigator=Elf Warrior 1,Targets=Rilgot
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1005
 	(bool) start: false
 
 stopTimer 0 1005
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TBON: 0
 	(int) TRGP: 1
@@ -8404,7 +8404,7 @@ Parameters:
 	(int) TPEN: 0
 	(int) ACTG: 2
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(utf_string) type: handPeeks
 	(bool) IIU: false
@@ -8423,47 +8423,47 @@ Parameters:
 		
 	
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: handPeeksSent
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1049
@@ -8474,35 +8474,35 @@ BATTLE LOG: Player=Proud Peasant,Scenario=MP Xmas Square,Room=Proud Peasant vs d
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Rilgot took 3 damage
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Elf Warrior 1 took 3 damage
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now drakelione
-* Received extension response: chat.roommessage
+Received extension response: chat.roommessage
 Parameters: 
 	(utf_string) user: drakelione
 	(int) room: 17062
 	(utf_string) message: ???
 
-* Received extension response: chat.roommessage
+Received extension response: chat.roommessage
 Parameters: 
 	(utf_string) user: Proud Peasant
 	(int) room: 17062
 	(utf_string) message: immovable trait
 
-* Received extension response: serverHeartbeat
+Received extension response: serverHeartbeat
 Parameters: 
 	
 
-* Received extension response: chat.roommessage
+Received extension response: chat.roommessage
 Parameters: 
 	(utf_string) user: drakelione
 	(int) room: 17062
 	(utf_string) message: Oh didnt see that
 
-* Received extension response: chat.roommessage
+Received extension response: chat.roommessage
 Parameters: 
 	(utf_string) user: Proud Peasant
 	(int) room: 17062
 	(utf_string) message: np
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int_array) TARXS: [8]
 	(utf_string) __[[REQUEST_ID]]__: action
@@ -8529,53 +8529,53 @@ Parameters:
 	(int) ACTG: 2
 
 BATTLE LOG: Player=drakelione,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=PlayAction,Action=Hypnotic Beacon,Instigator=Rilgot,Targets=
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1017
 	(bool) start: false
 
 stopTimer 1 1017
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 1005
 	(bool) start: true
 
 startTimer 0 1005
-* Received extension response: chat.roommessage
+Received extension response: chat.roommessage
 Parameters: 
 	(utf_string) user: Proud Peasant
 	(int) room: 17062
 	(utf_string) message: i experienced that with my own wizards in the past
 
-* Received extension response: chat.roommessage
+Received extension response: chat.roommessage
 Parameters: 
 	(utf_string) user: Proud Peasant
 	(int) room: 17062
 	(utf_string) message: :)
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(utf_string) __[[REQUEST_ID]]__: action
 	(int) IUID: 3959
@@ -8599,44 +8599,44 @@ Parameters:
 	(bool) IIU: true
 	(int) ACTG: 0
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 992
 	(bool) start: false
 
 stopTimer 0 992
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1017
@@ -8649,11 +8649,11 @@ BATTLE LOG: Player=Proud Peasant,Scenario=MP Xmas Square,Room=Proud Peasant vs d
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Detaching and discarding Wind Dancer from Elf Warrior 1
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Attaching Force Field to Elf Warrior 1
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now drakelione
-* Received extension response: serverHeartbeat
+Received extension response: serverHeartbeat
 Parameters: 
 	
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(utf_string) __[[REQUEST_ID]]__: action
 	(int) IUID: 137
@@ -8678,36 +8678,36 @@ Parameters:
 	(int) ACTG: 0
 
 BATTLE LOG: Player=drakelione,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=PlayAction,Action=Run,Instigator=Raistlin,Targets=
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1007
 	(bool) start: false
 
 stopTimer 1 1007
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1007
 	(bool) start: true
 
 startTimer 1 1007
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TARY: 2
 	(int) IUID: 137
@@ -8719,24 +8719,24 @@ Parameters:
 	(int) TARFY: 0
 
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Player=drakelione,Participant=drakelione,Actor=Raistlin,Event=Move,Origin=(9, 5),StartFacing=(-1, 0),Destination=(12, 2),EndFacing=(0, -1)
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1004
 	(bool) start: false
 
 stopTimer 1 1004
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 992
@@ -8744,7 +8744,7 @@ Parameters:
 
 startTimer 0 992
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now Proud Peasant
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(utf_string) type: pass
 	(bool) IIU: true
@@ -8752,19 +8752,19 @@ Parameters:
 	(utf_string) __[[REQUEST_ID]]__: pass
 
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=Proud Peasant passed.
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 985
 	(bool) start: false
 
 stopTimer 0 985
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1004
@@ -8772,7 +8772,7 @@ Parameters:
 
 startTimer 1 1004
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now drakelione
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(utf_string) __[[REQUEST_ID]]__: action
 	(int) IUID: 137
@@ -8797,36 +8797,36 @@ Parameters:
 	(int) ACTG: 2
 
 BATTLE LOG: Player=drakelione,Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=PlayAction,Action=Walk,Instigator=Rilgot,Targets=
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1001
 	(bool) start: false
 
 stopTimer 1 1001
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 1001
 	(bool) start: true
 
 startTimer 1 1001
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) TARY: 4
 	(int) IUID: 137
@@ -8837,24 +8837,24 @@ Parameters:
 	(bool) IIU: true
 	(int) TARFY: 0
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 1
 	(int) timeRemaining: 996
 	(bool) start: false
 
 stopTimer 1 996
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: done
 
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(bool) IIU: false
 	(utf_string) type: noMoreTraits
 
-* Received extension response: battleTimer
+Received extension response: battleTimer
 Parameters: 
 	(int) playerIndex: 0
 	(int) timeRemaining: 985
@@ -8863,7 +8863,7 @@ Parameters:
 startTimer 0 985
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Player=drakelione,Participant=drakelione,Actor=Rilgot,Event=Move,Origin=(9, 4),StartFacing=(-1, 0),Destination=(11, 4),EndFacing=(1, 0)
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Msg=The active player is now Proud Peasant
-* Received extension response: battle
+Received extension response: battle
 Parameters: 
 	(int) PUI: 0
 	(utf_string) type: forceLoss
@@ -8874,7 +8874,7 @@ BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=1706
 BATTLE LOG: Scenario=MP Xmas Square,Room=Proud Peasant vs drakelione,RoomID=17062,Event=GameOver
 * Sending zone extension request: league.request.perspective
 No Parameters
-* Received extension response: league.perspective
+Received extension response: league.perspective
 Parameters: 
 	(utf_string) LeagueName: Quick Draw (Forge)
 	(int) maxGamesPerDay: 0

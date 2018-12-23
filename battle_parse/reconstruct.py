@@ -521,11 +521,11 @@ def refine_events(scenario, ex_events, msg_events):
 
     for event in ex_events:
         pass
-        print(event)
+        # print(event)
 
     for event in msg_events:
         pass
-        # print(event)
+        print(event)
 
     return ex_events
 
@@ -549,6 +549,7 @@ def load_battle(filename=None):
     try:
         first_line_index = len(log_lines) - 1 - log_lines[::-1].index('Received extension response: joinbattle')
     except:
+        print('Failed to find joinbattle')
         return None, None
 
     # Parse battle logs

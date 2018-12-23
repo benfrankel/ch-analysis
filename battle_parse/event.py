@@ -191,11 +191,11 @@ MsgDetachTerrain  = build_msg('Detach Terrain', 'square', 'card',
                               describe=lambda m:'{} detached from {}'.format(
                                   m.card, m.square))
 MsgStartTimer     = build_msg('Start Timer', 'player_index', 'remaining',
-                              describe=lambda m:'For player {} with {} remaining'.format(
-                                  m.player_index, display_seconds(m.remaining)))
+                              describe=lambda m:'{} remaining on timer {}'.format(
+                                  display_seconds(m.remaining), m.player_index))
 MsgStopTimer      = build_msg('Stop Timer', 'player_index', 'remaining',
-                              describe=lambda m:'For player {} with {} remaining'.format(
-                                  m.player_index, display_seconds(m.remaining)))
+                              describe=lambda m:'{} remaining on timer {}'.format(
+                                  display_seconds(m.remaining), m.player_index))
 MsgDefeat         = build_msg('Defeat', 'player',
                               describe=lambda m:'{} defeated'.format(
                                   m.player))
@@ -259,11 +259,11 @@ ExResign         = build_ex('Resign')
 ExHandPeek       = build_ex('Hand Peek')
 ExDeckPeek       = build_ex('Deck Peek')
 ExStartTimer     = build_ex('Start Timer', 'player_index', 'remaining',
-                            describe=lambda m:'{} remaining'.format(
-                                display_seconds(m.remaining)))
+                            describe=lambda m:'{} remaining on timer {}'.format(
+                                display_seconds(m.remaining), m.player_index))
 ExStopTimer      = build_ex('Stop Timer', 'player_index', 'remaining',
-                            describe=lambda m:'{} remaining'.format(
-                                display_seconds(m.remaining)))
+                            describe=lambda m:'{} remaining on timer {}'.format(
+                                display_seconds(m.remaining), m.player_index))
 ExCardPlay       = build_card_ex('Play')
 ExCardDraw       = build_card_ex('Draw')
 ExCardReveal     = build_card_ex('Reveal')
