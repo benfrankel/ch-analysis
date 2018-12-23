@@ -100,7 +100,6 @@ def extension_events(scenario, extensions):
                 card_name = info['type']
                 player_index = info['owner']
                 group_index = info['group']
-
                 events.append(ExCardDraw(player_turn, original_player_index, original_group_index, player_index,
                                          group_index, card_index, item_name, card_name))
 
@@ -114,7 +113,6 @@ def extension_events(scenario, extensions):
                 card_name = info['type']
                 player_index = info['owner']
                 group_index = info['group']
-
                 events.append(ExCardReveal(player_turn, original_player_index, original_group_index, player_index,
                                            group_index, card_index, item_name, card_name))
 
@@ -128,14 +126,12 @@ def extension_events(scenario, extensions):
                 card_name = info['type']
                 player_index = info['owner']
                 group_index = info['group']
-
                 events.append(ExCardPlay(player_turn, original_player_index, original_group_index, player_index,
                                          group_index, card_index, item_name, card_name))
 
                 if 'TARP' in ex:
                     target_player_indices = ex['TARP']
                     target_group_indices = ex['TARG']
-
                     events.append(ExSelectTarget(player_turn, target_player_indices, target_group_indices))
 
         elif event_type == 'selectCard':
@@ -149,7 +145,6 @@ def extension_events(scenario, extensions):
                     card_name = info['type']
                     player_index = info['owner']
                     group_index = info['group']
-
                     events.append(ExCardDiscard(player_turn, original_player_index, original_group_index, player_index,
                                                 group_index, card_index, item_name, card_name))
 
@@ -184,10 +179,8 @@ def extension_events(scenario, extensions):
             # Remember who must discard
             player_index = ex['PUI']
             group_index = ex['ACTG']
-
             must_discard[0] = player_index
             must_discard[1] = group_index
-
             events.append(ExMustDiscard(player_turn, player_index, group_index))
 
         elif event_type == 'noMoreDiscards':
@@ -195,7 +188,6 @@ def extension_events(scenario, extensions):
 
         elif event_type == 'hasTrait':
             player_index = ex['PUI']
-
             events.append(ExMustTrait(player_turn, player_index))
 
         elif event_type == 'noMoreTraits':
@@ -207,32 +199,28 @@ def extension_events(scenario, extensions):
             hard_to_block = ex['TPEN']
             easy_to_block = ex['TBON']
             location = ex['TCLOC']
-
+            
             if location == 0:
                 player_index = ex['PUI']
                 group_index = ex['ACTG']
                 card_index = ex['ACTC']
-
                 events.append(ExTriggerHand(player_turn, die_roll, required_roll, hard_to_block, easy_to_block, player_index,
                                             group_index, card_index))
 
             elif location == 1:
                 player_index = ex['PUI']
                 group_index = ex['ACTG']
-
                 events.append(ExTriggerAttachment(player_turn, die_roll, required_roll, hard_to_block, easy_to_block,
                                                   player_index, group_index))
 
             elif location == 2:
                 x = ex['TARX']
                 y = ex['TARY']
-
                 events.append(ExTriggerTerrain(player_turn, die_roll, required_roll, hard_to_block, easy_to_block, x, y))
 
         elif event_type == 'target':
             target_player_indices = ex['TARP']
             target_group_indices = ex['TARG']
-
             events.append(ExSelectTarget(player_turn, target_player_indices, target_group_indices))
 
         elif event_type == 'selectSquare':
@@ -240,12 +228,10 @@ def extension_events(scenario, extensions):
             y = ex['TARY']
             fx = ex['TARFX']
             fy = ex['TARFY']
-
             events.append(ExSelectSquare(player_turn, x, y, fx, fy))
 
         elif event_type == 'genRand':
             rands = ex['RAND']
-
             events.append(ExRNG(player_turn, rands))
 
         elif event_type == 'pass':
@@ -266,18 +252,14 @@ def message_events(scenario, messages):
 
     p0 = re.escape(scenario.players[0].name)
     p1 = re.escape(scenario.players[1].name)
-    user = re.escape(scenario.user.name)
-    enem = re.escape(scenario.enemy.name)
-    player = '({}|{})'.format(user, enem)
-    user_g0 = re.escape(scenario.user.groups[0].name)
-    user_g1 = re.escape(scenario.user.groups[1].name)
-    user_g2 = re.escape(scenario.user.groups[2].name)
-    user_group = '({}|{}|{})'.format(user_g0, user_g1, user_g2)
-    enem_g0 = re.escape(scenario.enemy.groups[0].name)
-    enem_g1 = re.escape(scenario.enemy.groups[1].name)
-    enem_g2 = re.escape(scenario.enemy.groups[2].name)
-    enem_group = '({}|{}|{})'.format(enem_g0, enem_g1, enem_g2)
-    group = '({}|{}|{}|{}|{}|{})'.format(user_g0, user_g1, user_g2, enem_g0, enem_g1, enem_g2)
+    player = '({}|{})'.format(p0, p1)
+    p0g0 = re.escape(scenario.players[0].groups[0].name)
+    p0g1 = re.escape(scenario.players[0].groups[1].name)
+    p0g2 = re.escape(scenario.players[0].groups[2].name)
+    p1g0 = re.escape(scenario.players[1].groups[0].name)
+    p1g1 = re.escape(scenario.players[1].groups[1].name)
+    p1g2 = re.escape(scenario.players[1].groups[2].name)
+    group = '({}|{}|{}|{}|{}|{})'.format(p0g0, p0g1, p0g2, p1g0, p1g1, p1g2)
 
     start_round = re.compile(r'^Starting round (\d+)$')
     end_round = re.compile(r'^Turn Complete$')

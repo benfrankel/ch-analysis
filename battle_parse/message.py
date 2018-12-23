@@ -78,18 +78,21 @@ MsgSelect          = build_msg('Select', 'player', 'card',
 MsgMustTarget      = build_msg('Must Target', 'player',
                                describer=lambda m:'{} must select target'.format(
                                    m.player))
-MsgAttachTerrain   = build_msg('Attach Terrain', 'square', 'card',
-                               describer=lambda m:'{} attached to {}'.format(
-                                   m.card, m.square))
-MsgDetachTerrain   = build_msg('Detach Terrain', 'square', 'card',
-                               describer=lambda m:'{} detached from {}'.format(
-                                   m.card, m.square))
+MsgMustTrait       = build_msg('Must Trait', 'player',
+                               describer=lambda m:'{} must play a trait'.format(
+                                   m.player))
 MsgAttachTrait     = build_msg('Attach Trait', 'group', 'card',
                                describer=lambda m:'{} attached to {}'.format(
                                    m.card, m.group))
 MsgDetachTrait     = build_msg('Detach Trait', 'group', 'card',
                                describer=lambda m:'{} detached from {}'.format(
                                    m.card, m.group))
+MsgAttachTerrain   = build_msg('Attach Terrain', 'square', 'card',
+                               describer=lambda m:'{} attached to {}'.format(
+                                   m.card, m.square))
+MsgDetachTerrain   = build_msg('Detach Terrain', 'square', 'card',
+                               describer=lambda m:'{} detached from {}'.format(
+                                   m.card, m.square))
 MsgStartTimer      = build_msg('Start Timer', 'player_index', 'remaining',
                                describer=lambda m:'For player {} with {} remaining'.format(
                                    m.player_index, display_seconds(m.remaining)))
@@ -105,10 +108,6 @@ MsgCardDraw        = build_msg('Card Draw', 'player', 'group', 'card',
 MsgHiddenDraw      = build_msg('Hidden Draw', 'player', 'group',
                                describer=lambda m:'{} drew for {}'.format(
                                    m.player, m.group))
-MsgMustTrait       = build_msg('Must Trait', 'player',
-                               describer=lambda m:'{} must play a trait'.format(
-                                   m.player))
-# TODO: MsgMustTarget
 MsgPlayerTurn      = build_msg('Player Turn', 'player',
                                describer=lambda m:'{} is now active'.format(
                                    m.player))
