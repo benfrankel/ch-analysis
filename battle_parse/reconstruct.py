@@ -4,8 +4,7 @@ from tkinter import Tk
 import re
 
 from util import log_parse
-from .extension import *
-from .message import *
+from .event import *
 from . import model
 
 

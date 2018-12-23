@@ -1,7 +1,7 @@
 import enum
 
 import gamedata
-from .extension import *
+from .event import *
 
 
 class CardLocation(enum.Enum):
