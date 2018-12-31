@@ -19,17 +19,17 @@ class Card:
         self.name = None
         self.card_type = None
 
-        # Index
-        self.player_index = None if item is None else item.player_index
-        self.group_index = None if item is None else item.group_index
-        self.index = None
-
         # State
         self.original_player_index = None if item is None else item.player_index
         self.original_group_index = None if item is None else item.group_index
         self.location = CardLocation.Draw
         self.x = None
         self.y = None
+
+        # Index
+        self.player_index = None if item is None else item.player_index
+        self.group_index = None if item is None else item.group_index
+        self.index = None
 
         # Parents
         self.player = None if item is None else item.player
@@ -245,7 +245,7 @@ class ItemFrame:
         return any(item_type in slot for slot in self.slots)
 
     def __str__(self):
-        return ', '.join(str(slot) for slot in self.slots)
+        return ', '.join(str(slot) for slot in self.slots) if self.slots is not None else '?'
 
     def __repr__(self):
         return '{}("{}")'.format(self.__class__.__name__, self.name)
@@ -258,14 +258,23 @@ class Group:
         self.name = None
         self.figure = None
         self.archetype = None
+        self.star_value = None
+
+        # State
+        self.alive = None
+        self.must_draw = None
+        self.hp = None
+        self.max_hp = None
+
+        # Placement
+        self.x = None
+        self.y = None
+        self.fx = None
+        self.fy = None
 
         # Index
         self.player_index = player.index
         self.index = index
-
-        # State
-        self.alive = True
-        self.must_draw = None
 
         # Parents
         self.player = player
@@ -281,6 +290,14 @@ class Group:
             self.name is not None and\
             self.figure is not None and\
             self.archetype is not None and\
+            self.alive is not None and\
+            self.must_draw is not None and\
+            self.hp is not None and\
+            self.max_hp is not None and\
+            self.x is not None and\
+            self.y is not None and\
+            self.fx is not None and\
+            self.fy is not None and\
         True)
 
     def set_archetype(self, archetype_name):
@@ -389,7 +406,12 @@ class Group:
         pass  # TODO
 
     def __str__(self):
-        return '{} ({} {})\nEquipment: {}'.format(self.name or '?', self.archetype.race, self.archetype.role, self.item_frame)
+        return '{} ({} {})\nEquipment: {}'.format(
+            self.name or '?',
+            self.archetype.race if self.archetype is not None else '?',
+            self.archetype.role if self.archetype is not None else '?',
+            self.item_frame,
+        )
 
     def __repr__(self):
         return '{}("{}")'.format(self.__class__.__name__, self.name)
@@ -402,18 +424,18 @@ class Player:
         self.name = None
         self.player_id = None
         self.user_id = None
-        self.rating = None
         self.is_npc = None
-        self.stars_needed = None
-        self.cards_drawn = None
+        self.rating = None
         self.draw_limit = None
-
-        # Index
-        self.index = index
+        self.cards_drawn = None
+        self.stars_needed = None
 
         # State
         self.stars = None
         self.drawing_group = 0
+
+        # Index
+        self.index = index
 
         # Parents
         self.battle = battle
@@ -453,27 +475,25 @@ class Player:
         self.groups[event.group_index].play_card(event)
 
 
-# An instance of a map tile during a battle
+# An instance of a board tile during a battle
 class Square:
     def __init__(self, x, y, flip_x, flip_y, image_name, terrain):
         # Info
-        self.name = image_name
+        self.image_name = image_name
         self.flip_x = flip_x
         self.flip_y = flip_y
+        self.terrain = terrain
 
         # Placement
         self.x = x
         self.y = y
 
-        # State
-        self.terrain = terrain
 
-
-# An instance of a map doodad during a battle (static; doodads stay the same throughout the battle)
+# An instance of a board doodad during a battle (static; doodads stay the same throughout the battle)
 class Doodad:
     def __init__(self, x, y, flip_x, flip_y, image_name, marker):
         # Info
-        self.name = image_name
+        self.image_name = image_name
         self.flip_x = flip_x
         self.flip_y = flip_y
         self.marker = marker
@@ -483,12 +503,20 @@ class Doodad:
         self.y = y
 
 
-# An instance of a map during a battle (bunch of tiles and doodads)
-class Map:
+# An instance of a board during a battle (bunch of tiles and doodads)
+class Board:
+    square_char =  {
+        'Open': '.',
+        'Difficult': '-',
+        'Impassable': 'o',
+        'Blocked': '#',
+        'Victory': '@',
+    }
+            
     def __init__(self, battle):
         # Info
-        self.max_x = 0
-        self.max_y = 0
+        self.w = None
+        self.h = None
 
         # Parents
         self.battle = battle
@@ -498,13 +526,12 @@ class Map:
         self.doodads = []
 
     def is_described(self):
-        return True  # TODO?
+        return (\
+            self.w is not None and\
+            self.h is not None and\
+        True)
 
     def add_square(self, x, y, flip_x, flip_y, image_name, terrain):
-        if x > self.max_x:
-            self.max_x = x
-        if y > self.max_y:
-            self.max_y = y
         self.squares[x, y] = Square(x, y, flip_x, flip_y, image_name, terrain)
 
     def add_doodad(self, x, y, flip_x, flip_y, image_name, marker):
@@ -513,21 +540,16 @@ class Map:
     def get_square(self, x, y):
         return self.squares[x, y]
 
+    def _square_to_char(self, x, y):
+        if (x, y) in self.squares:
+            return Board.square_char[self.squares[x, y].terrain]
+        return ' '
+
     def __str__(self):
-        square_char = {'Open': '.', 'Difficult': '-', 'Impassable': 'o', 'Blocked': '#', 'Victory': '@'}
-        result = ''
-        for x in range(self.max_x + 1):
-            if x != 0:
-                result += '\n'
-            for y in range(self.max_y + 1):
-                if (x, y) in self.squares:
-                    result += square_char[self.squares[x, y].terrain]
-                else:
-                    result += ' '
-        return result
+        return '\n'.join(''.join(self._square_to_char(x, y) for y in range(self.h)) for x in range(self.w))
 
 
-# A battle (map, players, characters, cards, items, etc.)
+# A battle (board, players, characters, cards, items, etc.)
 class Battle:
     def __init__(self):
         # Info
@@ -536,7 +558,7 @@ class Battle:
         self.room_name = None
         self.room_id = None
         self.time_limit = None
-        self.draw_limit = None
+        self.use_draw_limit = None
         self.game_type = None
         self.audio_tag = None
 
@@ -546,7 +568,7 @@ class Battle:
         self.game_over = None
 
         # Children
-        self.map = Map(self)
+        self.board = Board(self)
         self.players = [Player(self, i) for i in range(2)]
         self.user = None
         self.enemy = None
@@ -562,13 +584,13 @@ class Battle:
             self.room_name is not None and\
             self.room_id is not None and\
             self.time_limit is not None and\
-            self.draw_limit is not None and\
+            self.use_draw_limit is not None and\
             self.game_type is not None and\
             self.audio_tag is not None and\
             self.current_turn is not None and\
             self.current_round is not None and\
             self.game_over is not None and\
-            self.map.is_described() and\
+            self.board.is_described() and\
             all(p.is_described() for p in self.players) and\
         True)
 

@@ -9,11 +9,19 @@ from . import model
 
 
 # Load objects into battle
+# TODO: Support player with multiple participants (party)
+# TODO: Support quick draw (?)
+# TODO: Support groups with multiple actors
 def load_battle_objects(objs):
     battle = model.Battle()
+    board = battle.board
+    group_at = {}
+    actor_at = {}
 
     for i, obj in enumerate(objs):
-        if obj['_class_'].endswith('.Battle'):
+        cls = obj['_class_']
+        
+        if cls.endswith('.Battle'):
             battle.scenario_name = obj['scenarioName']
             battle.display_name = obj['scenarioDisplayName']
             battle.room_name = obj['roomName']
@@ -28,25 +36,12 @@ def load_battle_objects(objs):
             # TODO: obj['nextFirstPlayerIndex']?
             # TODO: obj['awaitingInstruction']?
 
-        elif obj['_class_'].endswith('.Player'):
-            player_index = obj['playerIndex']
-            player = battle.players[player_index]
-            player.name = obj['playerName']
-            player.player_id = obj['playerID']
-            player.user_id = obj['userID']
-            player.rating = obj['rating']
-            player.is_npc = obj['isNPC']
-            player.stars = obj['score']
-            player.stars_needed = obj['winningScore']
-            player.cards_drawn = obj['cardsDrawnThisRound']
-            player.draw_limit = obj['drawLimit']  # TODO: Is this -1 when there is no draw limit?
-            # TODO: obj['moveStartTime']?
-            # TODO: obj['side']?
-            # TODO: obj['passingAsOf']?
-            # TODO: obj['defeated']?
+        elif cls.endswith('.Board'):
+            board.w = obj['size.x']
+            board.h = obj['size.y']
 
-        elif obj['_class_'].endswith('.Square'):
-            battle.map.add_square(
+        elif cls.endswith('.Square'):
+            board.add_square(
                 x=obj['location.x'],
                 y=obj['location.y'],
                 flip_x=obj['imageFlipX'],
@@ -55,8 +50,8 @@ def load_battle_objects(objs):
                 terrain=obj['terrain'],
             )
 
-        elif obj['_class_'].endswith('.Doodad'):
-            battle.map.add_doodad(
+        elif cls.endswith('.Doodad'):
+            board.add_doodad(
                 x=obj['displayPosition.x'],
                 y=obj['displayPosition.y'],
                 flip_x=obj['imageFlipX'],
@@ -65,26 +60,75 @@ def load_battle_objects(objs):
                 marker=obj['marker'],  # TODO: What does this represent? Only on PlayerNDeadFigureM?
             )
 
-        elif obj['_class_'].endswith('.ActorGroup'):
-            for group in battle.players[0].groups + battle.players[1].groups:
-                if not group.is_described():
-                    group.name = obj['name']
-                    group.set_archetype(' '.join([obj['race'], obj['characterClass']]))
-                    break
+        elif cls.endswith('.Player'):
+            player_index = obj['playerIndex']
+            player = battle.players[player_index]
 
-        elif obj['_class_'].endswith('.ActorInstance'):
-            for group in battle.players[0].groups + battle.players[1].groups:
-                if not group.is_described():
-                    group.figure = obj['depiction']
-                    group.audio_key = obj['audioKey']
-                    group.x = obj['location.x']
-                    group.y = obj['location.y']
-                    group.fx = obj['facing.x']
-                    group.fy = obj['facing.y']
-                    break
+            for j, group in zip(obj['actorGroups'], player.groups):
+                group_at[j] = group
+            
+            player.name = obj['playerName']
+            player.player_id = obj['playerID']
+            player.user_id = obj['userID']
+            player.is_npc = obj['isNPC']
+            player.rating = obj['rating']
+            player.draw_limit = obj['drawLimit']  # TODO: Is this -1 when there is no draw limit?
+            player.cards_drawn = obj['cardsDrawnThisRound']
+            player.stars_needed = obj['winningScore']
+            player.stars = obj['score']
+            # TODO: obj['moveStartTime']?
+            # TODO: obj['isParty']?
+            # TODO: obj['side']?
+            # TODO: obj['passingAsOf']?
+            # TODO: obj['defeated']?
+            # TODO: obj['active']?
+            # TODO: obj['quickDraw']?
+            # TODO: Is obj['activeParticipantIndex'] the currently active participant in the party?
+            # TODO: obj['initiativeParticipantIndex']?
+
+        elif cls.endswith('.ActorGroup'):
+            group = group_at[i]
+
+            # TODO: for j, actor in zip(obj['actors'], group.actors):
+            for j in obj['actors']:
+                actor_at[j] = group
+                
+            group.name = obj['name']
+            group.set_archetype(' '.join([obj['race'], obj['characterClass']]))
+            # TODO: Is obj['actionPoints'] the number of actions allowed?
+            # TODO: obj['drawLimit']?
+            # TODO: obj['cardsDrawnThisRound']?
+            # TODO: obj['drawsPerActor']?
+            # TODO: obj['canScore']?
+            # TODO: obj['racePrefix']?
+            # TODO: Is obj['moveCard'] necessary?
+            # TODO: obj['displayName']?
+            # TODO: When would obj['cardRetainAllowance'] not be -1 and what does that mean?
+
+        elif cls.endswith('.ActorInstance'):
+            actor = actor_at[i]
+            actor.figure = obj['depiction']
+            actor.audio_key = obj['audioKey']
+            actor.star_value = obj['scoreForKilling']
+            actor.max_hp = obj['maxHealth']
+            actor.hp = obj['health']
+            actor.x = obj['location.x']
+            actor.y = obj['location.y']
+            actor.fx = obj['facing.x']
+            actor.fy = obj['facing.y']
+            # TODO: Is obj['actionPoints'] the number of actions allowed?
+            # TODO: Does obj['size'] determine 1x1 or 2x2 figure?
+            # TODO: obj['terrainEffectApplied']?
+            # TODO: Can obj['name'] be different from ActorGroup?
+            # TODO: obj['swapDepiction']?
+            # TODO: obj['attachedCards']?
 
         else:
             print('Ignored:', obj)
+            # TODO: Handle .Hand
+            # TODO: Handle .CardInstance
+            # TODO: Handle .DiscardPile (?)
+            # TODO: Handle .DeckInstance
 
     return battle
 
