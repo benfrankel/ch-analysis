@@ -557,7 +557,7 @@ class Battle:
 
     def is_described(self):
         return (\
-            self.name is not None and\
+            self.scenario_name is not None and\
             self.display_name is not None and\
             self.room_name is not None and\
             self.room_id is not None and\

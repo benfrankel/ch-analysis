@@ -9,7 +9,7 @@ def main():
         if not guild_name:
             break
         if not auto_summary(guild_name):
-            print(f'The guild \'{guild_name}\' does not exist\n')
+            print(f"The guild '{guild_name}' does not exist\n")
             continue
         print()
 

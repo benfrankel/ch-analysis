@@ -315,7 +315,7 @@ def is_archetype(name):
 
 
 def download_item_image(image_name):
-    image_name = image_name.replace(' ', '%20').replace('\'', '%27')
+    image_name = image_name.replace(' ', '%20').replace("'", '%27')
     img_path = os.path.join(GAMEDATA_DIR, image_name)
     urllib.request.urlretrieve(ch_live + item_img_url + image_name, img_path)
 

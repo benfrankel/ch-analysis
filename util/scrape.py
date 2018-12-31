@@ -13,7 +13,7 @@ def guild_seasons(guild_name):
 
     # If the guild doesn't exist
     if not text:
-        raise KeyError(f'The guild \'{guild_name}\' does not exist')
+        raise KeyError(f"The guild '{guild_name}' does not exist")
 
     # Extract monthly placements
     placements = [int(x[0]) for x in re.findall(r'([0-9]+)(st|nd|rd|th)', text)][1:]
@@ -94,7 +94,7 @@ def daily_deal():
 
 
 def _parse_battles_page(text):
-    text = text[text.find('<td style=\'white-space:nowrap;\'>'):text.find('\n<div id="footer_wrapper">')]
+    text = text[text.find("<td style='white-space:nowrap;'>"):text.find('\n<div id="footer_wrapper">')]
 
     # Get link to previous page, if it exists
     try:

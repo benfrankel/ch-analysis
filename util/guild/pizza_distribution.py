@@ -174,6 +174,6 @@ def auto_summary(guild_name):
     link = paste(None, None, None, [path], False, True)
 
     if link is None or not link.startswith('http'):
-        raise IOError(f'Failed to paste to pastebin. Received response \'{link}\'')
+        raise IOError(f"Failed to paste to pastebin. Received response '{link}'")
 
     return link, guild

@@ -13,11 +13,22 @@ def display_card(ex):
     return '{} from {}'.format(ex.card_name, ex.item_name)
 
 # Populate params via args
-def populate(obj, params, args):
-    if len(params) != len(args):
-        raise TypeError('Expected {} arguments ({} given)'.format(len(params), len(args)))
+def populate(obj, params, args, kwargs):
+    expected = len(params)
+    given = len(args) + len(kwargs)
+    if expected != given:
+        raise TypeError('Expected {} arguments ({} given)'.format(expected, given))
+    
     for param, arg in zip(params, args):
         setattr(obj, param, arg)
+
+    remaining = set(params[len(args):])
+    for kw, arg in kwargs.items():
+        try:
+            remaining.remove(kw)
+        except KeyError:
+            raise TypeError("Unexpected keyword argument '{}'".format(kw))
+        setattr(obj, kw, arg)
 
 # Superclass for message events
 class Message:
@@ -90,9 +101,9 @@ class TriggerExtension(Extension):
 # Factory for message events
 def build_msg(name, *params, describe=None):
     class _MsgCustom(Message):
-        def __init__(self, *args):
+        def __init__(self, *args, **kwargs):
             super().__init__(name)
-            populate(self, params, args)
+            populate(self, params, args, kwargs)
 
         def __str__(self):
             description = ''
@@ -105,9 +116,9 @@ def build_msg(name, *params, describe=None):
 # Factory for extension events
 def build_ex(name, *params, describe=None):
     class _ExCustom(Extension):
-        def __init__(self, player_turn, *args):
+        def __init__(self, player_turn, *args, **kwargs):
             super().__init__(name, player_turn)
-            populate(self, params, args)
+            populate(self, params, args, kwargs)
 
         def __str__(self):
             description = ''
@@ -130,6 +141,7 @@ def build_card_ex(action, *params, describe=None):
             item_name,
             card_name,
             *args,
+            **kwargs,
         ):
             super().__init__(
                 action,
@@ -142,7 +154,7 @@ def build_card_ex(action, *params, describe=None):
                 item_name,
                 card_name,
             )
-            populate(self, params, args)
+            populate(self, params, args, kwargs)
 
         def __str__(self):
             description = ''
@@ -162,6 +174,7 @@ def build_trigger_ex(location, *params, describe=None):
             hard_to_block,
             easy_to_block,
             *args,
+            **kwargs,
         ):
             super().__init__(
                 location,
@@ -171,7 +184,7 @@ def build_trigger_ex(location, *params, describe=None):
                 hard_to_block,
                 easy_to_block,
             )
-            populate(self, params, args)
+            populate(self, params, args, kwargs)
 
         def __str__(self):
             description = ''
@@ -198,9 +211,9 @@ MsgScoringPhase   = build_msg('Scoring Phase')
 
 MsgDiscardPhase   = build_msg('Discard Phase')
 
-MsgStartRound     = build_msg('Start Round', 'round',
+MsgStartRound     = build_msg('Start Round', 'game_round',
                               describe=lambda m: 'Round {}'
-                                  .format(m.round))
+                                  .format(m.game_round))
 
 MsgCardPlay       = build_msg('Card Play', 'group', 'card', 'targets',
                               describe=lambda m: '{} plays {} on {}'
