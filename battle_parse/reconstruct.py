@@ -8,41 +8,72 @@ from .event import *
 from . import model
 
 
-# Load objects into scenario
-def load_scenario(objs):
-    scenario = model.Scenario()
+# Load objects into battle
+def load_battle_objects(objs):
+    battle = model.Battle()
 
-    for obj in objs:
-        if obj['_class_'] == 'com.cardhunter.battle.Battle':
-            scenario.name = obj['scenarioName']
-            scenario.display_name = obj['scenarioDisplayName']
-            scenario.game_type = obj['gameType']
-            scenario.audio_tag = obj['audioTag']
-            scenario.room_name = obj['roomName']
+    for i, obj in enumerate(objs):
+        if obj['_class_'].endswith('.Battle'):
+            battle.scenario_name = obj['scenarioName']
+            battle.display_name = obj['scenarioDisplayName']
+            battle.room_name = obj['roomName']
+            battle.room_id = obj['roomID']
+            battle.time_limit = obj['timeLimit']
+            battle.use_draw_limit = obj['enforceDrawLimit']
+            battle.game_type = obj['gameType']  # TODO: What does this represent?
+            battle.audio_tag = obj['audioTag']
+            battle.current_turn = obj['activePlayer']
+            battle.current_round = obj['turnNumber']
+            battle.game_over = obj['gameOver']
+            # TODO: obj['nextFirstPlayerIndex']?
+            # TODO: obj['awaitingInstruction']?
 
-        elif obj['_class_'] == 'com.cardhunter.battle.Player':
+        elif obj['_class_'].endswith('.Player'):
             player_index = obj['playerIndex']
-            player = scenario.players[player_index]
+            player = battle.players[player_index]
             player.name = obj['playerName']
+            player.player_id = obj['playerID']
+            player.user_id = obj['userID']
             player.rating = obj['rating']
+            player.is_npc = obj['isNPC']
+            player.stars = obj['score']
+            player.stars_needed = obj['winningScore']
+            player.cards_drawn = obj['cardsDrawnThisRound']
+            player.draw_limit = obj['drawLimit']  # TODO: Is this -1 when there is no draw limit?
+            # TODO: obj['moveStartTime']?
+            # TODO: obj['side']?
+            # TODO: obj['passingAsOf']?
+            # TODO: obj['defeated']?
 
-        elif obj['_class_'] == 'com.cardhunter.battle.Square':
-            scenario.map.add_square(obj['location.x'], obj['location.y'], obj['imageFlipX'], obj['imageFlipY'],
-                                    obj['imageName'], obj['terrain'])
+        elif obj['_class_'].endswith('.Square'):
+            battle.map.add_square(
+                x=obj['location.x'],
+                y=obj['location.y'],
+                flip_x=obj['imageFlipX'],
+                flip_y=obj['imageFlipY'],
+                image_name=obj['imageName'],
+                terrain=obj['terrain'],
+            )
 
-        elif obj['_class_'] == 'com.cardhunter.battle.Doodad':
-            scenario.map.add_doodad(obj['displayPosition.x'], obj['displayPosition.y'], obj['imageFlipX'],
-                                    obj['imageFlipY'], obj['imageName'], obj['marker'])
+        elif obj['_class_'].endswith('.Doodad'):
+            battle.map.add_doodad(
+                x=obj['displayPosition.x'],
+                y=obj['displayPosition.y'],
+                flip_x=obj['imageFlipX'],
+                flip_y=obj['imageFlipY'],
+                image_name=obj['imageName'],
+                marker=obj['marker'],  # TODO: What does this represent? Only on PlayerNDeadFigureM?
+            )
 
-        elif obj['_class_'] == 'com.cardhunter.battle.ActorGroup':
-            for group in scenario.players[0].groups + scenario.players[1].groups:
+        elif obj['_class_'].endswith('.ActorGroup'):
+            for group in battle.players[0].groups + battle.players[1].groups:
                 if not group.is_described():
                     group.name = obj['name']
                     group.set_archetype(' '.join([obj['race'], obj['characterClass']]))
                     break
 
-        elif obj['_class_'] == 'com.cardhunter.battle.ActorInstance':
-            for group in scenario.players[0].groups + scenario.players[1].groups:
+        elif obj['_class_'].endswith('.ActorInstance'):
+            for group in battle.players[0].groups + battle.players[1].groups:
                 if not group.is_described():
                     group.figure = obj['depiction']
                     group.audio_key = obj['audioKey']
@@ -52,11 +83,14 @@ def load_scenario(objs):
                     group.fy = obj['facing.y']
                     break
 
-    return scenario
+        else:
+            print('Ignored:', obj)
+
+    return battle
 
 
 # Extract extension events
-def extension_events(scenario, extensions):
+def extension_events(battle, extensions):
     events = []
     player_turn = -1
     must_discard = [-1, -1]
@@ -74,83 +108,102 @@ def extension_events(scenario, extensions):
 
             if start:
                 player_turn = player_index
-                events.append(ExStartTimer(-1, player_index, remaining))
+                events.append(ExStartTimer(
+                    -1,
+                    player_index,
+                    remaining,
+                ))
+                
             else:
                 player_turn = -1
-                events.append(ExStopTimer(-1, player_index, remaining))
+                events.append(ExPauseTimer(
+                    -1,
+                    player_index,
+                    remaining,
+                ))
 
         elif event_type == 'deckPeeksSent':
-            events.append(ExDeckPeek(player_turn))
+            events.append(ExDeckPeek(
+                player_turn,
+            ))
 
         elif event_type == 'handPeeksSent':
-            events.append(ExHandPeek(player_turn))
+            events.append(ExHandPeek(
+                player_turn,
+            ))
 
         elif event_type == 'deckPeeks':
             # If user is still unknown, use this deckPeeks to determine who it is
-            if scenario.user is None:
+            if battle.user is None:
                 user = ex['SENDID'][0]
-                scenario.set_user(user)
+                battle.set_user(user)
 
             # For every card in the peeks array, extract its info and append an event for it
             deck_peeks = ex['DP']['peeks']
             for peek in deck_peeks:
-                original_player_index = peek['cownerp']
-                original_group_index = peek['cownerg']
-                card_index = peek['card']
-                item_name = peek['origin']
-                card_name = peek['type']
-                player_index = peek['owner']
-                group_index = peek['group']
-                events.append(ExCardDraw(player_turn, original_player_index, original_group_index, player_index,
-                                         group_index, card_index, item_name, card_name))
+                events.append(ExCardDraw(
+                    player_turn,
+                    player_index=peek['owner'],
+                    group_index=peek['group'],
+                    card_index=peek['card'],
+                    original_player_index=peek['cownerp'],
+                    original_group_index=peek['cownerg'],
+                    item_name=peek['origin'],
+                    card_name=peek['type'],
+                ))
 
         elif event_type == 'handPeeks':
             # For every card in the peeks array, extract its info and append an event for it
             hand_peeks = ex['HP']['peeks']
             for peek in hand_peeks:
-                original_player_index = peek['cownerp']
-                original_group_index = peek['cownerg']
-                card_index = peek['card']
-                item_name = peek['origin']
-                card_name = peek['type']
-                player_index = peek['owner']
-                group_index = peek['group']
-                events.append(ExCardReveal(player_turn, original_player_index, original_group_index, player_index,
-                                           group_index, card_index, item_name, card_name))
+                events.append(ExCardReveal(
+                    player_turn,
+                    player_index=peek['owner'],
+                    group_index=peek['group'],
+                    card_index=peek['card'],
+                    original_player_index=peek['cownerp'],
+                    original_group_index=peek['cownerg'],
+                    item_name=peek['origin'],
+                    card_name=peek['type'],
+                ))
 
         elif event_type == 'action':
             # For every card in the peeks array, extract its info and append an event for it
             hand_peeks = ex['HP']['peeks']
             for peek in hand_peeks:
-                original_player_index = peek['cownerp']
-                original_group_index = peek['cownerg']
-                card_index = peek['card']
-                item_name = peek['origin']
-                card_name = peek['type']
-                player_index = peek['owner']
-                group_index = peek['group']
-                events.append(ExCardPlay(player_turn, original_player_index, original_group_index, player_index,
-                                         group_index, card_index, item_name, card_name))
+                events.append(ExCardPlay(
+                    player_turn,
+                    player_index=peek['owner'],
+                    group_index=peek['group'],
+                    card_index=peek['card'],
+                    original_player_index=peek['cownerp'],
+                    original_group_index=peek['cownerg'],
+                    item_name=peek['origin'],
+                    card_name=peek['type'],
+                ))
 
                 if 'TARP' in ex:
-                    target_player_indices = ex['TARP']
-                    target_group_indices = ex['TARG']
-                    events.append(ExSelectTarget(player_turn, target_player_indices, target_group_indices))
+                    events.append(ExSelectTarget(
+                        player_turn,
+                        target_player_indices=ex['TARP'],
+                        target_group_indices=ex['TARG'],
+                    ))
 
         elif event_type == 'selectCard':
             # Discard during round
             if 'HP' in ex:
                 hand_peeks = ex['HP']['peeks']
                 for peek in hand_peeks:
-                    original_player_index = peek['cownerp']
-                    original_group_index = peek['cownerg']
-                    card_index = peek['card']
-                    item_name = peek['origin']
-                    card_name = peek['type']
-                    player_index = peek['owner']
-                    group_index = peek['group']
-                    events.append(ExCardDiscard(player_turn, original_player_index, original_group_index, player_index,
-                                                group_index, card_index, item_name, card_name))
+                    events.append(ExCardDiscard(
+                        player_turn,
+                        player_index=peek['owner'],
+                        group_index=peek['group'],
+                        card_index=peek['card'],
+                        original_player_index=peek['cownerp'],
+                        original_group_index=peek['cownerg'],
+                        item_name=peek['origin'],
+                        card_name=peek['type'],
+                    ))
 
             # Discard at end of round
             else:
@@ -159,16 +212,20 @@ def extension_events(scenario, extensions):
                 card_index = ex['sel']
 
                 try:
-                    card = scenario.players[player_index].groups[group_index].hand[card_index]
-                    original_player_index = card.original_player_index
-                    original_group_index = card.original_group_index
-                    item_name = card.item_name
-                    card_name = card.card_name
+                    card = battle.players[player_index].groups[group_index].hand[card_index]
                 except:
                     pass
                 else:
-                    events.append(ExCardDiscard(player_turn, original_player_index, original_group_index, player_index,
-                                                group_index, card_index, item_name, card_name))
+                    events.append(ExCardDiscard(
+                        player_turn,
+                        player_index,
+                        group_index,
+                        card_index,
+                        original_player_index=card.original_player_index,
+                        original_group_index=card.original_group_index,
+                        item_name=card.item_name,
+                        card_name=card.card_name,
+                    ))
 
         # elif event_type == 'selectCards':
         #     if 'SELP' in ex:
@@ -180,72 +237,99 @@ def extension_events(scenario, extensions):
         #                                         selected_card_indices[i]))
 
         elif event_type == 'mustDiscard':
-            # Remember who must discard
             player_index = ex['PUI']
             group_index = ex['ACTG']
-            must_discard[0] = player_index
-            must_discard[1] = group_index
-            events.append(ExMustDiscard(player_turn, player_index, group_index))
+            
+            events.append(ExMustDiscard(
+                player_turn,
+                player_index,
+                group_index,
+            ))
+            
+            # Remember who must discard
+            must_discard = [player_index, group_index]
 
         elif event_type == 'noMoreDiscards':
-            events.append(ExNoDiscards(player_turn))
+            events.append(ExNoDiscards(
+                player_turn,
+            ))
 
         elif event_type == 'hasTrait':
-            player_index = ex['PUI']
-            events.append(ExMustTrait(player_turn, player_index))
+            events.append(ExMustTrait(
+                player_turn,
+                player_index=ex['PUI'],
+            ))
 
         elif event_type == 'noMoreTraits':
-            events.append(ExNoTraits(player_turn))
+            events.append(ExNoTraits(
+                player_turn,
+            ))
 
         elif event_type in ('triggerFail', 'triggerSucceed') and 'TCLOC' in ex:
-            die_roll = ex['TROLL']
-            required_roll = ex['TTHRESH']
-            hard_to_block = ex['TPEN']
-            easy_to_block = ex['TBON']
             location = ex['TCLOC']
             
             if location == 0:
-                player_index = ex['PUI']
-                group_index = ex['ACTG']
-                card_index = ex['ACTC']
-                events.append(ExTriggerInHand(player_turn, die_roll, required_roll, hard_to_block, easy_to_block, player_index,
-                                              group_index, card_index))
+                events.append(ExTriggerInHand(
+                    player_turn,
+                    die_roll=ex['TROLL'],
+                    required_roll=ex['TTHRES'],
+                    hard_to_block=ex['TPEN'],
+                    easy_to_block=ex['TBON'],
+                    player_index=ex['PUI'],
+                    group_index=ex['ACTG'],
+                    card_index=ex['ACTC'],
+                ))
 
             elif location == 1:
-                player_index = ex['PUI']
-                group_index = ex['ACTG']
-                events.append(ExTriggerTrait(player_turn, die_roll, required_roll, hard_to_block, easy_to_block,
-                                             player_index, group_index))
+                events.append(ExTriggerTrait(
+                    player_turn,
+                    die_roll=ex['TROLL'],
+                    required_roll=ex['TTHRES'],
+                    hard_to_block=ex['TPEN'],
+                    easy_to_block=ex['TBON'],
+                    player_index=ex['PUI'],
+                    group_index=ex['ACTG'],
+                ))
 
             elif location == 2:
-                x = ex['TARX']
-                y = ex['TARY']
-                square = [x, y]
-                events.append(ExTriggerTerrain(player_turn, die_roll, required_roll, hard_to_block, easy_to_block, square))
+                events.append(ExTriggerTerrain(
+                    player_turn,
+                    die_roll=ex['TROLL'],
+                    required_roll=ex['TTHRES'],
+                    hard_to_block=ex['TPEN'],
+                    easy_to_block=ex['TBON'],
+                    square=[ex['TARX'], ex['TARY']],
+                ))
 
         elif event_type == 'target':
-            target_player_indices = ex['TARP']
-            target_group_indices = ex['TARG']
-            events.append(ExSelectTarget(player_turn, target_player_indices, target_group_indices))
+            events.append(ExSelectTarget(
+                player_turn,
+                target_player_indices=ex['TARP'],
+                target_group_indices=ex['TARG'],
+            ))
 
         elif event_type == 'selectSquare':
-            x = ex['TARX']
-            y = ex['TARY']
-            square = [x, y]
-            fx = ex['TARFX']
-            fy = ex['TARFY']
-            facing = [fx, fy]
-            events.append(ExSelectSquare(player_turn, square, facing))
+            events.append(ExSelectSquare(
+                player_turn,
+                square=[ex['TARX'], ex['TARY']],
+                facing=[ex['TARFX'], ex['TARFY']],
+            ))
 
         elif event_type == 'genRand':
-            rands = ex['RAND']
-            events.append(ExRNG(player_turn, rands))
+            events.append(ExRNG(
+                player_turn,
+                rands=ex['RAND'],
+            ))
 
         elif event_type == 'pass':
-            events.append(ExPass(player_turn))
+            events.append(ExPass(
+                player_turn,
+            ))
 
         elif event_type == 'forceLoss':
-            events.append(ExResign(player_turn))
+            events.append(ExResign(
+                player_turn,
+            ))
 
         else:
             print('Ignored:', ex)
@@ -255,18 +339,18 @@ def extension_events(scenario, extensions):
 
 # Extract message events
 # TODO: Active Player = No Traits
-def message_events(scenario, messages):
+def message_events(battle, messages):
     events = []
 
-    p0 = re.escape(scenario.players[0].name)
-    p1 = re.escape(scenario.players[1].name)
+    p0 = re.escape(battle.players[0].name)
+    p1 = re.escape(battle.players[1].name)
     player = '({}|{})'.format(p0, p1)
-    p0g0 = re.escape(scenario.players[0].groups[0].name)
-    p0g1 = re.escape(scenario.players[0].groups[1].name)
-    p0g2 = re.escape(scenario.players[0].groups[2].name)
-    p1g0 = re.escape(scenario.players[1].groups[0].name)
-    p1g1 = re.escape(scenario.players[1].groups[1].name)
-    p1g2 = re.escape(scenario.players[1].groups[2].name)
+    p0g0 = re.escape(battle.players[0].groups[0].name)
+    p0g1 = re.escape(battle.players[0].groups[1].name)
+    p0g2 = re.escape(battle.players[0].groups[2].name)
+    p1g0 = re.escape(battle.players[1].groups[0].name)
+    p1g1 = re.escape(battle.players[1].groups[1].name)
+    p1g2 = re.escape(battle.players[1].groups[2].name)
     group = '({}|{}|{}|{}|{}|{})'.format(p0g0, p0g1, p0g2, p1g0, p1g1, p1g2)
 
     start_round = re.compile(r'^Starting round (\d+)$')
@@ -383,7 +467,7 @@ def message_events(scenario, messages):
             elif event == 'stopTimer':
                 player_index = m['PlayerIndex']
                 remaining = m['Remaining']
-                events.append(MsgStopTimer(player_index, remaining))
+                events.append(MsgPauseTimer(player_index, remaining))
 
             else:
                 print('Ignored:', m)
@@ -516,16 +600,16 @@ def message_events(scenario, messages):
 
 
 # Form higher-level events
-def refine_events(scenario, ex_events, msg_events):
+def refine_events(battle, ex_events, msg_events):
     # TODO
 
     for event in ex_events:
         pass
-        # print(event)
+        print(event)
 
     for event in msg_events:
         pass
-        print(event)
+        # print(event)
 
     return ex_events
 
@@ -556,19 +640,19 @@ def load_battle(filename=None):
     extensions, messages = log_parse.parse_battle('\n'.join(log_lines[first_line_index:]))
     joinbattle, extensions = extensions[0], extensions[1:]
 
-    # Load objects into scenario
-    scenario = load_scenario(joinbattle['objects'])
+    # Load objects into battle
+    battle = load_battle_objects(joinbattle['objects'])
 
-    if not scenario.is_described():
-        pass  # Scenario not completely started
+    if not battle.is_described():
+        pass  # Battle not completely started
 
     # Extract extension events
-    ex_events = extension_events(scenario, extensions)
+    ex_events = extension_events(battle, extensions)
 
     # Extract message events
-    msg_events = message_events(scenario, messages)
+    msg_events = message_events(battle, messages)
 
     # Interpolate and extrapolate to form higher-level events
-    events = refine_events(scenario, ex_events, msg_events)
+    events = refine_events(battle, ex_events, msg_events)
 
-    return events, scenario
+    return events, battle

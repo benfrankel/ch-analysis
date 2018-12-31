@@ -16,13 +16,20 @@ class CardLocation(enum.Enum):
 class Card:
     def __init__(self, item=None):
         # Info
-        self.name = '?'
+        self.name = None
         self.card_type = None
 
         # Index
         self.player_index = None if item is None else item.player_index
         self.group_index = None if item is None else item.group_index
-        self.index = -1
+        self.index = None
+
+        # State
+        self.original_player_index = None if item is None else item.player_index
+        self.original_group_index = None if item is None else item.group_index
+        self.location = CardLocation.Draw
+        self.x = None
+        self.y = None
 
         # Parents
         self.player = None if item is None else item.player
@@ -31,13 +38,6 @@ class Card:
         self.slot = None if item is None else item.slot
         self.item = item
         self.item_name = None
-
-        # State
-        self.original_player_index = None if item is None else item.player_index
-        self.original_group_index = None if item is None else item.group_index
-        self.location = CardLocation.Draw
-        self.x = -1
-        self.y = -1
 
     def reveal(self, item, card_type):
         self.item = item
@@ -58,31 +58,31 @@ class Card:
     def travel(self, player_index, group_index):
         self.player_index = player_index
         self.group_index = group_index
-        self.index = -1
-        self.x = -1
-        self.y = -1
+        self.index = None
+        self.x = None
+        self.y = None
         self.location = CardLocation.Draw
 
     def attach(self, player_index, group_index):
         self.player_index = player_index
         self.group_index = group_index
-        self.index = -1
-        self.x = -1
-        self.y = -1
+        self.index = None
+        self.x = None
+        self.y = None
 
     def attach_terrain(self, x, y):
-        self.player_index = -1
-        self.group_index = -1
-        self.index = -1
+        self.player_index = None
+        self.group_index = None
+        self.index = None
         self.x = x
         self.y = y
 
     def discard(self):
         self.player_index = self.original_player_index
         self.group_index = self.original_group_index
-        self.index = -1
-        self.x = -1
-        self.y = -1
+        self.index = None
+        self.x = None
+        self.y = None
         self.location = CardLocation.Discard
 
     def reshuffle(self):
@@ -108,7 +108,7 @@ class Card:
         return self.location == CardLocation.Discard
 
     def __str__(self):
-        return self.name
+        return self.name or '?'
 
     def __repr__(self):
         return '{}("{}")'.format(self.__class__.__name__, self.name)
@@ -118,7 +118,7 @@ class Card:
 class Item:
     def __init__(self, slot):
         # Info
-        self.name = '?'
+        self.name = None
         self.item_type = None
 
         # Index
@@ -160,7 +160,7 @@ class Item:
         return self.item_type == other.item_type
 
     def __str__(self):
-        return '{} ({})'.format(self.name, self.slot.name)
+        return '{} ({})'.format(self.name or '?', self.slot.name)
 
     def __repr__(self):
         return '{}("{}")'.format(self.__class__.__name__, self.name)
@@ -210,7 +210,7 @@ class ItemSlot:
 class ItemFrame:
     def __init__(self, group):
         # Info
-        self.name = '?'
+        self.name = None
         self.archetype = None
 
         # Index
@@ -222,8 +222,8 @@ class ItemFrame:
         self.group = group
 
         # Children
-        self.slot_types = []
-        self.slots = []
+        self.slot_types = None
+        self.slots = None
 
     def set_archetype(self, archetype):
         self.archetype = archetype
@@ -255,13 +255,17 @@ class ItemFrame:
 class Group:
     def __init__(self, player, index):
         # Info
-        self.name = '?'
-        self.figure = '?'
+        self.name = None
+        self.figure = None
         self.archetype = None
 
         # Index
         self.player_index = player.index
         self.index = index
+
+        # State
+        self.alive = True
+        self.must_draw = None
 
         # Parents
         self.player = player
@@ -272,12 +276,12 @@ class Group:
         self.discard_deck = []
         self.hand = []
 
-        # State
-        self.alive = True
-        self.must_draw = -1
-
     def is_described(self):
-        return self.name != '?' and self.figure != '?'  and self.archetype is not None
+        return (\
+            self.name is not None and\
+            self.figure is not None and\
+            self.archetype is not None and\
+        True)
 
     def set_archetype(self, archetype_name):
         archetype = gamedata.get_archetype(archetype_name)
@@ -385,7 +389,7 @@ class Group:
         pass  # TODO
 
     def __str__(self):
-        return '{} ({} {})\nEquipment: {}'.format(self.name, self.archetype.race, self.archetype.role, self.item_frame)
+        return '{} ({} {})\nEquipment: {}'.format(self.name or '?', self.archetype.race, self.archetype.role, self.item_frame)
 
     def __repr__(self):
         return '{}("{}")'.format(self.__class__.__name__, self.name)
@@ -393,29 +397,43 @@ class Group:
 
 # An instance of a player during a battle
 class Player:
-    def __init__(self, scenario, index):
+    def __init__(self, battle, index):
         # Info
-        self.name = '?'
-        self.id = -1
-        self.user_id = -1
-        self.rating = -1
+        self.name = None
+        self.player_id = None
+        self.user_id = None
+        self.rating = None
+        self.is_npc = None
+        self.stars_needed = None
+        self.cards_drawn = None
+        self.draw_limit = None
 
         # Index
         self.index = index
 
+        # State
+        self.stars = None
+        self.drawing_group = 0
+
         # Parents
-        self.scenario = scenario
+        self.battle = battle
 
         # Children
         self.groups = [Group(self, i) for i in range(3)]
 
-        # State
-        self.stars = 0
-        self.drawing_group = 0
-
     def is_described(self):
-        return self.name != '?' and self.rating != -1 and self.user_id != -1 and\
-               all([c.is_described() for c in self.groups])
+        return (\
+            self.name is not None and\
+            self.player_id is not None and\
+            self.user_id is not None and\
+            self.rating is not None and\
+            self.is_npc is not None and\
+            self.stars is not None and\
+            self.stars_needed is not None and\
+            self.cards_drawn is not None and\
+            self.draw_limit is not None and\
+            all([c.is_described() for c in self.groups]) and\
+        True)
 
     def reveal_card(self, event, from_deck=False):
         self.groups[event.group_index].reveal_card(event, from_deck)
@@ -467,17 +485,17 @@ class Doodad:
 
 # An instance of a map during a battle (bunch of tiles and doodads)
 class Map:
-    def __init__(self, scenario):
+    def __init__(self, battle):
         # Info
         self.max_x = 0
         self.max_y = 0
 
         # Parents
-        self.scenario = scenario
+        self.battle = battle
 
         # Children
-        self.squares = dict()
-        self.doodads = list()
+        self.squares = {}
+        self.doodads = []
 
     def is_described(self):
         return True  # TODO?
@@ -489,8 +507,8 @@ class Map:
             self.max_y = y
         self.squares[x, y] = Square(x, y, flip_x, flip_y, image_name, terrain)
 
-    def add_doodad(self, x, y, flip_x, flip_y, image_name, battle):
-        self.doodads.append(Doodad(x, y, flip_x, flip_y, image_name, battle))
+    def add_doodad(self, x, y, flip_x, flip_y, image_name, marker):
+        self.doodads.append(Doodad(x, y, flip_x, flip_y, image_name, marker))
 
     def get_square(self, x, y):
         return self.squares[x, y]
@@ -498,10 +516,10 @@ class Map:
     def __str__(self):
         square_char = {'Open': '.', 'Difficult': '-', 'Impassable': 'o', 'Blocked': '#', 'Victory': '@'}
         result = ''
-        for x in range(self.max_x+1):
+        for x in range(self.max_x + 1):
             if x != 0:
                 result += '\n'
-            for y in range(self.max_y+1):
+            for y in range(self.max_y + 1):
                 if (x, y) in self.squares:
                     result += square_char[self.squares[x, y].terrain]
                 else:
@@ -509,13 +527,23 @@ class Map:
         return result
 
 
-# A scenario (map, players, characters, cards, items, etc.)
-class Scenario:
+# A battle (map, players, characters, cards, items, etc.)
+class Battle:
     def __init__(self):
         # Info
-        self.name = '?'
-        self.display_name = '?'
-        self.room_name = '?'
+        self.scenario_name = None
+        self.display_name = None
+        self.room_name = None
+        self.room_id = None
+        self.time_limit = None
+        self.draw_limit = None
+        self.game_type = None
+        self.audio_tag = None
+
+        # State
+        self.current_turn = None
+        self.current_round = None
+        self.game_over = None
 
         # Children
         self.map = Map(self)
@@ -528,8 +556,21 @@ class Scenario:
         self.enemy = self.players[1 - user_index]
 
     def is_described(self):
-        return self.name != '?' and self.display_name != '?' and self.room_name != '?' and self.enemy is not None and\
-               self.map.is_described() and all(p.is_described() for p in self.players)
+        return (\
+            self.name is not None and\
+            self.display_name is not None and\
+            self.room_name is not None and\
+            self.room_id is not None and\
+            self.time_limit is not None and\
+            self.draw_limit is not None and\
+            self.game_type is not None and\
+            self.audio_tag is not None and\
+            self.current_turn is not None and\
+            self.current_round is not None and\
+            self.game_over is not None and\
+            self.map.is_described() and\
+            all(p.is_described() for p in self.players) and\
+        True)
 
     def update(self, event):  # TODO
         try:
