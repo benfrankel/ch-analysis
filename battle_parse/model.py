@@ -250,27 +250,66 @@ class ItemFrame:
     def __repr__(self):
         return '{}("{}")'.format(self.__class__.__name__, self.name)
 
-
-# An instance of an actor group during a battle (name, figure, archetype, item frame)
-class Group:
-    def __init__(self, player, index):
+class Actor:
+    def __init__(self, group, index):
         # Info
         self.name = None
         self.figure = None
-        self.archetype = None
+        self.figure_size = None
+        self.audio_key = None
         self.star_value = None
 
         # State
-        self.alive = None
-        self.must_draw = None
-        self.hp = None
         self.max_hp = None
+        self.hp = None
+        self.ap = None
 
         # Placement
         self.x = None
         self.y = None
         self.fx = None
         self.fy = None
+        
+        # Index
+        self.index = index
+
+        # Parent
+        self.group = group
+
+    @property
+    def alive(self):
+        return self.hp > 0
+
+    def is_described(self):
+        return (\
+            self.name is not None and\
+            self.figure is not None and\
+            self.figure_size is not None and\
+            self.audio_key is not None and\
+            self.star_value is not None and\
+            self.max_hp is not None and\
+            self.hp is not None and\
+            self.ap is not None and\
+            self.x is not None and\
+            self.y is not None and\
+            self.fx is not None and\
+            self.fy is not None and\
+        True)
+
+# An actor group during a battle (name, figure, archetype, item frame)
+class Group:
+    def __init__(self, player, index):
+        # Info
+        self.name = None
+        self.display_name = None
+        self.archetype = None
+        self.star_value = None
+        self.base_ap = None
+        self.draws_per_actor = None
+        self.draw_limit = None
+
+        # State
+        self.must_draw = None
 
         # Index
         self.player_index = player.index
@@ -281,23 +320,35 @@ class Group:
 
         # Children
         self.item_frame = ItemFrame(self)
+        self.actors = []
         self.draw_deck = []
         self.discard_deck = []
         self.hand = []
 
+    @property
+    def alive_actors(self):
+        return [a for a in self.actors if a.alive]
+
+    @property
+    def num_draws(self):
+        base_draws = int(len(self.alive_actors) * self.draws_per_actor)
+        return max(base_draws, 1) + (self.player.battle.current_round == 0)
+
+    def add_actor(self):
+        actor = Actor(self, len(self.actors))
+        self.actors.append(actor)
+        return actor
+
     def is_described(self):
         return (\
             self.name is not None and\
-            self.figure is not None and\
+            self.display_name is not None and\
             self.archetype is not None and\
-            self.alive is not None and\
+            self.star_value is not None and\
+            self.base_ap is not None and\
+            self.draws_per_actor is not None and\
+            self.draw_limit is not None and\
             self.must_draw is not None and\
-            self.hp is not None and\
-            self.max_hp is not None and\
-            self.x is not None and\
-            self.y is not None and\
-            self.fx is not None and\
-            self.fy is not None and\
         True)
 
     def set_archetype(self, archetype_name):
@@ -443,6 +494,11 @@ class Player:
         # Children
         self.groups = [Group(self, i) for i in range(3)]
 
+    def add_group(self):
+        group = Group(self, len(self.groups))
+        self.groups.append(group)
+        return group
+
     def is_described(self):
         return (\
             self.name is not None and\
@@ -561,6 +617,8 @@ class Battle:
         self.use_draw_limit = None
         self.game_type = None
         self.audio_tag = None
+        self.respawn_period = None
+        self.win_on_all_dead = None
 
         # State
         self.current_turn = None
@@ -587,6 +645,8 @@ class Battle:
             self.use_draw_limit is not None and\
             self.game_type is not None and\
             self.audio_tag is not None and\
+            self.respawn_period is not None and\
+            self.win_on_all_dead is not None and\
             self.current_turn is not None and\
             self.current_round is not None and\
             self.game_over is not None and\

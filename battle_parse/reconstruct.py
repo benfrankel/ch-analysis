@@ -26,15 +26,28 @@ def load_battle_objects(objs):
             battle.display_name = obj['scenarioDisplayName']
             battle.room_name = obj['roomName']
             battle.room_id = obj['roomID']
-            battle.time_limit = obj['timeLimit']
+            battle.time_limit = obj['timeLimit']  # In an adventure this was -60?
             battle.use_draw_limit = obj['enforceDrawLimit']
             battle.game_type = obj['gameType']  # TODO: What does this represent?
             battle.audio_tag = obj['audioTag']
+            battle.respawn_period = obj['respawnPeriod']
+            battle.win_on_all_dead = obj['forceWinWhenAllDead']
             battle.current_turn = obj['activePlayer']
             battle.current_round = obj['turnNumber']
             battle.game_over = obj['gameOver']
             # TODO: obj['nextFirstPlayerIndex']?
             # TODO: obj['awaitingInstruction']?
+            # TODO: obj['adventureName']?
+            # TODO: obj['respawnFilters']?
+            # TODO: Is obj['questIndex'] used for quest adventures?
+            # TODO: When would obj['playerDamageMultiplier'] not be 1?
+            # TODO: obj['musicTag']?
+            # TODO: What is obj['commands']?
+            # TODO: What is obj['commandInsertionPoint']?
+            # TODO: Is obj['initialHelpDoc'] related to GM narration?
+            # TODO: Is obj['instructions'] related to GM narration?
+            # TODO: Looks like obj['leagueID'] is -1 when not a league?
+            # TODO: What is obj['scriptConditions']?
 
         elif cls.endswith('.Board'):
             board.w = obj['size.x']
@@ -64,21 +77,21 @@ def load_battle_objects(objs):
             player_index = obj['playerIndex']
             player = battle.players[player_index]
 
-            for j, group in zip(obj['actorGroups'], player.groups):
-                group_at[j] = group
+            for idx in obj['actorGroups']:
+                group_at[idx] = player.add_group()
             
             player.name = obj['playerName']
-            player.player_id = obj['playerID']
-            player.user_id = obj['userID']
+            player.player_id = obj['playerID']  # TODO: -1 for NPC
+            player.user_id = obj['userID']  # TODO: -1 for NPC
             player.is_npc = obj['isNPC']
-            player.rating = obj['rating']
+            player.rating = obj['rating']  # TODO: -1 for NPC
             player.draw_limit = obj['drawLimit']  # TODO: Is this -1 when there is no draw limit?
             player.cards_drawn = obj['cardsDrawnThisRound']
             player.stars_needed = obj['winningScore']
             player.stars = obj['score']
             # TODO: obj['moveStartTime']?
             # TODO: obj['isParty']?
-            # TODO: obj['side']?
+            # TODO: Is obj['side'] == obj['playerIndex'] always?
             # TODO: obj['passingAsOf']?
             # TODO: obj['defeated']?
             # TODO: obj['active']?
@@ -89,37 +102,38 @@ def load_battle_objects(objs):
         elif cls.endswith('.ActorGroup'):
             group = group_at[i]
 
-            # TODO: for j, actor in zip(obj['actors'], group.actors):
             for j in obj['actors']:
-                actor_at[j] = group
+                actor_at[j] = group.add_actor()
                 
             group.name = obj['name']
-            group.set_archetype(' '.join([obj['race'], obj['characterClass']]))
-            # TODO: Is obj['actionPoints'] the number of actions allowed?
-            # TODO: obj['drawLimit']?
+            group.display_name = obj['display_name']
+            group.set_archetype(
+                archetype='{} {}'.format(obj['race'], obj['characterClass']),
+            )
+            group.base_ap = obj['actionPoints']
+            group.draws_per_actor = obj['drawsPerActor']
+            group.draw_limit = obj['drawLimit']
             # TODO: obj['cardsDrawnThisRound']?
-            # TODO: obj['drawsPerActor']?
-            # TODO: obj['canScore']?
+            # TODO: When would obj['canScore'] be false?
             # TODO: obj['racePrefix']?
-            # TODO: Is obj['moveCard'] necessary?
-            # TODO: obj['displayName']?
+            # TODO: Is obj['moveCard'] necessary? Yes, what if it's a Goblin or something?
             # TODO: When would obj['cardRetainAllowance'] not be -1 and what does that mean?
 
         elif cls.endswith('.ActorInstance'):
             actor = actor_at[i]
+            actor.name = obj['name']
             actor.figure = obj['depiction']
+            actor.figure_size = obj['size']
             actor.audio_key = obj['audioKey']
             actor.star_value = obj['scoreForKilling']
             actor.max_hp = obj['maxHealth']
             actor.hp = obj['health']
+            actor.ap = obj['actionPoints']    # TODO: -1 for infinite
             actor.x = obj['location.x']
             actor.y = obj['location.y']
             actor.fx = obj['facing.x']
             actor.fy = obj['facing.y']
-            # TODO: Is obj['actionPoints'] the number of actions allowed?
-            # TODO: Does obj['size'] determine 1x1 or 2x2 figure?
             # TODO: obj['terrainEffectApplied']?
-            # TODO: Can obj['name'] be different from ActorGroup?
             # TODO: obj['swapDepiction']?
             # TODO: obj['attachedCards']?
 
@@ -307,6 +321,16 @@ def extension_events(battle, extensions):
         elif event_type == 'noMoreTraits':
             events.append(ExNoTraits(
                 player_turn,
+            ))
+
+        elif event_type == 'respawn':
+            events.append(ExRespawn(
+                player_turn,
+                player_indices=ex['TARP'],
+                group_indices=ex['TARG'],
+                actor_indices=ex['TARA'],
+                squares=[list(s) for s in zip(ex['TARXS'], ex['TARYS'])],
+                facings=[list(s) for s in zip(ex['TARFXS'], ex['TARFYS'])],
             ))
 
         elif event_type in ('triggerFail', 'triggerSucceed') and 'TCLOC' in ex:

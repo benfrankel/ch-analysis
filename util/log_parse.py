@@ -1,29 +1,32 @@
 # Parse verbose logs
 
 
-# Convert string value to type specified by tag
+# Convert string to type specified by tag
 def convert(tag, value):
     if len(value) == 2 and tag.endswith('array'):
         return []
 
-    if tag == 'utf_string':
-        return value
-    elif tag == 'utf_string_array':
-        return value[1:-1].split(',')
-    elif tag == 'bool':
-        return value == 'true'
-    elif tag == 'bool_array':
-        return [e == 'true' for e in value[1:-1].split(',')]
-    elif tag == 'int' or tag == 'long':
-        return int(value)
-    elif tag == 'int_array' or tag == 'long_array':
-        return [int(e) for e in value[1:-1].split(',')]
-    elif tag == 'double':
-        return [float(value)]
-    elif tag == 'double_array':
-        return [float(e) for e in value[1:-1].split(',')]
-    else:
-        raise ValueError('Unrecognized tag: {}'.format(tag))
+    to_str = lambda e: '' if e == '[null]' else e
+    to_bool = lambda e: e == 'true'
+    to_int = to_long = int
+    to_float = to_double = float
+
+    convert = {
+        'utf_string': to_str,
+        'bool': to_bool,
+        'int': to_int,
+        'long': to_int,
+        'double': to_float,
+    }
+
+    to_array = lambda f: lambda v: [f(e) for e in v[1:-1].split(',')]
+    for t, f in convert.items():
+        convert[t + '_array'] = to_array(f)
+
+    try:
+        return convert[tag](value)
+    except KeyError:
+        raise ValueError("Unrecognized tag '{}'".format(tag))
 
 
 # Parse a verbose log line into its indent level, name, and value

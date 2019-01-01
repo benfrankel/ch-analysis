@@ -368,6 +368,10 @@ ExHandPeek       = build_ex('Hand Peek')
 
 ExDeckPeek       = build_ex('Deck Peek')
 
+ExRespawn        = build_ex('Respawn', 'player_indices', 'group_indices', 'actor_indices', 'squares', 'facings',
+                            describe=lambda m: 'Actors {} from groups {} of players {} respawned at {}, facing {}'
+                                .format(m.actor_indices, m.group_indices, m.player_indices, squares, facings))
+
 ExStartTimer     = build_ex('Start Timer', 'player_index', 'remaining',
                             describe=lambda m: 'Timer {} ({})'
                                 .format(m.player_index, display_seconds(m.remaining)))
