@@ -215,65 +215,65 @@ MsgStartRound     = build_msg('Start Round', 'game_round',
                               describe=lambda m: 'Round {}'
                                   .format(m.game_round))
 
-MsgCardPlay       = build_msg('Card Play', 'group', 'card', 'targets',
+MsgCardPlay       = build_msg('Card Play', 'actor_name', 'card_name', 'target_names',
                               describe=lambda m: '{} plays {} on {}'
-                                  .format(m.group, m.card, m.targets))
+                                  .format(m.actor_name, m.card_name, m.target_names))
 
-MsgMove           = build_msg('Move', 'player', 'group', 'start', 'end', 'start_facing', 'end_facing',
+MsgMove           = build_msg('Move', 'player_name', 'actor_name', 'start', 'end', 'start_facing', 'end_facing',
                               describe=lambda m: '{} moves {} from {} to {} (was facing {}, now {})'
-                                  .format(m.player, m.group, m.start, m.end, m.start_facing, m.end_facing))
+                                  .format(m.player_name, m.actor_name, m.start, m.end, m.start_facing, m.end_facing))
 
-MsgTriggerTerrain = build_msg('Trigger Terrain', 'group', 'card', 'target', 'success', 'cause',
+MsgTriggerTerrain = build_msg('Trigger Terrain', 'actor_name', 'card_name', 'target', 'success', 'cause',
                               describe=lambda m: '{} {} {} square for {} ({})'
-                                  .format(m.group, ['failed to trigger', 'triggered'][m.success], m.card, m.target, m.cause))
+                                  .format(m.actor_name, ['failed to trigger', 'triggered'][m.success], m.card_name, m.target, m.cause))
 
-MsgTriggerTrait   = build_msg('Trigger Trait', 'group', 'card', 'target', 'success', 'cause',
+MsgTriggerTrait   = build_msg('Trigger Trait', 'actor_name', 'card_name', 'target', 'success', 'cause',
                               describe=lambda m: '{} {} {} trait for {} ({})'
-                                  .format(m.group, ['failed to trigger', 'triggered'][m.success], m.card, m.target, m.cause))
+                                  .format(m.actor_name, ['failed to trigger', 'triggered'][m.success], m.card_name, m.target, m.cause))
 
-MsgTriggerInHand  = build_msg('Trigger In Hand', 'group', 'card', 'target', 'success', 'cause',
+MsgTriggerInHand  = build_msg('Trigger In Hand', 'actor_name', 'card_name', 'target', 'success', 'cause',
                               describe=lambda m: '{} {} {} in hand for {} ({})'
-                                  .format(m.group, ['failed to trigger', 'triggered'][m.success], m.card, m.target, m.cause))
+                                  .format(m.actor_name, ['failed to trigger', 'triggered'][m.success], m.card_name, m.target, m.cause))
 
-MsgMustDiscard    = build_msg('Must Discard', 'group',
+MsgMustDiscard    = build_msg('Must Discard', 'group_name',
                               describe=lambda m: '{} must discard'
-                                  .format(m.group))
+                                  .format(m.group_name))
 
-MsgDiscard        = build_msg('Discard', 'group', 'card',
+MsgDiscard        = build_msg('Discard', 'group_name', 'card_name',
                               describe=lambda m: '{} discarded {}'
-                                  .format(m.group, m.card))
+                                  .format(m.group_name, m.card_name))
 
-MsgMustSelect     = build_msg('Must Select', 'player', 'options',
+MsgMustSelect     = build_msg('Must Select', 'player_name', 'option_names',
                               describe=lambda m: '{} must select a card from {}'
-                                  .format(m.player, m.options))
+                                  .format(m.player_name, m.option_names))
 
-MsgSelect         = build_msg('Select', 'player', 'card',
+MsgSelect         = build_msg('Select', 'player_name', 'card_name',
                               describe=lambda m: '{} selected {}'
-                                  .format(m.player, m.card))
+                                  .format(m.player_name, m.card_name))
 
-MsgMustTarget     = build_msg('Must Target', 'player',
+MsgMustTarget     = build_msg('Must Target', 'player_name',
                               describe=lambda m: '{} must select target'
-                                  .format(m.player))
+                                  .format(m.player_name))
 
-MsgMustTrait      = build_msg('Must Trait', 'player',
+MsgMustTrait      = build_msg('Must Trait', 'player_name',
                               describe=lambda m: '{} must play a trait'
-                                  .format(m.player))
+                                  .format(m.player_name))
 
-MsgAttachTrait    = build_msg('Attach Trait', 'group', 'card',
+MsgAttachTrait    = build_msg('Attach Trait', 'actor_name', 'card_name',
                               describe=lambda m: '{} attached to {}'
-                                  .format(m.card, m.group))
+                                  .format(m.card_name, m.actor_name))
 
-MsgDetachTrait    = build_msg('Detach Trait', 'group', 'card',
+MsgDetachTrait    = build_msg('Detach Trait', 'actor_name', 'card_name',
                               describe=lambda m: '{} detached from {}'
-                                  .format(m.card, m.group))
+                                  .format(m.card_name, m.actor_name))
 
-MsgAttachTerrain  = build_msg('Attach Terrain', 'square', 'card',
+MsgAttachTerrain  = build_msg('Attach Terrain', 'square', 'card_name',
                               describe=lambda m: '{} attached to {}'
-                                  .format(m.card, m.square))
+                                  .format(m.card_name, m.square))
 
-MsgDetachTerrain  = build_msg('Detach Terrain', 'square', 'card',
+MsgDetachTerrain  = build_msg('Detach Terrain', 'square', 'card_name',
                               describe=lambda m: '{} detached from {}'
-                                  .format(m.card, m.square))
+                                  .format(m.card_name, m.square))
 
 MsgStartTimer     = build_msg('Start Timer', 'player_index', 'remaining',
                               describe=lambda m: 'Timer {} ({})'
@@ -283,57 +283,65 @@ MsgPauseTimer     = build_msg('Pause Timer', 'player_index', 'remaining',
                               describe=lambda m: 'Timer {} ({})'
                                   .format(m.player_index, display_seconds(m.remaining)))
 
-MsgDefeat         = build_msg('Defeat', 'player',
+MsgDefeat         = build_msg('Defeat', 'player_name',
                               describe=lambda m: '{} defeated'
-                                  .format(m.player))
+                                  .format(m.player_name))
 
-MsgCardDraw       = build_msg('Card Draw', 'player', 'group', 'card',
+MsgCardDraw       = build_msg('Card Draw', 'player_name', 'group_name', 'card_name',
                               describe=lambda m: '{} drew {} for {}'
-                                  .format(m.player, m.card, m.group))
+                                  .format(m.player_name, m.card_name, m.group_name))
 
-MsgHiddenDraw     = build_msg('Hidden Draw', 'player', 'group',
+MsgHiddenDraw     = build_msg('Hidden Draw', 'player_name', 'group_name',
                               describe=lambda m: '{} drew for {}'
-                                  .format(m.player, m.group))
+                                  .format(m.player_name, m.group_name))
 
-MsgPlayerTurn     = build_msg('Player Turn', 'player',
+MsgReshuffle      = build_msg('Reshuffle', 'group_name', 'num_cards',
+                              describe=lambda m: '{} shuffled {} cards into draw deck'
+                                  .format(m.group_name, m.num_cards))
+
+MsgFailedDraw     = build_msg('Failed Draw', 'group_name',
+                              describe=lambda m: '{} failed to draw a card (empty draw deck)'
+                                  .format(m.group_name))
+
+MsgPlayerTurn     = build_msg('Player Turn', 'player_name',
                               describe=lambda m: '{} is now active'
-                                  .format(m.player))
+                                  .format(m.player_name))
 
-MsgPass           = build_msg('Pass', 'player',
+MsgPass           = build_msg('Pass', 'player_name',
                               describe=lambda m: '{} passed'
-                                  .format(m.player))
+                                  .format(m.player_name))
 
-MsgDamage         = build_msg('Damage', 'group', 'hp',
+MsgDamage         = build_msg('Damage', 'actor_name', 'hp',
                               describe=lambda m: '{} took {} damage'
-                                  .format(m.group, m.hp))
+                                  .format(m.actor_name, m.hp))
 
-MsgHeal           = build_msg('Heal', 'group', 'hp',
+MsgHeal           = build_msg('Heal', 'actor_name', 'hp',
                               describe=lambda m: '{} healed {} hp'
-                                  .format(m.group, m.hp))
+                                  .format(m.actor_name, m.hp))
 
-MsgDeath          = build_msg('Death', 'group',
+MsgDeath          = build_msg('Death', 'actor_name',
                               describe=lambda m: '{} died'
-                                  .format(m.group))
+                                  .format(m.actor_name))
 
-MsgBlock          = build_msg('Block', 'player_index', 'group_index', 'card',
-                              describe=lambda m: 'Group {} of player {} blocked {}'
-                                  .format(m.group_index, m.player_index, m.card))
+MsgBlock          = build_msg('Block', 'player_index', 'group_index', 'actor_index', 'card_name',
+                              describe=lambda m: 'Actor {} of group {} of player {}) blocked {}'
+                                  .format(m.actor_index, m.group_index, m.player_index, m.card_name))
 
-MsgHealth         = build_msg('Health', 'player_index', 'group_index', 'hp',
-                              describe=lambda m: 'Group {} of player {} has {} hp'
-                                  .format(m.group_index, m.player_index, m.hp))
+MsgHealth         = build_msg('Health', 'player_index', 'group_index', 'actor_index', 'hp',
+                              describe=lambda m: 'Actor {} of group {} of player {} has {} hp'
+                                  .format(m.actor_index, m.group_index, m.player_index, m.hp))
 
-MsgAutoselect     = build_msg('Autoselect', 'card',
+MsgAutoselect     = build_msg('Autoselect', 'card_name',
                               describe=lambda m: 'Autoselected {}'
-                                  .format(m.card))
+                                  .format(m.card_name))
 
-MsgStopCard       = build_msg('Stop Card', 'card',
+MsgStopCard       = build_msg('Stop Card', 'card_name',
                               describe=lambda m: '{} was stopped'
-                                  .format(m.card))
+                                  .format(m.card_name))
 
-MsgCancelAction   = build_msg('Cancel Action', 'card',
+MsgCancelAction   = build_msg('Cancel Action', 'card_name',
                               describe=lambda m: 'Action {} was cancelled'
-                                  .format(m.card))
+                                  .format(m.card_name))
 
 # Extension events
 ExSelectTarget   = build_ex('Select Target', 'target_player_indices', 'target_group_indices',

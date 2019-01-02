@@ -20,7 +20,8 @@ def convert(tag, value):
     }
 
     to_array = lambda f: lambda v: [f(e) for e in v[1:-1].split(',')]
-    for t, f in convert.items():
+    items = list(convert.items())
+    for t, f in items:
         convert[t + '_array'] = to_array(f)
 
     try:

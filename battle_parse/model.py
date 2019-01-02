@@ -492,7 +492,7 @@ class Player:
         self.battle = battle
 
         # Children
-        self.groups = [Group(self, i) for i in range(3)]
+        self.groups = []
 
     def add_group(self):
         group = Group(self, len(self.groups))
