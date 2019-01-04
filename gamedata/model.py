@@ -1,14 +1,58 @@
-# This file models the static CH structures (cards, items, characters)
+# Object model for Card Hunter game data (cards, items, characters)
 
 
-# A card type (e.g. "Ouch!", "Sprint, Team!", "Amorphous Body")
+# Card type (e.g. "Ouch!", "Sprint, Team!", "Amorphous Body")
 class CardType:
-    def __init__(self, id_, name, short_name, types, attack_type, damage_type, damage, min_range, max_range, move_points,
-                 duration, trigger, keep, trigger_effect, trigger2, keep2, trigger_effect2, text, flavor_text,
-                 play_text, trigger_text, trigger_attempt_text, trigger_succeed_text, trigger_fail_text, trigger_text2,
-                 trigger_attempt_text2, trigger_succeed_text2, trigger_fail_text2, components, card_params, plus_minus,
-                 quality, quality_warrior, quality_priest, quality_wizard, quality_dwarf, quality_elf, quality_human,
-                 rarity, function_tags, attach_image, status, audio_key, audio_key2, from_set, level, slot_types, art):
+    def __init__(self,
+        id_,
+        name,
+        short_name,
+        types,
+        attack_type,
+        damage_type,
+        damage,
+        min_range,
+        max_range,
+        move_points,
+        duration,
+        trigger,
+        keep,
+        trigger_effect,
+        trigger2,
+        keep2,
+        trigger_effect2,
+        text,
+        flavor_text,
+        play_text,
+        trigger_text,
+        trigger_attempt_text,
+        trigger_succeed_text,
+        trigger_fail_text,
+        trigger_text2,
+        trigger_attempt_text2,
+        trigger_succeed_text2,
+        trigger_fail_text2,
+        components,
+        card_params,
+        plus_minus,
+        quality,
+        quality_warrior,
+        quality_priest,
+        quality_wizard,
+        quality_dwarf,
+        quality_elf,
+        quality_human,
+        rarity,
+        function_tags,
+        attach_image,
+        status,
+        audio_key,
+        audio_key2,
+        from_set,
+        level,
+        slot_types,
+        art,
+    ):
         self.id = id_
         self.name = name
         self.short_name = short_name
@@ -69,10 +113,26 @@ class CardType:
         return self.name
 
 
-# An item type (e.g. "Bejeweled Shortsword", "Staff of the Misanthrope", "Armorbane Pendant")
+# Item type (e.g. "Bejeweled Shortsword", "Staff of the Misanthrope", "Armorbane Pendant")
 class ItemType:
-    def __init__(self, id_, name, short_name, rarity, level, intro_level, total_value, token_cost, cards, slot_type,
-                 slot_type_default, image_name, tags, from_set, manual_rarity, manual_value):
+    def __init__(self,
+        id_,
+        name,
+        short_name,
+        rarity,
+        level,
+        intro_level,
+        total_value,
+        token_cost,
+        cards,
+        slot_type,
+        slot_type_default,
+        image_name,
+        tags,
+        from_set,
+        manual_rarity,
+        manual_value,
+    ):
         self.id = id_
         self.name = name
         self.short_name = short_name
@@ -103,10 +163,20 @@ class ItemType:
         return self.name
 
 
-# A character archetype (e.g. "Dwarf Warrior", "Elf Priest")
+# Character archetype (e.g. "Dwarf Warrior", "Elf Priest")
 class CharacterArchetype:
-    def __init__(self, name, character_type, role, race, description, default_move, default_figure, start_items,
-                 slot_types, levels):
+    def __init__(self,
+        name,
+        character_type,
+        role,
+        race,
+        description,
+        default_move,
+        default_figure,
+        start_items,
+        slot_types,
+        levels,
+    ):
         self.name = name
         self.character_type = character_type
         self.role = role
