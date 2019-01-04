@@ -4,108 +4,43 @@ import gamedata
 from .event import *
 
 
-class CardLocation(enum.Enum):
-    Draw = 0
-    Hand = 1
-    Attached = 2
-    Terrain = 3
-    Discard = 4
-
-
-# An instance of a card during a battle (type may be hidden)
+# Card instance during a battle (type may be hidden)
 class Card:
-    def __init__(self, item=None):
+    def __init__(self):
         # Info
         self.name = None
-        self.card_type = None
-
-        # State
-        self.original_player_index = None if item is None else item.player_index
-        self.original_group_index = None if item is None else item.group_index
-        self.location = CardLocation.Draw
-        self.x = None
-        self.y = None
-
-        # Index
-        self.player_index = None if item is None else item.player_index
-        self.group_index = None if item is None else item.group_index
-        self.index = None
-
-        # Parents
-        self.player = None if item is None else item.player
-        self.group = None if item is None else item.group
-        self.frame = None if item is None else item.frame
-        self.slot = None if item is None else item.slot
-        self.item = item
+        self.type = None
         self.item_name = None
 
-    def reveal(self, item, card_type):
-        self.item = item
-        self.card_type = card_type
-        self.name = card_type.name
+        # State
+        self.original_player_index = None
+        self.original_group_index = None
+        self.visible = None
 
-    def draw(self, card_index):
-        self.index = card_index
-        self.location = CardLocation.Hand
+    def is_described(self):
+        return (\
+            self.original_player_index is not None and\
+            self.original_group_index is not None and\
+            self.visible is not None and\
+            not self.visible or (\
+                self.name is not None and\
+                self.card_type is not None and\
+                self.item_type is not None and\
+            True) and\
+        True)
 
-    # a la Battlefield Training
-    def lend(self, player_index, group_index, card_index):
-        self.player_index = player_index
-        self.group_index = group_index
-        self.index = card_index
-
-    # a la Traveling Curse
-    def travel(self, player_index, group_index):
-        self.player_index = player_index
-        self.group_index = group_index
-        self.index = None
-        self.x = None
-        self.y = None
-        self.location = CardLocation.Draw
-
-    def attach(self, player_index, group_index):
-        self.player_index = player_index
-        self.group_index = group_index
-        self.index = None
-        self.x = None
-        self.y = None
-
-    def attach_terrain(self, x, y):
-        self.player_index = None
-        self.group_index = None
-        self.index = None
-        self.x = x
-        self.y = y
-
-    def discard(self):
-        self.player_index = self.original_player_index
-        self.group_index = self.original_group_index
-        self.index = None
-        self.x = None
-        self.y = None
-        self.location = CardLocation.Discard
-
-    def reshuffle(self):
-        if self.location == 4:
-            self.location = CardLocation.Draw
+    def reveal(self, name, item_name):
+        self.name = name
+        self.type = gamedata.get_card(name)
+        self.item_name = item_name
+        
+        try:
+            self.item_type = gamedata.get_item(item_name)
+        except KeyError:
+            self.item_type = None
 
     def is_hidden(self):
         return self.card_type is None
-
-    def in_draw(self):
-        return self.location == CardLocation.Draw
-
-    def in_hand(self):
-        return self.location == CardLocation.Hand
-
-    def is_attached(self):
-        return self.location == CardLocation.Attached
-
-    def is_terrain(self):
-        return self.location == CardLocation.Terrain
-
-    def in_discard(self):
-        return self.location == CardLocation.Discard
 
     def __str__(self):
         return self.name or '?'
@@ -114,28 +49,15 @@ class Card:
         return '{}("{}")'.format(self.__class__.__name__, self.name)
 
 
-# An instance of an item during a battle (type may be hidden)
+# Item instance during a battle (type may be hidden)
 class Item:
-    def __init__(self, slot):
+    def __init__(self, num_cards):
         # Info
         self.name = None
         self.item_type = None
 
-        # Index
-        self.player_index = slot.player_index
-        self.group_index = slot.group_index
-
-        # Parents
-        self.player = slot.player
-        self.group = slot.group
-        self.frame = slot.frame
-        self.slot = slot
-
         # Children
-        if slot.name in ('Weapon', 'Divine Weapon', 'Staff'):
-            self.cards = [Card(self) for _ in range(6)]
-        else:
-            self.cards = [Card(self) for _ in range(3)]
+        self.cards = [Card() for _ in range(3)]
 
     def reveal(self, item_type):
         self.item_type = item_type
@@ -160,29 +82,21 @@ class Item:
         return self.item_type == other.item_type
 
     def __str__(self):
-        return '{} ({})'.format(self.name or '?', self.slot.name)
+        return '?' if self.name is None else self.name
 
     def __repr__(self):
         return '{}("{}")'.format(self.__class__.__name__, self.name)
 
 
-# An instance of a slot type (e.g. Weapon, Staff, Divine Skill) that can contain an Item during a battle
+# Item slot instance (e.g. Weapon, Staff, Divine Skill) that can contain an Item during a battle
 class ItemSlot:
-    def __init__(self, frame, name):
+    def __init__(self, name):
         # Info
         self.name = name
-
-        # Index
-        self.player_index = frame.player_index
-        self.group_index = frame.group_index
-
-        # Parents
-        self.player = frame.player
-        self.group = frame.group
-        self.frame = frame
+        self.num_cards = 6 if name in ('Weapon', 'Divine Weapon', 'Staff') else 3
 
         # Children
-        self.item = Item(self)
+        self.item = Item(self.num_cards)
 
     def set_item_type(self, item_type):
         if item_type.slot_type != self.name:
@@ -191,7 +105,7 @@ class ItemSlot:
         self.item.reveal(item_type)
 
     def remove_item(self):
-        self.item = Item(self)
+        self.item = Item(self.num_cards)
 
     def is_empty(self):
         return self.item.is_hidden()
@@ -208,28 +122,28 @@ class ItemSlot:
 
 # Models an instance of a character archetype's list of item slots during a battle
 class ItemFrame:
-    def __init__(self, group):
+    def __init__(self):
         # Info
         self.name = None
         self.archetype = None
-
-        # Index
-        self.player_index = group.player.index
-        self.group_index = group.index
-
-        # Parents
-        self.player = group.player
-        self.group = group
 
         # Children
         self.slot_types = None
         self.slots = None
 
+    def is_described(self):
+        return (
+            self.name is not None and
+            self.archetype is not None and
+            self.slot_types is not None and
+            self.slots is not None and
+        True)
+
     def set_archetype(self, archetype):
         self.archetype = archetype
         self.name = archetype.name
         self.slot_types = archetype.slot_types
-        self.slots = [ItemSlot(self, slot_type) for slot_type in self.slot_types]
+        self.slots = [ItemSlot(slot_type) for slot_type in self.slot_types]
 
     def add_item(self, item_type):
         for slot in self.slots:
@@ -251,7 +165,7 @@ class ItemFrame:
         return '{}("{}")'.format(self.__class__.__name__, self.name)
 
 class Actor:
-    def __init__(self, group, index):
+    def __init__(self):
         # Info
         self.name = None
         self.figure = None
@@ -263,70 +177,55 @@ class Actor:
         self.max_hp = None
         self.hp = None
         self.ap = None
+        self.attachments = []
+        self.attachment_durations = []
 
         # Placement
         self.x = None
         self.y = None
         self.fx = None
         self.fy = None
-        
-        # Index
-        self.index = index
-
-        # Parent
-        self.group = group
 
     @property
     def alive(self):
         return self.hp > 0
 
     def is_described(self):
-        return (\
-            self.name is not None and\
-            self.figure is not None and\
-            self.figure_size is not None and\
-            self.audio_key is not None and\
-            self.star_value is not None and\
-            self.max_hp is not None and\
-            self.hp is not None and\
-            self.ap is not None and\
-            self.x is not None and\
-            self.y is not None and\
-            self.fx is not None and\
-            self.fy is not None and\
+        return (
+            self.name is not None and
+            self.figure is not None and
+            self.figure_size is not None and
+            self.audio_key is not None and
+            self.star_value is not None and
+            self.max_hp is not None and
+            self.hp is not None and
+            self.ap is not None and
+            self.x is not None and
+            self.y is not None and
+            self.fx is not None and
+            self.fy is not None and
         True)
 
-# An actor group during a battle (name, figure, archetype, item frame)
+# Actor group during a battle (name, figure, archetype, item frame)
 class Group:
-    def __init__(self, player, index):
+    def __init__(self):
         # Info
         self.name = None
         self.display_name = None
         self.archetype = None
-        self.star_value = None
         self.base_ap = None
         self.draws_per_actor = None
         self.draw_limit = None
 
-        # State
-        self.must_draw = None
-
-        # Index
-        self.player_index = player.index
-        self.index = index
-
-        # Parents
-        self.player = player
-
         # Children
-        self.item_frame = ItemFrame(self)
+        self.item_frame = ItemFrame()
         self.actors = []
-        self.draw_deck = []
-        self.discard_deck = []
-        self.hand = []
+        self.draw_deck = None
+        self.discard_deck = None
+        self.hand = None
 
     @property
-    def alive_actors(self):
+    def living_actors(self):
         return [a for a in self.actors if a.alive]
 
     @property
@@ -334,21 +233,33 @@ class Group:
         base_draws = int(len(self.alive_actors) * self.draws_per_actor)
         return max(base_draws, 1) + (self.player.battle.current_round == 0)
 
-    def add_actor(self):
-        actor = Actor(self, len(self.actors))
+    def add_actor(self, actor):
+        actor.group = self
+        actor.index = len(self.actors)
         self.actors.append(actor)
         return actor
 
+    def register_actor(self, obj_at, idx):
+        if idx in obj_at:
+            self.add_actor(obj_at[idx])
+        else:
+            obj_at[idx] = self.add_actor(Actor())
+
     def is_described(self):
-        return (\
-            self.name is not None and\
-            self.display_name is not None and\
-            self.archetype is not None and\
-            self.star_value is not None and\
-            self.base_ap is not None and\
-            self.draws_per_actor is not None and\
-            self.draw_limit is not None and\
-            self.must_draw is not None and\
+        return (
+            self.name is not None and
+            self.display_name is not None and
+            self.archetype is not None and
+            self.base_ap is not None and
+            self.draws_per_actor is not None and
+            self.draw_limit is not None and
+            self.index is not None and
+            self.player is not None and
+            self.item_frame.is_described() and
+            self.draw_deck is not None and
+            self.discard_deck is not None and
+            self.hand is not None and
+            all(a.is_described() for a in self.actors) and
         True)
 
     def set_archetype(self, archetype_name):
@@ -468,9 +379,9 @@ class Group:
         return '{}("{}")'.format(self.__class__.__name__, self.name)
 
 
-# An instance of a player during a battle
+# Player during a battle
 class Player:
-    def __init__(self, battle, index):
+    def __init__(self):
         # Info
         self.name = None
         self.player_id = None
@@ -485,32 +396,33 @@ class Player:
         self.stars = None
         self.drawing_group = 0
 
-        # Index
-        self.index = index
-
-        # Parents
-        self.battle = battle
-
         # Children
         self.groups = []
 
-    def add_group(self):
-        group = Group(self, len(self.groups))
+    def add_group(self, group):
+        group.player = self
+        group.index = len(self.groups)
         self.groups.append(group)
         return group
 
+    def register_group(self, obj_at, idx):
+        if idx in obj_at:
+            self.add_group(obj_at[idx])
+        else:
+            obj_at[idx] = self.add_group(Group())
+
     def is_described(self):
-        return (\
-            self.name is not None and\
-            self.player_id is not None and\
-            self.user_id is not None and\
-            self.rating is not None and\
-            self.is_npc is not None and\
-            self.stars is not None and\
-            self.stars_needed is not None and\
-            self.cards_drawn is not None and\
-            self.draw_limit is not None and\
-            all([c.is_described() for c in self.groups]) and\
+        return (
+            self.name is not None and
+            self.player_id is not None and
+            self.user_id is not None and
+            self.rating is not None and
+            self.is_npc is not None and
+            self.stars is not None and
+            self.stars_needed is not None and
+            self.cards_drawn is not None and
+            self.draw_limit is not None and
+            all(g.is_described() for g in self.groups) and
         True)
 
     def reveal_card(self, event, from_deck=False):
@@ -531,35 +443,53 @@ class Player:
         self.groups[event.group_index].play_card(event)
 
 
-# An instance of a board tile during a battle
+# Board square during a battle
 class Square:
-    def __init__(self, x, y, flip_x, flip_y, image_name, terrain):
+    def __init__(self,
+        x=None,
+        y=None,
+        flip_x=None,
+        flip_y=None,
+        image_name=None,
+        terrain=None
+    ):
         # Info
         self.image_name = image_name
         self.flip_x = flip_x
         self.flip_y = flip_y
         self.terrain = terrain
 
+        # State
+        self.attachment = None
+        self.duration = None
+
         # Placement
         self.x = x
         self.y = y
 
 
-# An instance of a board doodad during a battle (static; doodads stay the same throughout the battle)
+# Board doodad during a battle (static; doodads stay the same throughout the battle)
 class Doodad:
-    def __init__(self, x, y, flip_x, flip_y, image_name, marker):
+    def __init__(self,
+        x=None,
+        y=None,
+        flip_x=None,
+        flip_y=None,
+        image_name=None,
+        marker=None,
+    ):
         # Info
         self.image_name = image_name
         self.flip_x = flip_x
         self.flip_y = flip_y
-        self.marker = marker
+        self.marker = marker  # TODO: What is this?
 
         # Placement
         self.x = x
         self.y = y
 
 
-# An instance of a board during a battle (bunch of tiles and doodads)
+# Board during a battle (bunch of tiles and doodads)
 class Board:
     square_char =  {
         'Open': '.',
@@ -569,43 +499,61 @@ class Board:
         'Victory': '@',
     }
             
-    def __init__(self, battle):
+    def __init__(self):
         # Info
         self.w = None
         self.h = None
 
-        # Parents
-        self.battle = battle
-
         # Children
-        self.squares = {}
+        self.squares = []
+        self.square_at = {}
         self.doodads = []
 
     def is_described(self):
-        return (\
-            self.w is not None and\
-            self.h is not None and\
+        return (
+            self.w is not None and
+            self.h is not None and
         True)
 
-    def add_square(self, x, y, flip_x, flip_y, image_name, terrain):
-        self.squares[x, y] = Square(x, y, flip_x, flip_y, image_name, terrain)
+    def add_square(self, square):
+        square.board = self
+        self.squares.append(square)
+        return square
 
-    def add_doodad(self, x, y, flip_x, flip_y, image_name, marker):
-        self.doodads.append(Doodad(x, y, flip_x, flip_y, image_name, marker))
+    def register_square(self, obj_at, idx):
+        if idx in obj_at:
+            self.add_square(obj_at[idx])
+        else:
+            obj_at[idx] = self.add_square(Square())
+
+    def add_doodad(self, doodad):
+        doodad.board = self
+        self.doodads.append(doodad)
+        return doodad
+
+    def register_doodad(self, obj_at, idx):
+        if idx in obj_at:
+            self.add_doodad(obj_at[idx])
+        else:
+            obj_at[idx] = self.add_doodad(Doodad())
 
     def get_square(self, x, y):
-        return self.squares[x, y]
+        return self.square_at[x, y]
+
+    def build(self):
+        for square in self.squares:
+            self.square_at[square.x, square.y] = square
 
     def _square_to_char(self, x, y):
-        if (x, y) in self.squares:
-            return Board.square_char[self.squares[x, y].terrain]
+        if (x, y) in self.square_at:
+            return Board.square_char[self.square_at[x, y].terrain]
         return ' '
 
     def __str__(self):
         return '\n'.join(''.join(self._square_to_char(x, y) for y in range(self.h)) for x in range(self.w))
 
 
-# A battle (board, players, characters, cards, items, etc.)
+# Battle (board, players, actors, cards, items, etc.)
 class Battle:
     def __init__(self):
         # Info
@@ -626,33 +574,52 @@ class Battle:
         self.game_over = None
 
         # Children
-        self.board = Board(self)
-        self.players = [Player(self, i) for i in range(2)]
+        self.board = Board()
+        self.players = []
         self.user = None
         self.enemy = None
+
+    def add_player(self, player):
+        player.battle = self
+        player.index = len(self.players)
+        self.players.append(player)
+        return player
+
+    def register_player(self, obj_at, idx):
+        if idx in obj_at:
+            self.add_player(obj_at[idx])
+        else:
+            obj_at[idx] = self.add_player(Player())
 
     def set_user(self, user_index):
         self.user = self.players[user_index]
         self.enemy = self.players[1 - user_index]
 
     def is_described(self):
-        return (\
-            self.scenario_name is not None and\
-            self.display_name is not None and\
-            self.room_name is not None and\
-            self.room_id is not None and\
-            self.time_limit is not None and\
-            self.use_draw_limit is not None and\
-            self.game_type is not None and\
-            self.audio_tag is not None and\
-            self.respawn_period is not None and\
-            self.win_on_all_dead is not None and\
-            self.current_turn is not None and\
-            self.current_round is not None and\
-            self.game_over is not None and\
-            self.board.is_described() and\
-            all(p.is_described() for p in self.players) and\
+        return (
+            self.scenario_name is not None and
+            self.display_name is not None and
+            self.room_name is not None and
+            self.room_id is not None and
+            self.time_limit is not None and
+            self.use_draw_limit is not None and
+            self.game_type is not None and
+            self.audio_tag is not None and
+            self.respawn_period is not None and
+            self.win_on_all_dead is not None and
+            self.current_turn is not None and
+            self.current_round is not None and
+            self.game_over is not None and
+            self.board.is_described() and
+            all(p.is_described() for p in self.players) and
         True)
+
+    def build(self):
+        if not self.is_described():
+            print(self.players[0].groups[0].__dict__)
+            raise ValueError('Battle is not fully described')
+        
+        self.board.build()
 
     def update(self, event):  # TODO
         try:

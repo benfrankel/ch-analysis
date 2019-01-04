@@ -15,13 +15,24 @@ from . import model
 def load_battle_objects(objs):
     battle = model.Battle()
     board = battle.board
-    group_at = {}
-    actor_at = {}
+    obj_at = {}
+
+    def obj_or(i, Obj):
+        if i in obj_at:
+            return obj_at[i]
+        obj = obj_at[i] = Obj()
+        return obj
 
     for i, obj in enumerate(objs):
-        cls = obj['_class_']
+        cls = obj['_class_'][22:]
         
-        if cls.endswith('.Battle'):
+        if cls == 'Battle':
+            obj_at[i] = battle
+
+            player_idxs = obj['players']
+            for j in player_idxs:
+                battle.register_player(obj_at, j)
+                
             battle.scenario_name = obj['scenarioName']
             battle.display_name = obj['scenarioDisplayName']
             battle.room_name = obj['roomName']
@@ -49,36 +60,47 @@ def load_battle_objects(objs):
             # TODO: Looks like obj['leagueID'] is -1 when not a league?
             # TODO: What is obj['scriptConditions']?
 
-        elif cls.endswith('.Board'):
+        elif cls == 'Board':
+            obj_at[i] = board
+
+            # TODO: Why are there three doodad lists?
+            doodad_idxs = obj['boardDecalDoodads'] + obj['upperDoodads'] + obj['lowerDoodads']
+            for j in doodad_idxs:
+                board.register_doodad(obj_at, j)
+
+            square_idxs = obj['squares']
+            for j in square_idxs:
+                board.register_square(obj_at, j)
+            
             board.w = obj['size.x']
             board.h = obj['size.y']
 
-        elif cls.endswith('.Square'):
-            board.add_square(
+        elif cls == 'Square':
+            obj_at[i] = board.add_square(model.Square(
                 x=obj['location.x'],
                 y=obj['location.y'],
                 flip_x=obj['imageFlipX'],
                 flip_y=obj['imageFlipY'],
                 image_name=obj['imageName'],
                 terrain=obj['terrain'],
-            )
+            ))
 
-        elif cls.endswith('.Doodad'):
-            board.add_doodad(
+        elif cls == 'Doodad':
+            obj_at[i] = board.add_doodad(model.Doodad(
                 x=obj['displayPosition.x'],
                 y=obj['displayPosition.y'],
                 flip_x=obj['imageFlipX'],
                 flip_y=obj['imageFlipY'],
                 image_name=obj['imageName'],
                 marker=obj['marker'],  # TODO: What does this represent? Only on PlayerNDeadFigureM?
-            )
+            ))
 
-        elif cls.endswith('.Player'):
-            player_index = obj['playerIndex']
-            player = battle.players[player_index]
+        elif cls == 'Player':
+            player = obj_or(i, model.Player)
 
-            for idx in obj['actorGroups']:
-                group_at[idx] = player.add_group()
+            group_idxs = obj['actorGroups']
+            for j in group_idxs:
+                player.register_group(obj_at, j)
             
             player.name = obj['playerName']
             player.player_id = obj['playerID']  # TODO: -1 for NPC
@@ -99,12 +121,22 @@ def load_battle_objects(objs):
             # TODO: Is obj['activeParticipantIndex'] the currently active participant in the party?
             # TODO: obj['initiativeParticipantIndex']?
 
-        elif cls.endswith('.ActorGroup'):
-            group = group_at[i]
+        elif cls == 'ActorGroup':
+            group = obj_or(i, model.Group)
 
-            for j in obj['actors']:
-                actor_at[j] = group.add_actor()
-                
+            actor_idxs = obj['actors']
+            for j in actor_idxs:
+                group.register_actor(obj_at, j)
+
+            draw_deck_idx = obj['deck']
+            group.draw_deck = obj_or(draw_deck_idx, list)
+            
+            discard_deck_idx = obj['discardPile']
+            group.discard_deck = obj_or(discard_deck_idx, list)
+            
+            hand_idx = obj['hand']
+            group.hand = obj_or(hand_idx, list)
+            
             group.name = obj['name']
             group.display_name = obj['displayName']
             group.set_archetype(
@@ -119,8 +151,8 @@ def load_battle_objects(objs):
             # TODO: Is obj['moveCard'] necessary? Yes, what if it's a Goblin or something?
             # TODO: When would obj['cardRetainAllowance'] not be -1 and what does that mean?
 
-        elif cls.endswith('.ActorInstance'):
-            actor = actor_at[i]
+        elif cls == 'ActorInstance':
+            actor = obj_or(i, model.Actor)
             actor.name = obj['name']
             actor.figure = obj['depiction']
             actor.figure_size = obj['size']
@@ -128,22 +160,66 @@ def load_battle_objects(objs):
             actor.star_value = obj['scoreForKilling']
             actor.max_hp = obj['maxHealth']
             actor.hp = obj['health']
-            actor.ap = obj['actionPoints']    # TODO: -1 for infinite
+            actor.ap = obj['actionPoints']  # TODO: -1 for infinite
             actor.x = obj['location.x']
             actor.y = obj['location.y']
             actor.fx = obj['facing.x']
             actor.fy = obj['facing.y']
             # TODO: obj['terrainEffectApplied']?
             # TODO: obj['swapDepiction']?
-            # TODO: obj['attachedCards']?
+
+        elif cls == 'DeckInstance':
+            draw_deck = obj_or(i, list)
+            card_idxs = obj['cards']
+            for j in card_idxs:
+                draw_deck.append(obj_or(j, model.Card))
+
+        elif cls == 'Hand':
+            hand = obj_or(i, list)
+            card_idxs = obj['cards']
+            for j in card_idxs:
+                hand.append(obj_or(j, model.Card))
+
+        elif cls == 'DiscardPile':
+            discard_deck = obj_or(i, list)
+            card_idxs = obj['cards']
+            for j in card_idxs:
+                discard_deck.append(obj_or(j, model.Card))
+
+        elif cls == 'SquareAttachment':
+            card_idx = obj['attachedCard']
+            card = obj_or(card_idx, model.Card)
+            
+            square_idx = obj['square']
+            square = obj_or(square_idx, model.Square)
+            
+            square.attachment = card
+            square.duration = obj['remainingDuration']
+
+        elif cls == 'ActorAttachment':
+            card_idx = obj['attachedCard']
+            card = obj_or(card_idx, model.Card)
+            
+            actor_idx = obj['actor']
+            actor = obj_or(actor_idx, model.Actor)
+            
+            actor.attachments.append(card)
+            actor.attachment_durations.append(obj['remainingDuration'])
+
+        elif cls == 'CardInstance':
+            card = obj_or(i, model.Card)
+            card.revealed = obj['visibleToAll']
+            if 'type' in obj:
+                card.reveal(
+                    name=obj['type'],
+                    item_name=obj['origin'],
+                )
 
         else:
             print('Ignored:', obj)
-            # TODO: Handle .Hand
-            # TODO: Handle .CardInstance
-            # TODO: Handle .DiscardPile (?)
-            # TODO: Handle .DeckInstance
 
+    battle.build()
+    
     return battle
 
 

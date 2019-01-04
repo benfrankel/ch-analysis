@@ -251,7 +251,7 @@ def load():
     is_loaded = True
 
 def normalize_name(name):
-    return ' '.join(name.trim().lower().split())
+    return ' '.join(name.strip().lower().split())
 
 def get_card(name):
     name = normalize_name(name)
