@@ -3,6 +3,7 @@
 from tkinter import Tk
 import re
 
+import gamedata
 from util import log_parse
 from .event import *
 from . import model
@@ -11,7 +12,6 @@ from . import model
 # Load objects into battle
 # TODO: Support player with multiple participants (party)
 # TODO: Support quick draw (?)
-# TODO: Support groups with multiple actors
 def load_battle_objects(objs):
     battle = model.Battle()
     board = battle.board
@@ -139,8 +139,9 @@ def load_battle_objects(objs):
             
             group.name = obj['name']
             group.display_name = obj['displayName']
+            archetype_name = '{} {}'.format(obj['race'], obj['characterClass'])
             group.set_archetype(
-                archetype_name='{} {}'.format(obj['race'], obj['characterClass']),
+                archetype=gamedata.get_archetype(archetype_name),
             )
             group.base_ap = obj['actionPoints']
             group.draws_per_actor = obj['drawsPerActor']
@@ -208,18 +209,25 @@ def load_battle_objects(objs):
 
         elif cls == 'CardInstance':
             card = obj_or(i, model.Card)
-            card.revealed = obj['visibleToAll']
+            card.visible = obj['visibleToAll']
             if 'type' in obj:
                 card.reveal(
-                    name=obj['type'],
-                    item_name=obj['origin'],
+                    card=gamedata.get_card(obj['type']),
+                    origin=obj['origin'],
                 )
+                if 'owner' in obj:
+                    original_group_idx = obj['owner']
+                    card.original_group = obj_or(original_group_idx, model.Group)
+                    card.created = False
+                else:
+                    card.created = True
+
+            battle.cards.append(card)
 
         else:
             print('Ignored:', obj)
 
     battle.build()
-    
     return battle
 
 
@@ -321,6 +329,7 @@ def extension_events(battle, extensions):
                         player_turn,
                         target_player_indices=ex['TARP'],
                         target_group_indices=ex['TARG'],
+                        target_actor_indices=ex['TARA'],
                     ))
 
         elif event_type == 'selectCard':
@@ -450,6 +459,7 @@ def extension_events(battle, extensions):
                 player_turn,
                 target_player_indices=ex['TARP'],
                 target_group_indices=ex['TARG'],
+                target_actor_indices=ex['TARA'],
             ))
 
         elif event_type == 'selectSquare':
@@ -854,5 +864,9 @@ def load_battle(filename=None):
 
     # Interpolate and extrapolate to form higher-level events
     events = refine_events(battle, ex_events, msg_events)
+
+    # Use events to update battle state
+    for event in events:
+        battle.update(event)
 
     return events, battle

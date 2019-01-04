@@ -344,9 +344,9 @@ MsgCancelAction   = build_msg('Cancel Action', 'card_name',
                                   .format(m.card_name))
 
 # Extension events
-ExSelectTarget   = build_ex('Select Target', 'target_player_indices', 'target_group_indices',
-                            describe=lambda m: 'Selected groups {} of players {}'
-                                .format(m.target_group_indices, m.target_player_indices))
+ExSelectTarget   = build_ex('Select Target', 'target_player_indices', 'target_group_indices', 'target_actor_indices',
+                            describe=lambda m: 'Selected actors {} of groups {} of players {}'
+                                .format(m.target_actor_indices, m.target_group_indices, m.target_player_indices))
 
 ExSelectSquare   = build_ex('Select Square', 'square', 'facing',
                             describe=lambda m: 'Selected square {} with facing {}'
@@ -377,7 +377,7 @@ ExHandPeek       = build_ex('Hand Peek')
 ExDeckPeek       = build_ex('Deck Peek')
 
 ExRespawn        = build_ex('Respawn', 'player_indices', 'group_indices', 'actor_indices', 'squares', 'facings',
-                            describe=lambda m: 'Actors {} from groups {} of players {} respawned at {}, facing {}'
+                            describe=lambda m: 'Actors {} of groups {} of players {} respawned at {}, facing {}'
                                 .format(m.actor_indices, m.group_indices, m.player_indices, squares, facings))
 
 ExStartTimer     = build_ex('Start Timer', 'player_index', 'remaining',

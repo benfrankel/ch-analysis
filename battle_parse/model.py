@@ -8,84 +8,88 @@ from .event import *
 class Card:
     def __init__(self):
         # Info
-        self.name = None
         self.type = None
-        self.item_name = None
+        self.origin = None
+        self.item_type = None
+        self.created = None
+        self.original_group = None
 
         # State
-        self.original_player_index = None
-        self.original_group_index = None
         self.visible = None
 
     def is_described(self):
-        return (\
-            self.original_player_index is not None and\
-            self.original_group_index is not None and\
-            self.visible is not None and\
-            not self.visible or (\
-                self.name is not None and\
-                self.card_type is not None and\
-                self.item_type is not None and\
-            True) and\
+        return (
+            self.visible is not None and
+            not self.visible or (
+                self.type is not None and
+                self.origin is not None and
+                self.created is not None and
+                self.created or (
+                    self.original_group is not None and
+                True) and
+            True) and
         True)
 
-    def reveal(self, name, item_name):
-        self.name = name
-        self.type = gamedata.get_card(name)
-        self.item_name = item_name
+    def reveal(self, card, origin):
+        self.type = card
+        self.origin = origin
         
         try:
-            self.item_type = gamedata.get_item(item_name)
+            self.item_type = gamedata.get_item(origin)
         except KeyError:
             self.item_type = None
 
     def is_hidden(self):
-        return self.card_type is None
+        return self.type is None
 
     def __str__(self):
-        return self.name or '?'
+        return '?' if self.type is None else self.type.name
 
     def __repr__(self):
-        return '{}("{}")'.format(self.__class__.__name__, self.name)
+        return '{}({})'.format(self.__class__.__name__, self.type)
 
 
 # Item instance during a battle (type may be hidden)
 class Item:
-    def __init__(self, num_cards):
+    def __init__(self):
         # Info
-        self.name = None
-        self.item_type = None
+        self.type = None
 
-        # Children
-        self.cards = [Card() for _ in range(3)]
+        # State
+        self.marked = None
 
-    def reveal(self, item_type):
-        self.item_type = item_type
-        self.name = item_type.name
-        for card, card_type in zip(self.cards, item_type.cards):
-            card.reveal(self, card_type)
+    def reveal(self, type_):
+        self.type = type_
+        self.marked = [False] * len(type_.cards)
+
+    def try_mark(self, card_type):
+        for i, card in enumerate(self.type.cards):
+            if card == card_type and not self.marked[i]:
+                self.marked[i] = True
+                return True
+        return False
 
     def reshuffle(self):
         for card in self.cards:
             card.reshuffle()
 
     def is_hidden(self):
-        return self.item_type is None
+        return self.type is None
 
     def __contains__(self, card_type):
         for card in self.cards:
-            if card.card_type == card_type:
+            if card.type == card_type:
                 return True
         return False
 
     def __eq__(self, other):
-        return self.item_type == other.item_type
+        return self.type == other.type
 
     def __str__(self):
-        return '?' if self.name is None else self.name
+        return '?' if self.type is None else self.type.name
 
     def __repr__(self):
-        return '{}("{}")'.format(self.__class__.__name__, self.name)
+        return '{}({})'.format(self.__class__.__name__, self.type)
 
 
 # Item slot instance (e.g. Weapon, Staff, Divine Skill) that can contain an Item during a battle
@@ -93,10 +97,10 @@ class ItemSlot:
     def __init__(self, name):
         # Info
         self.name = name
-        self.num_cards = 6 if name in ('Weapon', 'Divine Weapon', 'Staff') else 3
 
         # Children
-        self.item = Item(self.num_cards)
+        self.num_cards = 6 if name in ('Weapon', 'Divine Weapon', 'Staff') else 3
+        self.item = Item()
 
     def set_item_type(self, item_type):
         if item_type.slot_type != self.name:
@@ -111,7 +115,7 @@ class ItemSlot:
         return self.item.is_hidden()
 
     def __contains__(self, item_type):
-        return self.item.item_type == item_type
+        return self.item.type == item_type
 
     def __str__(self):
         return str(self.item)
@@ -145,15 +149,22 @@ class ItemFrame:
         self.slot_types = archetype.slot_types
         self.slots = [ItemSlot(slot_type) for slot_type in self.slot_types]
 
+    def mark(self, card_type, item_type):
+        for slot in self.slots:
+            if slot.item.type == item_type and slot.item.try_mark(card_type):
+                return
+
+        item = self.add_item(item_type)
+        if not item.try_mark(card_type):
+            raise ValueError('Failed to mark card "{}" from item "{}"'.format(card_type.name, item_type.name))
+
     def add_item(self, item_type):
         for slot in self.slots:
-            if item_type.slot_type == slot.name and slot.is_empty():
+            if slot.name == item_type.slot_type and slot.is_empty():
                 slot.item.reveal(item_type)
-                return
+                return slot.item
+    
         raise ValueError('Cannot add "{}" ({}) to {} Frame without such a slot open'.format(item_type.name, item_type.slot_type, self.name))
-
-    def get_cards(self):
-        return [card for slot in self.slots for card in slot.item.cards]
 
     def __contains__(self, item_type):
         return any(item_type in slot for slot in self.slots)
@@ -205,6 +216,9 @@ class Actor:
             self.fx is not None and
             self.fy is not None and
         True)
+
+    def build(self):
+        pass
 
 # Actor group during a battle (name, figure, archetype, item frame)
 class Group:
@@ -259,18 +273,23 @@ class Group:
             self.draw_deck is not None and
             self.discard_deck is not None and
             self.hand is not None and
+            all(c.is_described() for c in self.draw_deck) and
+            all(c.is_described() for c in self.discard_deck) and
+            all(c.is_described() for c in self.hand) and
             all(a.is_described() for a in self.actors) and
         True)
 
-    def set_archetype(self, archetype_name):
-        archetype = gamedata.get_archetype(archetype_name)
+    def build(self):
+        for actor in self.actors:
+            actor.build()
+
+    def set_archetype(self, archetype):
         self.archetype = archetype
         self.item_frame.set_archetype(archetype)
-        self.draw_deck = [card for slot in self.item_frame.slots for card in slot.item.cards]
 
     def reshuffle(self):
-        for slot in self.item_frame.slots:
-            slot.item.reshuffle()
+        self.draw_deck.extend(self.discard_deck)
+        self.discard_deck.clear()
 
     def reveal_card(self, event, from_deck=False):
         card_type = gamedata.get_card(event.card_name)
@@ -369,9 +388,9 @@ class Group:
 
     def __str__(self):
         return '{} ({} {})\nEquipment: {}'.format(
-            self.name or '?',
-            self.archetype.race if self.archetype is not None else '?',
-            self.archetype.role if self.archetype is not None else '?',
+            '?' if self.name is None else self.name,
+            '?' if self.archetype is None else self.archetype.race,
+            '?' if self.archetype is None else self.archetype.role,
             self.item_frame,
         )
 
@@ -424,6 +443,10 @@ class Player:
             self.draw_limit is not None and
             all(g.is_described() for g in self.groups) and
         True)
+
+    def build(self):
+        for group in self.groups:
+            group.build()
 
     def reveal_card(self, event, from_deck=False):
         self.groups[event.group_index].reveal_card(event, from_deck)
@@ -550,7 +573,8 @@ class Board:
         return ' '
 
     def __str__(self):
-        return '\n'.join(''.join(self._square_to_char(x, y) for y in range(self.h)) for x in range(self.w))
+        row = lambda y: ''.join(self._square_to_char(x, y) for x in range(self.w))
+        return '\n'.join(map(row, range(self.h)))
 
 
 # Battle (board, players, actors, cards, items, etc.)
@@ -576,6 +600,7 @@ class Battle:
         # Children
         self.board = Board()
         self.players = []
+        self.cards = []
         self.user = None
         self.enemy = None
 
@@ -616,10 +641,23 @@ class Battle:
 
     def build(self):
         if not self.is_described():
-            print(self.players[0].groups[0].__dict__)
             raise ValueError('Battle is not fully described')
         
         self.board.build()
+        
+        for player in self.players:
+            player.build()
+
+        for card in self.cards:
+            if card.item_type is None:
+                continue
+
+            card.original_group.item_frame.mark(card.type, card.item_type)
+
+        for player in self.players:
+            for group in player.groups:
+                print(group)
+                print()
 
     def update(self, event):  # TODO
         try:
@@ -627,10 +665,6 @@ class Battle:
             print('    | Hand before:', self.players[event.player_index].groups[event.group_index].hand)
         except Exception:
             pass
-
-        # TODO: Fix traits (Must Play Trait -> No More Traits)
-        # TODO: In the interim, REPLACE cards played by enemy
-        # TODO: What about cards drawn by user? How do you know what should be replaced by the new card?
 
         if isinstance(event, CardDraw):
             self.players[event.player_index].reveal_card(event, from_deck=True)

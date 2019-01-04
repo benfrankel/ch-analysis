@@ -1,0 +1,4949 @@
+Sending zone extension request: cancelrequestmatch
+Parameters: 
+	(utf_string) type: all
+
+Sending zone extension request: cancelbattle
+No Parameters
+Sending zone extension request: spectatebattle
+Parameters: 
+	(utf_string) roomName: manhawar vs Forbos
+
+Received extension response: joinbattle
+Parameters: 
+	(int) version: 2
+	(sfs_array) objects: 
+		(sfs_object) 
+			(int) activePlayer: 0
+			(int) roomID: 161519
+			(sfs_array) commands: 
+				(int) 1
+				(int) 2
+				(int) 3
+				(int) 4
+			
+			(bool) gameOver: false
+			(bool) enforceDrawLimit: true
+			(int) commandInsertionPoint: 1
+			(utf_string) initialHelpDoc: [null]
+			(bool) quickDraw: false
+			(sfs_array) instructions: 
+				
+			
+			(utf_string) scenarioName: MP Xmas Rooms
+			(int) respawnPeriod: 0
+			(bool) awaitingInstruction: true
+			(utf_string) scenarioDisplayName: Ice House
+			(int) respawnFilters: 0
+			(int) board: 5
+			(utf_string) adventureName: [null]
+			(bool) forceWinWhenAllDead: false
+			(sfs_array) players: 
+				(int) 399
+				(int) 142
+			
+			(int) questIndex: -1
+			(double) playerDamageMultiplier: 1
+			(sfs_array) scriptConditions: 
+				
+			
+			(int) leagueID: -1
+			(int) gameType: 1
+			(utf_string) _class_: com.cardhunter.battle.Battle
+			(utf_string) audioTag: ICY
+			(int) firstPlayerIndex: 0
+			(utf_string) musicTag: [null]
+			(int) nextFirstPlayerIndex: 0
+			(int) timeLimit: 1200
+			(int) turnNumber: 5
+			(utf_string) roomName: manhawar vs Forbos
+		
+		(sfs_object) 
+			(int) battle: 0
+			(utf_string) _class_: com.cardhunter.battle.commands.ActionInstructionCommand
+		
+		(sfs_object) 
+			(int) battle: 0
+			(utf_string) _class_: com.cardhunter.battle.commands.StartScoringPhaseCommand
+		
+		(sfs_object) 
+			(int) battle: 0
+			(utf_string) _class_: com.cardhunter.battle.commands.StartDiscardPhaseCommand
+		
+		(sfs_object) 
+			(int) battle: 0
+			(utf_string) _class_: com.cardhunter.battle.commands.EndTurnCommand
+		
+		(sfs_object) 
+			(int) size.x: 13
+			(sfs_array) lowerDoodads: 
+				(int) 346
+				(int) 347
+				(int) 348
+				(int) 349
+				(int) 350
+				(int) 351
+				(int) 352
+				(int) 353
+				(int) 354
+				(int) 355
+				(int) 356
+				(int) 357
+				(int) 358
+				(int) 359
+				(int) 360
+				(int) 361
+				(int) 362
+				(int) 363
+				(int) 364
+				(int) 365
+				(int) 366
+				(int) 367
+				(int) 368
+				(int) 369
+				(int) 370
+				(int) 371
+				(int) 372
+				(int) 373
+				(int) 374
+				(int) 375
+				(int) 376
+				(int) 377
+				(int) 378
+				(int) 379
+				(int) 380
+				(int) 381
+				(int) 382
+				(int) 383
+				(int) 384
+				(int) 385
+				(int) 386
+				(int) 387
+				(int) 388
+				(int) 389
+				(int) 390
+				(int) 391
+				(int) 392
+				(int) 393
+				(int) 394
+				(int) 395
+				(int) 396
+				(int) 397
+				(int) 398
+			
+			(int) battle: 0
+			(sfs_array) squares: 
+				(int) 6
+				(int) 7
+				(int) 8
+				(int) 9
+				(int) 10
+				(int) 11
+				(int) 12
+				(int) 13
+				(int) 14
+				(int) 15
+				(int) 16
+				(int) 17
+				(int) 18
+				(int) 19
+				(int) 20
+				(int) 21
+				(int) 22
+				(int) 23
+				(int) 24
+				(int) 25
+				(int) 26
+				(int) 27
+				(int) 28
+				(int) 29
+				(int) 30
+				(int) 31
+				(int) 32
+				(int) 33
+				(int) 34
+				(int) 35
+				(int) 36
+				(int) 37
+				(int) 38
+				(int) 39
+				(int) 40
+				(int) 41
+				(int) 42
+				(int) 43
+				(int) 44
+				(int) 45
+				(int) 46
+				(int) 47
+				(int) 48
+				(int) 49
+				(int) 50
+				(int) 51
+				(int) 52
+				(int) 53
+				(int) 54
+				(int) 55
+				(int) 56
+				(int) 57
+				(int) 58
+				(int) 59
+				(int) 60
+				(int) 61
+				(int) 62
+				(int) 63
+				(int) 64
+				(int) 65
+				(int) 66
+				(int) 67
+				(int) 68
+				(int) 69
+				(int) 70
+				(int) 71
+				(int) 72
+				(int) 73
+				(int) 74
+				(int) 75
+				(int) 76
+				(int) 77
+				(int) 78
+				(int) 79
+				(int) 80
+				(int) 81
+				(int) 82
+				(int) 83
+				(int) 84
+				(int) 85
+				(int) 86
+				(int) 87
+				(int) 88
+				(int) 89
+				(int) 90
+				(int) 91
+				(int) 92
+				(int) 93
+				(int) 94
+				(int) 95
+				(int) 96
+				(int) 97
+				(int) 98
+				(int) 99
+				(int) 100
+				(int) 101
+				(int) 102
+				(int) 103
+				(int) 104
+				(int) 105
+				(int) 106
+				(int) 107
+				(int) 108
+				(int) 109
+				(int) 110
+				(int) 111
+				(int) 112
+				(int) 113
+				(int) 114
+				(int) 115
+				(int) 116
+				(int) 117
+				(int) 118
+				(int) 119
+				(int) 120
+				(int) 121
+				(int) 122
+				(int) 123
+				(int) 124
+				(int) 125
+				(int) 126
+				(int) 127
+				(int) 128
+				(int) 129
+				(int) 130
+				(int) 131
+				(int) 132
+				(int) 267
+				(int) 268
+				(int) 269
+				(int) 270
+				(int) 271
+				(int) 272
+				(int) 273
+				(int) 274
+				(int) 275
+				(int) 276
+				(int) 277
+				(int) 278
+				(int) 279
+				(int) 280
+				(int) 281
+				(int) 282
+				(int) 283
+				(int) 284
+				(int) 285
+				(int) 286
+				(int) 287
+				(int) 288
+				(int) 289
+				(int) 290
+				(int) 291
+				(int) 292
+				(int) 293
+				(int) 294
+				(int) 295
+				(int) 296
+				(int) 297
+				(int) 298
+				(int) 299
+				(int) 300
+				(int) 301
+				(int) 302
+				(int) 303
+				(int) 304
+				(int) 305
+				(int) 306
+				(int) 307
+				(int) 308
+			
+			(bool) hasVictorySquares: true
+			(sfs_array) upperDoodads: 
+				(int) 309
+				(int) 310
+				(int) 311
+				(int) 312
+				(int) 313
+				(int) 314
+			
+			(int) size.y: 13
+			(sfs_array) boardDecalDoodads: 
+				(int) 315
+				(int) 316
+				(int) 317
+				(int) 318
+				(int) 319
+				(int) 320
+				(int) 321
+				(int) 322
+				(int) 323
+				(int) 324
+				(int) 325
+				(int) 326
+				(int) 327
+				(int) 328
+				(int) 329
+				(int) 330
+				(int) 331
+				(int) 332
+				(int) 333
+				(int) 334
+				(int) 335
+				(int) 336
+				(int) 337
+				(int) 338
+				(int) 339
+				(int) 340
+				(int) 341
+				(int) 342
+				(int) 343
+				(int) 344
+				(int) 345
+			
+			(utf_string) _class_: com.cardhunter.battle.Board
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 0
+			(utf_string) imageName: IceWallCornerV
+			(utf_string) terrain: Blocked
+			(int) location.y: 0
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 1
+			(utf_string) imageName: IceWall1
+			(utf_string) terrain: Blocked
+			(int) location.y: 0
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 2
+			(utf_string) imageName: IceWall3
+			(utf_string) terrain: Blocked
+			(int) location.y: 0
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 3
+			(utf_string) imageName: IceWall2
+			(utf_string) terrain: Blocked
+			(int) location.y: 0
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 4
+			(utf_string) imageName: IceWall1
+			(utf_string) terrain: Blocked
+			(int) location.y: 0
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 5
+			(utf_string) imageName: IceWall3
+			(utf_string) terrain: Blocked
+			(int) location.y: 0
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 6
+			(utf_string) imageName: IceWallT
+			(utf_string) terrain: Blocked
+			(int) location.y: 0
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 7
+			(utf_string) imageName: IceWall2
+			(utf_string) terrain: Blocked
+			(int) location.y: 0
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 8
+			(utf_string) imageName: IceWall1
+			(utf_string) terrain: Blocked
+			(int) location.y: 0
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 9
+			(utf_string) imageName: IceWall3
+			(utf_string) terrain: Blocked
+			(int) location.y: 0
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 10
+			(utf_string) imageName: IceWall1
+			(utf_string) terrain: Blocked
+			(int) location.y: 0
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 11
+			(utf_string) imageName: IceWall3
+			(utf_string) terrain: Blocked
+			(int) location.y: 0
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 12
+			(utf_string) imageName: IceWallCornerH
+			(utf_string) terrain: Blocked
+			(int) location.y: 0
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 0
+			(utf_string) imageName: IceWall3
+			(utf_string) terrain: Blocked
+			(int) location.y: 1
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 1
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 1
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 2
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 1
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 3
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 1
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 4
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 1
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 5
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 1
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 6
+			(utf_string) imageName: IceWallEnd2
+			(utf_string) terrain: Blocked
+			(int) location.y: 1
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 7
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 1
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 8
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 1
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 9
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 1
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 10
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 1
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 11
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 1
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 12
+			(utf_string) imageName: IceWall1
+			(utf_string) terrain: Blocked
+			(int) location.y: 1
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 0
+			(utf_string) imageName: IceWall1
+			(utf_string) terrain: Blocked
+			(int) location.y: 2
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 1
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 2
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 2
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 2
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 3
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 2
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 4
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 2
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 5
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 2
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 6
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 2
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 7
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 2
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 8
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 2
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 9
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 2
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 10
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 2
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 11
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 2
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 12
+			(utf_string) imageName: IceWall2
+			(utf_string) terrain: Blocked
+			(int) location.y: 2
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 0
+			(utf_string) imageName: IceWall3
+			(utf_string) terrain: Blocked
+			(int) location.y: 3
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 1
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 3
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 2
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 3
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 3
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Victory
+			(int) location.y: 3
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 4
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 3
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 5
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 3
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 6
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 3
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 7
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 3
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 8
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 3
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 9
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Victory
+			(int) location.y: 3
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 10
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 3
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 11
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 3
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 12
+			(utf_string) imageName: IceWall1
+			(utf_string) terrain: Blocked
+			(int) location.y: 3
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 0
+			(utf_string) imageName: IceWall2
+			(utf_string) terrain: Blocked
+			(int) location.y: 4
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 1
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 4
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 2
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 4
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 3
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 4
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 4
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 4
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 5
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 4
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 6
+			(utf_string) imageName: IceWallEnd2
+			(utf_string) terrain: Blocked
+			(int) location.y: 4
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 7
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 4
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 8
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 4
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 9
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 4
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 10
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 4
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 11
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 4
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 12
+			(utf_string) imageName: IceWall3
+			(utf_string) terrain: Blocked
+			(int) location.y: 4
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 0
+			(utf_string) imageName: IceWall1
+			(utf_string) terrain: Blocked
+			(int) location.y: 5
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 1
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 5
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 2
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 5
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 3
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 5
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 4
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 5
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 5
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 5
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 6
+			(utf_string) imageName: IceWall3
+			(utf_string) terrain: Blocked
+			(int) location.y: 5
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 7
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 5
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 8
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 5
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 9
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 5
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 10
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 5
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 11
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 5
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 12
+			(utf_string) imageName: IceWall1
+			(utf_string) terrain: Blocked
+			(int) location.y: 5
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 0
+			(utf_string) imageName: IceWallT
+			(utf_string) terrain: Blocked
+			(int) location.y: 6
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 1
+			(utf_string) imageName: IceWallEnd1
+			(utf_string) terrain: Blocked
+			(int) location.y: 6
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 2
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 6
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 3
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 6
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 4
+			(utf_string) imageName: IceWallEnd1
+			(utf_string) terrain: Blocked
+			(int) location.y: 6
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 5
+			(utf_string) imageName: IceWall1
+			(utf_string) terrain: Blocked
+			(int) location.y: 6
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 6
+			(utf_string) imageName: IceWall4Way
+			(utf_string) terrain: Blocked
+			(int) location.y: 6
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 7
+			(utf_string) imageName: IceWall3
+			(utf_string) terrain: Blocked
+			(int) location.y: 6
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 8
+			(utf_string) imageName: IceWallEnd1
+			(utf_string) terrain: Blocked
+			(int) location.y: 6
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 9
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 6
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 10
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 6
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 11
+			(utf_string) imageName: IceWallEnd2
+			(utf_string) terrain: Blocked
+			(int) location.y: 6
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 12
+			(utf_string) imageName: IceWallT
+			(utf_string) terrain: Blocked
+			(int) location.y: 6
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 0
+			(utf_string) imageName: IceWall3
+			(utf_string) terrain: Blocked
+			(int) location.y: 7
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 1
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 7
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 2
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 7
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 3
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 7
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 4
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 7
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 5
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 7
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 6
+			(utf_string) imageName: IceWall2
+			(utf_string) terrain: Blocked
+			(int) location.y: 7
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 7
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 7
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 8
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 7
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 9
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 7
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 10
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 7
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 11
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 7
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 12
+			(utf_string) imageName: IceWall2
+			(utf_string) terrain: Blocked
+			(int) location.y: 7
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 0
+			(utf_string) imageName: IceWall1
+			(utf_string) terrain: Blocked
+			(int) location.y: 8
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 1
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 8
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 2
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 8
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 3
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 8
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 4
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 8
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 5
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 8
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 6
+			(utf_string) imageName: IceWallEnd1
+			(utf_string) terrain: Blocked
+			(int) location.y: 8
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 7
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 8
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 8
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 8
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 9
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 8
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 10
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 8
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 11
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 8
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 12
+			(utf_string) imageName: IceWall1
+			(utf_string) terrain: Blocked
+			(int) location.y: 8
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 0
+			(utf_string) imageName: IceWall3
+			(utf_string) terrain: Blocked
+			(int) location.y: 9
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 1
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 9
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 2
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 9
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 3
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Victory
+			(int) location.y: 9
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 4
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 9
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 5
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 9
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 6
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 9
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 7
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 9
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 8
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 9
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) attachment: 133
+			(int) battle: 0
+			(int) location.x: 9
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Victory
+			(int) location.y: 9
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(int) attachedCard: 134
+			(int) square: 132
+			(int) battle: 0
+			(utf_string) _class_: com.cardhunter.battle.SquareAttachment
+			(int) remainingDuration: 2
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) type: Consecrate Ground
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Abalone Relic
+			(int) owner: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 141
+			(int) cardRetainAllowance: -1
+			(int) hand: 230
+			(sfs_array) actors: 
+				(int) 136
+			
+			(utf_string) moveCard: Run
+			(int) discardPile: 236
+			(utf_string) name: Banpat
+			(utf_string) race: Human
+			(bool) canScore: true
+			(utf_string) displayName: [null]
+			(int) drawLimit: -1
+			(int) player: 142
+			(utf_string) racePrefix: 
+			(int) cardsDrawnThisRound: 2
+			(int) actionPoints: -1
+			(utf_string) characterClass: Priest
+			(int) deck: 248
+			(double) drawsPerActor: 2
+			(utf_string) _class_: com.cardhunter.battle.ActorGroup
+		
+		(sfs_object) 
+			(int) health: 16
+			(int) battle: 0
+			(int) maxHealth: 25
+			(bool) terrainEffectApplied: false
+			(int) location.y: 9
+			(utf_string) name: Banpat
+			(utf_string) swapDepiction: [null]
+			(utf_string) _class_: com.cardhunter.battle.ActorInstance
+			(int) location.x: 9
+			(sfs_array) attachedCards: 
+				(int) 137
+				(int) 139
+			
+			(utf_string) audioKey: HUMAN_PRIEST1_FEMALE
+			(int) scoreForKilling: 2
+			(int) facing.y: 0
+			(int) actionPoints: -1
+			(int) size: 1
+			(utf_string) depiction: HumanPriestF01A
+			(int) facing.x: -1
+		
+		(sfs_object) 
+			(int) attachedCard: 138
+			(int) battle: 0
+			(int) actor: 136
+			(utf_string) _class_: com.cardhunter.battle.ActorAttachment
+			(int) remainingDuration: 1
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) type: Altruism
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Focused Piety
+			(int) owner: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) attachedCard: 140
+			(int) battle: 0
+			(int) actor: 136
+			(utf_string) _class_: com.cardhunter.battle.ActorAttachment
+			(int) remainingDuration: 2
+		
+		(sfs_object) 
+			(utf_string) origin: Copy
+			(int) controller: 135
+			(utf_string) type: Mass Frenzy
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(utf_string) participantName: Forbos
+			(int) playerID: 265542
+			(int) player: 142
+			(int) userID: 35032
+			(utf_string) _class_: com.cardhunter.battle.Participant
+		
+		(sfs_object) 
+			(int) timeRemaining: 885
+			(int) playerID: 265542
+			(bool) defeated: false
+			(int) userID: 35032
+			(int) rating: 1344
+			(int) score: 4
+			(int) side: 1
+			(int) playerIndex: 1
+			(int) battle: 0
+			(utf_string) _class_: com.cardhunter.battle.Player
+			(bool) quickDraw: false
+			(long) moveStartTime: 1546444647
+			(sfs_array) participants: 
+				(int) 141
+			
+			(int) passingAsOf: -1
+			(int) drawLimit: 10
+			(bool) isNPC: false
+			(int) activeParticipantIndex: 0
+			(int) winningScore: 6
+			(int) cardsDrawnThisRound: 2
+			(int) initiativeParticipantIndex: 0
+			(utf_string) playerName: Forbos
+			(sfs_array) actorGroups: 
+				(int) 143
+				(int) 135
+				(int) 187
+			
+			(bool) isParty: true
+			(bool) active: true
+		
+		(sfs_object) 
+			(int) controller: 141
+			(int) cardRetainAllowance: -1
+			(int) hand: 147
+			(sfs_array) actors: 
+				(int) 144
+			
+			(utf_string) moveCard: Walk
+			(int) discardPile: 153
+			(utf_string) name: Ruffbrog
+			(utf_string) race: Dwarf
+			(bool) canScore: true
+			(utf_string) displayName: [null]
+			(int) drawLimit: -1
+			(int) player: 142
+			(utf_string) racePrefix: 
+			(int) cardsDrawnThisRound: 0
+			(int) actionPoints: -1
+			(utf_string) characterClass: Warrior
+			(int) deck: 163
+			(double) drawsPerActor: 2
+			(utf_string) _class_: com.cardhunter.battle.ActorGroup
+		
+		(sfs_object) 
+			(int) health: 12
+			(int) battle: 0
+			(int) maxHealth: 33
+			(bool) terrainEffectApplied: false
+			(int) location.y: 3
+			(utf_string) name: Ruffbrog
+			(utf_string) swapDepiction: [null]
+			(utf_string) _class_: com.cardhunter.battle.ActorInstance
+			(int) location.x: 3
+			(sfs_array) attachedCards: 
+				(int) 145
+			
+			(utf_string) audioKey: DWARF_WARRIOR1_MALE
+			(int) scoreForKilling: 2
+			(int) facing.y: 0
+			(int) actionPoints: -1
+			(int) size: 1
+			(utf_string) depiction: DwarfWarriorM01A
+			(int) facing.x: -1
+		
+		(sfs_object) 
+			(int) attachedCard: 146
+			(int) battle: 0
+			(int) actor: 144
+			(utf_string) _class_: com.cardhunter.battle.ActorAttachment
+			(int) remainingDuration: 2
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) type: Mass Frenzy
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: St. Alipp's Hammer
+			(int) owner: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) group: 143
+			(sfs_array) cards: 
+				(int) 148
+				(int) 149
+				(int) 150
+				(int) 151
+				(int) 152
+			
+			(utf_string) _class_: com.cardhunter.battle.Hand
+		
+		(sfs_object) 
+			(bool_array) visibility: [false,true]
+			(int) controller: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(bool_array) visibility: [false,true]
+			(int) controller: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 143
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Dwarf
+			(utf_string) type: Walk
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(bool_array) visibility: [false,true]
+			(int) controller: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) type: Barbed Platemail
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Yolotli Armor
+			(int) owner: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(utf_string) _class_: com.cardhunter.battle.DiscardPile
+			(sfs_array) cards: 
+				(int) 154
+				(int) 155
+				(int) 156
+				(int) 157
+				(int) 158
+				(int) 159
+				(int) 160
+				(int) 161
+				(int) 162
+			
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) type: Lunging Bash
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Porior's Nimble Mace
+			(int) owner: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) type: Lunging Bash
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Porior's Nimble Mace
+			(int) owner: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) type: Lunging Bash
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Porior's Nimble Mace
+			(int) owner: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) type: Scamper, Team!
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Space Captain's Coif
+			(int) owner: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) type: Lunging Bash
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Eixocl's Hammer
+			(int) owner: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) type: Energizing Move
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Twipp's Energy Boots
+			(int) owner: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) type: Able Bludgeon
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Porior's Nimble Mace
+			(int) owner: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) type: Mail
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Yolotli Armor
+			(int) owner: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) type: Blind Rage
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Eixocl's Hammer
+			(int) owner: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) group: 143
+			(sfs_array) cards: 
+				(int) 164
+				(int) 165
+				(int) 166
+				(int) 167
+				(int) 168
+				(int) 169
+				(int) 170
+				(int) 171
+				(int) 172
+				(int) 173
+				(int) 174
+				(int) 175
+				(int) 176
+				(int) 177
+				(int) 178
+				(int) 179
+				(int) 180
+				(int) 181
+				(int) 182
+				(int) 183
+				(int) 184
+				(int) 185
+				(int) 186
+			
+			(utf_string) _class_: com.cardhunter.battle.DeckInstance
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 143
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 141
+			(int) cardRetainAllowance: -1
+			(int) hand: 191
+			(sfs_array) actors: 
+				(int) 188
+			
+			(utf_string) moveCard: Run
+			(int) discardPile: 196
+			(utf_string) name: Quindale
+			(utf_string) race: Human
+			(bool) canScore: true
+			(utf_string) displayName: [null]
+			(int) drawLimit: -1
+			(int) player: 142
+			(utf_string) racePrefix: 
+			(int) cardsDrawnThisRound: 0
+			(int) actionPoints: -1
+			(utf_string) characterClass: Wizard
+			(int) deck: 204
+			(double) drawsPerActor: 2
+			(utf_string) _class_: com.cardhunter.battle.ActorGroup
+		
+		(sfs_object) 
+			(int) health: 6
+			(int) battle: 0
+			(int) maxHealth: 21
+			(bool) terrainEffectApplied: false
+			(int) location.y: 9
+			(utf_string) name: Quindale
+			(utf_string) swapDepiction: [null]
+			(utf_string) _class_: com.cardhunter.battle.ActorInstance
+			(int) location.x: 3
+			(sfs_array) attachedCards: 
+				(int) 189
+			
+			(utf_string) audioKey: HUMAN_WIZARD1_MALE
+			(int) scoreForKilling: 2
+			(int) facing.y: -1
+			(int) actionPoints: -1
+			(int) size: 1
+			(utf_string) depiction: HumanWizardM01A
+			(int) facing.x: 0
+		
+		(sfs_object) 
+			(int) attachedCard: 190
+			(int) battle: 0
+			(int) actor: 188
+			(utf_string) _class_: com.cardhunter.battle.ActorAttachment
+			(int) remainingDuration: 2
+		
+		(sfs_object) 
+			(utf_string) origin: Copy
+			(int) controller: 135
+			(utf_string) type: Mass Frenzy
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) group: 187
+			(sfs_array) cards: 
+				(int) 192
+				(int) 193
+				(int) 194
+				(int) 195
+			
+			(utf_string) _class_: com.cardhunter.battle.Hand
+		
+		(sfs_object) 
+			(bool_array) visibility: [false,true]
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(bool_array) visibility: [false,true]
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(bool_array) visibility: [false,true]
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(bool_array) visibility: [false,true]
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(utf_string) _class_: com.cardhunter.battle.DiscardPile
+			(sfs_array) cards: 
+				(int) 197
+				(int) 198
+				(int) 199
+				(int) 200
+				(int) 201
+				(int) 202
+				(int) 203
+			
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) type: Swarm of Bats
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Vampire's Greaves
+			(int) owner: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) type: Inquisition Bolt
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Silver Justice
+			(int) owner: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) type: Stone Spikes
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Asmod's Chain
+			(int) owner: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) type: Sparkling Cloth Armor
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Thin Sparkling Cloak
+			(int) owner: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) type: Illusory Barrier
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Illusion
+			(int) owner: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) type: Inquisition Bolt
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Silver Justice
+			(int) owner: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) type: Telekinesis
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Asmod's Chain
+			(int) owner: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) group: 187
+			(sfs_array) cards: 
+				(int) 205
+				(int) 206
+				(int) 207
+				(int) 208
+				(int) 209
+				(int) 210
+				(int) 211
+				(int) 212
+				(int) 213
+				(int) 214
+				(int) 215
+				(int) 216
+				(int) 217
+				(int) 218
+				(int) 219
+				(int) 220
+				(int) 221
+				(int) 222
+				(int) 223
+				(int) 224
+				(int) 225
+				(int) 226
+				(int) 227
+				(int) 228
+				(int) 229
+			
+			(utf_string) _class_: com.cardhunter.battle.DeckInstance
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 187
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) group: 135
+			(sfs_array) cards: 
+				(int) 231
+				(int) 232
+				(int) 233
+				(int) 234
+				(int) 235
+			
+			(utf_string) _class_: com.cardhunter.battle.Hand
+		
+		(sfs_object) 
+			(bool_array) visibility: [false,true]
+			(int) controller: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(bool_array) visibility: [false,true]
+			(int) controller: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 135
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Human
+			(utf_string) type: Run
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(bool_array) visibility: [false,true]
+			(int) controller: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) type: Wounded Block
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Eeygonnic's Shield
+			(int) owner: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(utf_string) _class_: com.cardhunter.battle.DiscardPile
+			(sfs_array) cards: 
+				(int) 237
+				(int) 238
+				(int) 239
+				(int) 240
+				(int) 241
+				(int) 242
+				(int) 243
+				(int) 244
+				(int) 245
+				(int) 246
+				(int) 247
+			
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) type: Able Bludgeon
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: St. Alipp's Hammer
+			(int) owner: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) type: Altruism
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Focused Piety
+			(int) owner: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) type: Altruism
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Focused Piety
+			(int) owner: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) type: Purge
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Abalone Relic
+			(int) owner: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) type: Able Bludgeon
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: St. Alipp's Hammer
+			(int) owner: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) type: Potent Stab
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Rockshaft Atlatl
+			(int) owner: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) type: Wounded Block
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Eeygonnic's Shield
+			(int) owner: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) type: Vulnerable
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Shuddering Relic
+			(int) owner: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) type: Rocket Charge
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Bloome's Boots
+			(int) owner: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) type: Stone Feet
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: Old Jungle Mail
+			(int) owner: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) type: Able Bludgeon
+			(bool_array) visibility: [false,true]
+			(utf_string) origin: St. Alipp's Hammer
+			(int) owner: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) group: 135
+			(sfs_array) cards: 
+				(int) 249
+				(int) 250
+				(int) 251
+				(int) 252
+				(int) 253
+				(int) 254
+				(int) 255
+				(int) 256
+				(int) 257
+				(int) 258
+				(int) 259
+				(int) 260
+				(int) 261
+				(int) 262
+				(int) 263
+				(int) 264
+				(int) 265
+				(int) 266
+			
+			(utf_string) _class_: com.cardhunter.battle.DeckInstance
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 135
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 10
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 9
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 11
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 9
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 12
+			(utf_string) imageName: IceWall3
+			(utf_string) terrain: Blocked
+			(int) location.y: 9
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 0
+			(utf_string) imageName: IceWall2
+			(utf_string) terrain: Blocked
+			(int) location.y: 10
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 1
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 10
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 2
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 10
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 3
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 10
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 4
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 10
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 5
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 10
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 6
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 10
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 7
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 10
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 8
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 10
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 9
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 10
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 10
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 10
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 11
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 10
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 12
+			(utf_string) imageName: IceWall2
+			(utf_string) terrain: Blocked
+			(int) location.y: 10
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 0
+			(utf_string) imageName: IceWall3
+			(utf_string) terrain: Blocked
+			(int) location.y: 11
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 1
+			(utf_string) imageName: IcyFloor2
+			(utf_string) terrain: Open
+			(int) location.y: 11
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 2
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 11
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 3
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 11
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 4
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 11
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 5
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 11
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 6
+			(utf_string) imageName: IceWallEnd2
+			(utf_string) terrain: Blocked
+			(int) location.y: 11
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 7
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 11
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 8
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 11
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 9
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 11
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 10
+			(utf_string) imageName: IcyFloor1
+			(utf_string) terrain: Open
+			(int) location.y: 11
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(int) battle: 0
+			(int) location.x: 11
+			(utf_string) imageName: IcyFloor3
+			(utf_string) terrain: Open
+			(int) location.y: 11
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 12
+			(utf_string) imageName: IceWall1
+			(utf_string) terrain: Blocked
+			(int) location.y: 11
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 0
+			(utf_string) imageName: IceWallCornerH
+			(utf_string) terrain: Blocked
+			(int) location.y: 12
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 1
+			(utf_string) imageName: IceWall1
+			(utf_string) terrain: Blocked
+			(int) location.y: 12
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 2
+			(utf_string) imageName: IceWall2
+			(utf_string) terrain: Blocked
+			(int) location.y: 12
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 3
+			(utf_string) imageName: IceWall1
+			(utf_string) terrain: Blocked
+			(int) location.y: 12
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 4
+			(utf_string) imageName: IceWall2
+			(utf_string) terrain: Blocked
+			(int) location.y: 12
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 5
+			(utf_string) imageName: IceWall3
+			(utf_string) terrain: Blocked
+			(int) location.y: 12
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 6
+			(utf_string) imageName: IceWallT
+			(utf_string) terrain: Blocked
+			(int) location.y: 12
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 7
+			(utf_string) imageName: IceWall1
+			(utf_string) terrain: Blocked
+			(int) location.y: 12
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 8
+			(utf_string) imageName: IceWall3
+			(utf_string) terrain: Blocked
+			(int) location.y: 12
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 9
+			(utf_string) imageName: IceWall1
+			(utf_string) terrain: Blocked
+			(int) location.y: 12
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 10
+			(utf_string) imageName: IceWall3
+			(utf_string) terrain: Blocked
+			(int) location.y: 12
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 11
+			(utf_string) imageName: IceWall2
+			(utf_string) terrain: Blocked
+			(int) location.y: 12
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(int) battle: 0
+			(int) location.x: 12
+			(utf_string) imageName: IceWallCornerV
+			(utf_string) terrain: Blocked
+			(int) location.y: 12
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Square
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: true
+			(utf_string) imageName: Player0DeadFigure1
+			(int) displayPosition.y: -630
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -623
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: true
+			(utf_string) imageName: Player0DeadFigure1
+			(int) displayPosition.y: -769
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -367
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: true
+			(utf_string) imageName: Player0DeadFigure1
+			(int) displayPosition.y: -837
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -207
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: true
+			(utf_string) imageName: Player1DeadFigure1
+			(int) displayPosition.y: 19
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 69
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: true
+			(utf_string) imageName: Player1DeadFigure1
+			(int) displayPosition.y: -77
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 214
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: true
+			(utf_string) imageName: Player1DeadFigure1
+			(int) displayPosition.y: -157
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 409
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: SnowTransitionCorner1
+			(int) displayPosition.y: -434
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 62
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: SnowTransitionCornerV
+			(int) displayPosition.y: -372
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -62
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(bool) marker: false
+			(utf_string) imageName: SnowTransitionCornerV
+			(int) displayPosition.y: -496
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -62
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: SnowTransitionCorner2
+			(int) displayPosition.y: -434
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -186
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: IceRock3
+			(int) displayPosition.y: -464
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -29
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(bool) marker: false
+			(utf_string) imageName: IceRock3
+			(int) displayPosition.y: -401
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -94
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: IceRock2
+			(int) displayPosition.y: -384
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -5
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: IceRock2
+			(int) displayPosition.y: -457
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -149
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: IceRock4
+			(int) displayPosition.y: -460
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -80
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: IceRock4
+			(int) displayPosition.y: -435
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 9
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: IceRock4
+			(int) displayPosition.y: -614
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 253
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(bool) marker: false
+			(utf_string) imageName: IceRock4
+			(int) displayPosition.y: -275
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -435
+		
+		(sfs_object) 
+			(bool) imageFlipY: true
+			(bool) marker: false
+			(utf_string) imageName: IceRock4
+			(int) displayPosition.y: -254
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 242
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: IceRock2
+			(int) displayPosition.y: -590
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -438
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: IceRock2
+			(int) displayPosition.y: -777
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -57
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: IceRock2
+			(int) displayPosition.y: -432
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 635
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: IceCrevice3
+			(int) displayPosition.y: -497
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -375
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: IceCrevice2
+			(int) displayPosition.y: -255
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -251
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: IceCrevice2
+			(int) displayPosition.y: -700
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -152
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: IceCrevice2
+			(int) displayPosition.y: -544
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -80
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: IceCrevice2
+			(int) displayPosition.y: -229
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 166
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: VictoryGlow
+			(int) displayPosition.y: -434
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -434
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: VictoryGlow
+			(int) displayPosition.y: -620
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -62
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: VictoryGlow
+			(int) displayPosition.y: -248
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -62
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: VictoryGlow
+			(int) displayPosition.y: -434
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 310
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: IceCrevice1
+			(int) displayPosition.y: -496
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 372
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: CandyCane
+			(int) displayPosition.y: -931
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -511
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: XmasSanta
+			(int) displayPosition.y: -754
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -542
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: XmasWreath
+			(int) displayPosition.y: -692
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -780
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: XmasBag
+			(int) displayPosition.y: -416
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 553
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: GaryDice
+			(int) displayPosition.y: -263
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -787
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeCornerLower
+			(int) displayPosition.y: -86
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -70
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeLeftLower
+			(int) displayPosition.y: -458
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -814
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeLeftLower
+			(int) displayPosition.y: -427
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -752
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeLeftLower
+			(int) displayPosition.y: -396
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -690
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeLeftLower
+			(int) displayPosition.y: -365
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -628
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeLeftLower
+			(int) displayPosition.y: -334
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -566
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeLeftLower
+			(int) displayPosition.y: -303
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -504
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeLeftLower
+			(int) displayPosition.y: -272
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -442
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeLeftLower
+			(int) displayPosition.y: -241
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -380
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeLeftLower
+			(int) displayPosition.y: -210
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -318
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeLeftLower
+			(int) displayPosition.y: -179
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -256
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeLeftLower
+			(int) displayPosition.y: -148
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -194
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeLeftLower
+			(int) displayPosition.y: -117
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -132
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeLeftCorner
+			(int) displayPosition.y: -458
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -814
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeRightLower
+			(int) displayPosition.y: -117
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -8
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeRightLower
+			(int) displayPosition.y: -148
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 54
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeRightLower
+			(int) displayPosition.y: -179
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 116
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeRightLower
+			(int) displayPosition.y: -210
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 178
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeRightLower
+			(int) displayPosition.y: -241
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 240
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeRightLower
+			(int) displayPosition.y: -272
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 302
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeRightLower
+			(int) displayPosition.y: -303
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 364
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeRightLower
+			(int) displayPosition.y: -334
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 426
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeRightLower
+			(int) displayPosition.y: -365
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 488
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeRightLower
+			(int) displayPosition.y: -396
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 550
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeRightLower
+			(int) displayPosition.y: -427
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 612
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeRightLower
+			(int) displayPosition.y: -458
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 674
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeUpper
+			(int) displayPosition.y: -458
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -814
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeUpper
+			(int) displayPosition.y: -489
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -752
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeUpper
+			(int) displayPosition.y: -520
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -690
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeUpper
+			(int) displayPosition.y: -551
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -628
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeUpper
+			(int) displayPosition.y: -582
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -566
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeUpper
+			(int) displayPosition.y: -613
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -504
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeUpper
+			(int) displayPosition.y: -644
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -442
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeUpper
+			(int) displayPosition.y: -675
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -380
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeUpper
+			(int) displayPosition.y: -706
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -318
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeUpper
+			(int) displayPosition.y: -737
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -256
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeUpper
+			(int) displayPosition.y: -768
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -194
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeUpper
+			(int) displayPosition.y: -799
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -132
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeUpper
+			(int) displayPosition.y: -830
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -70
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeUpper
+			(int) displayPosition.y: -830
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -70
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeUpper
+			(int) displayPosition.y: -799
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: -8
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeUpper
+			(int) displayPosition.y: -768
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 54
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeUpper
+			(int) displayPosition.y: -737
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 116
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeUpper
+			(int) displayPosition.y: -706
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 178
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeUpper
+			(int) displayPosition.y: -675
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 240
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeUpper
+			(int) displayPosition.y: -644
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 302
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeUpper
+			(int) displayPosition.y: -613
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 364
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeUpper
+			(int) displayPosition.y: -582
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 426
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeUpper
+			(int) displayPosition.y: -551
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 488
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeUpper
+			(int) displayPosition.y: -520
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 550
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeUpper
+			(int) displayPosition.y: -489
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 612
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeUpper
+			(int) displayPosition.y: -458
+			(bool) imageFlipX: true
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 674
+		
+		(sfs_object) 
+			(bool) imageFlipY: false
+			(bool) marker: false
+			(utf_string) imageName: EdgeRightCorner
+			(int) displayPosition.y: -458
+			(bool) imageFlipX: false
+			(utf_string) _class_: com.cardhunter.battle.Doodad
+			(int) displayPosition.x: 674
+		
+		(sfs_object) 
+			(int) timeRemaining: 786
+			(int) playerID: 276506
+			(bool) defeated: false
+			(int) userID: 35219
+			(int) rating: 1246
+			(int) score: 0
+			(int) side: 0
+			(int) playerIndex: 0
+			(int) battle: 0
+			(utf_string) _class_: com.cardhunter.battle.Player
+			(bool) quickDraw: false
+			(long) moveStartTime: 1546444650
+			(sfs_array) participants: 
+				(int) 402
+			
+			(int) passingAsOf: -1
+			(int) drawLimit: 10
+			(bool) isNPC: false
+			(int) activeParticipantIndex: 0
+			(int) winningScore: 6
+			(int) cardsDrawnThisRound: 0
+			(int) initiativeParticipantIndex: 0
+			(utf_string) playerName: manhawar
+			(sfs_array) actorGroups: 
+				(int) 400
+				(int) 442
+				(int) 483
+			
+			(bool) isParty: true
+			(bool) active: true
+		
+		(sfs_object) 
+			(int) controller: 402
+			(int) cardRetainAllowance: -1
+			(int) hand: 403
+			(sfs_array) actors: 
+				(int) 401
+			
+			(utf_string) moveCard: Walk
+			(int) discardPile: 408
+			(utf_string) name: Kouroukoukou
+			(utf_string) race: Dwarf
+			(bool) canScore: true
+			(utf_string) displayName: [null]
+			(int) drawLimit: -1
+			(int) player: 399
+			(utf_string) racePrefix: 
+			(int) cardsDrawnThisRound: 0
+			(int) actionPoints: -1
+			(utf_string) characterClass: Warrior
+			(int) deck: 418
+			(double) drawsPerActor: 2
+			(utf_string) _class_: com.cardhunter.battle.ActorGroup
+		
+		(sfs_object) 
+			(int) health: 31
+			(int) battle: 0
+			(int) maxHealth: 33
+			(bool) terrainEffectApplied: false
+			(int) location.y: 6
+			(utf_string) name: Kouroukoukou
+			(utf_string) swapDepiction: [null]
+			(utf_string) _class_: com.cardhunter.battle.ActorInstance
+			(int) location.x: 9
+			(sfs_array) attachedCards: 
+				
+			
+			(utf_string) audioKey: DWARF_WARRIOR1_MALE
+			(int) scoreForKilling: 2
+			(int) facing.y: 1
+			(int) actionPoints: -1
+			(int) size: 1
+			(utf_string) depiction: DwarfWarriorM01A
+			(int) facing.x: 0
+		
+		(sfs_object) 
+			(utf_string) participantName: manhawar
+			(int) playerID: 276506
+			(int) player: 399
+			(int) userID: 35219
+			(utf_string) _class_: com.cardhunter.battle.Participant
+		
+		(sfs_object) 
+			(int) group: 400
+			(sfs_array) cards: 
+				(int) 404
+				(int) 405
+				(int) 406
+				(int) 407
+			
+			(utf_string) _class_: com.cardhunter.battle.Hand
+		
+		(sfs_object) 
+			(bool_array) visibility: [true]
+			(int) controller: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(bool_array) visibility: [true]
+			(int) controller: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) type: Warding Lance
+			(bool_array) visibility: [true]
+			(utf_string) origin: Pitchfork of Shelter
+			(int) owner: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) type: Strong Bludgeon
+			(bool_array) visibility: [true]
+			(utf_string) origin: Bolg's Big Iron Plate
+			(int) owner: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(utf_string) _class_: com.cardhunter.battle.DiscardPile
+			(sfs_array) cards: 
+				(int) 409
+				(int) 410
+				(int) 411
+				(int) 412
+				(int) 413
+				(int) 414
+				(int) 415
+				(int) 416
+				(int) 417
+			
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) type: Dwarven Battle Cry
+			(bool_array) visibility: [true]
+			(utf_string) origin: Perfect Ferocity
+			(int) owner: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) type: Rocket Charge
+			(bool_array) visibility: [true]
+			(utf_string) origin: Sky Traveler's Boots
+			(int) owner: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) type: Toughened Hide Strips
+			(bool_array) visibility: [true]
+			(utf_string) origin: Spaceproof Carapace
+			(int) owner: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) type: Blind Rage
+			(bool_array) visibility: [true]
+			(utf_string) origin: Perfect Ferocity
+			(int) owner: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) type: Quick Reactions
+			(bool_array) visibility: [true]
+			(utf_string) origin: Helm of Prep.
+			(int) owner: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) type: Grounding Plates
+			(bool_array) visibility: [true]
+			(utf_string) origin: Spaceproof Carapace
+			(int) owner: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) type: Frenzy Aura
+			(bool_array) visibility: [true]
+			(utf_string) origin: Perfect Ferocity
+			(int) owner: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) type: Lunging Bite
+			(bool_array) visibility: [true]
+			(utf_string) origin: Untrained Lycanthropy
+			(int) owner: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) type: Force Field
+			(bool_array) visibility: [true]
+			(utf_string) origin: Spaceproof Carapace
+			(int) owner: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) group: 400
+			(sfs_array) cards: 
+				(int) 419
+				(int) 420
+				(int) 421
+				(int) 422
+				(int) 423
+				(int) 424
+				(int) 425
+				(int) 426
+				(int) 427
+				(int) 428
+				(int) 429
+				(int) 430
+				(int) 431
+				(int) 432
+				(int) 433
+				(int) 434
+				(int) 435
+				(int) 436
+				(int) 437
+				(int) 438
+				(int) 439
+				(int) 440
+				(int) 441
+			
+			(utf_string) _class_: com.cardhunter.battle.DeckInstance
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 400
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 402
+			(int) cardRetainAllowance: -1
+			(int) hand: 444
+			(sfs_array) actors: 
+				(int) 443
+			
+			(utf_string) moveCard: Walk
+			(int) discardPile: 446
+			(utf_string) name: Atchoum
+			(utf_string) race: Dwarf
+			(bool) canScore: true
+			(utf_string) displayName: [null]
+			(int) drawLimit: -1
+			(int) player: 399
+			(utf_string) racePrefix: 
+			(int) cardsDrawnThisRound: 0
+			(int) actionPoints: -1
+			(utf_string) characterClass: Priest
+			(int) deck: 458
+			(double) drawsPerActor: 2
+			(utf_string) _class_: com.cardhunter.battle.ActorGroup
+		
+		(sfs_object) 
+			(int) health: 25
+			(int) battle: 0
+			(int) maxHealth: 29
+			(bool) terrainEffectApplied: false
+			(int) location.y: 10
+			(utf_string) name: Atchoum
+			(utf_string) swapDepiction: [null]
+			(utf_string) _class_: com.cardhunter.battle.ActorInstance
+			(int) location.x: 6
+			(sfs_array) attachedCards: 
+				
+			
+			(utf_string) audioKey: DWARF_PRIEST1_FEMALE
+			(int) scoreForKilling: 2
+			(int) facing.y: 1
+			(int) actionPoints: -1
+			(int) size: 1
+			(utf_string) depiction: DwarfPriestF01A
+			(int) facing.x: 0
+		
+		(sfs_object) 
+			(int) group: 442
+			(sfs_array) cards: 
+				(int) 445
+			
+			(utf_string) _class_: com.cardhunter.battle.Hand
+		
+		(sfs_object) 
+			(bool_array) visibility: [true]
+			(int) controller: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(utf_string) _class_: com.cardhunter.battle.DiscardPile
+			(sfs_array) cards: 
+				(int) 447
+				(int) 448
+				(int) 449
+				(int) 450
+				(int) 451
+				(int) 452
+				(int) 453
+				(int) 454
+				(int) 455
+				(int) 456
+				(int) 457
+			
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) type: Dodge
+			(bool_array) visibility: [true]
+			(utf_string) origin: Quinn's Buckler
+			(int) owner: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) type: Flanking Move
+			(bool_array) visibility: [true]
+			(utf_string) origin: Mouse Boots
+			(int) owner: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) type: Able Bludgeon
+			(bool_array) visibility: [true]
+			(utf_string) origin: St. Alipp's Hammer
+			(int) owner: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) type: Unnerving Strike
+			(bool_array) visibility: [true]
+			(utf_string) origin: Xentoc's Maul
+			(int) owner: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) type: Able Bludgeon
+			(bool_array) visibility: [true]
+			(utf_string) origin: St. Alipp's Hammer
+			(int) owner: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) type: Soothing Darkness
+			(bool_array) visibility: [true]
+			(utf_string) origin: Xentoc's Maul
+			(int) owner: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) type: Able Bludgeon
+			(bool_array) visibility: [true]
+			(utf_string) origin: St. Alipp's Hammer
+			(int) owner: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) type: Flanking Move
+			(bool_array) visibility: [true]
+			(utf_string) origin: Mouse Boots
+			(int) owner: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) type: Impenetrable Nimbus
+			(bool_array) visibility: [true]
+			(utf_string) origin: Shielding Token
+			(int) owner: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) type: Subtle Parry
+			(bool_array) visibility: [true]
+			(utf_string) origin: Quinn's Buckler
+			(int) owner: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) type: Cautious Sneak
+			(bool_array) visibility: [true]
+			(utf_string) origin: Mouse Boots
+			(int) owner: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) group: 442
+			(sfs_array) cards: 
+				(int) 459
+				(int) 460
+				(int) 461
+				(int) 462
+				(int) 463
+				(int) 464
+				(int) 465
+				(int) 466
+				(int) 467
+				(int) 468
+				(int) 469
+				(int) 470
+				(int) 471
+				(int) 472
+				(int) 473
+				(int) 474
+				(int) 475
+				(int) 476
+				(int) 477
+				(int) 478
+				(int) 479
+				(int) 480
+				(int) 481
+				(int) 482
+			
+			(utf_string) _class_: com.cardhunter.battle.DeckInstance
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 442
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 402
+			(int) cardRetainAllowance: -1
+			(int) hand: 485
+			(sfs_array) actors: 
+				(int) 484
+			
+			(utf_string) moveCard: Walk
+			(int) discardPile: 491
+			(utf_string) name: Drakkrik
+			(utf_string) race: Dwarf
+			(bool) canScore: true
+			(utf_string) displayName: [null]
+			(int) drawLimit: -1
+			(int) player: 399
+			(utf_string) racePrefix: 
+			(int) cardsDrawnThisRound: 0
+			(int) actionPoints: -1
+			(utf_string) characterClass: Warrior
+			(int) deck: 501
+			(double) drawsPerActor: 2
+			(utf_string) _class_: com.cardhunter.battle.ActorGroup
+		
+		(sfs_object) 
+			(int) health: 11
+			(int) battle: 0
+			(int) maxHealth: 33
+			(bool) terrainEffectApplied: false
+			(int) location.y: 7
+			(utf_string) name: Drakkrik
+			(utf_string) swapDepiction: [null]
+			(utf_string) _class_: com.cardhunter.battle.ActorInstance
+			(int) location.x: 8
+			(sfs_array) attachedCards: 
+				
+			
+			(utf_string) audioKey: DWARF_WARRIOR1_MALE
+			(int) scoreForKilling: 2
+			(int) facing.y: 1
+			(int) actionPoints: -1
+			(int) size: 1
+			(utf_string) depiction: DwarfWarriorM01A
+			(int) facing.x: 0
+		
+		(sfs_object) 
+			(int) group: 483
+			(sfs_array) cards: 
+				(int) 486
+				(int) 487
+				(int) 488
+				(int) 489
+				(int) 490
+			
+			(utf_string) _class_: com.cardhunter.battle.Hand
+		
+		(sfs_object) 
+			(bool_array) visibility: [true]
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(bool_array) visibility: [true]
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 483
+			(bool_array) visibility: [true]
+			(utf_string) origin: Dwarf
+			(utf_string) type: Walk
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(bool_array) visibility: [true]
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(bool_array) visibility: [true]
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(utf_string) _class_: com.cardhunter.battle.DiscardPile
+			(sfs_array) cards: 
+				(int) 492
+				(int) 493
+				(int) 494
+				(int) 495
+				(int) 496
+				(int) 497
+				(int) 498
+				(int) 499
+				(int) 500
+			
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) type: Telepod Jaunt
+			(bool_array) visibility: [true]
+			(utf_string) origin: Sky Traveler's Boots
+			(int) owner: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) type: Unnerving Strike
+			(bool_array) visibility: [true]
+			(utf_string) origin: Dangerous Club
+			(int) owner: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) type: Unreliable Block
+			(bool_array) visibility: [true]
+			(utf_string) origin: Apprentice Ferocity
+			(int) owner: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) type: Unnerving Strike
+			(bool_array) visibility: [true]
+			(utf_string) origin: Dangerous Club
+			(int) owner: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) type: Bludgeon
+			(bool_array) visibility: [true]
+			(utf_string) origin: Novice Crushing
+			(int) owner: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) type: Blind Rage
+			(bool_array) visibility: [true]
+			(utf_string) origin: Apprentice Ferocity
+			(int) owner: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) type: Lunging Bash
+			(bool_array) visibility: [true]
+			(utf_string) origin: The Lunginator
+			(int) owner: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) type: Lunging Bash
+			(bool_array) visibility: [true]
+			(utf_string) origin: The Lunginator
+			(int) owner: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) type: Subtle Parry
+			(bool_array) visibility: [true]
+			(utf_string) origin: Granwick's Shield
+			(int) owner: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: true
+		
+		(sfs_object) 
+			(int) group: 483
+			(sfs_array) cards: 
+				(int) 502
+				(int) 503
+				(int) 504
+				(int) 505
+				(int) 506
+				(int) 507
+				(int) 508
+				(int) 509
+				(int) 510
+				(int) 511
+				(int) 512
+				(int) 513
+				(int) 514
+				(int) 515
+				(int) 516
+				(int) 517
+				(int) 518
+				(int) 519
+				(int) 520
+				(int) 521
+				(int) 522
+				(int) 523
+				(int) 524
+			
+			(utf_string) _class_: com.cardhunter.battle.DeckInstance
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+		(sfs_object) 
+			(int) controller: 483
+			(utf_string) _class_: com.cardhunter.battle.CardInstance
+			(bool) visibleToAll: false
+		
+	
+	(int) root: 0
+
+Initializing battle screen
+stopTimer 0 786
+stopTimer 1 885
+Battle joined
+Received extension response: chat.privatemessage
+Parameters: 
+	(utf_string) user: sucre
+	(utf_string) message: i like the punish bolt against delagate and bless
+	(utf_string) other: Pyrious
+
+
+> clip
+
