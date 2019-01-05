@@ -79,7 +79,7 @@ def build_msg(name, *params, describe=None):
         def __str__(self):
             description = ''
             if describe is not None:
-                description = ' ' + describe(self)
+                description = ' ' + describe(m=self)
             return super().__str__() + description
 
     return _MsgCustom
@@ -94,7 +94,7 @@ def build_ex(name, *params, describe=None):
         def __str__(self):
             description = ''
             if describe is not None:
-                description = ' ' + describe(self)
+                description = ' ' + describe(e=self)
             return super().__str__() + description
     
     return _ExCustom
@@ -124,7 +124,7 @@ def build_trigger_ex(location, *params, describe=None):
         def __str__(self):
             description = ''
             if describe is not None:
-                description = ' ' + describe(self)
+                description = ' ' + describe(e=self)
             return super().__str__() + description
 
     return _CustomExTrigger
@@ -148,18 +148,14 @@ MsgDiscardPhase = build_msg('Discard Phase')
 
 MsgStartRound = build_msg('Start Round',
     'game_round',
-    describe=lambda m: 'Round {}'.format(
-        m.game_round,
-    ),
+    describe='Round {m.game_round}'.format,
 )
 
 MsgCardPlay = build_msg('Card Play',
     'actor_name',
     'card_type',
     'target_names',
-    describe=lambda m: '{} plays {} on {}'.format(
-        m.actor_name, m.card_type, m.target_names,
-    ),
+    describe='{m.actor_name} plays {m.card_type} on {m.target_names}'.format,
 )
 
 MsgMove = build_msg('Move',
@@ -169,9 +165,7 @@ MsgMove = build_msg('Move',
     'end',
     'start_facing',
     'end_facing',
-    describe=lambda m: '{} moves {} from {} to {} (was facing {}, now {})'.format(
-        m.player_name, m.actor_name, m.start, m.end, m.start_facing, m.end_facing,
-    ),
+    describe='{m.player_name} moves {m.actor_name} from {m.start} to {m.end} (was facing {m.start_facing}, now {m.end_facing})'.format,
 )
 
 MsgTriggerTerrain = build_msg('Trigger Terrain',
@@ -180,8 +174,8 @@ MsgTriggerTerrain = build_msg('Trigger Terrain',
     'target',
     'success',
     'cause',
-    describe=lambda m: '{} {} {} square for {} ({})'.format(
-        m.actor_name, ['failed to trigger', 'triggered'][m.success], m.card_type, m.target, m.cause,
+    describe=lambda m: '{m.actor_name} {0} {m.card_type} square for {m.target} ({m.cause})'.format(
+        ['failed to trigger', 'triggered'][m.success], m=m,
     ),
 )
 
@@ -191,8 +185,8 @@ MsgTriggerTrait = build_msg('Trigger Trait',
     'target',
     'success',
     'cause',
-    describe=lambda m: '{} {} {} trait for {} ({})'.format(
-        m.actor_name, ['failed to trigger', 'triggered'][m.success], m.card_type, m.target, m.cause,
+    describe=lambda m: '{m.actor_name} {0} {m.card_type} trait for {m.target} ({m.cause})'.format(
+        ['failed to trigger', 'triggered'][m.success], m=m,
     ),
 )
 
@@ -202,178 +196,138 @@ MsgTriggerInHand = build_msg('Trigger In Hand',
     'target',
     'success',
     'cause',
-    describe=lambda m: '{} {} {} in hand for {} ({})'.format(
-        m.actor_name, ['failed to trigger', 'triggered'][m.success], m.card_type, m.target, m.cause,
+    describe=lambda m: '{m.actor_name} {0} {m.card_type} trait for {m.target} ({m.cause})'.format(
+        ['failed to trigger', 'triggered'][m.success], m=m,
     ),
 )
 
 MsgMustDiscard = build_msg('Must Discard',
     'group_name',
-    describe=lambda m: '{} must discard'.format(
-        m.group_name,
-    ),
+    describe='{m.group_name} must discard'.format,
 )
 
 MsgDiscard = build_msg('Discard',
     'group_name',
     'card_type',
-    describe=lambda m: '{} discarded {}'.format(
-        m.group_name, m.card_type,
-    ),
+    describe='{m.group_name} discarded {m.card_type}'.format,
 )
 
 MsgMustSelect = build_msg('Must Select',
     'player_name',
     'option_names',
-    describe=lambda m: '{} must select a card from {}'.format(
-        m.player_name, m.option_names,
-    ),
+    describe='{m.player_name} must select a card from {m.option_names}'.format,
 )
 
 MsgSelect = build_msg('Select',
     'player_name',
     'card_type',
-    describe=lambda m: '{} selected {}'.format(
-        m.player_name, m.card_type,
-    ),
+    describe='{m.player_name} selected {m.card_type}'.format,
 )
 
 MsgMustTarget = build_msg('Must Target',
     'player_name',
-    describe=lambda m: '{} must select target'.format(
-        m.player_name,
-    ),
+    describe='{m.player_name} must select target'.format,
 )
 
 MsgMustTrait = build_msg('Must Trait',
     'player_name',
-    describe=lambda m: '{} must play a trait'.format(
-        m.player_name,
-    ),
+    describe='{m.player_name} must play a trait'.format,
 )
 
 MsgAttachTrait = build_msg('Attach Trait',
     'actor_name',
     'card_type',
-    describe=lambda m: '{} attached to {}'.format(
-        m.card_type, m.actor_name,
-    ),
+    describe='{m.card_type} attached to {m.actor_name}'.format,
 )
 
 MsgDetachTrait = build_msg('Detach Trait',
     'actor_name',
     'card_type',
-    describe=lambda m: '{} detached from {}'.format(
-        m.card_type, m.actor_name,
-    ),
+    describe='{m.card_type} detached from {m.actor_name}'.format,
 )
 
 MsgAttachTerrain = build_msg('Attach Terrain',
     'square',
     'card_type',
-    describe=lambda m: '{} attached to {}'.format(
-        m.card_type, m.square,
-    ),
+    describe='{m.card_type} attached to {m.square}'.format,
 )
 
 MsgDetachTerrain = build_msg('Detach Terrain',
     'square',
     'card_type',
-    describe=lambda m: '{} detached from {}'.format(
-        m.card_type, m.square,
-    ),
+    describe='{m.card_type} detached from {m.square}'.format,
 )
 
 MsgStartTimer = build_msg('Start Timer',
     'player_index',
     'remaining',
-    describe=lambda m: 'Timer {} ({})'.format(
-        m.player_index, display_seconds(m.remaining),
+    describe=lambda m: 'Timer {m.player_index} ({0})'.format(
+        display_seconds(m.remaining), m=m,
     ),
 )
 
 MsgPauseTimer = build_msg('Pause Timer',
     'player_index',
     'remaining',
-    describe=lambda m: 'Timer {} ({})'.format(
-        m.player_index, display_seconds(m.remaining),
+    describe=lambda m: 'Timer {m.player_index} ({0})'.format(
+        display_seconds(m.remaining), m=m,
     ),
 )
 
 MsgDefeat = build_msg('Defeat',
     'player_name',
-    describe=lambda m: '{} defeated'.format(
-        m.player_name,
-    ),
+    describe='{m.player_name} defeated'.format,
 )
 
 MsgCardDraw = build_msg('Card Draw',
     'player_name',
     'group_name',
     'card_type',
-    describe=lambda m: '{} drew {} for {}'.format(
-        m.player_name, m.card_type, m.group_name,
-    ),
+    describe='{m.player_name} drew {m.card_type} for {m.group_name}'.format,
 )
 
 MsgHiddenDraw = build_msg('Hidden Draw',
     'player_name',
     'group_name',
-    describe=lambda m: '{} drew for {}'.format(
-        m.player_name, m.group_name,
-    ),
+    describe='{m.player_name} drew for {m.group_name}'.format,
 )
 
 MsgReshuffle = build_msg('Reshuffle',
     'group_name',
     'num_cards',
-    describe=lambda m: '{} shuffled {} cards into draw deck'.format(
-        m.group_name, m.num_cards,
-    ),
+    describe='{m.group_name} shuffled {m.num_cards} cards into draw deck'.format,
 )
 
 MsgFailedDraw = build_msg('Failed Draw',
     'group_name',
-    describe=lambda m: '{} failed to draw a card (empty draw deck)'.format(
-        m.group_name,
-    ),
+    describe='{m.group_name} failed to draw a card (empty draw deck)'.format,
 )
 
 MsgPlayerTurn = build_msg('Player Turn',
     'player_name',
-    describe=lambda m: '{} is now active'.format(
-        m.player_name,
-    ),
+    describe='{m.player_name} is now active'.format,
 )
 
 MsgPass = build_msg('Pass',
     'player_name',
-    describe=lambda m: '{} passed'.format(
-        m.player_name,
-    ),
+    describe='{m.player_name} passed'.format,
 )
 
 MsgDamage = build_msg('Damage',
     'actor_name',
     'hp',
-    describe=lambda m: '{} took {} damage'.format(
-        m.actor_name, m.hp,
-    ),
+    describe='{m.actor_name} took {m.hp} damage'.format,
 )
 
 MsgHeal = build_msg('Heal',
     'actor_name',
     'hp',
-    describe=lambda m: '{} healed {} hp'.format(
-        m.actor_name, m.hp,
-    ),
+    describe='{m.actor_name} healed {m.hp} hp'.format,
 )
 
 MsgDeath = build_msg('Death',
     'actor_name',
-    describe=lambda m: '{} died'.format(
-        m.actor_name,
-    ),
+    describe='{m.actor_name} died'.format,
 )
 
 MsgBlock = build_msg('Block',
@@ -381,9 +335,7 @@ MsgBlock = build_msg('Block',
     'group_index',
     'actor_index',
     'card_type',
-    describe=lambda m: 'Actor {} of group {} of player {}) blocked {}'.format(
-        m.actor_index, m.group_index, m.player_index, m.card_type,
-    ),
+    describe='Actor {m.actor_index} of group {m.group_index} of player {m.player_index}) blocked {m.card_type}'.format,
 )
 
 MsgHealth = build_msg('Health',
@@ -391,30 +343,22 @@ MsgHealth = build_msg('Health',
     'group_index',
     'actor_index',
     'hp',
-    describe=lambda m: 'Actor {} of group {} of player {} has {} hp'.format(
-        m.actor_index, m.group_index, m.player_index, m.hp,
-    ),
+    describe='Actor {m.actor_index} of group {m.group_index} of player {m.player_index} has {m.hp} hp'.format,
 )
 
 MsgAutoselect = build_msg('Autoselect',
     'card_type',
-    describe=lambda m: 'Autoselected {}'.format(
-        m.card_type,
-    ),
+    describe='Autoselected {m.card_type}'.format,
 )
 
 MsgStopCard = build_msg('Stop Card',
     'card_type',
-    describe=lambda m: '{} was stopped'.format(
-        m.card_type,
-    ),
+    describe='{m.card_type} was stopped'.format,
 )
 
 MsgCancelAction = build_msg('Cancel Action',
     'card_type',
-    describe=lambda m: 'Action {} was cancelled'.format(
-        m.card_type,
-    ),
+    describe='Action {m.card_type} was cancelled'.format,
 )
 
 # Extension events
@@ -422,31 +366,23 @@ ExSelectTarget = build_ex('Select Target',
     'target_player_indices',
     'target_group_indices',
     'target_actor_indices',
-    describe=lambda m: 'Selected actors {} of groups {} of players {}'.format(
-        m.target_actor_indices, m.target_group_indices, m.target_player_indices,
-    ),
+    describe='Selected actors {e.target_actor_indices} of groups {e.target_group_indices} of players {e.target_player_indices}'.format,
 )
 
 ExSelectSquare = build_ex('Select Square',
     'square',
     'facing',
-    describe=lambda m: 'Selected square {} with facing {}'.format(
-        m.square, m.facing,
-    ),
+    describe='Selected square {e.square} with facing {e.facing}'.format,
 )
 
 ExRNG = build_ex('RNG',
     'rands',
-    describe=lambda m: 'Result: {}'.format(
-        m.rands,
-    ),
+    describe='Result: {e.rands}'.format,
 )
 
 ExMustTrait = build_ex('Must Play Trait',
     'player_index',
-    describe=lambda m: 'Player {} must play trait'.format(
-        m.player_index,
-    ),
+    describe='Player {e.player_index} must play trait'.format,
 )
 
 ExNoTraits = build_ex('No Traits')
@@ -454,9 +390,7 @@ ExNoTraits = build_ex('No Traits')
 ExMustDiscard = build_ex('Must Discard',
     'player_index',
     'group_index',
-    describe=lambda m: 'Group {} of player {} must discard'.format(
-        m.group_index, m.player_index,
-    ),
+    describe='Group {e.group_index} of player {e.player_index} must discard'.format,
 )
 
 ExNoDiscards = build_ex('No Discards')
@@ -475,24 +409,22 @@ ExRespawn = build_ex('Respawn',
     'actor_indices',
     'squares',
     'facings',
-    describe=lambda m: 'Actors {} of groups {} of players {} respawned at {}, facing {}'.format(
-        m.actor_indices, m.group_indices, m.player_indices, squares, facings,
-    ),
+    describe='Actors {e.actor_indices} of groups {e.group_indices} of players {e.player_indices} respawned at {e.squares}, facing {e.facings}'.format,
 )
 
 ExStartTimer = build_ex('Start Timer',
     'player_index',
     'remaining',
-    describe=lambda m: 'Timer {} ({})'.format(
-        m.player_index, display_seconds(m.remaining),
+    describe=lambda e: 'Timer {e.player_index} ({0})'.format(
+        display_seconds(e.remaining), e=e,
     ),
 )
 
 ExPauseTimer = build_ex('Pause Timer',
     'player_index',
     'remaining',
-    describe=lambda m: 'Timer {} ({})'.format(
-        m.player_index, display_seconds(m.remaining),
+    describe=lambda e: 'Timer {e.player_index} ({0})'.format(
+        display_seconds(e.remaining), e=e,
     ),
 )
 
@@ -504,9 +436,7 @@ ExCardReveal = build_ex('Card Reveal',
     'original_group_index',
     'card_type',
     'origin',
-    describe=lambda m: '{} from {}'.format(
-        m.card_type.name, m.origin,
-    ),
+    describe='{e.card_type} from {e.origin}'.format,
 )
 
 ExCardPlay = build_ex('Card Play',
@@ -515,9 +445,7 @@ ExCardPlay = build_ex('Card Play',
     'card_index',
     'original_player_index',
     'original_group_index',
-    describe=lambda m: 'Card {} of group {} of player {}'.format(
-        m.card_index, m.group_index, m.player_index,
-    ),
+    describe='Card {e.card_index} of group {e.group_index} of player {e.player_index}'.format,
 )
 
 ExCardDraw = build_ex('Card Draw',
@@ -526,9 +454,7 @@ ExCardDraw = build_ex('Card Draw',
     'card_index',
     'original_player_index',
     'original_group_index',
-    describe=lambda m: 'Card {} of group {} of player {}'.format(
-        m.card_index, m.group_index, m.player_index,
-    ),
+    describe='Card {e.card_index} of group {e.group_index} of player {e.player_index}'.format,
 )
 
 ExCardDiscard = build_ex('Card Discard',
@@ -537,31 +463,23 @@ ExCardDiscard = build_ex('Card Discard',
     'card_index',
     'original_player_index',
     'original_group_index',
-    describe=lambda m: 'Card {} of group {} of player {}'.format(
-        m.card_index, m.group_index, m.player_index,
-    ),
+    describe='Card {e.card_index} of group {e.group_index} of player {e.player_index}'.format,
 )
 
 ExTriggerInHand = build_trigger_ex('In Hand',
     'player_index',
     'group_index',
     'card_index',
-    describe=lambda m: 'card {} of group {} of player {}'.format(
-        m.card_index, m.group_index, m.player_index,
-    ),
+    describe='card {e.card_index} of group {e.group_index} of player {e.player_index}'.format,
 )
 
 ExTriggerTrait = build_trigger_ex('Trait',
     'player_index',
     'group_index',
-    describe=lambda m: 'card attached to group {} of player {}'.format(
-        m.group_index, m.player_index,
-    ),
+    describe='card attached to group {e.group_index} of player {e.player_index}'.format,
 )
 
 ExTriggerTerrain = build_trigger_ex('Terrain',
     'square',
-    describe=lambda m: 'square {}'.format(
-        m.square,
-    ),
+    describe='square {e.square}'.format,
 )
