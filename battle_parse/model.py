@@ -30,8 +30,12 @@ class Card:
             True) and
         True)
 
-    def reveal(self, card, origin):
-        self.type = card
+    def reveal(self, card_type, origin):
+        if not self.is_hidden() and (self.type != card_type or self.origin != origin):
+            raise ValueError('Cannot reveal "{}" from "{}" as "{}" from "{}"'.format(
+                self.type, self.origin, card_type, origin))
+        
+        self.type = card_type
         self.origin = origin
         
         try:
@@ -62,9 +66,11 @@ class Item:
         self.type = type_
         self.marked = [False] * len(type_.cards)
 
-    def try_mark(self, card_type):
-        for i, card in enumerate(self.type.cards):
-            if card == card_type and not self.marked[i]:
+    def try_mark(self, card):
+        for i, card_type in enumerate(self.type.cards):
+            if self.marked[i] is card:
+                return True
+            if self.marked[i] is not None and card_type == card.type:
                 self.marked[i] = True
                 return True
         return False
@@ -149,14 +155,14 @@ class ItemFrame:
         self.slot_types = archetype.slot_types
         self.slots = [ItemSlot(slot_type) for slot_type in self.slot_types]
 
-    def mark(self, card_type, item_type):
+    def mark(self, card):
         for slot in self.slots:
-            if slot.item.type == item_type and slot.item.try_mark(card_type):
+            if slot.item.type == card.item_type and slot.item.try_mark(card):
                 return
 
-        item = self.add_item(item_type)
-        if not item.try_mark(card_type):
-            raise ValueError('Failed to mark card "{}" from item "{}"'.format(card_type.name, item_type.name))
+        item = self.add_item(card.item_type)
+        if not item.try_mark(card):
+            raise ValueError('Cannot mark "{}" from item "{}"'.format(card.type, card.item_type))
 
     def add_item(self, item_type):
         for slot in self.slots:
@@ -291,100 +297,17 @@ class Group:
         self.draw_deck.extend(self.discard_deck)
         self.discard_deck.clear()
 
-    def reveal_card(self, event, from_deck=False):
-        card_type = gamedata.get_card(event.card_name)
+    def discard(self, card_index):
+        card = self.hand.pop(card_index)
+        
+        if card.is_hidden():
+            raise ValueError('Must reveal card before discarding')
+        
+        self.discard_deck.append(card)
 
-        if event.original_player_index == -1:
-            card = Card()
-
-            card.original_player_index = event.original_player_index
-            card.original_group_index = event.original_group_index
-            card.player_index = event.player_index
-            card.group_index = event.group_index
-            card.index = event.card_index
-
-            card.reveal(None, card_type)
-
-            self.hand.append(card)
-            self.hand.sort(key=lambda x: x.index)
-            return
-
-        item_type = gamedata.get_item(event.item_name)
-
-        if from_deck:
-            # See if card has already been revealed in draw deck
-            for card in self.draw_deck:
-                if card.card_type == card_type and card.item.item_type == item_type:
-                    return
-            else:
-                # Reveal item
-                self.item_frame.add_item(item_type)
-
-        elif self.hand[event.card_index].is_hidden():
-            # Reveal item
-            self.item_frame.add_item(item_type)
-
-            # Card in hand should match reveal
-            for i, back in enumerate(self.draw_deck):
-                if back.card_type == card_type and back.item.item_type == item_type:
-                    self.draw_deck[i] = self.hand[event.card_index]
-                    self.hand[event.card_index] = back
-                    break
-
-            # Previously hidden cards in hand should remain hidden
-            for i, card in enumerate(self.hand):
-                if i == event.card_index:
-                    continue
-
-                if card.item is self.hand[event.card_index].item:
-                    for j, back in enumerate(self.draw_deck):
-                        if back.is_hidden():
-                            self.draw_deck[j] = card
-                            self.hand[i] = back
-
-    def discard_card(self, event):  # TODO: DiscardToOpponent
-        # If DiscardToOpponentComponent, wait for genRand to determine where to travel to
-        # components = gamedata.get_card(event.card_name).components
-        self.hand[event.card_index].discard()
-        self.draw_deck.append(self.hand.pop(event.card_index))
-        for card in self.hand[event.card_index:]:
-            card.index -= 1
-
-    def draw_card(self, event):
-        card_type = gamedata.get_card(event.card_name)
-        item_type = gamedata.get_item(event.item_name)
-
-        for i, card in enumerate(self.draw_deck):
-            if card.card_type == card_type and card.item.item_type == item_type:
-                break
-        else:
-            raise Exception('Could not find card in draw deck:', event.card_name)
-
-        card = self.draw_deck.pop(i)
-        self.hand.append(card)
-        self.hand.sort(key=lambda x: x.index)
-        card.draw(event.card_index)
-
-    def hidden_draw(self):  # TODO: Shamefully ugly method
-        if self.must_draw == -1:
-            self.must_draw = 5  # TODO: this is a hack
-        elif self.must_draw == 0:
-            self.must_draw = 2  # TODO: what about bless/unholy energy/etc.?
-        for i, card in enumerate(self.draw_deck):
-            if card.is_hidden():
-                self.draw_deck.pop(i)
-                self.hand.append(card)
-                card.draw(len(self.hand))
-                break
-        self.must_draw -= 1
-        if self.must_draw == 2:
-            self.must_draw = 0  # TODO: Just burn this down and refactor the whole file
-        return self.must_draw == 0
-
-    def play_card(self, event):
-        print('Playing card ...')
-        self.discard_card(event)
-        pass  # TODO
+    def draw(self):
+        card = self.draw_deck.pop()
+        self.hand.insert(0, card)
 
     def __str__(self):
         return '{} ({} {})\nEquipment: {}'.format(
@@ -447,23 +370,6 @@ class Player:
     def build(self):
         for group in self.groups:
             group.build()
-
-    def reveal_card(self, event, from_deck=False):
-        self.groups[event.group_index].reveal_card(event, from_deck)
-
-    def discard_card(self, event):  # TODO: DiscardToOpponent
-        self.groups[event.group_index].discard_card(event)
-
-    def draw_card(self, event):
-        self.groups[event.group_index].draw_card(event)
-
-    def hidden_draw(self):
-        if self.groups[self.drawing_group].hidden_draw():
-            self.drawing_group += 1
-            self.drawing_group %= 3
-
-    def play_card(self, event):
-        self.groups[event.group_index].play_card(event)
 
 
 # Board square during a battle
@@ -652,47 +558,110 @@ class Battle:
             if card.item_type is None:
                 continue
 
-            card.original_group.item_frame.mark(card.type, card.item_type)
+            card.original_group.item_frame.mark(card)
 
         for player in self.players:
             for group in player.groups:
                 print(group)
                 print()
 
+    def reveal_card(self, event):
+        player = self.players[event.player_index]
+        group = player.groups[event.group_index]
+        card = group.hand[event.card_index]
+        card.reveal(event.card_type, event.origin)
+
+        if event.original_player_index != -1:
+            if card.item_type is None:
+                raise KeyError('Unknown item "{}"'.format(card.origin))
+            
+            original_player = self.players[event.original_player_index]
+            original_group = original_player.groups[event.original_group_index]
+            original_group.item_frame.mark(card)
+
     def update(self, event):  # TODO
         try:
-            print('    |', event)
-            print('    | Hand before:', self.players[event.player_index].groups[event.group_index].hand)
-        except Exception:
+            print(event)
+            print('    : Hand before =', self.players[event.player_index].groups[event.group_index].hand)
+        except:
             pass
 
-        if isinstance(event, CardDraw):
-            self.players[event.player_index].reveal_card(event, from_deck=True)
-            self.players[event.player_index].draw_card(event)
-        elif isinstance(event, HiddenDraw):
-            self.enemy.hidden_draw()
-        elif isinstance(event, CardReveal):
-            self.players[event.player_index].reveal_card(event)
-        elif isinstance(event, CardDiscard):
-            self.players[event.player_index].reveal_card(event)
-            self.players[event.player_index].discard_card(event)
-        elif isinstance(event, CardPlay):
-            self.players[event.player_index].reveal_card(event)
-            self.players[event.player_index].play_card(event)
-        elif isinstance(event, SelectTarget):
+        if isinstance(event, ExCardReveal):
+            self.reveal_card(event)
+                
+        elif isinstance(event, ExCardDraw):
             pass
-        elif isinstance(event, SelectSquare):
+        
+        elif isinstance(event, ExCardDiscard):
             pass
-        elif isinstance(event, TriggerHand):
+        
+        elif isinstance(event, ExCardPlay):
+            player = self.players[event.player_index]
+            group = player.groups[event.group_index]
+            card = group.hand[event.card_index]
+
+            # TODO: What if Unstoppable Chop is blocked and returned to hand?
+            # TODO: DiscardToOpponentComponent => Wait for genRand to determine where to travel to
+            group.discard(event.card_index)
+
+            for param, value in card.type.components.items():
+                if param == 'DrawOnResolveComponent':
+                    group.draw()
+                else:
+                    print('Ignored component: {} = {}'.format(param, value))
+        
+        elif isinstance(event, ExMustTrait):
             pass
-        elif isinstance(event, TriggerAttachment):
+        
+        elif isinstance(event, ExNoTraits):
             pass
-        elif isinstance(event, TriggerTerrain):
+        
+        elif isinstance(event, ExMustDiscard):
             pass
-        elif isinstance(event, Pass):
+        
+        elif isinstance(event, ExNoDiscards):
+            pass
+        
+        elif isinstance(event, ExHandPeek):
+            pass
+        
+        elif isinstance(event, ExDeckPeek):
+            pass
+        
+        elif isinstance(event, ExTriggerInHand):
+            pass
+        
+        elif isinstance(event, ExTriggerTrait):
+            pass
+        
+        elif isinstance(event, ExTriggerTerrain):
+            pass
+        
+        elif isinstance(event, ExSelectTarget):
+            pass
+        
+        elif isinstance(event, ExSelectSquare):
+            pass
+        
+        elif isinstance(event, ExRNG):
+            pass
+        
+        elif isinstance(event, ExRespawn):
+            pass
+        
+        elif isinstance(event, ExStartTimer):
+            pass
+        
+        elif isinstance(event, ExPauseTimer):
+            pass
+        
+        elif isinstance(event, ExPass):
+            pass
+        
+        elif isinstance(event, ExResign):
             pass
 
         try:
-            print('    | Hand after:', self.players[event.player_index].groups[event.group_index].hand)
-        except Exception:
+            print('    : Hand after  =', self.players[event.player_index].groups[event.group_index].hand)
+        except:
             pass

@@ -100,18 +100,19 @@ def load():
                 continue
             
             components = {}
-            for i in range(5):
-                params = {}
-                
-                if card[2*i + 29]:
-                    for param in card[2*i + 29].split(';'):
-                        if '=' in param:
-                            p, value = param.split('=')
-                            params[p] = convert(value)
-                        else:
-                            params[param] = ''
-                
-                components[card[2*i + 28]] = params
+            for i in range(28, 38, 2):
+                if card[i]:
+                    params = {}
+                    
+                    if card[i + 1]:
+                        for param in card[i + 1].split(';'):
+                            if '=' in param:
+                                p, value = param.split('=')
+                                params[p] = convert(value)
+                            else:
+                                params[param] = None
+                    
+                    components[card[i]] = params
 
             new_card = model.CardType(
                 id_=to_int(card[0]),

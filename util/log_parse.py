@@ -120,6 +120,9 @@ def parse_battle_log(raw):
         except ValueError:
             pass
 
+        if val == '[NULL]':
+            return ''
+
         if len(val) != 0 and val[0] + val[-1] in ('()', '[]', '{}'):
             return [convert(x) for x in val[1:-1].split(', ')]
         if '|' in val:

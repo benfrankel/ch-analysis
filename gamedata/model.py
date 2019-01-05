@@ -106,6 +106,9 @@ class CardType:
     def average_damage(self):
         return self.damage + [0, 2, 3.5][self.components.get('OverloadComponent', dict()).get('overload', 0) // 3]
 
+    def is_trait(self):
+        return 'trait' in self.card_params
+
     def __repr__(self):
         return '{}("{}")'.format(self.__class__.__name__, self.name)
 
