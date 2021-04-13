@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from util.guild.chat import announce
+import pizzatron
 
 from util.guild import pizza_distribution
 
@@ -41,7 +41,7 @@ def main(guild_name):
             f'*Updated distribution*: {link}'))
 
     print('Announcing...')
-    announce(msg)
+    pizzatron.announce(msg)
     print(msg)
 
 

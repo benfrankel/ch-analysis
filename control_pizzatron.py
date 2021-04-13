@@ -2,7 +2,7 @@
 
 import discord.errors
 
-from util.guild.chat import Pizzatron3000, TOKEN, CHANNEL_ID
+import pizzatron
 
 
 def input_option_int(message):
@@ -19,7 +19,7 @@ def input_option_int(message):
 
 
 def main():
-    client = Pizzatron3000()
+    client = discord.Client()
 
     @client.event
     async def on_ready():
@@ -47,7 +47,7 @@ def main():
 
         await client.close()
 
-    client.run(TOKEN)
+    client.run(pizzatron.TOKEN)
 
 
 if __name__ == '__main__':
