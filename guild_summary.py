@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.6
+#!/usr/bin/env python3
 
 from util.guild.pizza_distribution import auto_summary
 

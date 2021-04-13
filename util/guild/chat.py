@@ -2,19 +2,15 @@ import discord
 
 
 # Fill in your Discord Bot's token here:
-TOKEN = 'MzI5NjQzMTkzOTQxNDkxNzEz.DDVe8w.9-wnZUGZGKbHfQ2Ee23heskf7Co'
+TOKEN = ''
 
 # Fill in your announcements channel's ID here:
-CHANNEL_ID = '334114051967680513'
+CHANNEL_ID = 444597426708414475
 
 
-def announce(message):
-    client = discord.Client()
+class Pizzatron3000(discord.Client):
+    async def on_ready(self):
+        print('Logged on as {0}.'.format(self.user))
 
-    @client.event
-    async def on_ready():
-        announcements = client.get_channel(CHANNEL_ID)
-        await client.send_message(announcements, message)
-        await client.logout()
-
-    client.run(TOKEN)
+    async def on_message(self, message):
+        print('[{0.author}] {0.content}'.format(message))
