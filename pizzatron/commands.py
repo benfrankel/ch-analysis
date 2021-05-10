@@ -44,13 +44,13 @@ def try_get_item(args, raw_args):
     return item, args, raw_args, None
 
 
-def try_get_item_or_card(args, raw_args):
+def try_get_any(args, raw_args):
     if not args:
-        return None, None, None, 'Please specify an item or a card.'
+        return None, None, None, 'Please specify something.'
 
     match, _, args, _, raw_args = parse.parse_any(args, raw_args)
     if match is None:
-        return None, None, None, f'Sorry, I don\'t recognize "{" ".join(raw_args)}" as an item or a card.'
+        return None, None, None, f'Sorry, I don\'t recognize "{" ".join(raw_args)}".'
 
     return match, args, raw_args, None
 
@@ -74,7 +74,7 @@ async def cmd_help(args, raw_args):
 
 
 async def cmd_info(args, raw_args):
-    match, _, _, error = try_get_item_or_card(args, raw_args)
+    match, _, _, error = try_get_any(args, raw_args)
     if match is not None:
         if isinstance(match, gamedata.ItemType):
             return display.item(match)

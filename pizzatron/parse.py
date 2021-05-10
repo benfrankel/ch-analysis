@@ -247,7 +247,7 @@ def parse_item(args, raw_args):
 
 
 def parse_any(args, raw_args):
-    return parse_longest_match(item_map | card_map, args, raw_args)
+    return parse_longest_match(any_map, args, raw_args)
 
 
 def parse(text: str):
