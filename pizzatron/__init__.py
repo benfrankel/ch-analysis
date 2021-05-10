@@ -9,8 +9,8 @@ def load():
     import optimize
     optimize.load()
 
-    from . import parse
-    parse.load()
+    from . import maps
+    maps.load()
 
 
 def announce(message):
