@@ -2,35 +2,40 @@
 Interface with Card Hunter databases.
 """
 
-import os.path
 import csv
+import os.path
+import re
 import urllib.request
 
 from gamedata import model
-from const import GAMEDATA_DIR
+from const import GAMEDATA_DIR, IMAGES_DIR
 
-# URLs to access CH databases
-ch_live = 'http://live.cardhunter.com/'
-cards_url = 'data/gameplay/Cards/Cards.csv'
-items_url = 'data/gameplay/Equipment/Equipment.csv'
-item_img_url = 'assets/item_illustrations/'
-archetypes_url = 'data/gameplay/CharacterArchetypes/CharacterArchetypes.csv'
+# URLs to access CH data
+CH_LIVE_DOMAIN = 'http://live.cardhunter.com/'
+CARDS_CSV_PATH = 'data/gameplay/Cards/Cards.csv'
+ITEMS_CSV_PATH = 'data/gameplay/Equipment/Equipment.csv'
+ITEM_IMG_PATH = 'assets/item_illustrations/'
+ARCHETYPES_CSV_PATH = 'data/gameplay/CharacterArchetypes/CharacterArchetypes.csv'
+ADVENTURES_CSV_PATH = 'data/gameplay/Adventures/Adventures.csv'
 
-# Files where the databases will be stored locally
-cards_filename = os.path.join(GAMEDATA_DIR, 'cards.csv')
-items_filename = os.path.join(GAMEDATA_DIR, 'items.csv')
-archetypes_filename = os.path.join(GAMEDATA_DIR, 'archetypes.csv')
+# Files where the data will be stored locally
+CARDS_FILENAME = os.path.join(GAMEDATA_DIR, 'cards.csv')
+ITEMS_FILENAME = os.path.join(GAMEDATA_DIR, 'items.csv')
+ARCHETYPES_FILENAME = os.path.join(GAMEDATA_DIR, 'archetypes.csv')
+ADVENTURES_FILENAME = os.path.join(GAMEDATA_DIR, 'adventures.csv')
 
-# Dictionaries where the databases will be stored in program memory
+# Dictionaries where the data will be stored in program memory
 card_dict = {}
 short_card_dict = {}
 item_dict = {}
 short_item_dict = {}
 archetype_dict = {}
 other_archetype_dict = {}
+adventure_dict = {}
 
 # Flags
 is_loaded = False
+
 
 def download():
     """
@@ -40,24 +45,29 @@ def download():
         os.makedirs(GAMEDATA_DIR)
 
     # Request the .csv files from CH live
-    cards_req = urllib.request.urlopen(ch_live + cards_url)
-    items_req = urllib.request.urlopen(ch_live + items_url)
-    archetypes_req = urllib.request.urlopen(ch_live + archetypes_url)
+    cards_req = urllib.request.urlopen(CH_LIVE_DOMAIN + CARDS_CSV_PATH)
+    items_req = urllib.request.urlopen(CH_LIVE_DOMAIN + ITEMS_CSV_PATH)
+    archetypes_req = urllib.request.urlopen(CH_LIVE_DOMAIN + ARCHETYPES_CSV_PATH)
+    adventures_req = urllib.request.urlopen(CH_LIVE_DOMAIN + ADVENTURES_CSV_PATH)
 
     # Convert the requests into text
     cards_csv = cards_req.read().decode('utf-8', 'ignore')
     items_csv = items_req.read().decode('utf-8', 'ignore')
     archetypes_csv = archetypes_req.read().decode('utf-8', 'ignore')
+    adventures_csv = adventures_req.read().decode('utf-8', 'ignore')
 
     # Write the text to local files
-    with open(cards_filename, 'w') as f:
+    with open(CARDS_FILENAME, 'w') as f:
         f.write(cards_csv)
 
-    with open(items_filename, 'w') as f:
+    with open(ITEMS_FILENAME, 'w') as f:
         f.write(items_csv)
 
-    with open(archetypes_filename, 'w') as f:
+    with open(ARCHETYPES_FILENAME, 'w') as f:
         f.write(archetypes_csv)
+
+    with open(ADVENTURES_FILENAME, 'w') as f:
+        f.write(adventures_csv)
 
 
 def load():
@@ -67,8 +77,6 @@ def load():
     global is_loaded
     if is_loaded:
         return
-
-    all_cards_dict = dict()
 
     # Convert to integer, None if this is impossible
     def to_int(s):
@@ -83,20 +91,17 @@ def load():
             return s
         return j
 
-    if not os.path.isfile(cards_filename):
+    if not os.path.isfile(CARDS_FILENAME):
         download()
 
     # Extract the info from every line of cards.csv, store it in a CardType object and add it to a temporary dictionary
-    with open(cards_filename, newline='') as f:
+    with open(CARDS_FILENAME, newline='') as f:
         cards = csv.reader(f, delimiter=',', quotechar='"')
-        skip_line = 2
+        next(cards)
+        next(cards)
         
         for card in cards:
             if not card:
-                continue
-            
-            if skip_line > 0:
-                skip_line -= 1
                 continue
             
             components = {}
@@ -129,8 +134,8 @@ def load():
                 trigger=to_int(card[11]),
                 keep=to_int(card[12]),
                 trigger_effect=card[13],
-                trigger2=card[15],
-                keep2=card[16],
+                trigger2=to_int(card[14]),
+                keep2=card[15],
                 trigger_effect2=card[16],
                 text=card[17],
                 flavor_text=card[18],
@@ -164,33 +169,28 @@ def load():
                 slot_types=card[55].split(','),
                 art=card[56],
             )
-            
-            all_cards_dict[new_card.name] = new_card
+
+            global card_dict, short_card_dict
+
+            card_dict[normalize(new_card.name)] = new_card
+            short_card_dict[normalize(new_card.short_name)] = new_card
 
     # Extract the info from every line of items.csv, store it in a ItemType object, and add it to the dictionary
     # Use the item list to narrow down the set of cards to non-monster cards
-    with open(items_filename, newline='') as f:
+    with open(ITEMS_FILENAME, newline='') as f:
         items = csv.reader(f, delimiter=',', quotechar='"')
-        skip_line = 2
+        next(items)
+        next(items)
         
         for item in items:
             if not item or item[19] == 'Treasure':
                 continue
             
-            if skip_line > 0:
-                skip_line -= 1
-                continue
-            
             cards = []
             for i in range(9, 15):
                 if item[i] != '':
-                    card = all_cards_dict[item[i]]
+                    card = card_dict[normalize(item[i])]
                     cards.append(card)
-                    
-                    global card_dict, short_card_dict
-                    
-                    card_dict[card.name.lower()] = card
-                    short_card_dict[card.short_name.lower()] = card
             
             new_item = model.ItemType(
                 id_=to_int(item[0]),
@@ -200,7 +200,7 @@ def load():
                 level=to_int(item[4]),
                 intro_level=to_int(item[5]),
                 total_value=to_int(item[6]),
-                token_cost=[to_int(item[7]), to_int(item[8])],
+                token_cost=(to_int(item[7]), to_int(item[8])),
                 cards=cards,
                 slot_type=item[19],
                 slot_type_default=item[20],
@@ -213,20 +213,17 @@ def load():
             
             global item_dict, short_item_dict
             
-            item_dict[new_item.name.lower()] = new_item
-            short_item_dict[new_item.short_name.lower()] = new_item
+            item_dict[normalize(new_item.name)] = new_item
+            short_item_dict[normalize(new_item.short_name)] = new_item
 
     # Extract the info from every line of archetypes.csv, store it in an Archetype object, and add it to the dictionary
-    with open(archetypes_filename, newline='') as f:
+    with open(ARCHETYPES_FILENAME, newline='') as f:
         archetypes = csv.reader(f, delimiter=',', quotechar='"')
-        skip_line = 2
+        next(archetypes)
+        next(archetypes)
         
         for arc in archetypes:
             if not arc or arc[0] == 'SicklyMule':
-                continue
-            
-            if skip_line > 0:
-                skip_line -= 1
                 continue
             
             new_archetype = model.CharacterArchetype(
@@ -237,7 +234,7 @@ def load():
                 description=arc[4],
                 default_move=arc[7],
                 default_figure=arc[8],
-                start_items=[item_dict[arc[9].lower()], item_dict[arc[10].lower()]],
+                start_items=(item_dict[normalize(arc[9])], item_dict[normalize(arc[10])]),
                 slot_types=tuple(arc[i] for i in range(11, 48, 4) if arc[i] != ''),
                 levels=tuple(to_int(arc[i]) for i in range(12, 49, 4)),
             )
@@ -245,63 +242,129 @@ def load():
             global archetype_dict
             global other_archetype_dict
             
-            archetype_dict[new_archetype.name.lower()] = new_archetype
-            other_archetype_name = '{} {}'.format(new_archetype.race.lower(), new_archetype.role.lower())
-            other_archetype_dict[other_archetype_name] = new_archetype
+            archetype_dict[normalize(new_archetype.name)] = new_archetype
+            other_archetype_name = '{} {}'.format(new_archetype.race, new_archetype.role)
+            other_archetype_dict[normalize(other_archetype_name)] = new_archetype
+
+    # Extract the info from every line of adventures.csv, store it in an Adventure object, and add it to the dictionary
+    with open(ADVENTURES_FILENAME, newline='') as f:
+        adventures = csv.reader(f, delimiter=',', quotechar='"')
+        next(adventures)
+        next(adventures)
+
+        for adv in adventures:
+            if not adv or adv[2] != 'adventure':
+                continue
+
+            new_adventure = model.Adventure(
+                name=adv[0],
+                id=adv[1],
+                display_name=adv[3],
+                set=to_int(adv[4]),
+                zone=to_int(adv[6]),
+                level=to_int(adv[7]),
+                xp=to_int(adv[8]),
+                tags=tuple(adv[9].split()),
+                module_name=adv[10],
+                description=adv[11],
+                map_pos=(to_int(adv[12]), to_int(adv[13])),
+                prerequisite_flags=tuple(filter(lambda x: x, adv[14].split(','))),
+                removal_flags=tuple(filter(lambda x: x, adv[15].split(','))),
+                completion_flags=tuple(filter(lambda x: x, adv[16].split(','))),
+                battle_loot_count=to_int(adv[17]),
+                adventure_loot_count=to_int(adv[18]),
+                first_time_loot=tuple(filter(lambda x: x, adv[19:21])),
+                scenarios=tuple(filter(lambda x: x, adv[27:37])),
+                chests=tuple(filter(lambda x: x, adv[37:41])),
+            )
+
+            global adventure_dict
+
+            adventure_dict[normalize(new_adventure.display_name)] = new_adventure
 
     is_loaded = True
 
-def normalize_name(name):
-    return ' '.join(name.strip().lower().split())
+
+def normalize(text: str):
+    text = text.lower()
+    text = re.compile(r'[^\sa-z0-9]').sub('', text)
+    text = re.compile(r'\s+').sub(' ', text)
+    return text
+
 
 def get_card(name):
-    name = normalize_name(name)
+    name = normalize(name)
     if name in card_dict:
         return card_dict[name]
     if name in short_card_dict:
         return short_card_dict[name]
     raise KeyError("Unknown card '{}'".format(name))
 
+
 def get_cards():
     return list(card_dict.values())
 
+
 def is_card(name):
-    name = normalize_name(name)
+    name = normalize(name)
     return name in card_dict or name in short_card_dict
 
+
 def get_item(name):
-    name = normalize_name(name)
+    name = normalize(name)
     if name in item_dict:
         return item_dict[name]
     if name in short_item_dict:
         return short_item_dict[name]
     raise KeyError("Unknown item '{}'".format(name))
 
+
 def get_items():
     return list(item_dict.values())
 
+
 def is_item(name):
-    name = normalize_name(name)
+    name = normalize(name)
     return name in item_dict or name in short_item_dict
 
+
 def get_archetype(name):
-    name = normalize_name(name)
+    name = normalize(name)
     if name in archetype_dict:
         return archetype_dict[name]
     if name in other_archetype_dict:
         return other_archetype_dict[name]
     raise KeyError("Unknown archetype '{}'".format(name))
 
+
 def get_archetypes():
     return list(archetype_dict.values())
 
+
 def is_archetype(name):
-    name = normalize_name(name)
+    name = normalize(name)
     return name in archetype_dict or name in other_archetype_dict
+
+
+def get_adventure(name):
+    name = normalize(name)
+    if name in adventure_dict:
+        return adventure_dict[name]
+    raise KeyError("Unknown adventure '{}'".format(name))
+
+
+def get_adventures():
+    return list(adventure_dict.values())
+
+
+def is_adventure(name):
+    name = normalize(name)
+    return name in adventure_dict
+
 
 def download_item_image(image_name):
     image_name = image_name.replace(' ', '%20').replace("'", '%27')
-    img_path = os.path.join(GAMEDATA_DIR, image_name)
-    urllib.request.urlretrieve(ch_live + item_img_url + image_name, img_path)
+    img_path = os.path.join(IMAGES_DIR, image_name)
+    urllib.request.urlretrieve(CH_LIVE_DOMAIN + ITEM_IMG_PATH + image_name, img_path)
 
     return img_path

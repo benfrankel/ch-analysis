@@ -1,27 +1,46 @@
 {
   "trait": {
     "Inspirational Thinking": 2,
-    "Toughness": 1,
-    "Shield Block": 1,
+    "Demonic Power": 2,
+    "Demonic Feedback": 1,
+    "Inspiration": 1,
+    "Bless": 1,
+    "Consecrate Ground": 1,
+    "Spin Around": 1,
+    "Dwarven Battle Cry": 1,
     "Lateral Thinking": 1,
     "Elvish Insight": 1
   },
 
   "cycling": {
+    "Inspirational Thinking": 3,
     "Pathfinding": 2,
-    "Inspirational Thinking": 2,
+    "Spell Skill": 2,
+    "Demonic Power": 2,
+    "Demonic Feedback": 1,
+    "Inspiration": 1,
+    "Bless": 1,
+    "Consecrate Ground": 1,
+    "Unholy Energy": 1,
+    "Accelerated Thought": 1,
     "Shield Block": 1,
     "Parry": 1,
     "Toughness": 1,
     "Inspiring Armor": 1,
     "Catch Arrow": 1,
+    "Quick Reactions": 1,
+    "Spin Around": 1,
+    "Escaping Run": 1,
     "Lateral Thinking": 1,
     "Elvish Insight": 1,
+    "Dwarven Battle Cry": 1,
     "Cleansing Ray": 0.8,
+    "Defender's Block": 0.5,
     "Lifesaving Block": 0.5,
     "Subtle Parry": 0.25,
     "Howl": 0.15,
     "Fumble": -1,
+    "Dropped Guard": -1,
     "Mind Leak": -1
   },
 
@@ -118,9 +137,11 @@
 
   "vampire damage": {
     "Invigorating Touch": 7,
-    "Vampire Kiss": 6,
+    "Vampire's Kiss": 6,
+    "Enervating Touch": 5,
     "Spear of Darkness": 4,
     "Consuming Spear": 3,
+    "Draining Touch": 3,
     "Sapping Spear": 2
   },
 

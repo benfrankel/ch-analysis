@@ -104,7 +104,7 @@ class CardType:
 
     @property
     def average_damage(self):
-        return self.damage + [0, 2, 3.5][self.components.get('OverloadComponent', dict()).get('overload', 0) // 3]
+        return (self.damage or 0) + [0, 2, 3.5][self.components.get('OverloadComponent', {}).get('overload', 0) // 3]
 
     def is_trait(self):
         return 'trait' in self.card_params
@@ -190,6 +190,57 @@ class CharacterArchetype:
         self.start_items = start_items
         self.slot_types = slot_types
         self.levels = levels
+
+    def __repr__(self):
+        return '{}("{}")'.format(self.__class__.__name__, self.name)
+
+    def __str__(self):
+        return self.name
+
+
+# Campaign adventure (e.g. "Slub Gut's Sanctum", "Attack of the War Monkeys")
+class Adventure:
+    def __init__(
+        self,
+        name,
+        id,
+        display_name,
+        set,
+        zone,
+        level,
+        xp,
+        tags,
+        module_name,
+        description,
+        map_pos,
+        prerequisite_flags,
+        removal_flags,
+        completion_flags,
+        battle_loot_count,
+        adventure_loot_count,
+        first_time_loot,
+        scenarios,
+        chests,
+    ):
+        self.name = name
+        self.id = id
+        self.display_name = display_name
+        self.set = set
+        self.zone = zone
+        self.level = level
+        self.xp = xp
+        self.tags = tags
+        self.module_name = module_name
+        self.description = description
+        self.map_pos = map_pos
+        self.prerequisite_flags = prerequisite_flags
+        self.removal_flags = removal_flags
+        self.completion_flags = completion_flags
+        self.battle_loot_count = battle_loot_count
+        self.adventure_loot_count = adventure_loot_count
+        self.first_time_loot = first_time_loot
+        self.scenarios = scenarios
+        self.chests = chests
 
     def __repr__(self):
         return '{}("{}")'.format(self.__class__.__name__, self.name)

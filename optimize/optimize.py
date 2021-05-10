@@ -1,4 +1,7 @@
 import itertools
+import random
+
+import asyncio
 
 from optimize import classify
 import gamedata
@@ -28,12 +31,11 @@ class ItemFinder:
         'Dwarf Skill': 16
     }
 
-    fail_cache = set()
-
     def __init__(self):
-        self.card_weights = dict()
-        self.slot_items = dict()
-        self.optimal = dict()
+        self.fail_cache = set()
+        self.card_weights = {}
+        self.slot_items = {}
+        self.optimal = {}
 
     @staticmethod
     def convert(info):
@@ -52,7 +54,7 @@ class ItemFinder:
             token_options = (2, -1), (1, -1), (0, -1)
         for major, minor in token_options:
             for trait_count in range(4):
-                yield (major, minor, trait_count)
+                yield major, minor, trait_count
 
     def find(self, slot_type, info):
         hash_slot = ItemFinder.hash(slot_type, ItemFinder.convert(info))
@@ -87,7 +89,7 @@ class ItemFinder:
                 not_found = not options
                 outdone = any(score <= self.get(slot_type, (info[0], info[1], t))[0] and self.get(slot_type, (info[0], info[1], t))[1] for t in range(info[2] + 1, 4))
                 if not_found or outdone:
-                    ItemFinder.fail_cache.add(hash_)
+                    self.fail_cache.add(hash_)
 
     def get(self, slot_type, info):
         hash_slot = ItemFinder.hash(slot_type, info)
@@ -97,16 +99,16 @@ class ItemFinder:
 
 
 class CharacterFinder:
-    def __init__(self):
-        self.optimal_items = None
-        self.optimal = dict()
+    def __init__(self, optimal_items):
+        self.optimal_items = optimal_items
+        self.optimal = {}
 
     def distrib(self, slot_types, token_slots, total_major, total_minor):
         if sum(token_slots) < total_major + total_minor:
             return
         if total_major == total_minor == 0:
             for trait_dis in itertools.product(range(4), repeat=len(token_slots)):
-                if any(ItemFinder.hash(s, (0, 0, t)) in ItemFinder.fail_cache for s, t in zip(slot_types, trait_dis)):
+                if any(ItemFinder.hash(s, (0, 0, t)) in self.optimal_items.fail_cache for s, t in zip(slot_types, trait_dis)):
                     continue
                 yield tuple((0, 0, t) for t in trait_dis)
             if len(token_slots) == 0:
@@ -121,12 +123,12 @@ class CharacterFinder:
             if net_major < 0 or net_minor < 0:
                 continue
             for trait_count in range(4):
-                if ItemFinder.hash(slot_types[0], (major, minor, trait_count)) in ItemFinder.fail_cache:
+                if ItemFinder.hash(slot_types[0], (major, minor, trait_count)) in self.optimal_items.fail_cache:
                     continue
                 for distrib in self.distrib(slot_types[1:], token_slots[1:], net_major, net_minor):
                     yield ((major, minor, trait_count),) + distrib
 
-    def find(self, archetype):
+    async def find(self, archetype):
         main_slot = 'Weapon', 'Divine Weapon', 'Staff'
         total_major, total_minor = 4, 4
         token_slots = [2 if slot_type in main_slot else 1 for slot_type in archetype.slot_types]
@@ -139,7 +141,7 @@ class CharacterFinder:
             for slot_type, info in zip(archetype.slot_types, distrib):
                 major, minor, trait_count = info
                 add_score, options = self.optimal_items.get(slot_type, (major, minor, trait_count))
-                build.append(options[0])
+                build.append(random.choice(options))
                 score += add_score
                 num_traits += trait_count
             else:
@@ -149,6 +151,7 @@ class CharacterFinder:
                 elif avg > best_avg:
                     best_builds = [[score, num_traits, build]]
                     best_avg = avg
+            await asyncio.sleep(0)
         self.optimal[archetype] = best_builds
 
     def get(self, archetype):
@@ -177,7 +180,7 @@ def load():
     is_loaded = True
 
 
-def find(archetype, card_weights):
+async def find(archetype, card_weights):
     archetype = gamedata.get_archetype(archetype)
     slot_items = {slot: list(filter(lambda item: item.slot_type == slot, items)) for slot in set(archetype.slot_types)}
 
@@ -186,8 +189,7 @@ def find(archetype, card_weights):
     optimal_items.card_weights = card_weights
     optimal_items.find_all()
 
-    optimal_char = CharacterFinder()
-    optimal_char.optimal_items = optimal_items
-    optimal_char.find(archetype)
+    optimal_char = CharacterFinder(optimal_items)
+    await optimal_char.find(archetype)
 
     return optimal_char.optimal[archetype]

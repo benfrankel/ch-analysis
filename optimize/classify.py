@@ -21,17 +21,22 @@ def load():
     cards = data.get_cards()
 
     # Built-in classes
-    card_packs['trait'] = dict()
-    card_packs['direct magic damage'] = dict()
-    card_packs['direct magic range'] = dict()
-    card_packs['direct melee damage'] = dict()
-    card_packs['step movement'] = dict()
-    card_packs['step damage'] = dict()
+    card_packs['trait'] = {}
+    card_packs['attached trait'] = {}
+    card_packs['direct magic damage'] = {}
+    card_packs['direct magic range'] = {}
+    card_packs['direct melee damage'] = {}
+    card_packs['step movement'] = {}
+    card_packs['step damage'] = {}
+    card_packs['movement'] = {}
 
     # Populating built-in classes
     for card in cards:
         if 'trait' in card.card_params:
-            card_packs['trait'][card.name] = 1
+            if 'ReplaceDrawComponent' not in card.components:
+                card_packs['trait'][card.name] = 1
+            if 'AttachToSelfComponent' in card.components:
+                card_packs['attached trait'][card.name] = 1
     for card in cards:
         is_attack = 'Attack' in card.types
         is_move = 'Move' in card.types
@@ -42,9 +47,15 @@ def load():
         if is_attack and is_magic and is_targeted and is_direct:
             card_packs['direct magic damage'][card.name] = card.average_damage
             card_packs['direct magic range'][card.name] = card.max_range
-        if is_attack and is_move:
-            card_packs['step movement'][card.name] = card.components['StepComponent']['movePoints']
-            card_packs['step damage'][card.name] = card.average_damage
+        if is_move:
+            if is_attack and 'StepComponent' in card.components:
+                card_packs['step movement'][card.name] = card.components['StepComponent']['movePoints']
+                card_packs['movement'][card.name] = card.components['StepComponent']['movePoints']
+                card_packs['step damage'][card.name] = card.average_damage
+            elif 'MoveTargetComponent' in card.components:
+                card_packs['movement'][card.name] = card.components['MoveTargetComponent'].get('movePoints', 0)
+            else:
+                card_packs['movement'][card.name] = card.move_points or 0
         if is_attack and is_melee:
             card_packs['direct melee damage'][card.name] = card.average_damage
 

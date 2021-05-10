@@ -16,7 +16,7 @@ def announce(message):
 
     @client.event
     async def on_ready():
-        announcements = client.get_channel(const.ANNOUNCEMENTS_CHANNEL_ID)
+        announcements = client.get_channel(const.BOG_ANNOUNCEMENTS_CHANNEL_ID)
         await announcements.send(message)
         await client.close()
 
