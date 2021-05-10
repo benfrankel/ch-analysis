@@ -48,7 +48,7 @@ def try_get_item_or_card(args, raw_args):
     if not args:
         return None, None, None, 'Please specify an item or a card.'
 
-    match, _, args, _, raw_args = parse.parse_item_or_card(args, raw_args)
+    match, _, args, _, raw_args = parse.parse_any(args, raw_args)
     if match is None:
         return None, None, None, f'Sorry, I don\'t recognize "{" ".join(raw_args)}" as an item or a card.'
 

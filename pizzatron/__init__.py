@@ -9,6 +9,9 @@ def load():
     import optimize
     optimize.load()
 
+    from . import parse
+    parse.load()
+
 
 def announce(message):
     import discord

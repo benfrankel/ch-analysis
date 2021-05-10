@@ -64,6 +64,44 @@ CARD_ALIAS_MAP = {
     'res hide': 'resistant hide',
 }
 
+is_loaded = False
+
+card_map = {}
+item_map = {}
+any_map = {}
+
+
+def load():
+    global is_loaded
+    if is_loaded:
+        return
+
+    global card_map
+    global item_map
+    global any_map
+
+    gamedata.load()
+
+    cards = gamedata.get_cards()
+    card_map = {normalize(card.name): card for card in cards}
+    for card in cards:
+        if card.short_name:
+            card_map[normalize(card.short_name)] = card
+    for alias, card in CARD_ALIAS_MAP.items():
+        card_map[alias] = card_map[card]
+
+    items = gamedata.get_items()
+    item_map = {normalize(item.name): item for item in items}
+    for item in items:
+        if item.short_name:
+            item_map[normalize(item.short_name)] = item
+    for alias, item in ITEM_ALIAS_MAP.items():
+        item_map[alias] = item_map[item]
+
+    any_map = card_map | item_map
+
+    is_loaded = True
+
 
 def after(s: str, substr: str):
     start = s.find(substr)
@@ -201,47 +239,15 @@ def parse_command(args, raw_args):
 
 
 def parse_card(args, raw_args):
-    cards = gamedata.get_cards()
-    card_map = {normalize(card.name): card for card in cards}
-    for card in cards:
-        if card.short_name:
-            card_map[normalize(card.short_name)] = card
-    for alias, card in CARD_ALIAS_MAP.items():
-        card_map[alias] = card_map[card]
     return parse_longest_match(card_map, args, raw_args)
 
 
 def parse_item(args, raw_args):
-    items = gamedata.get_items()
-    item_map = {normalize(item.name): item for item in items}
-    for item in items:
-        if item.short_name:
-            item_map[normalize(item.short_name)] = item
-    for alias, item in ITEM_ALIAS_MAP.items():
-        item_map[alias] = item_map[item]
     return parse_longest_match(item_map, args, raw_args)
 
 
-def parse_item_or_card(args, raw_args):
-    items = gamedata.get_items()
-    item_map = {normalize(item.name): item for item in items}
-    for item in items:
-        if item.short_name:
-            item_map[normalize(item.short_name)] = item
-    for alias, item in ITEM_ALIAS_MAP.items():
-        item_map[alias] = item_map[item]
-
-    cards = gamedata.get_cards()
-    card_map = {normalize(card.name): card for card in cards}
-    for card in cards:
-        if card.short_name:
-            card_map[normalize(card.short_name)] = card
-    for alias, card in CARD_ALIAS_MAP.items():
-        card_map[alias] = card_map[card]
-
-    combined_map = item_map | card_map
-
-    return parse_longest_match(combined_map, args, raw_args)
+def parse_any(args, raw_args):
+    return parse_longest_match(item_map | card_map, args, raw_args)
 
 
 def parse(text: str):
@@ -252,7 +258,7 @@ def parse(text: str):
     if command is not None:
         return command, remaining_args, raw_remaining_args
 
-    match, match_args, remaining_match_args, raw_match_args, raw_remaining_match_args = parse_item_or_card(args, raw_args)
+    match, match_args, remaining_match_args, raw_match_args, raw_remaining_match_args = parse_any(args, raw_args)
     if match is not None:
         command, _, remaining_match_args, _, raw_remaining_match_args = parse_command(remaining_match_args, raw_remaining_match_args)
         if command is commands.cmd_empty:
