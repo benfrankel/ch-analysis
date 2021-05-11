@@ -10,6 +10,7 @@ from util import scrape
 from . import const
 from . import display
 from . import parse
+from . import parse_util
 
 
 def chunkify(text):
@@ -110,7 +111,7 @@ class Client(discord.Client):
 
         items = []
         for item_name in info['items']:
-            args = parse.tokenize(item_name)
+            args = parse_util.tokenize(item_name)
             item, *_ = parse.parse_item(args, args)
             if item is not None:
                 items.append(item)

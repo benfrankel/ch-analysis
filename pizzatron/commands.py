@@ -2,6 +2,7 @@ import gamedata
 import optimize
 from . import display
 from . import parse
+from . import parse_util
 
 
 HELP = """
@@ -104,9 +105,8 @@ async def cmd_optimize(args, raw_args):
 
     card_pack_combo = {}
     while args:
-        index = parse.longest_match_index(optimize.card_packs, args)
+        index, key = parse_util.longest_match(optimize.card_packs, args)
         if index is not None:
-            key = parse.longest_match_index_to_key(index, optimize.card_packs, args)
             card_pack = optimize.card_packs[key]
             args = args[index:]
             raw_args = raw_args[index:]
@@ -326,7 +326,7 @@ async def cmd_pool(args, raw_args):
         'handicap': handicap,
     }
 
-    pool, _, args, _, raw_args = parse.parse_longest_match(pool_alias_map, args, raw_args)
+    pool, _, args, _, raw_args = parse_util.parse_longest_match(pool_alias_map, args, raw_args)
     if pool is None:
         return f'Sorry, I don\'t recognize the card pool "{" ".join(raw_args)}".'
 
