@@ -3,30 +3,15 @@ from . import parse_util
 
 
 ITEM_ALIAS_MAP = {
-    'vp': 'vibrant pain',
-    'ulrich': 'st ulrichs bones',
-    'troll': 'trolls ire',
-    'snitrick': 'snitricks last stand',
-    'reaper': 'reapers scythe',
-    'quinn': 'quinns buckler',
-    'drewg': 'dark drewgs mace',
     'bjss': 'bejeweled shortsword',
-    'aegis': 'aegis of the defender',
     'dds': 'deadly deadly staff',
-    'asmod': 'asmods telekinetic chain',
-    'approp': 'ring of appropriation',
+    'vp': 'vibrant pain',
     'skiljin': 'skull of savage iljin',
-    'mordecai': 'mordecais staff of magma',
-    'sensate': 'sensates ring',
-    'zoltan': 'zoltans laser scourge',
-    'snarlcub': 'snarlcub hide',
-    'pergop': 'pergops slippers',
-    'hawkwind': 'hawkwinds moccasins',
-    'huetotl': 'huetotls firebrand',
-    'xarol': 'st xarols mace',
-    'vasyl': 'vasyls ectoplasmic raiments',
-    'armorbane': 'armorbane pendant',
-    'vollmond': 'vollmond boots',
+    'snitrick': 'snitricks last stand',
+    #'aegis': 'aegis of the defender',
+    #'approp': 'ring of appropriation',
+    #'zoltan': 'zoltans laser scourge',
+    #'xarol': 'st xarols mace',
 }
 
 CARD_ALIAS_MAP = {
@@ -45,16 +30,9 @@ CARD_ALIAS_MAP = {
     'foa': 'flash of agony',
     'fs': 'firestorm',
     'aoa': 'all out attack',
-    'hex': 'hex of dissolution',
-    'grudge': 'ancient grudge',
-    'flank': 'flanking move',
-    'swarm': 'swarm of bats',
-    'glob': 'glob of flame',
     'vspin': 'violent spin',
-    'hypno': 'hypnotic beacon',
-    'insight': 'elvish insight',
-    'wellspring': 'unholy wellspring',
     'res hide': 'resistant hide',
+    #'swarm': 'swarm of bats',
 }
 
 is_loaded = False
