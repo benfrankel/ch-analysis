@@ -12,6 +12,9 @@ def load():
     from . import maps
     maps.load()
 
+    from . import state
+    state.load()
+
 
 def announce(message):
     import discord

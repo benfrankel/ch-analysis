@@ -1,4 +1,9 @@
-# Fill in your Discord Bot's token here:
+import os.path
+
+import const
+
+
+# Discord bot token
 TOKEN = 'MzI5NjQzMTkzOTQxNDkxNzEz.WVPKJQ.Fl_tOKYt7BjwF0lID0FSYQU5vXo'
 
 # Channel IDs
@@ -9,3 +14,6 @@ CH_DAILY_DEAL_CHANNEL_ID = 826364119157309472
 
 # Message IDs
 CH_LOOT_FAIRY_MESSAGE_ID = 832356702615502928
+
+# File paths
+PIZZATRON_STATE_FILEPATH = os.path.join(const.PIZZATRON_DIR, 'state.json')

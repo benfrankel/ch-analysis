@@ -3,6 +3,7 @@ import optimize
 from . import display
 from . import parse
 from . import parse_util
+from . import state
 
 
 HELP = """
@@ -12,6 +13,7 @@ help        Display this help.
 info        Display information about a card or item.
 items       List items containing a given card.
 optimize    Calculate an optimal deck from card weights.
+wishlist    Display your Daily Deal wishlist.
 ```
 Try some of these commands:
 ```
@@ -19,6 +21,7 @@ pt raging battler
 pt bless
 pt help optimize
 pt optimize dwarf priest greater heal
+pt wishlist add asmod's telekinetic chain
 ```
 """
 
@@ -57,16 +60,16 @@ def try_get_any(args, raw_args):
 
 
 def build_cmd_unknown(cmd_name, extra=''):
-    async def cmd_unknown(args, raw_args):
+    async def cmd_unknown(user, args, raw_args):
         return f'Unknown command "{cmd_name}"{extra}.'
     return cmd_unknown
 
 
-async def cmd_empty(args, raw_args):
+async def cmd_empty(user, args, raw_args):
     return 'No command provided.'
 
 
-async def cmd_help(args, raw_args):
+async def cmd_help(user, args, raw_args):
     if args and args[0] == 'optimize':
         card_classes = '- ' + '\n- '.join(sorted(optimize.get_card_packs().keys()))
         return f'**Card Classes:**\n{card_classes}'
@@ -74,7 +77,7 @@ async def cmd_help(args, raw_args):
     return HELP
 
 
-async def cmd_info(args, raw_args):
+async def cmd_info(user, args, raw_args):
     match, _, _, error = try_get_any(args, raw_args)
     if match is not None:
         if isinstance(match, gamedata.ItemType):
@@ -85,7 +88,7 @@ async def cmd_info(args, raw_args):
     return error
 
 
-async def cmd_items(args, raw_args):
+async def cmd_items(user, args, raw_args):
     card, _, _, error = try_get_card(args, raw_args)
     if card is None:
         return error
@@ -98,7 +101,7 @@ async def cmd_items(args, raw_args):
     return display.items(items, sort=True, highlight_card=lambda x: x == card)
 
 
-async def cmd_optimize(args, raw_args):
+async def cmd_optimize(user, args, raw_args):
     archetype = ' '.join(args[:2])
     args = args[2:]
     raw_args = raw_args[2:]
@@ -135,7 +138,7 @@ async def cmd_optimize(args, raw_args):
     return f'{stats}\n\n{items}'
 
 
-async def cmd_pool(args, raw_args):
+async def cmd_pool(user, args, raw_args):
     ethereal_form = [
         'Ethereal Form',
         'Creature of the Night',
@@ -333,6 +336,56 @@ async def cmd_pool(args, raw_args):
     return '- ' + '\n- '.join(pool)
 
 
+async def cmd_daily_deal_list(user, args, raw_args):
+    wishlists = state.state['wishlist']
+    wishlist = wishlists.get(str(user.id), [])
+    if not wishlist:
+        return 'Your Daily Deal wishlist is empty! Use `pt dd add` to add an item.'
+
+    if wishlist:
+        items = [gamedata.get_item(name) for name in wishlist]
+        return display.items(items, sort=True)
+
+
+async def cmd_daily_deal_add(user, args, raw_args):
+    item, _, _, error = try_get_item(args, raw_args)
+    if item is None:
+        return error
+
+    wishlist = state.state['wishlist'].setdefault(str(user.id), [])
+
+    added = False
+    if item.name not in wishlist:
+        wishlist.append(item.name)
+        added = True
+    state.save()
+
+    if added:
+        return f'Successfully added "{item.name}" to your Daily Deal wishlist.'
+
+    return f'The item "{item.name}" was already present in your Daily Deal wishlist.'
+
+
+async def cmd_daily_deal_remove(user, args, raw_args):
+    item, _, _, error = try_get_item(args, raw_args)
+    if item is None:
+        return error
+
+    removed = False
+    wishlist = state.state['wishlist'].setdefault(str(user.id), [])
+    try:
+        wishlist.remove(item.name)
+        removed = True
+    except ValueError:
+        pass
+    state.save()
+
+    if removed:
+        return f'Successfully removed "{item.name}" to your Daily Deal wishlist.'
+
+    return f'The item "{item.name}" was already absent from your Daily Deal wishlist.'
+
+
 COMMAND_MAP = {
     'help': cmd_help,
 
@@ -343,4 +396,18 @@ COMMAND_MAP = {
     'optimize': cmd_optimize,
 
     'pool': cmd_pool,
+
+    'daily deal wishlist': cmd_daily_deal_list,
+    'daily deal list': cmd_daily_deal_list,
+    'dd wishlist': cmd_daily_deal_list,
+    'dd list': cmd_daily_deal_list,
+    'wishlist': cmd_daily_deal_list,
+
+    'daily deal add': cmd_daily_deal_add,
+    'dd add': cmd_daily_deal_add,
+    'wishlist add': cmd_daily_deal_add,
+
+    'daily deal remove': cmd_daily_deal_remove,
+    'dd remove': cmd_daily_deal_remove,
+    'wishlist remove': cmd_daily_deal_remove,
 }

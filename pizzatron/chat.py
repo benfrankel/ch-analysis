@@ -11,6 +11,7 @@ from . import const
 from . import display
 from . import parse
 from . import parse_util
+from . import state
 
 
 def chunkify(text):
@@ -29,11 +30,11 @@ def chunkify(text):
     return chunks
 
 
-async def send_chunked(channel, text):
+async def send_chunked(target, text):
     chunks = chunkify(text)
-    message = await channel.send(chunks[0])
+    message = await target.send(chunks[0])
     for chunk in chunks[1:]:
-        await channel.send(chunk)
+        await target.send(chunk)
 
     return message
 
@@ -132,6 +133,16 @@ class Client(discord.Client):
         if most_recent is not None:
             await most_recent.unpin()
 
+        for user_id, wishlist in state.state['wishlist'].items():
+            wishlist = set(gamedata.get_item(name) for name in wishlist)
+            overlap = wishlist & set(items)
+            if not overlap:
+                continue
+
+            user = await self.fetch_user(int(user_id))
+            if user is not None:
+                await send_chunked(user, f'Check out today\'s Daily Deal!\n{display.items(list(overlap), sort=True)}')
+
     async def on_ready(self):
         print('Logged on as {0}.'.format(self.user))
 
@@ -161,7 +172,7 @@ class Client(discord.Client):
         error = None
         async with message.channel.typing():
             try:
-                response = await command(args, raw_args) or 'I have no words...'
+                response = await command(message.author, args, raw_args) or 'I have no words...'
             except Exception as e:
                 error = e
                 response = 'Error... You found a bug!'
