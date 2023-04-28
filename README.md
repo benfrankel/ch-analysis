@@ -1,6 +1,6 @@
 # CH Analysis
 
-This repository holds a collection of scripts & utilities for the game Card Hunter.
+This repository holds a collection of scripts & utilities for the game Card Hunter, including the code for the Discord bot "Pizzatron".
 
 
 ## Dependencies
@@ -12,7 +12,7 @@ You should also install [git](https://git-scm.com/downloads) to download the rep
 
 ### Discord
 
-Some scripts attempt to operate a Discord bot. Those scripts will fail unless you create your own Discord bot and enter its token in the file `pizzatron.const`.
+Some scripts attempt to operate a Discord bot. Those scripts will fail unless you create your own Discord bot and enter its token in the file `secrets.py` as `PIZZATRON_TOKEN = '<your token here>'`
 
 Furthermore, they require the module `discord.py`, which is available on PyPI (so you can download it using pip).
 
@@ -29,6 +29,12 @@ Now you can execute any script by running "python \<name of script\>" in your te
 # Utilities
 
 Below is an overview of the utilities provided by this repository.
+
+## Discord Bot
+
+`run_pizzatron` runs the Discord bot.
+
+`control_pizzatron` allows you to send messages as the Discord bot manually.
 
 
 ## Verbose Log Parser
@@ -54,18 +60,8 @@ The package `metadata` can download battle history from the API.
 
 ## Extreme Deck Optimizer
 
-The package `optimize` receives a character archetype together with a list of card values as input, and finds the deck that maximizes total card value. In addition,
+The package `optimize` receives a character archetype along with a list of card values as input, and finds the deck that maximizes total card value. In addition,
 
 - Cycling is handled properly (traits or Toughness / Shield Block / etc.)
 - Card value packs are available (direct magic damage, crowd healing, direct vampire damage, etc.)
 
-
-## Guild Utilities
-
-The following scripts are used to automate several guild-related tasks.
-
-### Discord Bot Control
-
-`run_pizzatron` runs the Discord bot.
-
-`control_pizzatron` allows you to send messages as the Discord bot manually.
