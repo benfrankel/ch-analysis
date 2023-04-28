@@ -12,7 +12,7 @@ You should also install [git](https://git-scm.com/downloads) to download the rep
 
 ### Discord
 
-Some scripts attempt to operate a Discord bot. Those scripts will fail unless you create your own Discord bot and enter its token in the file `util.guild.chat`.
+Some scripts attempt to operate a Discord bot. Those scripts will fail unless you create your own Discord bot and enter its token in the file `pizzatron.const`.
 
 Furthermore, they require the module `discord.py`, which is available on PyPI (so you can download it using pip).
 
@@ -21,7 +21,7 @@ Furthermore, they require the module `discord.py`, which is available on PyPI (s
 
 Open a terminal (or command prompt on Windows) and navigate to the place you would like to install CH Analysis.
 
-Enter the command "git clone --depth=1 https://github.com/BenFrankel/CH-Analysis" to download this repository.
+Enter the command "git clone --depth=1 https://github.com/benfrankel/ch-analysis" to download this repository.
 
 Now you can execute any script by running "python \<name of script\>" in your terminal.
 
@@ -49,16 +49,7 @@ The enemy's deck is among the information that `battle` is able to extract.
 
 ## Battle History
 
-The package `meta` can download a player's battle history from the meta site. It also provides functions to query the resulting data, and to calculate statistics from the data.
-
-The following statistics are available:
-
-- Summary of a list of battles, showing win percentage, wins - defeats, and blitz wins - normal wins - normal defeats - blitz defeats
-    - Summary applied to one player
-    - Summary applied to all matchups between two players
-- Ladder of a player's performance against guild players or guilds
-    - Ladder ranking a player's net contribution gain / loss against opponents
-    - Ladder ranking a player's net wins / defeats against opponents
+The package `metadata` can download battle history from the API.
 
 
 ## Extreme Deck Optimizer
@@ -73,18 +64,8 @@ The package `optimize` receives a character archetype together with a list of ca
 
 The following scripts are used to automate several guild-related tasks.
 
-### Discord Bot Manual Control
+### Discord Bot Control
 
-`control_discord_bot` allows you to make announcements as your Discord bot manually.
+`run_pizzatron` runs the Discord bot.
 
-### Daily Deal Wishlist
-
-`daily_deal_wishlist` scrapes the Daily Deal forum thread and checks for matches against a wishlist, and if a match is found, makes an announcement on Discord.
-
-### Guild Pizza Distribution Summary
-
-`guild_summary` scrapes the meta site for the per-season performance of any guild, then generates a summary of its ideal pizza distribution history.
-
-### Guild Pizza Distribution Report
-
-`distribute_pizza` uses `guild_summary` to upload a summary to pastebin and then announce the results on Discord.
+`control_pizzatron` allows you to send messages as the Discord bot manually.

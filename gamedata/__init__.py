@@ -1,11 +1,2 @@
-from .data import\
-    download, load,\
-    is_card, get_card, get_cards,\
-    is_item, get_item, get_items,\
-    is_archetype, get_archetype, get_archetypes,\
-    is_adventure, get_adventure, get_adventures,\
-    download_item_image
-
 from .model import CardType, ItemType, CharacterArchetype
-
-__all__ = ['data', 'model']
+from .manager import download, download_item_image, load, Manager

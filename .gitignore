@@ -1,3 +1,21 @@
+##########
+# CUSTOM #
+##########
+
+# Secrets
+secrets.py
+
+# Data
+cache/
+
+# Local docs
+*.org
+
+
+###########
+# GENERIC #
+###########
+
 # IDE files
 .idea/
 *.iml

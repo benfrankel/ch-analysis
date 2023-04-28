@@ -1,10 +1,14 @@
 import os.path
 
-import const
+import cache
+import secrets
 
+
+# Directory paths
+BASE_DIRPATH = os.path.join(cache.BASE_DIRPATH, 'pizzatron')
 
 # Discord bot token
-TOKEN = 'MzI5NjQzMTkzOTQxNDkxNzEz.WVPKJQ.Fl_tOKYt7BjwF0lID0FSYQU5vXo'
+TOKEN = secrets.PIZZATRON_TOKEN
 
 # Channel IDs
 BOG_ANNOUNCEMENTS_CHANNEL_ID = 444597426708414475
@@ -14,6 +18,3 @@ CH_DAILY_DEAL_CHANNEL_ID = 826364119157309472
 
 # Message IDs
 CH_LOOT_FAIRY_MESSAGE_ID = 832356702615502928
-
-# File paths
-PIZZATRON_STATE_FILEPATH = os.path.join(const.PIZZATRON_DIR, 'state.json')

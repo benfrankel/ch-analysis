@@ -1,19 +1,5 @@
 from .const import TOKEN
-from .chat import Client
-
-
-def load():
-    import gamedata
-    gamedata.load()
-
-    import optimize
-    optimize.load()
-
-    from . import maps
-    maps.load()
-
-    from . import state
-    state.load()
+from .client import Client
 
 
 def announce(message):
@@ -29,4 +15,4 @@ def announce(message):
     client.run(TOKEN)
 
 
-__all__ = ['TOKEN', 'Client']
+__all__ = []

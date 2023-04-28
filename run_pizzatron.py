@@ -4,8 +4,8 @@ import pizzatron
 
 
 def main():
-    pizzatron.load()
     client = pizzatron.Client()
+    client.load()
     client.run(pizzatron.TOKEN)
 
 

@@ -3,15 +3,9 @@ import random
 
 import asyncio
 
-from optimize import classify
-import gamedata
-
-
-is_loaded = False
-
 
 class ItemFinder:
-    slot_hash = {
+    _SLOT_HASH = {
         'Weapon': 0,
         'Divine Weapon': 1,
         'Staff': 2,
@@ -28,13 +22,14 @@ class ItemFinder:
         'Arcane Skill': 13,
         'Elf Skill': 14,
         'Human Skill': 15,
-        'Dwarf Skill': 16
+        'Dwarf Skill': 16,
     }
 
     def __init__(self):
         self.fail_cache = set()
         self.card_weights = {}
         self.slot_items = {}
+        self.traits = {}
         self.optimal = {}
 
     @staticmethod
@@ -43,7 +38,7 @@ class ItemFinder:
 
     @staticmethod
     def hash(slot_type, info):
-        return 204 * info[0] + 68 * info[1] + 17 * info[2] + ItemFinder.slot_hash[slot_type]
+        return 204 * info[0] + 68 * info[1] + 17 * info[2] + ItemFinder._SLOT_HASH[slot_type]
 
     @staticmethod
     def infos(slot_type):
@@ -63,7 +58,7 @@ class ItemFinder:
         for item in self.slot_items[slot_type]:
             if item.token_cost != info[:2]:
                 continue
-            if sum(card.name in trait_class for card in item) != info[2]:
+            if sum(card.name in self.traits for card in item) != info[2]:
                 continue
             val = sum(self.card_weights.get(card.name, 0) for card in item)
             score = val
@@ -75,13 +70,13 @@ class ItemFinder:
         self.optimal[hash_slot] = [best_score, best_items]
 
     def find_all(self):
-        for slot_type in set(self.slot_items):
+        for slot_type in self.slot_items:
             for info in ItemFinder.infos(slot_type):
                 self.find(slot_type, info)
         self.update_cache()
 
     def update_cache(self):
-        for slot_type in set(self.slot_items):
+        for slot_type in self.slot_items:
             for info in ItemFinder.infos(slot_type):
                 info = ItemFinder.convert(info)
                 hash_ = ItemFinder.hash(slot_type, info)
@@ -158,38 +153,3 @@ class CharacterFinder:
         if archetype in self.optimal:
             return self.optimal[archetype]
         raise KeyError('Cannot get optimal builds without finding them first.')
-
-
-items = dict()
-trait_class = dict()
-
-
-def load():
-    global is_loaded
-    if is_loaded:
-        return
-
-    global items, trait_class
-
-    gamedata.load()
-    classify.load()
-    items = gamedata.get_items()
-    trait_class = classify.get_card_pack('trait')
-    cycling_class = classify.get_card_pack('cycling')
-
-    is_loaded = True
-
-
-async def find(archetype, card_weights):
-    archetype = gamedata.get_archetype(archetype)
-    slot_items = {slot: list(filter(lambda item: item.slot_type == slot, items)) for slot in set(archetype.slot_types)}
-
-    optimal_items = ItemFinder()
-    optimal_items.slot_items = slot_items
-    optimal_items.card_weights = card_weights
-    optimal_items.find_all()
-
-    optimal_char = CharacterFinder(optimal_items)
-    await optimal_char.find(archetype)
-
-    return optimal_char.optimal[archetype]
