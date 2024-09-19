@@ -65,3 +65,6 @@ The package `optimize` receives a character archetype along with a list of card 
 - Cycling is handled properly (traits or Toughness / Shield Block / etc.)
 - Card value packs are available (direct magic damage, crowd healing, direct vampire damage, etc.)
 
+# License
+
+The source code in this repository is licensed under the [MIT License](./LICENSE-MIT.txt).
