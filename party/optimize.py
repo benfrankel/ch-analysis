@@ -1,4 +1,5 @@
 import itertools
+import math
 import random
 
 import asyncio
@@ -53,15 +54,14 @@ class ItemFinder:
 
     def find(self, slot_type, info):
         hash_slot = ItemFinder.hash(slot_type, ItemFinder.convert(info))
-        best_score = 0
+        best_score = -math.inf
         best_items = []
         for item in self.slot_items[slot_type]:
             if item.token_cost != info[:2]:
                 continue
             if sum(card.name in self.traits for card in item) != info[2]:
                 continue
-            val = sum(self.card_weights.get(card.name, 0) for card in item)
-            score = val
+            score = sum(self.card_weights.get(card.name, 0) for card in item)
             if score == best_score:
                 best_items.append(item)
             elif score > best_score:
@@ -128,7 +128,7 @@ class CharacterFinder:
         total_major, total_minor = 4, 4
         token_slots = [2 if slot_type in main_slot else 1 for slot_type in archetype.slot_types]
         best_builds = []
-        best_avg = 0
+        best_avg = -math.inf
         for distrib in self.distrib(archetype.slot_types, token_slots, total_major, total_minor):
             build = []
             score = 0
@@ -136,14 +136,18 @@ class CharacterFinder:
             for slot_type, info in zip(archetype.slot_types, distrib):
                 major, minor, trait_count = info
                 add_score, options = self.optimal_items.get(slot_type, (major, minor, trait_count))
+                if not options:
+                    break
                 build.append(random.choice(options))
                 score += add_score
                 num_traits += trait_count
             else:
                 avg = score / (36 - num_traits)
                 if avg == best_avg:
+                    print(avg, score, num_traits)
                     best_builds.append([score, num_traits, build])
                 elif avg > best_avg:
+                    print(avg, score, num_traits)
                     best_builds = [[score, num_traits, build]]
                     best_avg = avg
             await asyncio.sleep(0)

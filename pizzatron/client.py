@@ -33,7 +33,7 @@ def _chunkify(text):
         # Append a zero-width space to preserve formatting (Discord strips whitespace at the end of each message)
         if chunks and chunks[-1][-1].isspace():
             chunks[-1] += '\u200b'
-        
+
         # Prepend a zero-width space to preserve formatting (Discord strips whitespace at the beginning of each message)
         if not line or line[0].isspace():
             line = '\u200b' + line
@@ -50,11 +50,13 @@ def _chunkify(text):
 
 class Client(discord.Client):
     def __init__(self):
-        super().__init__()
+        intents = discord.Intents.default()
+        intents.message_content = True
+        super().__init__(intents=intents)
 
         self._tasks_started = False
         self._message_locks = {}
-        
+
         self.game = gamedata.Manager()
         self.meta = metadata.Manager()
         self.state = state.Manager()
@@ -84,22 +86,22 @@ class Client(discord.Client):
             message = await target.send(chunks[0])
             for chunk in chunks[1:]:
                 await target.send(chunk)
-    
+
         return message
-    
+
     async def reply(self, message, text):
         chunks = _chunkify(text)
         async with self._message_locks.setdefault(message.channel.id, asyncio.Lock()):
             reply = await message.reply(chunks[0])
             for chunk in chunks[1:]:
                 await message.channel.send(chunk)
-    
+
         return reply
 
     async def pin(self, message):
         async with self._message_locks.setdefault(message.channel.id, asyncio.Lock()):
             return await message.pin()
-    
+
     async def update_loot_fairy(self):
         # Loot fairy moves every 25 hours
         period = 25 * 60 * 60
@@ -174,7 +176,7 @@ class Client(discord.Client):
         rares = items[4:]
         cards_on_rares = set(c for i in rares for c in i.cards)
         rare_cards = list(set(c for c in cards_on_rares if c.is_rare))
-        
+
         message = f"""Daily deal for **{date}**:
 
 {self.display.items_long(legendaries, sort=True)}
@@ -257,9 +259,9 @@ class Client(discord.Client):
                     user = await self.fetch_user(int(user_id))
                     if user is not None:
                         await self.send(user, f'Your attempt to add "{account_name}" to your CH account list has timed out.')
-                
+
                     continue
-            
+
                 idx += 1
 
 

@@ -178,7 +178,7 @@ class Manager:
     def card_long(self, card_type):
         rarity = self.rarity_icon(card_type.rarity)
         
-        quality = self.quality_name(card_type.quality) + card_type.plus_minus
+        quality = self.quality_name(card_type.quality) + card_type.plus_minus or '='
     
         icon = self.card_icon(card_type)
         if icon:

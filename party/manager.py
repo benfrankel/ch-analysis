@@ -36,8 +36,10 @@ class Manager:
     def _populate_auto_packs(self, game):
         # Auto-generated card packs
         auto_packs = (
-            'trait',
-            'attached trait',
+            'is trait',
+            'is attached trait',
+            'is attack',
+            'is move',
             'direct magic damage',
             'direct magic range',
             'direct melee damage',
@@ -52,15 +54,18 @@ class Manager:
         for c in game.cards:
             if c.is_trait:
                 if 'ReplaceDrawComponent' not in c.components:
-                    self.card_packs['trait'][c.name] = 1
+                    self.card_packs['is trait'][c.name] = 1
                 if 'AttachToSelfComponent' in c.components:
-                    self.card_packs['attached trait'][c.name] = 1
+                    self.card_packs['is attached trait'][c.name] = 1
         for c in game.cards:
             is_direct = c.get_component('TargetedDamageComponent', 'numberTargets', 1) == 1
+            if c.is_attack:
+                self.card_packs['is attack'][c.name] = 1
             if c.is_attack and c.is_magic and is_direct:
                 self.card_packs['direct magic damage'][c.name] = c.average_damage
                 self.card_packs['direct magic range'][c.name] = c.max_range
             if c.is_move:
+                self.card_packs['is move'][c.name] = 1
                 # TODO: Require step attack? Or allow Tunnel / Burrow?
                 if c.is_attack and c.is_step:
                     self.card_packs['step movement'][c.name] = c.components['StepComponent']['movePoints']
@@ -98,7 +103,7 @@ class Manager:
         optimal_items = optimize.ItemFinder()
         optimal_items.slot_items = slot_items
         optimal_items.card_weights = card_weights
-        optimal_items.traits = self.card_packs['trait'].keys()
+        optimal_items.traits = self.card_packs['is trait'].keys()
         optimal_items.find_all()
 
         optimal_char = optimize.CharacterFinder(optimal_items)
